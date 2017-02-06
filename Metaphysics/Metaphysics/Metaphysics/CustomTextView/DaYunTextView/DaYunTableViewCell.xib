@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DaYunTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="辛酉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGg-mN-QMJ">
+                        <rect key="frame" x="49" y="7.5" width="49" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycX-Ai-z50">
+                        <rect key="frame" x="98" y="12.5" width="12" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTZ-PK-TFE">
+                        <rect key="frame" x="110" y="7.5" width="6.5" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpo-Nj-qxK">
+                        <rect key="frame" x="16" y="7.5" width="24.5" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IGg-mN-QMJ" firstAttribute="leading" secondItem="Mpo-Nj-qxK" secondAttribute="trailing" constant="8" id="7YZ-4v-kXe"/>
+                    <constraint firstItem="Mpo-Nj-qxK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="H5A-9u-E42"/>
+                    <constraint firstItem="IGg-mN-QMJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ImJ-U1-Twu"/>
+                    <constraint firstItem="ycX-Ai-z50" firstAttribute="leading" secondItem="IGg-mN-QMJ" secondAttribute="trailing" id="V5W-gW-yxZ"/>
+                    <constraint firstItem="cTZ-PK-TFE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bma-PH-pyN"/>
+                    <constraint firstItem="cTZ-PK-TFE" firstAttribute="leading" secondItem="ycX-Ai-z50" secondAttribute="trailing" id="fRW-cr-pcD"/>
+                    <constraint firstItem="Mpo-Nj-qxK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fXV-3K-WfI"/>
+                    <constraint firstItem="ycX-Ai-z50" firstAttribute="bottom" secondItem="IGg-mN-QMJ" secondAttribute="bottom" id="o3o-00-DWq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="daYunLabel" destination="IGg-mN-QMJ" id="RXX-O1-51k"/>
+                <outlet property="numberLabel" destination="Mpo-Nj-qxK" id="zir-vj-wjO"/>
+                <outlet property="yearLabel" destination="ycX-Ai-z50" id="fCa-BR-V6l"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

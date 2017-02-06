@@ -1,0 +1,59 @@
+//
+//  DaYunTableViewDataSource.m
+//  Metaphysics
+//
+//  Created by Hydra on 2017/2/2.
+//  Copyright © 2017年 毕志锋. All rights reserved.
+//
+
+#import "DaYunTableViewDataSource.h"
+#import "DaYunTableViewCell.h"
+#import "UIConstantParameter.h"
+static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
+@interface DaYunTableViewDataSource()
+@property (nonatomic,weak)UITableView *tableView;
+@end
+
+@implementation DaYunTableViewDataSource
+
+-(instancetype)initWithTableView:(UITableView*)tableView{
+    self = [super init];
+    if(self){
+        self.tableView = tableView;
+        [self UIConfig];
+    }
+    return self;
+}
+
+-(void)UIConfig{
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DaYunTableViewCell class])
+                                          bundle:nil]
+    forCellReuseIdentifier:cellReuseIdentifier];
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat temp = daYunTableCellHeight;
+    return daYunTableCellHeight;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return daYunTableViewCount;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    DaYunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier
+                                                                forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell resetValueWithIndexPath:indexPath];
+    
+    return cell;
+}
+
+
+@end

@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DaYunSubTableViewDataSource : NSObject
-
+@interface DaYunSubTableViewDataSource : NSObject<UITableViewDelegate,UITableViewDataSource>
+-(instancetype)initWithTableView:(UITableView*)tableView;
 @end

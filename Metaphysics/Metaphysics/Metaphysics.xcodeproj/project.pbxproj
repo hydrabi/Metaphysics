@@ -35,6 +35,8 @@
 		808763291E42EE5F005656BF /* DaYunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 808763271E42EE5F005656BF /* DaYunTableViewCell.m */; };
 		8087632A1E42EE5F005656BF /* DaYunTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808763281E42EE5F005656BF /* DaYunTableViewCell.xib */; };
 		80B422681E435D770008E8E3 /* BottomLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B422671E435D770008E8E3 /* BottomLocation.m */; };
+		80E8EAD31E48C81100F96129 /* DaYunSubTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E8EAD21E48C81100F96129 /* DaYunSubTitleView.m */; };
+		80E8EAD51E48C83800F96129 /* DaYunSubTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80E8EAD41E48C83800F96129 /* DaYunSubTitleView.xib */; };
 		80F8C1F81E3C371E0036186A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C1F71E3C371E0036186A /* main.m */; };
 		80F8C1FB1E3C371E0036186A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C1FA1E3C371E0036186A /* AppDelegate.m */; };
 		80F8C2031E3C371F0036186A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F8C2021E3C371F0036186A /* Assets.xcassets */; };
@@ -112,6 +114,9 @@
 		808763281E42EE5F005656BF /* DaYunTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DaYunTableViewCell.xib; sourceTree = "<group>"; };
 		80B422661E435D770008E8E3 /* BottomLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomLocation.h; sourceTree = "<group>"; };
 		80B422671E435D770008E8E3 /* BottomLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomLocation.m; sourceTree = "<group>"; };
+		80E8EAD11E48C81100F96129 /* DaYunSubTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaYunSubTitleView.h; sourceTree = "<group>"; };
+		80E8EAD21E48C81100F96129 /* DaYunSubTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaYunSubTitleView.m; sourceTree = "<group>"; };
+		80E8EAD41E48C83800F96129 /* DaYunSubTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DaYunSubTitleView.xib; sourceTree = "<group>"; };
 		80F8C1F31E3C371E0036186A /* Metaphysics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metaphysics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8C1F71E3C371E0036186A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		80F8C1F91E3C371E0036186A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -180,6 +185,9 @@
 				803C3AB71E477EAE00C926B5 /* DaYunSubTableViewCell.h */,
 				803C3AB81E477EAE00C926B5 /* DaYunSubTableViewCell.m */,
 				803C3AB91E477EAE00C926B5 /* DaYunSubTableViewCell.xib */,
+				80E8EAD11E48C81100F96129 /* DaYunSubTitleView.h */,
+				80E8EAD21E48C81100F96129 /* DaYunSubTitleView.m */,
+				80E8EAD41E48C83800F96129 /* DaYunSubTitleView.xib */,
 			);
 			path = DaYunSubTextView;
 			sourceTree = "<group>";
@@ -519,6 +527,7 @@
 			files = (
 				803C3ABB1E477EAE00C926B5 /* DaYunSubTableViewCell.xib in Resources */,
 				804088261E3F0CD600380A15 /* BottomFirstTableViewHeader.xib in Resources */,
+				80E8EAD51E48C83800F96129 /* DaYunSubTitleView.xib in Resources */,
 				807196DA1E418E5A005E4A52 /* 17icon.ttf in Resources */,
 				80F8C2451E3C95E70036186A /* LeftTableViewCell.xib in Resources */,
 				80F8C2061E3C371F0036186A /* LaunchScreen.storyboard in Resources */,
@@ -607,6 +616,7 @@
 				804088291E3F0CE500380A15 /* BottomFirstTableViewHeader.m in Sources */,
 				803C3AB31E477E7400C926B5 /* DaYunSubTextView.m in Sources */,
 				80F8C2211E3C3C1B0036186A /* MainViewController.m in Sources */,
+				80E8EAD31E48C81100F96129 /* DaYunSubTitleView.m in Sources */,
 				808763251E42EBCD005656BF /* DaYunTableViewDataSource.m in Sources */,
 				808763291E42EE5F005656BF /* DaYunTableViewCell.m in Sources */,
 				8040881D1E3E25F100380A15 /* MiddleSubView.m in Sources */,

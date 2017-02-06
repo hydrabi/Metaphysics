@@ -34,7 +34,6 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat temp = daYunTableCellHeight;
     return daYunTableCellHeight;
 }
 

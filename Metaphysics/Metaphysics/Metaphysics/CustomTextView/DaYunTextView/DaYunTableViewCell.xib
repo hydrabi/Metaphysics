@@ -19,25 +19,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="辛酉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGg-mN-QMJ">
-                        <rect key="frame" x="49" y="4" width="61" height="36"/>
+                        <rect key="frame" x="43" y="4" width="61" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycX-Ai-z50">
-                        <rect key="frame" x="110" y="16" width="12" height="24"/>
+                        <rect key="frame" x="104" y="16" width="12" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTZ-PK-TFE">
-                        <rect key="frame" x="122" y="7.5" width="6.5" height="29"/>
+                        <rect key="frame" x="116" y="7.5" width="6.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpo-Nj-qxK">
-                        <rect key="frame" x="16" y="7.5" width="24.5" height="29"/>
+                        <rect key="frame" x="10" y="7.5" width="24.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -50,7 +50,11 @@
                     <constraint firstItem="ycX-Ai-z50" firstAttribute="leading" secondItem="IGg-mN-QMJ" secondAttribute="trailing" id="V5W-gW-yxZ"/>
                     <constraint firstItem="cTZ-PK-TFE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bma-PH-pyN"/>
                     <constraint firstItem="cTZ-PK-TFE" firstAttribute="leading" secondItem="ycX-Ai-z50" secondAttribute="trailing" id="fRW-cr-pcD"/>
-                    <constraint firstItem="Mpo-Nj-qxK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fXV-3K-WfI"/>
+                    <constraint firstItem="Mpo-Nj-qxK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fXV-3K-WfI">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiDefinition" value="leftVerLineOffset_key"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
                     <constraint firstItem="ycX-Ai-z50" firstAttribute="bottom" secondItem="IGg-mN-QMJ" secondAttribute="bottom" id="o3o-00-DWq"/>
                 </constraints>
             </tableViewCellContentView>

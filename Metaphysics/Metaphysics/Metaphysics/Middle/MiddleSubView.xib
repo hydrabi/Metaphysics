@@ -50,14 +50,14 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-ny-Osj" userLabel="secondHorline">
-                            <rect key="frame" x="37" y="101" width="119" height="1"/>
+                            <rect key="frame" x="41" y="101" width="115" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="JGs-va-8Jh"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRz-NV-5Ax" userLabel="firstVerline">
-                            <rect key="frame" x="36" y="51" width="1" height="109"/>
+                            <rect key="frame" x="40" y="51" width="1" height="109"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="Ysm-Lp-93U"/>
@@ -72,24 +72,24 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丙申" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5n-Xd-ZPQ">
                             <rect key="frame" x="0.0" y="0.0" width="156" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山下火" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQ8-Fz-mv0">
-                            <rect key="frame" x="0.0" y="51" width="36" height="109"/>
+                            <rect key="frame" x="0.0" y="51" width="40" height="109"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="壬庚戊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxX-8c-jk0">
-                            <rect key="frame" x="37" y="51" width="119" height="50"/>
+                            <rect key="frame" x="41" y="51" width="115" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="财食比" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhD-Ky-esq">
-                            <rect key="frame" x="37" y="102" width="119" height="58"/>
+                            <rect key="frame" x="41" y="102" width="115" height="58"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                         <constraint firstItem="KQ8-Fz-mv0" firstAttribute="top" secondItem="bgd-Sq-ktu" secondAttribute="bottom" id="p91-oJ-oBc"/>
                         <constraint firstAttribute="bottom" secondItem="aRz-NV-5Ax" secondAttribute="bottom" id="peS-pk-1p5"/>
                         <constraint firstItem="bgd-Sq-ktu" firstAttribute="top" secondItem="plm-EM-Upv" secondAttribute="top" constant="50" id="rmy-as-P2E"/>
-                        <constraint firstItem="aRz-NV-5Ax" firstAttribute="leading" secondItem="plm-EM-Upv" secondAttribute="leading" constant="36" id="s1B-a5-IhF"/>
+                        <constraint firstItem="aRz-NV-5Ax" firstAttribute="leading" secondItem="plm-EM-Upv" secondAttribute="leading" constant="40" id="s1B-a5-IhF"/>
                         <constraint firstItem="IxX-8c-jk0" firstAttribute="top" secondItem="bgd-Sq-ktu" secondAttribute="bottom" id="u6W-5K-jtT"/>
                         <constraint firstAttribute="bottom" secondItem="jhD-Ky-esq" secondAttribute="bottom" id="u8K-9c-4L0"/>
                         <constraint firstItem="s0n-ny-Osj" firstAttribute="top" secondItem="bgd-Sq-ktu" secondAttribute="bottom" constant="50" id="vNO-98-Yzm"/>

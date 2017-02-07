@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,25 +19,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSw-KV-0nb">
-                        <rect key="frame" x="8" y="12" width="45" height="24"/>
+                        <rect key="frame" x="10" y="12" width="45" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="壬辰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOc-5i-iEj">
-                        <rect key="frame" x="53" y="-0.5" width="61" height="36.5"/>
+                        <rect key="frame" x="55" y="-0.5" width="61" height="36.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9L-u8-OQZ">
-                        <rect key="frame" x="155" y="7" width="6.5" height="29"/>
+                        <rect key="frame" x="157" y="7" width="6.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="甲子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0i-w7-XFg">
-                        <rect key="frame" x="114" y="12" width="41" height="24"/>
+                        <rect key="frame" x="116" y="12" width="41" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -51,8 +50,12 @@
                     <constraint firstItem="pSw-KV-0nb" firstAttribute="bottom" secondItem="fOc-5i-iEj" secondAttribute="bottom" id="V7R-5W-xPt"/>
                     <constraint firstItem="fOc-5i-iEj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bAY-UO-nth"/>
                     <constraint firstItem="fOc-5i-iEj" firstAttribute="leading" secondItem="pSw-KV-0nb" secondAttribute="trailing" id="cOP-qC-3SP"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="pSw-KV-0nb" secondAttribute="leading" id="f75-tH-GPn"/>
                     <constraint firstItem="v0i-w7-XFg" firstAttribute="leading" secondItem="fOc-5i-iEj" secondAttribute="trailing" id="vF3-hh-zec"/>
+                    <constraint firstItem="pSw-KV-0nb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vjf-qA-gNR">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiDefinition" value="leftVerLineOffset_key"/>
+                        </userDefinedRuntimeAttributes>
+                    </constraint>
                 </constraints>
             </tableViewCellContentView>
             <connections>

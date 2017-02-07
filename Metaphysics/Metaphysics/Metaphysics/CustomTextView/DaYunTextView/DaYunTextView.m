@@ -33,7 +33,7 @@
     self.layer.borderWidth = 1.0f;
     
     self.titleLabel = [[UILabel alloc] init];
-    self.titleLabel.font = [UIFont boldSystemFontOfSize:titleFontSize_24];
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:titleFontSize_30];
     self.titleLabel.text = @"大运";
     [self addSubview:self.titleLabel];
     
@@ -62,7 +62,7 @@
 -(void)makeConstraints{
     @weakify(self)
     [self.titleLabel makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.top).offset(offset_16);
+        make.top.equalTo(self.top).offset(leftVerLineOffset);
         make.centerX.equalTo(self.centerX);
     }];
     

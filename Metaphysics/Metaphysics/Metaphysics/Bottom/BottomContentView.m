@@ -69,7 +69,7 @@
 
 -(void)bindViewModel{
     @weakify(self)
-    [[[MainViewModel sharedInstance].reloadTablesSig
+    [[[MainViewModel sharedInstance].reloadBottomTablesSig
       deliverOnMainThread]
      subscribeNext:^(id _){
          @strongify(self)

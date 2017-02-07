@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
-
+@class BottomLocation;
 typedef NS_ENUM(NSInteger,LeftSideMenuType) {
+    LeftSideMenuTypeEmpty = -1,     /**<空*/
     LeftSideMenuTypeChaoDai,        /**<朝代*/
     LeftSideMenuTypeShuangZao,      /**<双造*/
     LeftSideMenuTypeDaYun,          /**<大运*/
@@ -42,27 +43,35 @@ typedef NS_ENUM(NSInteger,MiddleSubViewType){
 @interface MainViewModel : BaseViewModel
 //左边的菜单页面
 @property (nonatomic,strong)NSArray *leftMenuArr;
+//当前选中顶部的菜单类型
+@property (nonatomic,assign)LeftSideMenuType currentTopSectionMenuType;
+//当前选中底部的菜单类型
+@property (nonatomic,assign)LeftSideMenuType currentBottomSectionMenuType;
+//底部textView操作信号
+@property (nonatomic,strong)RACSignal *currentBottomTextViewOperationSig;
+//左边菜单tableview操作信号
+@property (nonatomic,strong)RACSignal *reloadLeftTableSig;
 
 //是否正在隐藏底部的tableView
 @property (nonatomic,assign)BOOL hadHiddenBottomTableView;
 //正在隐藏的tableview的标记
 @property (nonatomic,assign)NSInteger hiddenBottomTableViewTag;
 //隐藏或者显示的操作信号
-@property (nonatomic,strong)RACSignal *reloadTablesSig;
+@property (nonatomic,strong)RACSignal *reloadBottomTablesSig;
 
-////底部正在选中tableview的tag
-//@property (nonatomic,assign)NSInteger selectTableViewTag;
-////底部正在选中tableview的indexpath
-//@property (nonatomic,strong)NSIndexPath *selectIndexPath;
 //底部正在隐藏textView
-@property (nonatomic,assign)BOOL hadShowBottomTextView;
-//隐藏或者显示的操作信号
-@property (nonatomic,strong)RACSignal *bottomTextViewOperationSig;
+@property (nonatomic,assign)BOOL hadShowLiuNianTextView;
+//隐藏或者显示最底部textView的操作信号
+@property (nonatomic,strong)RACSignal *LiuNianTextViewOperationSig;
 //选择的位置
 @property (nonatomic,strong)NSMutableDictionary *bottomLocation;
+//第一个location
+@property (nonatomic,strong)BottomLocation *firstLocation;
 
-//是否正在展示大运
-@property (nonatomic,assign)BOOL hadShowDaYunTextView;
+//正在点击的15运
+@property (nonatomic,assign)NSInteger fifteenYunSelectedNumber;
+//隐藏或者显示15运的操作信号
+@property (nonatomic,strong)RACSignal *fifteenYunTextViewOperationSig;
 
 
 +(instancetype)sharedInstance;
@@ -70,4 +79,7 @@ typedef NS_ENUM(NSInteger,MiddleSubViewType){
 -(LeftSideMenuType)getSpecificMenuTypeWithIndexPath:(NSIndexPath*)indexPath;
 -(void)hiddenTableViewWithTag:(NSInteger)tag;
 -(void)selectTableViewTag:(NSInteger)tag indexPath:(NSIndexPath*)indexPath;
+-(void)selectTableViewHeaderWithTag:(NSInteger)tag;
+#pragma mark - 选择菜单的某一项
+-(void)selectMunuWithIndexPath:(NSIndexPath*)indexPath;
 @end

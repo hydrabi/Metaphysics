@@ -14,6 +14,11 @@
 #import "BottomContentView.h"
 #import "UIConstantParameter.h"
 #import "DaYunTextView.h"
+#import "DaYunSubTextView.h"
+#import "LiuNianTextView.h"
+#import "NormalTextView.h"
+#import "ShuangZaoTextView.h"
+
 @interface MainViewController ()
 @property (nonatomic,strong)MainViewModel *viewModel;
 @property (nonatomic,strong)UITableView *leftSideMenuTabelView;
@@ -21,10 +26,14 @@
 @property (nonatomic,strong)TopContentView *topContentView;
 @property (nonatomic,strong)MiddleContentView *middleContentView;
 @property (nonatomic,strong)BottomContentView *bottomContentView;
-@property (nonatomic,strong)UITextView *bottomTextView;
+@property (nonatomic,strong)LiuNianTextView *liuNianTextView;
 @property (nonatomic,strong)UILabel *dateLabel;
 @property (nonatomic,strong)NSTimer *timer;
 @property (nonatomic,strong)DaYunTextView *daYunTextView;
+@property (nonatomic,strong)NormalTextView *normalTextView;
+@property (nonatomic,strong)DaYunSubTextView *fifteenYunTextView;
+@property (nonatomic,strong)ShuangZaoTextView *shuangZaoTextView;
+@property (nonatomic,weak)UIView *currentTextView;
 @property (nonatomic,strong)UIView *firstVerLine;
 @property (nonatomic,strong)UIView *secondVerLine;
 @end
@@ -37,10 +46,11 @@
     [super viewDidLoad];
    
     [self UIConfig];
+    [self makeConstraints];
     [self bindViewModel];
 }
 
-
+#pragma mark - UI
 -(void)UIConfig{
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -68,12 +78,11 @@
     self.bottomContentView = [[BottomContentView alloc] init];
     [self.view addSubview:self.bottomContentView];
     
-    self.bottomTextView = [[UITextView alloc] init];
-    self.bottomTextView.scrollEnabled = NO;
-    self.bottomTextView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.bottomTextView.layer.borderWidth = 1.0f;
-    self.bottomTextView.hidden = YES;
-    [self.view addSubview:self.bottomTextView];
+    self.liuNianTextView = [LiuNianTextView instanceLiuNianTextView];
+    self.liuNianTextView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.liuNianTextView.layer.borderWidth = 1.0f;
+    self.liuNianTextView.hidden = YES;
+    [self.view addSubview:self.liuNianTextView];
     
     self.dateLabel = [[UILabel alloc] init];
     self.dateLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
@@ -86,10 +95,27 @@
                                                              userInfo:nil
                                                               repeats:YES];
     
+    self.currentTextView = nil;
+    
     self.daYunTextView = [[DaYunTextView alloc] init];
     self.daYunTextView.hidden = YES;
     [self.view addSubview:self.daYunTextView];
     
+    self.fifteenYunTextView = [[DaYunSubTextView alloc] init];
+    self.fifteenYunTextView.hidden = YES;
+    [self.view addSubview:self.fifteenYunTextView];
+    
+    self.normalTextView = [NormalTextView instanceNormalTextView];
+    self.normalTextView.hidden = YES;
+    [self.view addSubview:self.normalTextView];
+    
+    self.shuangZaoTextView = [ShuangZaoTextView instanceShuangZaoTextView];
+    self.shuangZaoTextView.hidden = YES;
+    [self.view addSubview:self.shuangZaoTextView];
+    
+}
+
+-(void)makeConstraints{
     @weakify(self)
     [self.leftSideMenuTabelView makeConstraints:^(MASConstraintMaker *make){
         @strongify(self)
@@ -100,7 +126,7 @@
     }];
     
     [self.firstVerLine makeConstraints:^(MASConstraintMaker *make){
-       @strongify(self)
+        @strongify(self)
         make.leading.equalTo(self.leftSideMenuTabelView.trailing).offset(0);
         make.top.equalTo(self.view.top).offset(0);
         make.bottom.equalTo(self.view.bottom).offset(0);
@@ -139,27 +165,59 @@
         make.height.equalTo(bottomViewHeight);
     }];
     
-    [self.bottomTextView makeConstraints:^(MASConstraintMaker *make){
+    [self.liuNianTextView makeConstraints:^(MASConstraintMaker *make){
         @strongify(self)
-        make.leading.equalTo(self.secondVerLine.trailing).offset(@(offset_16));
-        make.top.equalTo(self.bottomContentView.bottom).offset(0);
-        make.trailing.equalTo(self.view.trailing).offset(@(-offset_16));
+        make.leading.equalTo(self.secondVerLine.trailing).offset(@(leftVerLineOffset));
+        make.top.equalTo(self.bottomContentView.bottom).offset(leftVerLineOffset);
+        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
         make.height.equalTo(bottomTextViewHeight);
     }];
     
     [self.dateLabel makeConstraints:^(MASConstraintMaker *make){
-       @strongify(self)
+        @strongify(self)
         make.trailing.equalTo(self.view.trailing).offset(@(-offset_16));
         make.bottom.equalTo(self.view.bottom).offset(0);
     }];
     
     [self.daYunTextView makeConstraints:^(MASConstraintMaker *make){
         @strongify(self)
-        make.leading.equalTo(self.secondVerLine.trailing).offset(offset_16);
+        make.leading.equalTo(self.secondVerLine.trailing).offset(leftVerLineOffset);
         make.top.equalTo(self.bottomContentView.top).offset(tableViewHeaderHeight);
-        make.trailing.equalTo(self.view.trailing).offset(@(-offset_16));
+        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
         make.height.equalTo(daYunTextViewHeight);
     }];
+    
+    [self.fifteenYunTextView makeConstraints:^(MASConstraintMaker *make){
+        @strongify(self)
+        make.leading.equalTo(self.secondVerLine.trailing).offset(leftVerLineOffset);
+        make.top.equalTo(self.bottomContentView.top).offset(tableViewHeaderHeight);
+        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
+        make.height.equalTo(daYunSubTextViewHeight);
+    }];
+    
+    [self.normalTextView makeConstraints:^(MASConstraintMaker *make){
+        @strongify(self)
+        make.leading.equalTo(self.secondVerLine.trailing).offset(leftVerLineOffset);
+        make.top.equalTo(self.bottomContentView.top).offset(tableViewHeaderHeight);
+        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
+        make.height.equalTo(normalTextViewHeight);
+    }];
+    
+    [self.shuangZaoTextView makeConstraints:^(MASConstraintMaker *make){
+        @strongify(self)
+        make.leading.equalTo(self.secondVerLine.trailing).offset(0);
+        make.top.equalTo(self.view.top).offset(0);
+        make.trailing.equalTo(self.view.trailing).offset(0);
+        make.height.equalTo(topViewHeight);
+    }];
+}
+
+-(void)resetCurrentTextView:(UIView*)view{
+    self.currentTextView.hidden = YES;
+    if(view != nil){
+        self.currentTextView = view;
+        self.currentTextView.hidden = NO;
+    }
 }
 
 -(BOOL)prefersStatusBarHidden{
@@ -175,30 +233,68 @@
 -(void)bindViewModel{
     @weakify(self)
     MainViewModel *mainViewModel = [MainViewModel sharedInstance];
-    [[mainViewModel.bottomTextViewOperationSig
+    //流年底部textView操作
+    [[mainViewModel.LiuNianTextViewOperationSig
       deliverOnMainThread]
      subscribeNext:^(id _){
          @strongify(self)
-         if([MainViewModel sharedInstance].hadShowBottomTextView){
-             self.bottomTextView.hidden = NO;
+         if([MainViewModel sharedInstance].hadShowLiuNianTextView){
+             self.liuNianTextView.hidden = NO;
          }
          else{
-             self.bottomTextView.hidden = YES;
+             self.liuNianTextView.hidden = YES;
          }
      }];
     
-    [[[RACObserve(mainViewModel, hadShowDaYunTextView)
+    //左边菜单底部选项选中操作
+    [[[RACObserve(mainViewModel, currentBottomSectionMenuType)
       distinctUntilChanged]
       deliverOnMainThread]
      subscribeNext:^(id _){
         @strongify(self)
-         if(mainViewModel.hadShowDaYunTextView){
-             self.daYunTextView.hidden = NO;
+         if(mainViewModel.currentBottomSectionMenuType == LeftSideMenuTypeEmpty){
+             [self resetCurrentTextView:nil];
          }
          else{
-             self.daYunTextView.hidden = YES;
+             
+             switch (mainViewModel.currentBottomSectionMenuType) {
+                 case LeftSideMenuTypeDaYun:
+                 {
+                     [self resetCurrentTextView:self.daYunTextView];
+                 }
+                     break;
+                     
+                 default:
+                 {
+                     [self resetCurrentTextView:self.normalTextView];
+                     [self.normalTextView reloadData];
+                 }
+                     break;
+             }
          }
      }];
+    
+    //15运选中操作
+    [[mainViewModel.fifteenYunTextViewOperationSig
+      deliverOnMainThread]
+     subscribeNext:^(id _){
+        @strongify(self)
+         if(mainViewModel.fifteenYunSelectedNumber != NSNotFound){
+             [self resetCurrentTextView:self.fifteenYunTextView];
+         }
+         else{
+             [self resetCurrentTextView:nil];
+         }
+     }];
+    
+    //左边的菜单tableview刷新数据
+    [[mainViewModel.reloadLeftTableSig
+     deliverOnMainThread]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self.leftSideMenuTabelView reloadData];
+     }];
 }
+
 
 @end

@@ -93,6 +93,7 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
             BottomNormalTableViewHeader *header = [BottomNormalTableViewHeader instanceBottomNormalTableViewHeader];
             header.frame = CGRectMake(0, 0, CGRectGetWidth(tableView.frame), tableViewHeaderHeight);
             header.tableViewTag = tableView.tag;
+            [header reloadData];
             return header;
         }
     }

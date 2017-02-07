@@ -55,16 +55,25 @@
     
     self.hadHiddenBottomTableView = NO;
     self.hiddenBottomTableViewTag = 0;
-    self.hadShowDaYunTextView = NO;
     self.bottomLocation = @{}.mutableCopy;
+    self.fifteenYunSelectedNumber = NSNotFound;
+    self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
     
     [self bindOperation];
 }
 
 -(void)bindOperation{
-    self.reloadTablesSig = [[RACSubject subject] setNameWithFormat:@"tableViewHiddenOperationSig"];
+    self.reloadBottomTablesSig = [[RACSubject subject]
+                            setNameWithFormat:@"tableViewHiddenOperationSig"];
     
-    self.bottomTextViewOperationSig = [[RACSubject subject] setNameWithFormat:@"bottomTextViewOperationSig"];
+    self.LiuNianTextViewOperationSig = [[RACSubject subject] setNameWithFormat:@"bottomTextViewOperationSig"];
+    
+    self.fifteenYunTextViewOperationSig = [[RACSubject subject] setNameWithFormat:@"fifteenYunTextViewOperationSig"];
+    
+    self.currentBottomTextViewOperationSig = [[RACSubject subject] setNameWithFormat:@"currentBottomTextViewOperationSig"];
+    
+    self.reloadLeftTableSig = [[RACSubject subject]
+                               setNameWithFormat:@"reloadLeftTableSig"];
 }
 
 -(NSString*)getSpecificMenuTitleWithType:(LeftSideMenuType)type{
@@ -152,7 +161,7 @@
     else{
         self.hadHiddenBottomTableView = !self.hadHiddenBottomTableView;
     }
-    [(RACSubject*)self.reloadTablesSig sendNext:nil];
+    [(RACSubject*)self.reloadBottomTablesSig sendNext:nil];
 }
 
 #pragma mark - 选择tableView的某一行
@@ -160,19 +169,96 @@
     
     BottomLocation *location = [[BottomLocation alloc] initWithTag:tag indexPath:indexPath];
     if([self.bottomLocation objectForKey:location.key] == nil){
-        self.hadShowBottomTextView = YES;
+        if(self.firstLocation == nil){
+            self.firstLocation = [[BottomLocation alloc] initWithTag:tag indexPath:indexPath];
+        }
+        self.hadShowLiuNianTextView = YES;
         [self.bottomLocation setObject:location
                                 forKey:location.key];
     }
     else{
-        [self.bottomLocation removeObjectForKey:location.key];
+        if([self.firstLocation.key isEqualToString:location.key]){
+            self.firstLocation = nil;
+            [self.bottomLocation removeAllObjects];
+        }
+        else{
+            [self.bottomLocation removeObjectForKey:location.key];
+        }
+        
         if(self.bottomLocation.count == 0){
-            self.hadShowBottomTextView = NO;
+            self.hadShowLiuNianTextView = NO;
         }
     }
     
-    [(RACSubject*)self.bottomTextViewOperationSig sendNext:nil];
-    [(RACSubject*)self.reloadTablesSig sendNext:nil];
+    [(RACSubject*)self.LiuNianTextViewOperationSig sendNext:nil];
+    [(RACSubject*)self.reloadBottomTablesSig sendNext:nil];
+}
+
+#pragma mark - 选择底部大运的某一个，显示15运
+-(void)selectTableViewHeaderWithTag:(NSInteger)tag{
+    if(self.fifteenYunSelectedNumber != tag){
+        self.fifteenYunSelectedNumber = tag;
+        self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
+    }
+    else{
+        self.fifteenYunSelectedNumber = NSNotFound;
+    }
+    [(RACSubject*)self.fifteenYunTextViewOperationSig sendNext:nil];
+    [(RACSubject*)self.reloadBottomTablesSig sendNext:nil];
+    [(RACSubject*)self.reloadLeftTableSig sendNext:nil];
+}
+
+#pragma mark - 选择菜单的某一项
+-(void)selectMunuWithIndexPath:(NSIndexPath*)indexPath{
+    LeftSideMenuType type = [self getSpecificMenuTypeWithIndexPath:indexPath];
+    switch (type) {
+        case LeftSideMenuTypeDaYun:          /**<大运*/
+        case LeftSideMenuTypeYongShen:       /**<用神-忌神*/
+        case LeftSideMenuTypeGeJu:           /**<格局-象意*/
+            
+        case LeftSideMenuTypeXiangMao:       /**<相貌-性格*/
+        case LeftSideMenuTypeWenPin:         /**<文凭-特长*/
+        case LeftSideMenuTypeFuMu:           /**<父母*/
+        case LeftSideMenuTypeXiongDi:        /**<兄弟*/
+        case LeftSideMenuTypeZiNv:           /**<子女*/
+            
+        case LeftSideMenuTypeHunYin:         /**<婚姻*/
+        case LeftSideMenuTypeGuanGui:        /**<官贵*/
+        case LeftSideMenuTypeCaiFu:          /**<财富*/
+        case LeftSideMenuTypeGuanSi:         /**<官司-牢狱*/
+        case LeftSideMenuTypeJiBing:         /**<疾病-灾祸*/
+        {
+            if(self.currentBottomSectionMenuType != type){
+                self.currentBottomSectionMenuType = type;
+                //将15运的选择tag置为notfound，并隐藏
+                self.fifteenYunSelectedNumber = NSNotFound;
+            }
+            else{
+                self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
+            }
+            [(RACSubject*)self.currentBottomTextViewOperationSig sendNext:nil];
+        }
+            break;
+        case LeftSideMenuTypeShuangZao:
+        {
+            
+        }
+            break;
+        case LeftSideMenuTypeShenSha:
+        {
+            
+        }
+            break;
+        case LeftSideMenuTypeYanSe:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
+    [(RACSubject*)self.reloadLeftTableSig sendNext:nil];
+    [(RACSubject*)self.reloadBottomTablesSig sendNext:nil];
 }
 
 @end

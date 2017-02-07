@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BottomNormalTableViewHeader">
-            <rect key="frame" x="0.0" y="0.0" width="105" height="140"/>
+            <rect key="frame" x="0.0" y="0.0" width="105" height="130"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNM-MG-JX1">
@@ -34,14 +34,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="辛酉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLf-3N-9Oe">
-                    <rect key="frame" x="0.0" y="58.5" width="100.5" height="60"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57W-kw-vQe">
+                    <rect key="frame" x="0.0" y="46.5" width="105" height="72"/>
                     <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <state key="normal" title="辛酉">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectHeader" destination="iN0-l3-epB" eventType="touchUpInside" id="Yws-T8-YBN"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOP-ry-Gx1">
-                    <rect key="frame" x="46.5" y="118.5" width="12" height="24"/>
+                    <rect key="frame" x="46.5" y="108.5" width="12" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -50,20 +54,21 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fOP-ry-Gx1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5Mi-1Z-8oM"/>
-                <constraint firstItem="nLf-3N-9Oe" firstAttribute="top" secondItem="JTk-RR-NRm" secondAttribute="bottom" id="AR2-lv-sar"/>
                 <constraint firstItem="SNM-MG-JX1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LKw-lE-jkC"/>
+                <constraint firstItem="57W-kw-vQe" firstAttribute="top" secondItem="JTk-RR-NRm" secondAttribute="bottom" constant="-12" id="Prk-Ja-FiA"/>
+                <constraint firstItem="fOP-ry-Gx1" firstAttribute="top" secondItem="57W-kw-vQe" secondAttribute="bottom" constant="-10" id="UiE-i3-KzB"/>
                 <constraint firstItem="JTk-RR-NRm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ava-a2-fU0"/>
                 <constraint firstItem="JTk-RR-NRm" firstAttribute="top" secondItem="SNM-MG-JX1" secondAttribute="bottom" id="b9l-tt-R3e"/>
-                <constraint firstItem="fOP-ry-Gx1" firstAttribute="top" secondItem="nLf-3N-9Oe" secondAttribute="bottom" id="dVa-va-r2O"/>
-                <constraint firstItem="nLf-3N-9Oe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g5H-Nj-dA5"/>
                 <constraint firstItem="SNM-MG-JX1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kwf-xp-Ddy"/>
+                <constraint firstAttribute="trailing" secondItem="57W-kw-vQe" secondAttribute="trailing" id="loi-RI-oyw"/>
+                <constraint firstItem="57W-kw-vQe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="unR-TO-ldu"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomNumberTitleLabel" destination="fOP-ry-Gx1" id="B1D-Ha-dOM"/>
                 <outlet property="hideTableViewButton" destination="SNM-MG-JX1" id="44O-hd-oZo"/>
-                <outlet property="mainTitleLabel" destination="nLf-3N-9Oe" id="QZl-Lb-7fD"/>
+                <outlet property="mainTitleButton" destination="57W-kw-vQe" id="rtB-YS-hV7"/>
                 <outlet property="topTitleLabel" destination="JTk-RR-NRm" id="3tH-YW-cPT"/>
             </connections>
             <point key="canvasLocation" x="41" y="111.5"/>

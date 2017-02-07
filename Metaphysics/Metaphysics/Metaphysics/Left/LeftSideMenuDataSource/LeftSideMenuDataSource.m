@@ -54,24 +54,14 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
                                                               forIndexPath:indexPath];
     
     LeftSideMenuType type = [self.viewModel getSpecificMenuTypeWithIndexPath:indexPath];
-    cell.menuLabel.text = [self.viewModel getSpecificMenuTitleWithType:type];
+    [cell resetValueWithType:type];
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    LeftSideMenuType type = [self.viewModel getSpecificMenuTypeWithIndexPath:indexPath];
-    switch (type) {
-        case LeftSideMenuTypeDaYun:
-        {
-            [MainViewModel sharedInstance].hadShowDaYunTextView = ![MainViewModel sharedInstance].hadShowDaYunTextView;
-        }
-            break;
-            
-        default:
-            break;
-    }
+    [[MainViewModel sharedInstance] selectMunuWithIndexPath:indexPath];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

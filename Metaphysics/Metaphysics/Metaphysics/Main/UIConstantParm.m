@@ -31,6 +31,7 @@
         self.paraDic = @{
                          middleSubViewHeight_key:[NSNumber numberWithFloat:middleSubViewHeight],
                          leftSideTableViewWidth_key:@(leftSideTableViewWidth),
+                         leftVerLineOffset_key:@(leftVerLineOffset),
                          }.mutableCopy;
     }
     return self;

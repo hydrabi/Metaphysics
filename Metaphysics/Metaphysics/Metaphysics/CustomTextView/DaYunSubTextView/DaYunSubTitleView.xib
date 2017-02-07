@@ -16,13 +16,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《五》戊辰 45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iO6-FC-cSI">
-                    <rect key="frame" x="89" y="0.0" width="196" height="36"/>
+                    <rect key="frame" x="89" y="10" width="196" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9rh-yd-u0L">
-                    <rect key="frame" x="16" y="36" width="343" height="34"/>
+                    <rect key="frame" x="16" y="46" width="343" height="24"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -33,7 +33,11 @@
                 <constraint firstAttribute="trailing" secondItem="9rh-yd-u0L" secondAttribute="trailing" constant="16" id="MyZ-Fw-CiA"/>
                 <constraint firstItem="9rh-yd-u0L" firstAttribute="top" secondItem="iO6-FC-cSI" secondAttribute="bottom" id="Tmb-JR-Rru"/>
                 <constraint firstAttribute="bottom" secondItem="9rh-yd-u0L" secondAttribute="bottom" id="Xqg-9T-8ip"/>
-                <constraint firstItem="iO6-FC-cSI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rC1-MO-8xp"/>
+                <constraint firstItem="iO6-FC-cSI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="rC1-MO-8xp">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nuiDefinition" value="leftVerLineOffset_key"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstItem="9rh-yd-u0L" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="t1T-ab-KQK"/>
                 <constraint firstItem="iO6-FC-cSI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vNI-IR-Pwe"/>
             </constraints>

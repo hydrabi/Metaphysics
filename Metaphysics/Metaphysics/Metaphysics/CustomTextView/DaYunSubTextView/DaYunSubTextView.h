@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DaYunSubTextView : UIView
-
+-(void)reloadData;
 @end

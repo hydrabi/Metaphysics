@@ -10,6 +10,7 @@
 #import "UIConstantParameter.h"
 #import "NSString+Addition.h"
 #import "MainViewModel.h"
+#import "UILabel+Addition.h"
 @implementation BottomNormalTableViewHeader
 
 +(instancetype)instanceBottomNormalTableViewHeader{
@@ -22,7 +23,7 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
-    self.mainTitleLabel.font = [UIFont systemFontOfSize:titleFontSize_50];
+    self.mainTitleButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_50];
     self.topTitleLabel.font = [UIFont systemFontOfSize:titleFontSize_28];
     self.bottomNumberTitleLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
     
@@ -35,6 +36,20 @@
 
 -(IBAction)hiddenAction{
     [[MainViewModel sharedInstance] hiddenTableViewWithTag:self.tableViewTag];
+}
+
+-(IBAction)selectHeader{
+    [[MainViewModel sharedInstance] selectTableViewHeaderWithTag:self.tableViewTag];
+}
+
+-(void)reloadData{
+    MainViewModel *main = [MainViewModel sharedInstance];
+    if(main.fifteenYunSelectedNumber == self.tableViewTag){
+        [self.mainTitleButton.titleLabel setBoldFont];
+    }
+    else{
+        [self.mainTitleButton.titleLabel setOriginalFont];
+    }
 }
 
 @end

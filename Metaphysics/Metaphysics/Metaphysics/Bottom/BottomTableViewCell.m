@@ -7,7 +7,7 @@
 //
 
 #import "BottomTableViewCell.h"
-
+#import "UILabel+Addition.h"
 @implementation BottomTableViewCell
 
 - (void)awakeFromNib {
@@ -33,10 +33,12 @@
 
 -(void)selectCell:(BOOL)select{
     if(select){
-        self.backgroundColor = [UIColor lightGrayColor];
+        [self.daYunLabel setBoldFont];
+        [self.yearLabel setBoldFont];
     }
     else{
-        self.backgroundColor = [UIColor whiteColor];
+        [self.daYunLabel setOriginalFont];
+        [self.yearLabel setOriginalFont];
     }
 }
 

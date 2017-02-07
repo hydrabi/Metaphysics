@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MainViewModel.h"
 @interface LeftTableViewCell : UITableViewCell
 @property (nonatomic,weak)IBOutlet UILabel *menuLabel;
+-(void)resetValueWithType:(LeftSideMenuType)type;
 @end

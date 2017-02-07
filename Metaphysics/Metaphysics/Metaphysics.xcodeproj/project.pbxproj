@@ -28,6 +28,13 @@
 		804088361E3F163800380A15 /* BottomTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088351E3F163800380A15 /* BottomTableViewDataSource.m */; };
 		8040883B1E40B0DF00380A15 /* NSLayoutConstraint+NUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8040883A1E40B0DF00380A15 /* NSLayoutConstraint+NUI.m */; };
 		8040883E1E40B93100380A15 /* UIConstantParm.m in Sources */ = {isa = PBXBuildFile; fileRef = 8040883D1E40B93100380A15 /* UIConstantParm.m */; };
+		8060120A1E496C17006B121F /* UILabel+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 806012091E496C17006B121F /* UILabel+Addition.m */; };
+		8060120E1E499DDC006B121F /* LiuNianTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8060120D1E499DDC006B121F /* LiuNianTextView.m */; };
+		806012101E499DE6006B121F /* LiuNianTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8060120F1E499DE6006B121F /* LiuNianTextView.xib */; };
+		806012141E49A7DE006B121F /* NormalTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 806012131E49A7DE006B121F /* NormalTextView.m */; };
+		806012161E49A7E7006B121F /* NormalTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 806012151E49A7E7006B121F /* NormalTextView.xib */; };
+		8060121A1E49CE2B006B121F /* ShuangZaoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 806012191E49CE2B006B121F /* ShuangZaoTextView.m */; };
+		8060121C1E49CE34006B121F /* ShuangZaoTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8060121B1E49CE34006B121F /* ShuangZaoTextView.xib */; };
 		807196DA1E418E5A005E4A52 /* 17icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 807196D91E418E5A005E4A52 /* 17icon.ttf */; };
 		807196DD1E419717005E4A52 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 807196DC1E419717005E4A52 /* NSString+Addition.m */; };
 		808763221E42E5C7005656BF /* DaYunTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 808763211E42E5C7005656BF /* DaYunTextView.m */; };
@@ -102,6 +109,17 @@
 		8040883A1E40B0DF00380A15 /* NSLayoutConstraint+NUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+NUI.m"; sourceTree = "<group>"; };
 		8040883C1E40B93100380A15 /* UIConstantParm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstantParm.h; sourceTree = "<group>"; };
 		8040883D1E40B93100380A15 /* UIConstantParm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIConstantParm.m; sourceTree = "<group>"; };
+		806012081E496C17006B121F /* UILabel+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Addition.h"; sourceTree = "<group>"; };
+		806012091E496C17006B121F /* UILabel+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Addition.m"; sourceTree = "<group>"; };
+		8060120C1E499DDC006B121F /* LiuNianTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiuNianTextView.h; sourceTree = "<group>"; };
+		8060120D1E499DDC006B121F /* LiuNianTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiuNianTextView.m; sourceTree = "<group>"; };
+		8060120F1E499DE6006B121F /* LiuNianTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiuNianTextView.xib; sourceTree = "<group>"; };
+		806012121E49A7DE006B121F /* NormalTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalTextView.h; sourceTree = "<group>"; };
+		806012131E49A7DE006B121F /* NormalTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalTextView.m; sourceTree = "<group>"; };
+		806012151E49A7E7006B121F /* NormalTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalTextView.xib; sourceTree = "<group>"; };
+		806012181E49CE2B006B121F /* ShuangZaoTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShuangZaoTextView.h; sourceTree = "<group>"; };
+		806012191E49CE2B006B121F /* ShuangZaoTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuangZaoTextView.m; sourceTree = "<group>"; };
+		8060121B1E49CE34006B121F /* ShuangZaoTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShuangZaoTextView.xib; sourceTree = "<group>"; };
 		807196D91E418E5A005E4A52 /* 17icon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 17icon.ttf; sourceTree = "<group>"; };
 		807196DB1E419717005E4A52 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		807196DC1E419717005E4A52 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
@@ -210,8 +228,40 @@
 				8040883A1E40B0DF00380A15 /* NSLayoutConstraint+NUI.m */,
 				807196DB1E419717005E4A52 /* NSString+Addition.h */,
 				807196DC1E419717005E4A52 /* NSString+Addition.m */,
+				806012081E496C17006B121F /* UILabel+Addition.h */,
+				806012091E496C17006B121F /* UILabel+Addition.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		8060120B1E499D6D006B121F /* LiuNianTextView */ = {
+			isa = PBXGroup;
+			children = (
+				8060120C1E499DDC006B121F /* LiuNianTextView.h */,
+				8060120D1E499DDC006B121F /* LiuNianTextView.m */,
+				8060120F1E499DE6006B121F /* LiuNianTextView.xib */,
+			);
+			path = LiuNianTextView;
+			sourceTree = "<group>";
+		};
+		806012111E49A76A006B121F /* NormalTextView */ = {
+			isa = PBXGroup;
+			children = (
+				806012121E49A7DE006B121F /* NormalTextView.h */,
+				806012131E49A7DE006B121F /* NormalTextView.m */,
+				806012151E49A7E7006B121F /* NormalTextView.xib */,
+			);
+			path = NormalTextView;
+			sourceTree = "<group>";
+		};
+		806012171E49CDE4006B121F /* ShuangZaoTextView */ = {
+			isa = PBXGroup;
+			children = (
+				806012181E49CE2B006B121F /* ShuangZaoTextView.h */,
+				806012191E49CE2B006B121F /* ShuangZaoTextView.m */,
+				8060121B1E49CE34006B121F /* ShuangZaoTextView.xib */,
+			);
+			path = ShuangZaoTextView;
 			sourceTree = "<group>";
 		};
 		807196D81E418E5A005E4A52 /* UIFont */ = {
@@ -225,6 +275,9 @@
 		8087631E1E42E320005656BF /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
+				806012171E49CDE4006B121F /* ShuangZaoTextView */,
+				806012111E49A76A006B121F /* NormalTextView */,
+				8060120B1E499D6D006B121F /* LiuNianTextView */,
 				803C3AB01E477E5B00C926B5 /* DaYunSubTextView */,
 				8087631F1E42E320005656BF /* DaYunTextView */,
 			);
@@ -526,7 +579,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				803C3ABB1E477EAE00C926B5 /* DaYunSubTableViewCell.xib in Resources */,
+				806012101E499DE6006B121F /* LiuNianTextView.xib in Resources */,
 				804088261E3F0CD600380A15 /* BottomFirstTableViewHeader.xib in Resources */,
+				8060121C1E49CE34006B121F /* ShuangZaoTextView.xib in Resources */,
 				80E8EAD51E48C83800F96129 /* DaYunSubTitleView.xib in Resources */,
 				807196DA1E418E5A005E4A52 /* 17icon.ttf in Resources */,
 				80F8C2451E3C95E70036186A /* LeftTableViewCell.xib in Resources */,
@@ -536,6 +591,7 @@
 				80F8C2031E3C371F0036186A /* Assets.xcassets in Resources */,
 				8087632A1E42EE5F005656BF /* DaYunTableViewCell.xib in Resources */,
 				804088331E3F101E00380A15 /* BottomTableViewCell.xib in Resources */,
+				806012161E49A7E7006B121F /* NormalTextView.xib in Resources */,
 				804088161E3D97BD00380A15 /* MiddleContentView.xib in Resources */,
 				8040882E1E3F0ED100380A15 /* BottomNormalTableViewHeader.xib in Resources */,
 				8040881F1E3E25FF00380A15 /* MiddleSubView.xib in Resources */,
@@ -605,6 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80F8C2431E3C95E70036186A /* LeftSideMenuDataSource.m in Sources */,
+				8060121A1E49CE2B006B121F /* ShuangZaoTextView.m in Sources */,
 				80F8C24B1E3C97D50036186A /* TopContentView.m in Sources */,
 				8040882C1E3F0EC200380A15 /* BottomNormalTableViewHeader.m in Sources */,
 				804088191E3E12BE00380A15 /* PlaceHolderView.m in Sources */,
@@ -612,6 +669,7 @@
 				80B422681E435D770008E8E3 /* BottomLocation.m in Sources */,
 				804088361E3F163800380A15 /* BottomTableViewDataSource.m in Sources */,
 				80F8C22E1E3C3D4A0036186A /* BaseViewController.m in Sources */,
+				8060120A1E496C17006B121F /* UILabel+Addition.m in Sources */,
 				8040883E1E40B93100380A15 /* UIConstantParm.m in Sources */,
 				804088291E3F0CE500380A15 /* BottomFirstTableViewHeader.m in Sources */,
 				803C3AB31E477E7400C926B5 /* DaYunSubTextView.m in Sources */,
@@ -623,6 +681,7 @@
 				804088221E3F083F00380A15 /* BottomContentView.m in Sources */,
 				803C3AB61E477E9700C926B5 /* DaYunSubTableViewDataSource.m in Sources */,
 				80F8C2441E3C95E70036186A /* LeftTableViewCell.m in Sources */,
+				806012141E49A7DE006B121F /* NormalTextView.m in Sources */,
 				804088321E3F101E00380A15 /* BottomTableViewCell.m in Sources */,
 				80F8C1F81E3C371E0036186A /* main.m in Sources */,
 				808763221E42E5C7005656BF /* DaYunTextView.m in Sources */,
@@ -630,6 +689,7 @@
 				807196DD1E419717005E4A52 /* NSString+Addition.m in Sources */,
 				80F8C2251E3C3C310036186A /* MainViewModel.m in Sources */,
 				803C3ABA1E477EAE00C926B5 /* DaYunSubTableViewCell.m in Sources */,
+				8060120E1E499DDC006B121F /* LiuNianTextView.m in Sources */,
 				80F8C22B1E3C3D390036186A /* BaseViewModel.m in Sources */,
 				804088141E3D977A00380A15 /* MiddleContentView.m in Sources */,
 				8040883B1E40B0DF00380A15 /* NSLayoutConstraint+NUI.m in Sources */,

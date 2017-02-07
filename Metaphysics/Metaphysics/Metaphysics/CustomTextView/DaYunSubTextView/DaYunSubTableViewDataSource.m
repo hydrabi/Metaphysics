@@ -55,4 +55,24 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
     
     return cell;
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 1){
+        return daYunSubTableViewMiddleOffset;
+    }
+    else{
+        return 0;
+    }
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if(section == 1){
+        UIView *clearView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), daYunSubTableViewMiddleOffset)];
+        clearView.backgroundColor = [UIColor whiteColor];
+        return clearView;
+    }
+    else{
+        return nil;
+    }
+}
 @end

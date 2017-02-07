@@ -8,6 +8,7 @@
 
 #import "LeftTableViewCell.h"
 #import "UIConstantParameter.h"
+#import "UILabel+Addition.h"
 @implementation LeftTableViewCell
 
 - (void)awakeFromNib {
@@ -21,6 +22,18 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)resetValueWithType:(LeftSideMenuType)type{
+    MainViewModel *main = [MainViewModel sharedInstance];
+    self.menuLabel.text = [main getSpecificMenuTitleWithType:type];
+    if(main.currentBottomSectionMenuType == type ||
+       main.currentTopSectionMenuType == type){
+        [self.menuLabel setBoldFont];
+    }
+    else{
+        [self.menuLabel setOriginalFont];
+    }
 }
 
 @end

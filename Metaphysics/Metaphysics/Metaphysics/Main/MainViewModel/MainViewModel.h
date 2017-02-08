@@ -44,11 +44,13 @@ typedef NS_ENUM(NSInteger,MiddleSubViewType){
 //左边的菜单页面
 @property (nonatomic,strong)NSArray *leftMenuArr;
 //当前选中顶部的菜单类型
-@property (nonatomic,assign)LeftSideMenuType currentTopSectionMenuType;
+@property (nonatomic,strong)NSMutableArray *currentSelectTopSectionMenuTypeArr;
 //当前选中底部的菜单类型
 @property (nonatomic,assign)LeftSideMenuType currentBottomSectionMenuType;
 //底部textView操作信号
 @property (nonatomic,strong)RACSignal *currentBottomTextViewOperationSig;
+//左边菜单选中上面部分的操作信号
+@property (nonatomic,strong)RACSignal *leftMenuTopSelectedOperationSig;
 //左边菜单tableview操作信号
 @property (nonatomic,strong)RACSignal *reloadLeftTableSig;
 

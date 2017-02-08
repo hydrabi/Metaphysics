@@ -28,7 +28,7 @@
     MainViewModel *main = [MainViewModel sharedInstance];
     self.menuLabel.text = [main getSpecificMenuTitleWithType:type];
     if(main.currentBottomSectionMenuType == type ||
-       main.currentTopSectionMenuType == type){
+       [main.currentSelectTopSectionMenuTypeArr containsObject:@(type)]){
         [self.menuLabel setBoldFont];
     }
     else{

@@ -58,6 +58,7 @@
     self.bottomLocation = @{}.mutableCopy;
     self.fifteenYunSelectedNumber = NSNotFound;
     self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
+    self.currentSelectTopSectionMenuTypeArr = @[].mutableCopy;
     
     [self bindOperation];
 }
@@ -74,6 +75,7 @@
     
     self.reloadLeftTableSig = [[RACSubject subject]
                                setNameWithFormat:@"reloadLeftTableSig"];
+    self.leftMenuTopSelectedOperationSig = [[RACSubject subject] setNameWithFormat:@"leftMenuTopSelectedOperationSig"];
 }
 
 -(NSString*)getSpecificMenuTitleWithType:(LeftSideMenuType)type{
@@ -240,18 +242,16 @@
         }
             break;
         case LeftSideMenuTypeShuangZao:
-        {
-            
-        }
-            break;
         case LeftSideMenuTypeShenSha:
-        {
-            
-        }
-            break;
         case LeftSideMenuTypeYanSe:
         {
-            
+            if([self.currentSelectTopSectionMenuTypeArr containsObject:@(type)]){
+                [self.currentSelectTopSectionMenuTypeArr removeObject:@(type)];
+            }
+            else{
+                [self.currentSelectTopSectionMenuTypeArr addObject:@(type)];
+            }
+            [(RACSubject*)self.leftMenuTopSelectedOperationSig sendNext:nil];
         }
             break;
         default:

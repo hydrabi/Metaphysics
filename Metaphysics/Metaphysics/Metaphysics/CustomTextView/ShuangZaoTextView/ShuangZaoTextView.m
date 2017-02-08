@@ -18,4 +18,12 @@
     return [nibView objectAtIndex:0];
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.backgroundColor = [UIColor whiteColor];
+    self.layer.borderColor = [UIColor blackColor].CGColor;
+    self.layer.borderWidth = 1.0f;
+}
+
 @end

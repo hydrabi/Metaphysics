@@ -7,7 +7,7 @@
 //
 
 #import "ShuangZaoTextView.h"
-
+#import "UIConstantParameter.h"
 @implementation ShuangZaoTextView
 
 +(instancetype)instanceShuangZaoTextView
@@ -20,6 +20,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.mainButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_50];
+//    self.yearLabel.font = [UIFont systemFontOfSize:<#(CGFloat)#>]
     
     self.backgroundColor = [UIColor whiteColor];
     self.layer.borderColor = [UIColor blackColor].CGColor;

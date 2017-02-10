@@ -49,9 +49,32 @@
                                 @(LeftSideMenuTypeGuanSi),
                                 @(LeftSideMenuTypeJiBing),
                                 ]
-                         
-                         
                          ];
+    
+    self.stemsStr = @"甲乙丙丁戊己庚辛壬癸";
+    self.branchesStr = @"子丑寅卯辰巳午未申酉戌亥";
+    
+    self.jiaZiArr = @[].mutableCopy;
+    NSInteger i = 0;
+    NSInteger j = 0;
+    for(NSInteger index = 0; index < 60; index++){
+        NSString *stem = [self.stemsStr substringWithRange:NSMakeRange(i, 1)];
+        NSString *branch = [self.branchesStr substringWithRange:NSMakeRange(j, 1)];
+        NSString *jiaZi = [NSString stringWithFormat:@"%@%@",stem,branch];
+        NSLog(@"%@",jiaZi);
+        [self.jiaZiArr addObject:jiaZi];
+
+        (i++) == self.stemsArr.count? : (i = 0);
+        j++;
+        
+        if(i==self.stemsArr.count){
+            i = 0;
+        }
+        
+        if(j==self.branchesArr.count){
+            j = 0;
+        }
+    }
     
     self.hadHiddenBottomTableView = NO;
     self.hiddenBottomTableViewTag = 0;

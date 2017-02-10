@@ -25,8 +25,6 @@
 @property (nonatomic,weak)IBOutlet UILabel *daYunLabel5;
 @property (nonatomic,weak)IBOutlet UILabel *daYunLabel6;
 @property (nonatomic,weak)IBOutlet UILabel *daYunLabel7;
-@property (nonatomic,weak)IBOutlet UILabel *daYunLabel8;
-@property (nonatomic,weak)IBOutlet UILabel *daYunLabel9;
 @property (nonatomic,weak)IBOutlet UITextField *textField1;
 @property (nonatomic,weak)IBOutlet UITextField *textField2;
 

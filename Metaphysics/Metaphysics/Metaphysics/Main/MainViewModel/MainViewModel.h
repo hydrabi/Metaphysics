@@ -54,6 +54,16 @@ typedef NS_ENUM(NSInteger,MiddleSubViewType){
 //左边菜单tableview操作信号
 @property (nonatomic,strong)RACSignal *reloadLeftTableSig;
 
+//天干
+@property (nonatomic,strong)NSArray *stemsArr;
+@property (nonatomic,strong)NSString *stemsStr;
+//地支
+@property (nonatomic,strong)NSArray *branchesArr;
+@property (nonatomic,strong)NSString *branchesStr;
+//60甲子
+@property (nonatomic,strong)NSMutableArray *jiaZiArr;
+
+
 //是否正在隐藏底部的tableView
 @property (nonatomic,assign)BOOL hadHiddenBottomTableView;
 //正在隐藏的tableview的标记

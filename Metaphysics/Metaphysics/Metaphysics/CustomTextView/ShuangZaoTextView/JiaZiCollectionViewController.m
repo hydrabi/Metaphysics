@@ -8,7 +8,6 @@
 
 #import "JiaZiCollectionViewController.h"
 #import "JiaZiCollectionViewCell.h"
-#import "MainViewModel.h"
 #import "UIConstantParameter.h"
 @interface JiaZiCollectionViewController ()
 
@@ -18,9 +17,10 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
-+(void)presentViewControllerWithRect:(CGRect)rect view:(UIView*)view{
++(void)presentViewControllerWithRect:(CGRect)rect view:(UIView*)view type:(MiddleSubViewType)type{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     JiaZiCollectionViewController *jiaZi = [[JiaZiCollectionViewController alloc] initWithCollectionViewLayout:layout];
+    jiaZi.type = type;
     jiaZi.preferredContentSize = CGSizeMake(jiaZiCellWidth*jiaZiCollectionColumn+jiaZiCellOffset*(jiaZiCollectionColumn+1),
                                             jiaZiCellHeight*jiaZiCollectionRow+jiaZiCellOffset*(jiaZiCollectionRow+1));
     UIPopoverController *pop = [[UIPopoverController alloc] initWithContentViewController:jiaZi];
@@ -100,7 +100,25 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@",[MainViewModel sharedInstance].jiaZiArr[indexPath.row]);
+    ShuangZaoData *data = [MainViewModel sharedInstance].shuangZaoData;
+    NSString *result = [MainViewModel sharedInstance].jiaZiArr[indexPath.row];
+    switch (self.type) {
+        case MiddleSubViewTypeYear:
+            data.year = result;
+            break;
+        case MiddleSubViewTypeMonth:
+            data.month = result;
+            break;
+        case MiddleSubViewTypeDay:
+            data.day = result;
+            break;
+        case MiddleSubViewTypeHour:
+            data.hour = result;
+            break;
+        default:
+            break;
+    }
+    NSLog(@"%@",result);
 }
 
 /*

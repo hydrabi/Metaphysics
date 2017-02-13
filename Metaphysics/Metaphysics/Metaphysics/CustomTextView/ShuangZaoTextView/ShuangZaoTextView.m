@@ -29,9 +29,13 @@
     self.dayLabel.font = [UIFont systemFontOfSize:titleFontSize_40];
     self.hourLabel.font = [UIFont systemFontOfSize:titleFontSize_40];
     self.selectYearButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.selectYearButton.tag = MiddleSubViewTypeYear;
     self.selectMonthButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.selectMonthButton.tag = MiddleSubViewTypeMonth;
     self.selectDayButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.selectDayButton.tag = MiddleSubViewTypeDay;
     self.selectHourButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.selectHourButton.tag = MiddleSubViewTypeHour;
     self.daYunLabel1.font = [UIFont systemFontOfSize:titleFontSize_24];
     self.daYunLabel2.font = [UIFont systemFontOfSize:titleFontSize_24];
     self.daYunLabel3.font = [UIFont systemFontOfSize:titleFontSize_24];
@@ -54,11 +58,11 @@
 
 -(IBAction)selectButtonAction:(UIButton*)sender{
     [JiaZiCollectionViewController presentViewControllerWithRect:sender.frame
-                                                            view:self];
+                                                            view:self type:sender.tag];
 }
 
 -(void)bindViewModel{
-    MainViewModel *main = [[MainViewModel alloc] init];
+    MainViewModel *main = [MainViewModel sharedInstance];
     
     @weakify(self)
     [[[RACSignal combineLatest:@[RACObserve(main.shuangZaoData, year),
@@ -70,13 +74,14 @@
                                  NSString *day,
                                  NSString *hour){
                           
-                          return nil;
+                          return year;
                       }]
       deliverOnMainThread]
      subscribeNext:^(id _){
          @strongify(self)
          [self resetValue];
      }];
+    
     
 }
 

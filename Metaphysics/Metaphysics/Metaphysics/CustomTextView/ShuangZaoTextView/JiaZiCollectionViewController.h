@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MainViewModel.h"
 @interface JiaZiCollectionViewController : UICollectionViewController
-+(void)presentViewControllerWithRect:(CGRect)rect view:(UIView*)view;
+
+@property (nonatomic,assign)MiddleSubViewType type;
+
++(void)presentViewControllerWithRect:(CGRect)rect view:(UIView*)view type:(MiddleSubViewType)type;
 @end

@@ -18,7 +18,7 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.titleLabel.font = [UIFont boldSystemFontOfSize:titleFontSize_30];
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:titleFontSize_26];
 }
 
 @end

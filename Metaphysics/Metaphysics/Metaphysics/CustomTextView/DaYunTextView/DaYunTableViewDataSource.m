@@ -49,7 +49,6 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
     DaYunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier
                                                                 forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell resetValueWithIndexPath:indexPath];
     
     return cell;
 }

@@ -13,6 +13,11 @@
 @property (nonatomic,weak)IBOutlet UILabel *daYunLabel;
 @property (nonatomic,weak)IBOutlet UILabel *xiaoYunLabel;
 @property (nonatomic,weak)IBOutlet UITextView *textView;
+
+@property (nonatomic,weak)IBOutlet UILabel *yearLabel2;
+@property (nonatomic,weak)IBOutlet UILabel *daYunLabel2;
+@property (nonatomic,weak)IBOutlet UILabel *xiaoYunLabel2;
+@property (nonatomic,weak)IBOutlet UITextView *textView2;
 +(instancetype)instanceLiuNianTextView;
 -(void)reloadData;
 @end

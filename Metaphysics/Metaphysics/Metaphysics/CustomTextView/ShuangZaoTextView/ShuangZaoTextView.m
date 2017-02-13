@@ -8,6 +8,8 @@
 
 #import "ShuangZaoTextView.h"
 #import "UIConstantParameter.h"
+#import "JiaZiCollectionViewController.h"
+#import "MainViewModel.h"
 @implementation ShuangZaoTextView
 
 +(instancetype)instanceShuangZaoTextView
@@ -22,11 +24,68 @@
     [super awakeFromNib];
     
     self.mainButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_50];
-//    self.yearLabel.font = [UIFont systemFontOfSize:<#(CGFloat)#>]
+    self.yearLabel.font = [UIFont systemFontOfSize:titleFontSize_40];
+    self.monthLabel.font = [UIFont systemFontOfSize:titleFontSize_40];
+    self.dayLabel.font = [UIFont systemFontOfSize:titleFontSize_40];
+    self.hourLabel.font = [UIFont systemFontOfSize:titleFontSize_40];
+    self.selectYearButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.selectMonthButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.selectDayButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.selectHourButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.daYunLabel1.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.daYunLabel2.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.daYunLabel3.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.daYunLabel4.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.daYunLabel5.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.daYunLabel6.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.daYunLabel7.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.textField1.font = [UIFont systemFontOfSize:titleFontSize_20];
+    self.textField2.font = [UIFont systemFontOfSize:titleFontSize_20];
     
     self.backgroundColor = [UIColor whiteColor];
     self.layer.borderColor = [UIColor blackColor].CGColor;
     self.layer.borderWidth = 1.0f;
+}
+
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder{
+    [self bindViewModel];
+    return [super awakeAfterUsingCoder:aDecoder];
+}
+
+-(IBAction)selectButtonAction:(UIButton*)sender{
+    [JiaZiCollectionViewController presentViewControllerWithRect:sender.frame
+                                                            view:self];
+}
+
+-(void)bindViewModel{
+    MainViewModel *main = [[MainViewModel alloc] init];
+    
+    @weakify(self)
+    [[[RACSignal combineLatest:@[RACObserve(main.shuangZaoData, year),
+                               RACObserve(main.shuangZaoData, month),
+                               RACObserve(main.shuangZaoData, day),
+                               RACObserve(main.shuangZaoData, hour),]
+                      reduce:^id(NSString *year,
+                                 NSString *month,
+                                 NSString *day,
+                                 NSString *hour){
+                          
+                          return nil;
+                      }]
+      deliverOnMainThread]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self resetValue];
+     }];
+    
+}
+
+-(void)resetValue{
+    ShuangZaoData *data = [MainViewModel sharedInstance].shuangZaoData;
+    self.yearLabel.text = data.year;
+    self.monthLabel.text = data.month;
+    self.dayLabel.text = data.day;
+    self.hourLabel.text = data.hour;
 }
 
 @end

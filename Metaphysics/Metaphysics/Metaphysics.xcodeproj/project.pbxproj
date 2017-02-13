@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3190B25E97535932413C585F /* Pods_Metaphysics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */; };
+		803638231E505216006EA3E4 /* JiaZiCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803638211E505216006EA3E4 /* JiaZiCollectionViewCell.m */; };
+		803638241E505216006EA3E4 /* JiaZiCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803638221E505216006EA3E4 /* JiaZiCollectionViewCell.xib */; };
+		8036382B1E5057E4006EA3E4 /* JiaZiCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803638291E5057E4006EA3E4 /* JiaZiCollectionViewController.m */; };
+		8036382C1E5057E4006EA3E4 /* JiaZiCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8036382A1E5057E4006EA3E4 /* JiaZiCollectionViewController.xib */; };
 		803C3AB31E477E7400C926B5 /* DaYunSubTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C3AB21E477E7400C926B5 /* DaYunSubTextView.m */; };
 		803C3AB61E477E9700C926B5 /* DaYunSubTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C3AB51E477E9700C926B5 /* DaYunSubTableViewDataSource.m */; };
 		803C3ABA1E477EAE00C926B5 /* DaYunSubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C3AB81E477EAE00C926B5 /* DaYunSubTableViewCell.m */; };
@@ -59,6 +63,8 @@
 		80F8C2451E3C95E70036186A /* LeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80F8C2421E3C95E70036186A /* LeftTableViewCell.xib */; };
 		80F8C24B1E3C97D50036186A /* TopContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C24A1E3C97D50036186A /* TopContentView.m */; };
 		80F8C24F1E3C98000036186A /* TopContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80F8C24E1E3C98000036186A /* TopContentView.xib */; };
+		80FFD0B51E51470B002904AB /* SubViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFD0B41E51470B002904AB /* SubViewData.m */; };
+		80FFD0B81E514843002904AB /* ShuangZaoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FFD0B71E514843002904AB /* ShuangZaoData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +79,12 @@
 
 /* Begin PBXFileReference section */
 		0C4F8BD6755BC027A5C4C355 /* Pods-Metaphysics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metaphysics.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metaphysics/Pods-Metaphysics.release.xcconfig"; sourceTree = "<group>"; };
+		803638201E505216006EA3E4 /* JiaZiCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaZiCollectionViewCell.h; sourceTree = "<group>"; };
+		803638211E505216006EA3E4 /* JiaZiCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaZiCollectionViewCell.m; sourceTree = "<group>"; };
+		803638221E505216006EA3E4 /* JiaZiCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JiaZiCollectionViewCell.xib; sourceTree = "<group>"; };
+		803638281E5057E4006EA3E4 /* JiaZiCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaZiCollectionViewController.h; sourceTree = "<group>"; };
+		803638291E5057E4006EA3E4 /* JiaZiCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaZiCollectionViewController.m; sourceTree = "<group>"; };
+		8036382A1E5057E4006EA3E4 /* JiaZiCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JiaZiCollectionViewController.xib; sourceTree = "<group>"; };
 		803C3AB11E477E7400C926B5 /* DaYunSubTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaYunSubTextView.h; sourceTree = "<group>"; };
 		803C3AB21E477E7400C926B5 /* DaYunSubTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaYunSubTextView.m; sourceTree = "<group>"; };
 		803C3AB41E477E9700C926B5 /* DaYunSubTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaYunSubTableViewDataSource.h; sourceTree = "<group>"; };
@@ -162,6 +174,10 @@
 		80F8C2491E3C97D50036186A /* TopContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopContentView.h; sourceTree = "<group>"; };
 		80F8C24A1E3C97D50036186A /* TopContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopContentView.m; sourceTree = "<group>"; };
 		80F8C24E1E3C98000036186A /* TopContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopContentView.xib; sourceTree = "<group>"; };
+		80FFD0B31E51470B002904AB /* SubViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewData.h; sourceTree = "<group>"; };
+		80FFD0B41E51470B002904AB /* SubViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubViewData.m; sourceTree = "<group>"; };
+		80FFD0B61E514843002904AB /* ShuangZaoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShuangZaoData.h; sourceTree = "<group>"; };
+		80FFD0B71E514843002904AB /* ShuangZaoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuangZaoData.m; sourceTree = "<group>"; };
 		824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metaphysics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0359C62626B4AD5ED4802C /* Pods-Metaphysics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metaphysics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Metaphysics/Pods-Metaphysics.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -260,6 +276,12 @@
 				806012181E49CE2B006B121F /* ShuangZaoTextView.h */,
 				806012191E49CE2B006B121F /* ShuangZaoTextView.m */,
 				8060121B1E49CE34006B121F /* ShuangZaoTextView.xib */,
+				803638201E505216006EA3E4 /* JiaZiCollectionViewCell.h */,
+				803638211E505216006EA3E4 /* JiaZiCollectionViewCell.m */,
+				803638221E505216006EA3E4 /* JiaZiCollectionViewCell.xib */,
+				803638281E5057E4006EA3E4 /* JiaZiCollectionViewController.h */,
+				803638291E5057E4006EA3E4 /* JiaZiCollectionViewController.m */,
+				8036382A1E5057E4006EA3E4 /* JiaZiCollectionViewController.xib */,
 			);
 			path = ShuangZaoTextView;
 			sourceTree = "<group>";
@@ -359,6 +381,7 @@
 		80F8C21B1E3C3B020036186A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				80FFD0B01E514675002904AB /* SubViewData */,
 				80F8C21C1E3C3B020036186A /* MainViewController */,
 				80F8C21D1E3C3B020036186A /* MainViewModel */,
 				804088371E3F399600380A15 /* UIConstantParameter.h */,
@@ -482,6 +505,33 @@
 			path = Top;
 			sourceTree = "<group>";
 		};
+		80FFD0B01E514675002904AB /* SubViewData */ = {
+			isa = PBXGroup;
+			children = (
+				80FFD0B21E5146F6002904AB /* SubViewData */,
+				80FFD0B11E514675002904AB /* shuangZaoData */,
+			);
+			path = SubViewData;
+			sourceTree = "<group>";
+		};
+		80FFD0B11E514675002904AB /* shuangZaoData */ = {
+			isa = PBXGroup;
+			children = (
+				80FFD0B61E514843002904AB /* ShuangZaoData.h */,
+				80FFD0B71E514843002904AB /* ShuangZaoData.m */,
+			);
+			path = shuangZaoData;
+			sourceTree = "<group>";
+		};
+		80FFD0B21E5146F6002904AB /* SubViewData */ = {
+			isa = PBXGroup;
+			children = (
+				80FFD0B31E51470B002904AB /* SubViewData.h */,
+				80FFD0B41E51470B002904AB /* SubViewData.m */,
+			);
+			path = SubViewData;
+			sourceTree = "<group>";
+		};
 		FD0E24CCE77FF10A6C98C776 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +630,7 @@
 			files = (
 				803C3ABB1E477EAE00C926B5 /* DaYunSubTableViewCell.xib in Resources */,
 				806012101E499DE6006B121F /* LiuNianTextView.xib in Resources */,
+				803638241E505216006EA3E4 /* JiaZiCollectionViewCell.xib in Resources */,
 				804088261E3F0CD600380A15 /* BottomFirstTableViewHeader.xib in Resources */,
 				8060121C1E49CE34006B121F /* ShuangZaoTextView.xib in Resources */,
 				80E8EAD51E48C83800F96129 /* DaYunSubTitleView.xib in Resources */,
@@ -588,6 +639,7 @@
 				80F8C2061E3C371F0036186A /* LaunchScreen.storyboard in Resources */,
 				80F8C24F1E3C98000036186A /* TopContentView.xib in Resources */,
 				80F8C2221E3C3C1B0036186A /* MainViewController.xib in Resources */,
+				8036382C1E5057E4006EA3E4 /* JiaZiCollectionViewController.xib in Resources */,
 				80F8C2031E3C371F0036186A /* Assets.xcassets in Resources */,
 				8087632A1E42EE5F005656BF /* DaYunTableViewCell.xib in Resources */,
 				804088331E3F101E00380A15 /* BottomTableViewCell.xib in Resources */,
@@ -663,6 +715,7 @@
 				80F8C2431E3C95E70036186A /* LeftSideMenuDataSource.m in Sources */,
 				8060121A1E49CE2B006B121F /* ShuangZaoTextView.m in Sources */,
 				80F8C24B1E3C97D50036186A /* TopContentView.m in Sources */,
+				80FFD0B51E51470B002904AB /* SubViewData.m in Sources */,
 				8040882C1E3F0EC200380A15 /* BottomNormalTableViewHeader.m in Sources */,
 				804088191E3E12BE00380A15 /* PlaceHolderView.m in Sources */,
 				80F8C1FB1E3C371E0036186A /* AppDelegate.m in Sources */,
@@ -673,6 +726,7 @@
 				8040883E1E40B93100380A15 /* UIConstantParm.m in Sources */,
 				804088291E3F0CE500380A15 /* BottomFirstTableViewHeader.m in Sources */,
 				803C3AB31E477E7400C926B5 /* DaYunSubTextView.m in Sources */,
+				80FFD0B81E514843002904AB /* ShuangZaoData.m in Sources */,
 				80F8C2211E3C3C1B0036186A /* MainViewController.m in Sources */,
 				80E8EAD31E48C81100F96129 /* DaYunSubTitleView.m in Sources */,
 				808763251E42EBCD005656BF /* DaYunTableViewDataSource.m in Sources */,
@@ -682,7 +736,9 @@
 				803C3AB61E477E9700C926B5 /* DaYunSubTableViewDataSource.m in Sources */,
 				80F8C2441E3C95E70036186A /* LeftTableViewCell.m in Sources */,
 				806012141E49A7DE006B121F /* NormalTextView.m in Sources */,
+				803638231E505216006EA3E4 /* JiaZiCollectionViewCell.m in Sources */,
 				804088321E3F101E00380A15 /* BottomTableViewCell.m in Sources */,
+				8036382B1E5057E4006EA3E4 /* JiaZiCollectionViewController.m in Sources */,
 				80F8C1F81E3C371E0036186A /* main.m in Sources */,
 				808763221E42E5C7005656BF /* DaYunTextView.m in Sources */,
 				804088111E3D963800380A15 /* BaseContentView.m in Sources */,

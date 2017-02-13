@@ -23,8 +23,8 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
-    self.mainTitleButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_50];
-    self.topTitleLabel.font = [UIFont systemFontOfSize:titleFontSize_28];
+    self.mainTitleButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_40];
+    self.topTitleLabel.font = [UIFont systemFontOfSize:titleFontSize_24];
     self.bottomNumberTitleLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
     
     [self.hideTableViewButton setTitleColor:[UIColor blackColor]

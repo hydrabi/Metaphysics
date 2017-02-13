@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
+#import "ShuangZaoData.h"
 @class BottomLocation;
 typedef NS_ENUM(NSInteger,LeftSideMenuType) {
     LeftSideMenuTypeEmpty = -1,     /**<空*/
@@ -84,6 +85,9 @@ typedef NS_ENUM(NSInteger,MiddleSubViewType){
 @property (nonatomic,assign)NSInteger fifteenYunSelectedNumber;
 //隐藏或者显示15运的操作信号
 @property (nonatomic,strong)RACSignal *fifteenYunTextViewOperationSig;
+
+//双造数据
+@property (nonatomic,strong)ShuangZaoData *shuangZaoData;
 
 
 +(instancetype)sharedInstance;

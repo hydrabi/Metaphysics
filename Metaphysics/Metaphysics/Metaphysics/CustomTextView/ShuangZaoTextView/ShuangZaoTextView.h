@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^callBack)();
+
 @interface ShuangZaoTextView : UIView
 @property (nonatomic,weak)IBOutlet UIButton *mainButton;
 @property (nonatomic,weak)IBOutlet UILabel *yearLabel;

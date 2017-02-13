@@ -29,9 +29,9 @@
     self = [super init];
     if(self){
         self.paraDic = @{
-                         middleSubViewHeight_key:[NSNumber numberWithFloat:middleSubViewHeight],
-                         leftSideTableViewWidth_key:@(leftSideTableViewWidth),
-                         leftVerLineOffset_key:@(leftVerLineOffset),
+                         middleSubViewHeight_key    :   @(middleSubViewHeight),
+                         leftSideTableViewWidth_key :   @(leftSideTableViewWidth),
+                         leftVerLineOffset_key      :   @(leftVerLineOffset),
                          }.mutableCopy;
     }
     return self;

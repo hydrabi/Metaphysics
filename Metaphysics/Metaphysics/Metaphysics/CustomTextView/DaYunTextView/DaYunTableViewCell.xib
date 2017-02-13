@@ -15,52 +15,39 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="辛酉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGg-mN-QMJ">
-                        <rect key="frame" x="43" y="4" width="61" height="36"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <rect key="frame" x="10" y="5.5" width="57" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycX-Ai-z50">
-                        <rect key="frame" x="104" y="16" width="12" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <rect key="frame" x="67" y="17.5" width="11" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTZ-PK-TFE">
-                        <rect key="frame" x="116" y="7.5" width="6.5" height="29"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpo-Nj-qxK">
-                        <rect key="frame" x="10" y="7.5" width="24.5" height="29"/>
+                        <rect key="frame" x="78" y="7.5" width="6.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="IGg-mN-QMJ" firstAttribute="leading" secondItem="Mpo-Nj-qxK" secondAttribute="trailing" constant="8" id="7YZ-4v-kXe"/>
-                    <constraint firstItem="Mpo-Nj-qxK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="H5A-9u-E42"/>
                     <constraint firstItem="IGg-mN-QMJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ImJ-U1-Twu"/>
                     <constraint firstItem="ycX-Ai-z50" firstAttribute="leading" secondItem="IGg-mN-QMJ" secondAttribute="trailing" id="V5W-gW-yxZ"/>
                     <constraint firstItem="cTZ-PK-TFE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bma-PH-pyN"/>
                     <constraint firstItem="cTZ-PK-TFE" firstAttribute="leading" secondItem="ycX-Ai-z50" secondAttribute="trailing" id="fRW-cr-pcD"/>
-                    <constraint firstItem="Mpo-Nj-qxK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fXV-3K-WfI">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="nuiDefinition" value="leftVerLineOffset_key"/>
-                        </userDefinedRuntimeAttributes>
-                    </constraint>
                     <constraint firstItem="ycX-Ai-z50" firstAttribute="bottom" secondItem="IGg-mN-QMJ" secondAttribute="bottom" id="o3o-00-DWq"/>
+                    <constraint firstItem="IGg-mN-QMJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ppA-Io-n2j"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="daYunLabel" destination="IGg-mN-QMJ" id="RXX-O1-51k"/>
-                <outlet property="numberLabel" destination="Mpo-Nj-qxK" id="zir-vj-wjO"/>
                 <outlet property="yearLabel" destination="ycX-Ai-z50" id="fCa-BR-V6l"/>
             </connections>
         </tableViewCell>

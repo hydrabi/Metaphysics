@@ -61,17 +61,15 @@
         NSString *stem = [self.stemsStr substringWithRange:NSMakeRange(i, 1)];
         NSString *branch = [self.branchesStr substringWithRange:NSMakeRange(j, 1)];
         NSString *jiaZi = [NSString stringWithFormat:@"%@%@",stem,branch];
-        NSLog(@"%@",jiaZi);
         [self.jiaZiArr addObject:jiaZi];
 
-        (i++) == self.stemsArr.count? : (i = 0);
+        i++;
         j++;
-        
-        if(i==self.stemsArr.count){
+        if(i == self.stemsStr.length){
             i = 0;
         }
         
-        if(j==self.branchesArr.count){
+        if(j==self.branchesStr.length){
             j = 0;
         }
     }
@@ -82,6 +80,7 @@
     self.fifteenYunSelectedNumber = NSNotFound;
     self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
     self.currentSelectTopSectionMenuTypeArr = @[].mutableCopy;
+    self.shuangZaoData = [[ShuangZaoData alloc] init];
     
     [self bindOperation];
 }

@@ -8,10 +8,14 @@
 
 #import "BottomTableViewCell.h"
 #import "UILabel+Addition.h"
+#import "UIConstantParameter.h"
 @implementation BottomTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.yearLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
+    self.daYunLabel.font = [UIFont systemFontOfSize:titleFontSize_26];
     // Initialization code
 }
 

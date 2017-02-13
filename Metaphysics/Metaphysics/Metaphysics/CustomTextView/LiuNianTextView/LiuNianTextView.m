@@ -23,6 +23,12 @@
     self.xiaoYunLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
     self.textView.scrollEnabled = NO;
     self.textView.font = [UIFont systemFontOfSize:titleFontSize_24];
+    
+    self.yearLabel2.font  = [UIFont systemFontOfSize:titleFontSize_20];
+    self.daYunLabel2.font  = [UIFont systemFontOfSize:titleFontSize_30];
+    self.xiaoYunLabel2.font = [UIFont systemFontOfSize:titleFontSize_20];
+    self.textView2.scrollEnabled = NO;
+    self.textView2.font = [UIFont systemFontOfSize:titleFontSize_24];
 }
 
 

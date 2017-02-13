@@ -23,7 +23,7 @@ static const CGFloat topViewHeight = 110.0f;
 static const CGFloat leftSideTableViewWidth = 125.0f;
 static const NSString *leftSideTableViewWidth_key = @"leftSideTableViewWidth_key";
 static const NSString *leftVerLineOffset_key = @"leftVerLineOffset_key";
-static const CGFloat leftVerLineWidth = 1.0f;
+static const CGFloat leftVerLineWidth = 2.0f;
 static const CGFloat leftVerLineOffset = 10.0f;
 static const CGFloat rightContentWidth = screenWidth - leftSideTableViewWidth - leftVerLineOffset-2*leftVerLineWidth;//1229
 
@@ -49,7 +49,7 @@ static const CGFloat tableViewFirstVerOffset = 16.0f;
 static const CGFloat tableViewOffset = 48.0f;
 static const CGFloat tableViewMiddleOffset = 10.0f;
 static const NSInteger tableViewCount = 15;
-static const CGFloat tableViewHeaderHeight = 130.0f;
+static const CGFloat tableViewHeaderHeight = 115.0f;
 static const CGFloat tableViewCellHeight = (bottomViewHeight - tableViewHeaderHeight - tableViewMiddleOffset)/10;
 
 //大运
@@ -69,13 +69,22 @@ static const CGFloat daYunSubTableCellHeight = (daYunSubTextViewHeight-daYunSubT
 //另外13个textView
 static const CGFloat normalTextViewHeight = daYunTextViewHeight;
 
+//双造
+static const CGFloat jiaZiCellWidth = 60.0f;
+static const CGFloat jiaZiCellHeight = 30.0f;
+static const CGFloat jiaZiCellOffset = 10.0f;
+static const NSInteger jiaZiCollectionRow = 10;
+static const NSInteger jiaZiCollectionColumn = 6;
+
 #pragma mark - 字体
 static const CGFloat titleFontSize_90 =  90.0f;
 static const CGFloat titleFontSize_55 =  55.0f;
 static const CGFloat titleFontSize_50 =  50.0f;
+static const CGFloat titleFontSize_40 =  40.0f;
 static const CGFloat titleFontSize_30 =  30.0f;
-static const CGFloat titleFontSize_28 =  28.0f;
+static const CGFloat titleFontSize_26 =  26.0f;
 static const CGFloat titleFontSize_24 =  24.0f;
 static const CGFloat titleFontSize_20 =  20.0f;
+static const CGFloat titleFontSize_18 =  18.0f;
 static const CGFloat titleFontSize_16 =  16.0f;
 #endif /* UIConstantParameter_h */

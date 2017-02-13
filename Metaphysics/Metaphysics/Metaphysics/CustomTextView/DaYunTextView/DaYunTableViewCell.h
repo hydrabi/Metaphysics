@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DaYunTableViewCell : UITableViewCell
-@property (nonatomic,weak)IBOutlet UILabel *numberLabel;
 @property (nonatomic,weak)IBOutlet UILabel *daYunLabel;
 @property (nonatomic,weak)IBOutlet UILabel *yearLabel;
--(void)resetValueWithIndexPath:(NSIndexPath*)indexPath;
 @end

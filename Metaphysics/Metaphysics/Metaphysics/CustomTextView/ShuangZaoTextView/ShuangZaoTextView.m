@@ -74,7 +74,7 @@
                                  NSString *day,
                                  NSString *hour){
                           
-                          return year;
+                          return nil;
                       }]
       deliverOnMainThread]
      subscribeNext:^(id _){

@@ -9,38 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
 #import "ShuangZaoData.h"
+#import "UIConstantParameter.h"
 @class BottomLocation;
-typedef NS_ENUM(NSInteger,LeftSideMenuType) {
-    LeftSideMenuTypeEmpty = -1,     /**<空*/
-    LeftSideMenuTypeChaoDai,        /**<朝代*/
-    LeftSideMenuTypeShuangZao,      /**<双造*/
-    LeftSideMenuTypeDaYun,          /**<大运*/
-    LeftSideMenuTypeYongShen,       /**<用神-忌神*/
-    LeftSideMenuTypeGeJu,           /**<格局-象意*/
-    
-    LeftSideMenuTypeXiangMao,       /**<相貌-性格*/
-    LeftSideMenuTypeWenPin,         /**<文凭-特长*/
-    LeftSideMenuTypeFuMu,           /**<父母*/
-    LeftSideMenuTypeXiongDi,        /**<兄弟*/
-    LeftSideMenuTypeZiNv,           /**<子女*/
-    
-    LeftSideMenuTypeHunYin,         /**<婚姻*/
-    LeftSideMenuTypeGuanGui,        /**<官贵*/
-    LeftSideMenuTypeCaiFu,          /**<财富*/
-    LeftSideMenuTypeGuanSi,         /**<官司-牢狱*/
-    LeftSideMenuTypeJiBing,         /**<疾病-灾祸*/
-    
-    LeftSideMenuTypeYanSe,           /**<颜色区分*/
-    LeftSideMenuTypeShenSha         /**<神煞表*/
-};
-
-typedef NS_ENUM(NSInteger,MiddleSubViewType){
-    MiddleSubViewTypeYear,          /**<年柱*/
-    MiddleSubViewTypeMonth,         /**<月柱*/
-    MiddleSubViewTypeDay,           /**<日柱*/
-    MiddleSubViewTypeHour,          /**<时柱*/
-};
-
 @interface MainViewModel : BaseViewModel
 //左边的菜单页面
 @property (nonatomic,strong)NSArray *leftMenuArr;

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3190B25E97535932413C585F /* Pods_Metaphysics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */; };
+		80160A761E54A0CC007DA35C /* DatePickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80160A741E54A0CC007DA35C /* DatePickViewController.m */; };
+		80160A771E54A0CC007DA35C /* DatePickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80160A751E54A0CC007DA35C /* DatePickViewController.xib */; };
+		80160A7A1E54AEAF007DA35C /* DatePickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80160A791E54AEAF007DA35C /* DatePickViewModel.m */; };
 		803638231E505216006EA3E4 /* JiaZiCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803638211E505216006EA3E4 /* JiaZiCollectionViewCell.m */; };
 		803638241E505216006EA3E4 /* JiaZiCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803638221E505216006EA3E4 /* JiaZiCollectionViewCell.xib */; };
 		8036382B1E5057E4006EA3E4 /* JiaZiCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803638291E5057E4006EA3E4 /* JiaZiCollectionViewController.m */; };
@@ -79,6 +82,11 @@
 
 /* Begin PBXFileReference section */
 		0C4F8BD6755BC027A5C4C355 /* Pods-Metaphysics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metaphysics.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metaphysics/Pods-Metaphysics.release.xcconfig"; sourceTree = "<group>"; };
+		80160A731E54A0CC007DA35C /* DatePickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickViewController.h; sourceTree = "<group>"; };
+		80160A741E54A0CC007DA35C /* DatePickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickViewController.m; sourceTree = "<group>"; };
+		80160A751E54A0CC007DA35C /* DatePickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickViewController.xib; sourceTree = "<group>"; };
+		80160A781E54AEAF007DA35C /* DatePickViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickViewModel.h; sourceTree = "<group>"; };
+		80160A791E54AEAF007DA35C /* DatePickViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickViewModel.m; sourceTree = "<group>"; };
 		803638201E505216006EA3E4 /* JiaZiCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaZiCollectionViewCell.h; sourceTree = "<group>"; };
 		803638211E505216006EA3E4 /* JiaZiCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaZiCollectionViewCell.m; sourceTree = "<group>"; };
 		803638221E505216006EA3E4 /* JiaZiCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JiaZiCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -207,6 +215,18 @@
 				824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80160A721E549D4C007DA35C /* DatePickView */ = {
+			isa = PBXGroup;
+			children = (
+				80160A731E54A0CC007DA35C /* DatePickViewController.h */,
+				80160A741E54A0CC007DA35C /* DatePickViewController.m */,
+				80160A751E54A0CC007DA35C /* DatePickViewController.xib */,
+				80160A781E54AEAF007DA35C /* DatePickViewModel.h */,
+				80160A791E54AEAF007DA35C /* DatePickViewModel.m */,
+			);
+			path = DatePickView;
 			sourceTree = "<group>";
 		};
 		803C3AB01E477E5B00C926B5 /* DaYunSubTextView */ = {
@@ -415,6 +435,7 @@
 		80F8C2261E3C3D030036186A /* UIBase */ = {
 			isa = PBXGroup;
 			children = (
+				80160A721E549D4C007DA35C /* DatePickView */,
 				807196D81E418E5A005E4A52 /* UIFont */,
 				804088381E40B0DF00380A15 /* Tool */,
 				8040880E1E3D95B600380A15 /* BaseContentView */,
@@ -635,6 +656,7 @@
 				8060121C1E49CE34006B121F /* ShuangZaoTextView.xib in Resources */,
 				80E8EAD51E48C83800F96129 /* DaYunSubTitleView.xib in Resources */,
 				807196DA1E418E5A005E4A52 /* 17icon.ttf in Resources */,
+				80160A771E54A0CC007DA35C /* DatePickViewController.xib in Resources */,
 				80F8C2451E3C95E70036186A /* LeftTableViewCell.xib in Resources */,
 				80F8C2061E3C371F0036186A /* LaunchScreen.storyboard in Resources */,
 				80F8C24F1E3C98000036186A /* TopContentView.xib in Resources */,
@@ -731,6 +753,7 @@
 				80E8EAD31E48C81100F96129 /* DaYunSubTitleView.m in Sources */,
 				808763251E42EBCD005656BF /* DaYunTableViewDataSource.m in Sources */,
 				808763291E42EE5F005656BF /* DaYunTableViewCell.m in Sources */,
+				80160A7A1E54AEAF007DA35C /* DatePickViewModel.m in Sources */,
 				8040881D1E3E25F100380A15 /* MiddleSubView.m in Sources */,
 				804088221E3F083F00380A15 /* BottomContentView.m in Sources */,
 				803C3AB61E477E9700C926B5 /* DaYunSubTableViewDataSource.m in Sources */,
@@ -745,6 +768,7 @@
 				807196DD1E419717005E4A52 /* NSString+Addition.m in Sources */,
 				80F8C2251E3C3C310036186A /* MainViewModel.m in Sources */,
 				803C3ABA1E477EAE00C926B5 /* DaYunSubTableViewCell.m in Sources */,
+				80160A761E54A0CC007DA35C /* DatePickViewController.m in Sources */,
 				8060120E1E499DDC006B121F /* LiuNianTextView.m in Sources */,
 				80F8C22B1E3C3D390036186A /* BaseViewModel.m in Sources */,
 				804088141E3D977A00380A15 /* MiddleContentView.m in Sources */,

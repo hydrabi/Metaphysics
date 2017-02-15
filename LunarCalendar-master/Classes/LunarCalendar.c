@@ -168,33 +168,6 @@ const char *_LunarCalendar_private_luarYear(LunarCalendar *lunar_calendar)
     calendar->_str_size += size;
     size = characters(calendar->_characters + calendar->_str_size,
                       kLunarCalendarBranchIndex, calendar->_lunar_date.year8_branch, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size, kLunarCalendarLeapIndex, 1, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size,
-//                      kLunarCalendarStemIndex, calendar->_lunar_date.month8_stem, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size,
-//                      kLunarCalendarBranchIndex, calendar->_lunar_date.month8_branch, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size, kLunarCalendarLeapIndex, 2, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size,
-//                      kLunarCalendarStemIndex, calendar->_lunar_date.date8_stem, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size,
-//                      kLunarCalendarBranchIndex, calendar->_lunar_date.date8_branch, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size, kLunarCalendarLeapIndex, 3, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size,
-//                      kLunarCalendarStemIndex, calendar->_lunar_date.hour8_stem, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size,
-//                      kLunarCalendarBranchIndex, calendar->_lunar_date.hour8_branch, 1);
-//    calendar->_str_size += size;
-//    size = characters(calendar->_characters + calendar->_str_size, kLunarCalendarLeapIndex, 4, 1);
-//    calendar->_str_size += size;
     return calendar->_characters;
 }
 

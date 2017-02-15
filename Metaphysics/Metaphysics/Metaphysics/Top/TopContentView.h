@@ -12,6 +12,10 @@
 @interface TopContentView : UIView
 @property (nonatomic,weak)IBOutlet UIButton *hideButton;
 @property (nonatomic,weak)IBOutlet UITextField *firstTextField;
+//农历选择按钮
+@property (nonatomic,weak)IBOutlet UIButton *lunarCalendarSelectedButton;
+//公历选择按钮
+@property (nonatomic,weak)IBOutlet UIButton *gregorianCalendarSelectedButton;
 
 +(instancetype)instanceTopContentView;
 @end

@@ -8,6 +8,7 @@
 
 #import "TopContentView.h"
 #import "UIConstantParameter.h"
+#import "DatePickViewController.h"
 //PlaceHolderView(TopContentView)
 
 @implementation TopContentView
@@ -26,6 +27,16 @@
 
 -(IBAction)hideButtonClickAction{
     self.firstTextField.hidden = !self.firstTextField.hidden;
+}
+
+//农历选择
+-(IBAction)lunarCalendarSelecteAction{
+    
+}
+
+//公历选择
+-(IBAction)gregorianCalendarSelecteAction{
+    DatePickViewController *pick = [[DatePickViewController alloc] initWithCalendarType:CalendarTypeGregorian];
 }
 
 @end

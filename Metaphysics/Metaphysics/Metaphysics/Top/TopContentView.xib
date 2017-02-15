@@ -243,6 +243,34 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lY-ds-0g3">
+                    <rect key="frame" x="623.5" y="10" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="RQY-8R-pzA"/>
+                        <constraint firstAttribute="height" constant="40" id="ong-r6-DvI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="▼">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="gregorianCalendarSelecteAction" destination="ezC-E2-aVf" eventType="touchUpInside" id="vB1-3j-zE7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWT-FL-gEe">
+                    <rect key="frame" x="620.5" y="64.5" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="AOz-Ty-xiQ"/>
+                        <constraint firstAttribute="height" constant="30" id="dKT-TM-5Xz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="▼">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="lunarCalendarSelecteAction" destination="ezC-E2-aVf" eventType="touchUpInside" id="mqa-7x-91w"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -262,6 +290,7 @@
                 <constraint firstItem="QDt-TG-aol" firstAttribute="centerY" secondItem="M66-ib-p6Q" secondAttribute="centerY" id="AVt-eF-473"/>
                 <constraint firstItem="TAF-Wi-9jZ" firstAttribute="leading" secondItem="Js4-1e-GC4" secondAttribute="trailing" constant="10" id="BRQ-Gi-CH5"/>
                 <constraint firstItem="TAF-Wi-9jZ" firstAttribute="centerY" secondItem="kCq-ZR-bYX" secondAttribute="centerY" id="DHJ-nl-RKN"/>
+                <constraint firstItem="4lY-ds-0g3" firstAttribute="centerY" secondItem="4ym-Bm-nPA" secondAttribute="centerY" id="DVU-vf-2oe"/>
                 <constraint firstItem="ajy-BS-xda" firstAttribute="leading" secondItem="kCq-ZR-bYX" secondAttribute="trailing" constant="4" id="G8i-II-HAE"/>
                 <constraint firstItem="2Vf-4s-yjf" firstAttribute="centerY" secondItem="XbT-3J-un5" secondAttribute="centerY" id="HXP-yv-A3B"/>
                 <constraint firstItem="Ydc-lk-c1b" firstAttribute="leading" secondItem="thc-P2-k8a" secondAttribute="trailing" constant="8" id="JgI-Cm-BPv"/>
@@ -287,9 +316,11 @@
                 <constraint firstItem="M66-ib-p6Q" firstAttribute="centerY" secondItem="2Vf-4s-yjf" secondAttribute="centerY" id="ard-eb-iSa"/>
                 <constraint firstItem="npl-zQ-azx" firstAttribute="centerY" secondItem="Js4-1e-GC4" secondAttribute="centerY" id="c1e-3C-OVj"/>
                 <constraint firstItem="XbT-3J-un5" firstAttribute="centerY" secondItem="aE9-jt-5wP" secondAttribute="centerY" id="cQz-D0-8mz"/>
+                <constraint firstItem="4lY-ds-0g3" firstAttribute="centerX" secondItem="bWT-FL-gEe" secondAttribute="centerX" id="dT7-8B-cty"/>
                 <constraint firstItem="JQI-DM-8ks" firstAttribute="centerY" secondItem="gl5-vJ-qyc" secondAttribute="centerY" id="dW9-HP-wZe"/>
                 <constraint firstItem="M66-ib-p6Q" firstAttribute="leading" secondItem="2Vf-4s-yjf" secondAttribute="trailing" constant="8" id="eWH-we-Yb5"/>
                 <constraint firstItem="Js4-1e-GC4" firstAttribute="centerY" secondItem="TAF-Wi-9jZ" secondAttribute="centerY" id="fBe-AB-znW"/>
+                <constraint firstItem="bWT-FL-gEe" firstAttribute="leading" secondItem="jdB-78-Ogh" secondAttribute="trailing" constant="10" id="fW4-yO-lLf"/>
                 <constraint firstItem="fsp-dM-CBO" firstAttribute="centerY" secondItem="hkj-5w-t4i" secondAttribute="centerY" id="feL-t0-p1X"/>
                 <constraint firstItem="Xur-HC-K9A" firstAttribute="leading" secondItem="Syt-aD-Fhl" secondAttribute="trailing" constant="8" id="fqB-8f-p1v"/>
                 <constraint firstItem="8c7-B4-uKT" firstAttribute="leading" secondItem="vhS-12-GSY" secondAttribute="trailing" constant="8" id="g2F-NC-erd"/>
@@ -305,6 +336,7 @@
                 <constraint firstItem="Xur-HC-K9A" firstAttribute="centerY" secondItem="Syt-aD-Fhl" secondAttribute="centerY" id="rw6-Be-3tE"/>
                 <constraint firstItem="Js4-1e-GC4" firstAttribute="leading" secondItem="npl-zQ-azx" secondAttribute="trailing" constant="8" id="uJ9-IM-dgF"/>
                 <constraint firstItem="8c7-B4-uKT" firstAttribute="centerY" secondItem="vhS-12-GSY" secondAttribute="centerY" id="v8o-JD-avr"/>
+                <constraint firstItem="bWT-FL-gEe" firstAttribute="centerY" secondItem="jdB-78-Ogh" secondAttribute="centerY" id="v9r-zl-4Vq"/>
                 <constraint firstItem="vhS-12-GSY" firstAttribute="leading" secondItem="QDt-TG-aol" secondAttribute="trailing" constant="8" id="xp1-kA-PY6"/>
                 <constraint firstItem="KoY-Xy-1oE" firstAttribute="centerY" secondItem="hkj-5w-t4i" secondAttribute="centerY" id="z5E-eR-Dcb"/>
                 <constraint firstItem="QDt-TG-aol" firstAttribute="leading" secondItem="M66-ib-p6Q" secondAttribute="trailing" constant="8" id="zXW-FT-PHi"/>
@@ -313,7 +345,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="firstTextField" destination="Js4-1e-GC4" id="g6t-bZ-ega"/>
+                <outlet property="gregorianCalendarSelectedButton" destination="4lY-ds-0g3" id="c01-Fw-T9h"/>
                 <outlet property="hideButton" destination="npl-zQ-azx" id="2KL-yJ-xzA"/>
+                <outlet property="lunarCalendarSelectedButton" destination="bWT-FL-gEe" id="X6Z-LI-xlf"/>
             </connections>
             <point key="canvasLocation" x="128" y="-353"/>
         </view>

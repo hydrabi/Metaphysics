@@ -110,18 +110,20 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if(component == 0){
-        self.viewModel.currentSelectDay = [self.viewModel.yearsArr[row] integerValue];
+        self.viewModel.date.gregorianYear = [self.viewModel.yearsArr[row] integerValue];
+        [self.viewModel createDaysArr];
+        [pickerView reloadComponent:2];
     }
     else if(component == 1){
-        self.viewModel.currentSelectMonth = [self.viewModel.monthsArr[row] integerValue];
+        self.viewModel.date.gregorianMonth = [self.viewModel.monthsArr[row] integerValue];
         [self.viewModel createDaysArr];
         [pickerView reloadComponent:2];
     }
     else if(component == 2){
-        self.viewModel.currentSelectDay = [self.viewModel.daysArr[row] integerValue];
+        self.viewModel.date.gregorianDay = [self.viewModel.daysArr[row] integerValue];
     }
     else {
-        self.viewModel.currentSelectHour = [self.viewModel.hoursArr[row] integerValue];
+        self.viewModel.date.gregorianHour = [self.viewModel.hoursArr[row] integerValue];
     }
 }
 @end

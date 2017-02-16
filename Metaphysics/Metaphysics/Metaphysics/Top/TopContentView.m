@@ -9,6 +9,7 @@
 #import "TopContentView.h"
 #import "UIConstantParameter.h"
 #import "DatePickViewController.h"
+#import "MainViewModel.h"
 //PlaceHolderView(TopContentView)
 
 @implementation TopContentView
@@ -25,6 +26,11 @@
     self.hideButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
 }
 
+-(id)awakeAfterUsingCoder:(NSCoder *)aDecoder{
+    
+    return [super awakeAfterUsingCoder:aDecoder];
+}
+
 -(IBAction)hideButtonClickAction{
     self.firstTextField.hidden = !self.firstTextField.hidden;
 }
@@ -39,6 +45,11 @@
     [DatePickViewController presentViewControllerWithRect:sender.frame
                                                      view:self
                                                      type:CalendarTypeGregorian];
+}
+
+-(void)bindViewModel{
+    MainViewModel *main = [MainViewModel sharedInstance];
+//    [RACSignal combineLatest:@[main.] reduce:<#^id(void)reduceBlock#>]
 }
 
 @end

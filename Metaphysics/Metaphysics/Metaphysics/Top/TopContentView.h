@@ -16,6 +16,21 @@
 @property (nonatomic,weak)IBOutlet UIButton *lunarCalendarSelectedButton;
 //公历选择按钮
 @property (nonatomic,weak)IBOutlet UIButton *gregorianCalendarSelectedButton;
-
+//公历年
+@property (nonatomic,weak)IBOutlet UITextField *gregorianYearTxt;
+//公历月
+@property (nonatomic,weak)IBOutlet UITextField *gregorianMonthTxt;
+//公历日
+@property (nonatomic,weak)IBOutlet UITextField *gregorianDayTxt;
+//公历时
+@property (nonatomic,weak)IBOutlet UITextField *gregorianHourTxt;
+//农历年
+@property (nonatomic,weak)IBOutlet UITextField *lunarYearTxt;
+//农历月
+@property (nonatomic,weak)IBOutlet UITextField *lunarMonthTxt;
+//农历日
+@property (nonatomic,weak)IBOutlet UITextField *lunarDayTxt;
+//农历时
+@property (nonatomic,weak)IBOutlet UITextField *lunarHourTxt;
 +(instancetype)instanceTopContentView;
 @end

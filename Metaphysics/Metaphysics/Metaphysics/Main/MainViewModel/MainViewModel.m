@@ -81,6 +81,7 @@
     self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
     self.currentSelectTopSectionMenuTypeArr = @[].mutableCopy;
     self.shuangZaoData = [[ShuangZaoData alloc] init];
+    self.selectedDate = [[CurrentSelectDate alloc] init];
     
     [self bindOperation];
 }

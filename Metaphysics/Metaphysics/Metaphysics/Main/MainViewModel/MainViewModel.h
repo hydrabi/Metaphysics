@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
 #import "ShuangZaoData.h"
+#import "CurrentSelectDate.h"
 #import "UIConstantParameter.h"
 @class BottomLocation;
 @interface MainViewModel : BaseViewModel
@@ -58,7 +59,8 @@
 
 //双造数据
 @property (nonatomic,strong)ShuangZaoData *shuangZaoData;
-
+//日期数据
+@property (nonatomic,strong)CurrentSelectDate *selectedDate;
 
 +(instancetype)sharedInstance;
 -(NSString*)getSpecificMenuTitleWithType:(LeftSideMenuType)type;

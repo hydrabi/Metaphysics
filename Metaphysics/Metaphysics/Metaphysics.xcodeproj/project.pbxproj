@@ -11,6 +11,7 @@
 		80160A761E54A0CC007DA35C /* DatePickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80160A741E54A0CC007DA35C /* DatePickViewController.m */; };
 		80160A771E54A0CC007DA35C /* DatePickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80160A751E54A0CC007DA35C /* DatePickViewController.xib */; };
 		80160A7A1E54AEAF007DA35C /* DatePickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80160A791E54AEAF007DA35C /* DatePickViewModel.m */; };
+		8035DC551E55F4420086C185 /* CurrentSelectDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8035DC541E55F4420086C185 /* CurrentSelectDate.m */; };
 		803638231E505216006EA3E4 /* JiaZiCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803638211E505216006EA3E4 /* JiaZiCollectionViewCell.m */; };
 		803638241E505216006EA3E4 /* JiaZiCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803638221E505216006EA3E4 /* JiaZiCollectionViewCell.xib */; };
 		8036382B1E5057E4006EA3E4 /* JiaZiCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803638291E5057E4006EA3E4 /* JiaZiCollectionViewController.m */; };
@@ -87,6 +88,8 @@
 		80160A751E54A0CC007DA35C /* DatePickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickViewController.xib; sourceTree = "<group>"; };
 		80160A781E54AEAF007DA35C /* DatePickViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickViewModel.h; sourceTree = "<group>"; };
 		80160A791E54AEAF007DA35C /* DatePickViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickViewModel.m; sourceTree = "<group>"; };
+		8035DC531E55F4420086C185 /* CurrentSelectDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSelectDate.h; sourceTree = "<group>"; };
+		8035DC541E55F4420086C185 /* CurrentSelectDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSelectDate.m; sourceTree = "<group>"; };
 		803638201E505216006EA3E4 /* JiaZiCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaZiCollectionViewCell.h; sourceTree = "<group>"; };
 		803638211E505216006EA3E4 /* JiaZiCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaZiCollectionViewCell.m; sourceTree = "<group>"; };
 		803638221E505216006EA3E4 /* JiaZiCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JiaZiCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -227,6 +230,15 @@
 				80160A791E54AEAF007DA35C /* DatePickViewModel.m */,
 			);
 			path = DatePickView;
+			sourceTree = "<group>";
+		};
+		8035DC521E55F3E50086C185 /* CurrentDate */ = {
+			isa = PBXGroup;
+			children = (
+				8035DC531E55F4420086C185 /* CurrentSelectDate.h */,
+				8035DC541E55F4420086C185 /* CurrentSelectDate.m */,
+			);
+			path = CurrentDate;
 			sourceTree = "<group>";
 		};
 		803C3AB01E477E5B00C926B5 /* DaYunSubTextView */ = {
@@ -529,6 +541,7 @@
 		80FFD0B01E514675002904AB /* SubViewData */ = {
 			isa = PBXGroup;
 			children = (
+				8035DC521E55F3E50086C185 /* CurrentDate */,
 				80FFD0B21E5146F6002904AB /* SubViewData */,
 				80FFD0B11E514675002904AB /* shuangZaoData */,
 			);
@@ -773,6 +786,7 @@
 				80F8C22B1E3C3D390036186A /* BaseViewModel.m in Sources */,
 				804088141E3D977A00380A15 /* MiddleContentView.m in Sources */,
 				8040883B1E40B0DF00380A15 /* NSLayoutConstraint+NUI.m in Sources */,
+				8035DC551E55F4420086C185 /* CurrentSelectDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

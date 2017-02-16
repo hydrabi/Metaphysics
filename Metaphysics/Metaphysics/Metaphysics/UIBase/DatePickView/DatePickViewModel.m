@@ -8,6 +8,10 @@
 
 #import "DatePickViewModel.h"
 
+@interface DatePickViewModel()
+
+@end
+
 @implementation DatePickViewModel
 
 -(void)initialize{
@@ -15,6 +19,8 @@
     self.monthsArr = @[].mutableCopy;
     self.daysArr = @[].mutableCopy;
     self.hoursArr = @[].mutableCopy;
+    
+    self.date = [MainViewModel sharedInstance].selectedDate;
     
     [self getCurrentDate];
     [self createYearsArr];
@@ -29,10 +35,10 @@
     NSDateComponents *dateComps = [calendar components:
                                    NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour
                                              fromDate:inputDate];
-    self.currentSelectYear = dateComps.year;
-    self.currentSelectMonth = dateComps.month;
-    self.currentSelectDay = dateComps.day;
-    self.currentSelectHour = dateComps.hour;
+    self.date.gregorianYear = dateComps.year;
+    self.date.gregorianMonth = dateComps.month;
+    self.date.gregorianDay = dateComps.day;
+    self.date.gregorianHour = dateComps.hour;
 }
 
 -(void)createYearsArr{
@@ -52,19 +58,19 @@
 
 -(void)createDaysArr{
     NSInteger dayCount = 30;
-    if(self.currentSelectMonth == 2){
-        if((self.currentSelectYear % 4 == 0 && self.currentSelectYear % 100 != 0)
-           || self.currentSelectYear % 400 == 0){
+    if(self.date.gregorianMonth == 2){
+        if((self.date.gregorianYear % 4 == 0 && self.date.gregorianYear % 100 != 0)
+           || self.date.gregorianYear % 400 == 0){
             dayCount = 29;
         }
         else{
             dayCount = 28;
         }
     }
-    else if (4 == self.currentSelectMonth
-             || 6 == self.currentSelectMonth
-             || 9 == self.currentSelectMonth
-             || 11 == self.currentSelectMonth){
+    else if (4 == self.date.gregorianMonth
+             || 6 == self.date.gregorianMonth
+             || 9 == self.date.gregorianMonth
+             || 11 == self.date.gregorianMonth){
         dayCount = 30;
     }
     else{

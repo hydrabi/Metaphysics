@@ -254,7 +254,7 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="gregorianCalendarSelecteAction" destination="ezC-E2-aVf" eventType="touchUpInside" id="vB1-3j-zE7"/>
+                        <action selector="gregorianCalendarSelecteAction:" destination="ezC-E2-aVf" eventType="touchUpInside" id="9BH-1q-43A"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWT-FL-gEe">
@@ -268,7 +268,7 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="lunarCalendarSelecteAction" destination="ezC-E2-aVf" eventType="touchUpInside" id="mqa-7x-91w"/>
+                        <action selector="lunarCalendarSelecteAction:" destination="ezC-E2-aVf" eventType="touchUpInside" id="nWt-18-xeh"/>
                     </connections>
                 </button>
             </subviews>
@@ -345,7 +345,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="firstTextField" destination="Js4-1e-GC4" id="g6t-bZ-ega"/>
-                <outlet property="gregorianCalendarSelectedButton" destination="4lY-ds-0g3" id="c01-Fw-T9h"/>
+                <outlet property="gregorianCalendarSelectedButton" destination="4lY-ds-0g3" id="ZoJ-xh-f8a"/>
                 <outlet property="hideButton" destination="npl-zQ-azx" id="2KL-yJ-xzA"/>
                 <outlet property="lunarCalendarSelectedButton" destination="bWT-FL-gEe" id="X6Z-LI-xlf"/>
             </connections>

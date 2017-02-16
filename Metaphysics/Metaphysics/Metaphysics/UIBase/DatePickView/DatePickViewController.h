@@ -10,5 +10,6 @@
 #import "BaseViewController.h"
 #import "UIConstantParameter.h"
 @interface DatePickViewController : BaseViewController
++(void)presentViewControllerWithRect:(CGRect)rect view:(UIView*)view type:(CalendarType)type;
 -(instancetype)initWithCalendarType:(CalendarType)type;
 @end

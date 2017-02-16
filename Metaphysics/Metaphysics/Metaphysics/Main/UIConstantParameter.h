@@ -113,6 +113,15 @@ static const CGFloat jiaZiCellOffset = 10.0f;
 static const NSInteger jiaZiCollectionRow = 10;
 static const NSInteger jiaZiCollectionColumn = 6;
 
+#pragma mark - 日期选择
+static const CGFloat yearComponentWidth = 100.0f;
+static const CGFloat monthComponentWidth = 50.0f;
+static const CGFloat dayComponentWidth = 50.0f;
+static const CGFloat hourComponentWidth = 50.0f;
+static const CGFloat datePickerRowHeight = 40.0f;
+static const CGFloat datePickerWidth = 300.0f;
+static const CGFloat datePickerHeight = 300.0f;
+
 #pragma mark - 字体
 static const CGFloat titleFontSize_90 =  90.0f;
 static const CGFloat titleFontSize_55 =  55.0f;

@@ -18,4 +18,9 @@
 @property (nonatomic,assign)NSInteger currentSelectMonth;
 @property (nonatomic,assign)NSInteger currentSelectDay;
 @property (nonatomic,assign)NSInteger currentSelectHour;
+
+-(void)createYearsArr;
+-(void)createMonthsArr;
+-(void)createDaysArr;
+-(void)createHoursArr;
 @end

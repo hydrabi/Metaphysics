@@ -30,13 +30,15 @@
 }
 
 //农历选择
--(IBAction)lunarCalendarSelecteAction{
+-(IBAction)lunarCalendarSelecteAction:(UIButton*)sender{
     
 }
 
 //公历选择
--(IBAction)gregorianCalendarSelecteAction{
-    DatePickViewController *pick = [[DatePickViewController alloc] initWithCalendarType:CalendarTypeGregorian];
+-(IBAction)gregorianCalendarSelecteAction:(UIButton*)sender{
+    [DatePickViewController presentViewControllerWithRect:sender.frame
+                                                     view:self
+                                                     type:CalendarTypeGregorian];
 }
 
 @end

@@ -43,6 +43,28 @@
 
     self.pickView.delegate = self;
     self.pickView.dataSource = self;
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if([self.viewModel.yearsArr containsObject:self.viewModel.date.gregorianYear]){
+        NSInteger row = [self.viewModel.yearsArr indexOfObject:self.viewModel.date.gregorianYear];
+        [self.pickView selectRow:row inComponent:0 animated:YES];
+    }
+    if([self.viewModel.monthsArr containsObject:self.viewModel.date.gregorianMonth]){
+        NSInteger row = [self.viewModel.monthsArr indexOfObject:self.viewModel.date.gregorianMonth];
+        [self.pickView selectRow:row inComponent:1 animated:YES];
+    }
+    if([self.viewModel.daysArr containsObject:self.viewModel.date.gregorianDay]){
+        NSInteger row = [self.viewModel.monthsArr indexOfObject:self.viewModel.date.gregorianDay];
+        [self.pickView selectRow:row inComponent:2 animated:YES];
+    }
+    if([self.viewModel.hoursArr containsObject:self.viewModel.date.gregorianHour]){
+        NSInteger row = [self.viewModel.hoursArr indexOfObject:self.viewModel.date.gregorianHour];
+        [self.pickView selectRow:row inComponent:3 animated:YES];
+    }
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -110,20 +132,20 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if(component == 0){
-        self.viewModel.date.gregorianYear = [self.viewModel.yearsArr[row] integerValue];
+        self.viewModel.date.gregorianYear = self.viewModel.yearsArr[row] ;
         [self.viewModel createDaysArr];
         [pickerView reloadComponent:2];
     }
     else if(component == 1){
-        self.viewModel.date.gregorianMonth = [self.viewModel.monthsArr[row] integerValue];
+        self.viewModel.date.gregorianMonth = self.viewModel.monthsArr[row] ;
         [self.viewModel createDaysArr];
         [pickerView reloadComponent:2];
     }
     else if(component == 2){
-        self.viewModel.date.gregorianDay = [self.viewModel.daysArr[row] integerValue];
+        self.viewModel.date.gregorianDay = self.viewModel.daysArr[row] ;
     }
     else {
-        self.viewModel.date.gregorianHour = [self.viewModel.hoursArr[row] integerValue];
+        self.viewModel.date.gregorianHour = self.viewModel.hoursArr[row] ;
     }
 }
 @end

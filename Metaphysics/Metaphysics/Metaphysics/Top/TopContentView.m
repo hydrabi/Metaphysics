@@ -12,8 +12,12 @@
 #import "MainViewModel.h"
 //PlaceHolderView(TopContentView)
 
-@implementation TopContentView
+@interface TopContentView()<UITextFieldDelegate>
+@property (nonatomic,weak)CurrentSelectDate *date;
+@end
 
+@implementation TopContentView
+#pragma mark - 初始化
 +(instancetype)instanceTopContentView
 {
     NSArray* nibView =  [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
@@ -24,13 +28,71 @@
     [super awakeFromNib];
     [self.hideButton setTitle:@"●" forState:UIControlStateNormal];
     self.hideButton.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_16];
+    self.gregorianYearTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.gregorianYearTxt.delegate = self;
+    self.gregorianMonthTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.gregorianMonthTxt.delegate = self;
+    self.gregorianDayTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.gregorianDayTxt.delegate = self;
+    self.gregorianHourTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.gregorianHourTxt.delegate = self;
+    self.lunarYearTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.lunarYearTxt.delegate = self;
+    self.lunarMonthTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.lunarMonthTxt.delegate = self;
+    self.lunarDayTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.lunarDayTxt.delegate = self;
+    self.lunarHourTxt.keyboardType = UIKeyboardTypeNumberPad;
+    self.lunarHourTxt.delegate = self;
+    
+    [self resetGregorianValue];
+    [self resetLunarValue];
+    
 }
 
 -(id)awakeAfterUsingCoder:(NSCoder *)aDecoder{
-    
+    self.date = [MainViewModel sharedInstance].selectedDate;
+    [self bindViewModel];
     return [super awakeAfterUsingCoder:aDecoder];
 }
 
+-(void)bindViewModel{
+    CurrentSelectDate *date = [MainViewModel sharedInstance].selectedDate;
+    @weakify(self)
+    [[[RACSignal combineLatest:@[RACObserve(date, gregorianYear),
+                                 RACObserve(date, gregorianMonth),
+                                 RACObserve(date, gregorianDay),
+                                 RACObserve(date, gregorianHour)] reduce:^id(NSNumber *year,
+                                                                             NSNumber *month,
+                                                                             NSNumber *day,
+                                                                             NSNumber *hour){
+                                     return nil;
+                                 }]
+      deliverOnMainThread]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self resetGregorianValue];
+     }];
+    
+    
+}
+
+//重置公历
+-(void)resetGregorianValue{
+    self.gregorianYearTxt.text = [self.date.gregorianYear stringValue];
+    self.gregorianMonthTxt.text = [self.date.gregorianMonth stringValue];
+    self.gregorianDayTxt.text = [self.date.gregorianDay stringValue];
+    self.gregorianHourTxt.text = [self.date.gregorianHour stringValue];
+}
+
+//重置农历
+-(void)resetLunarValue{
+    self.lunarYearTxt.text = [self.date.lunarYear stringValue];
+    self.lunarMonthTxt.text = [self.date.lunarMonth stringValue];
+    self.lunarDayTxt.text = [self.date.lunarDay stringValue];
+    self.lunarHourTxt.text = [self.date.lunarHour stringValue];
+}
+#pragma mark - 点击操作
 -(IBAction)hideButtonClickAction{
     self.firstTextField.hidden = !self.firstTextField.hidden;
 }
@@ -47,9 +109,39 @@
                                                      type:CalendarTypeGregorian];
 }
 
--(void)bindViewModel{
-    MainViewModel *main = [MainViewModel sharedInstance];
-//    [RACSignal combineLatest:@[main.] reduce:<#^id(void)reduceBlock#>]
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if(textField == self.gregorianYearTxt ||
+       textField == self.lunarYearTxt){
+        NSString *completeStr = [textField.text stringByReplacingCharactersInRange:range
+                                                                        withString:string];
+        if(completeStr.length>4){
+            return NO;
+        }
+        if(string.length>0){
+            unichar single = [string characterAtIndex:0];
+            if(single >= '0' && single <= '9'){
+                return YES;
+            }
+        }
+        else{
+            return YES;
+        }
+    }
+    else if(textField == self.gregorianMonthTxt ||
+            textField == self.lunarMonthTxt){
+        return YES;
+    }
+    else if(textField == self.gregorianDayTxt ||
+            textField == self.lunarDayTxt){
+        return YES;
+    }
+    else if(textField == self.gregorianHourTxt ||
+            textField == self.lunarHourTxt){
+        return YES;
+    }
+    return NO;
 }
 
 @end

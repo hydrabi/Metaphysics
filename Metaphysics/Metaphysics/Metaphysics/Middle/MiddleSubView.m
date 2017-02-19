@@ -9,6 +9,7 @@
 #import "MiddleSubView.h"
 #import "UIConstantParameter.h"
 #import "NSString+Addition.h"
+#import "MainViewModel.h"
 @interface MiddleSubView()
     
 @property (nonatomic,weak)IBOutlet UIView *innerView;
@@ -86,6 +87,10 @@
         default:
             break;
     }
+}
+
+-(IBAction)showFormButtonAction:(id)sender{
+    [MainViewModel sharedInstance].hadShowSolarTermsCollectionView = ![MainViewModel sharedInstance].hadShowSolarTermsCollectionView;
 }
 
 @end

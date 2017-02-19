@@ -18,6 +18,7 @@
 #import "LiuNianTextView.h"
 #import "NormalTextView.h"
 #import "ShuangZaoTextView.h"
+#import "SolarTermsCollectionView.h"
 
 @interface MainViewController ()
 @property (nonatomic,strong)MainViewModel *viewModel;
@@ -33,6 +34,7 @@
 @property (nonatomic,strong)NormalTextView *normalTextView;
 @property (nonatomic,strong)DaYunSubTextView *fifteenYunTextView;
 @property (nonatomic,strong)ShuangZaoTextView *shuangZaoTextView;
+@property (nonatomic,strong)SolarTermsCollectionView *solarTermsView;
 @property (nonatomic,weak)UIView *currentTextView;
 @property (nonatomic,strong)UIView *firstVerLine;
 @property (nonatomic,strong)UIView *secondVerLine;
@@ -112,6 +114,10 @@
     self.shuangZaoTextView = [ShuangZaoTextView instanceShuangZaoTextView];
     self.shuangZaoTextView.hidden = YES;
     [self.view addSubview:self.shuangZaoTextView];
+    
+    self.solarTermsView  = [SolarTermsCollectionView createSolarTermsCollectionView];
+    self.solarTermsView.hidden = YES;
+    [self.view addSubview:self.solarTermsView];
     
 }
 
@@ -210,6 +216,14 @@
         make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
         make.height.equalTo(topViewHeight);
     }];
+    
+    [self.solarTermsView makeConstraints:^(MASConstraintMaker *make){
+        @strongify(self)
+        make.leading.equalTo(self.secondVerLine.trailing).offset(leftVerLineOffset);
+        make.top.equalTo(self.bottomContentView.top).offset(0);
+        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
+        make.height.equalTo(bottomViewHeight);
+    }];
 }
 
 -(void)resetCurrentTextView:(UIView*)view{
@@ -294,6 +308,18 @@
         @strongify(self)
          if(mainViewModel.fifteenYunSelectedNumber != NSNotFound){
              [self resetCurrentTextView:self.fifteenYunTextView];
+         }
+         else{
+             [self resetCurrentTextView:nil];
+         }
+     }];
+    
+    //节气表选中操作
+    [[RACObserve(mainViewModel, hadShowSolarTermsCollectionView)
+      deliverOnMainThread]
+     subscribeNext:^(id _){
+         if(mainViewModel.hadShowSolarTermsCollectionView){
+             [self resetCurrentTextView:self.solarTermsView];
          }
          else{
              [self resetCurrentTextView:nil];

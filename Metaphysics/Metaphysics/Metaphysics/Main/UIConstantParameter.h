@@ -90,7 +90,7 @@ static const CGFloat tableViewHeaderHeight = 115.0f;
 static const CGFloat tableViewCellHeight = (bottomViewHeight - tableViewHeaderHeight - tableViewMiddleOffset)/10;
 
 //大运
-static const CGFloat daYunTextViewHeight = bottomViewHeight - tableViewHeaderHeight + bottomTextViewHeight;
+static const CGFloat daYunTextViewHeight = bottomViewHeight - tableViewHeaderHeight + bottomTextViewHeight+leftVerLineOffset;
 static const NSInteger daYunTableViewCount = 10;
 static const CGFloat daYunTableCellHeight = (daYunTextViewHeight-textViewTitleHeight) / daYunTableViewCount;
 static const CGFloat daYunTableViewWidth = 123.0f;

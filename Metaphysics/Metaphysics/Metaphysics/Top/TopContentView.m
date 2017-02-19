@@ -131,15 +131,69 @@
     }
     else if(textField == self.gregorianMonthTxt ||
             textField == self.lunarMonthTxt){
-        return YES;
+        NSString *completeStr = [textField.text stringByReplacingCharactersInRange:range
+                                                                        withString:string];
+        if(completeStr.length>2){
+            return NO;
+        }
+        
+        if([completeStr integerValue]>12){
+            return NO;
+        }
+        
+        if(string.length>0){
+            unichar single = [string characterAtIndex:0];
+            if(single >= '1' && single <= '9'){
+                return YES;
+            }
+        }
+        else{
+            return YES;
+        }
     }
     else if(textField == self.gregorianDayTxt ||
             textField == self.lunarDayTxt){
-        return YES;
+        NSString *completeStr = [textField.text stringByReplacingCharactersInRange:range
+                                                                        withString:string];
+        if(completeStr.length>2){
+            return NO;
+        }
+        
+        if([completeStr integerValue]>31){
+            return NO;
+        }
+        
+        if(string.length>0){
+            unichar single = [string characterAtIndex:0];
+            if(single >= '0' && single <= '9'){
+                return YES;
+            }
+        }
+        else{
+            return YES;
+        }
     }
     else if(textField == self.gregorianHourTxt ||
             textField == self.lunarHourTxt){
-        return YES;
+        NSString *completeStr = [textField.text stringByReplacingCharactersInRange:range
+                                                                        withString:string];
+        if(completeStr.length>2){
+            return NO;
+        }
+        
+        if([completeStr integerValue]>12){
+            return NO;
+        }
+        
+        if(string.length>0){
+            unichar single = [string characterAtIndex:0];
+            if(single >= '1' && single <= '9'){
+                return YES;
+            }
+        }
+        else{
+            return YES;
+        }
     }
     return NO;
 }

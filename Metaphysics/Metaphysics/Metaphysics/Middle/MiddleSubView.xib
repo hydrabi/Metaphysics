@@ -158,6 +158,9 @@
                         <constraint firstAttribute="height" constant="34" id="5hr-Ln-Qc9"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="showFormButtonAction:" destination="c13-5W-LY5" eventType="touchUpInside" id="2Pj-5W-L5Y"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

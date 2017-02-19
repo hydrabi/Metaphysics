@@ -74,6 +74,7 @@
         }
     }
     
+    self.hadShowSolarTermsCollectionView = NO;
     self.hadHiddenBottomTableView = NO;
     self.hiddenBottomTableViewTag = 0;
     self.bottomLocation = @{}.mutableCopy;

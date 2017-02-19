@@ -23,6 +23,8 @@
 @property (nonatomic,strong)RACSignal *currentBottomTextViewOperationSig;
 //左边菜单选中上面部分的操作信号
 @property (nonatomic,strong)RACSignal *leftMenuTopSelectedOperationSig;
+//节气显示与否
+@property (nonatomic,assign)BOOL hadShowSolarTermsCollectionView;
 //左边菜单tableview操作信号
 @property (nonatomic,strong)RACSignal *reloadLeftTableSig;
 

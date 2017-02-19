@@ -46,6 +46,15 @@
     self.textField1.font = [UIFont systemFontOfSize:titleFontSize_20];
     self.textField2.font = [UIFont systemFontOfSize:titleFontSize_20];
     
+    self.yearLabel.layer.borderWidth = 1.0f;
+    self.yearLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.monthLabel.layer.borderWidth = 1.0f;
+    self.monthLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.dayLabel.layer.borderWidth = 1.0f;
+    self.dayLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.hourLabel.layer.borderWidth = 1.0f;
+    self.hourLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    
     self.backgroundColor = [UIColor whiteColor];
     self.layer.borderColor = [UIColor blackColor].CGColor;
     self.layer.borderWidth = 1.0f;

@@ -12,6 +12,7 @@
 #import "SolarTermsThirdCell.h"
 #import "SolarTermsNumberCell.h"
 #import "SolarTermsMulLineCell.h"
+#import "SolarTermsMonthCell.h"
 
 static NSString *firstCellIdentifier = @"firstCellIdentifier";
 static NSString *secondCellIdentifier = @"secondCellIdentifier";
@@ -19,6 +20,7 @@ static NSString *thirdCellIdentifier = @"thirdCellIdentifier";
 static NSString *numberCellIdentifier = @"numberCellIdentifier";
 static NSString *mulLineCellIdentifier = @"mulLineCellIdentifier";
 static NSString *emptyellIdentifier = @"emptyellIdentifier";
+static NSString *monthCellIdentifier = @"monthCellIdentifier";
 
 @implementation SolarTermsCollectionViewDataSource
 
@@ -54,6 +56,10 @@ static NSString *emptyellIdentifier = @"emptyellIdentifier";
                                                     bundle:nil]
           forCellWithReuseIdentifier:mulLineCellIdentifier];
     
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsMonthCell class])
+                                                    bundle:nil]
+          forCellWithReuseIdentifier:monthCellIdentifier];
+    
     [self.collectionView registerClass:[UICollectionViewCell class]
             forCellWithReuseIdentifier:emptyellIdentifier];
 }
@@ -72,7 +78,7 @@ static NSString *emptyellIdentifier = @"emptyellIdentifier";
         return 2;
     }
     else if (section == 2){
-        return 3;
+        return 4;
     }
     else if (section == 3){
         return 31;
@@ -123,7 +129,10 @@ static NSString *emptyellIdentifier = @"emptyellIdentifier";
         return cell;
     }
     else if(indexPath.section == 5){
-        
+        SolarTermsMonthCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:monthCellIdentifier
+                                                                              forIndexPath:indexPath];
+        CGFloat cloumn = (CGRectGetWidth(collectionView.frame)-30)/31.0f;
+        cell.leadingConstraint.constant = cloumn*25+24;
         return cell;
     }
     else if(indexPath.section == 6){
@@ -142,45 +151,48 @@ static NSString *emptyellIdentifier = @"emptyellIdentifier";
 
 #pragma mark - UICollectionViewDelegate
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat cloumn = (CGRectGetWidth(collectionView.frame)-30)/31.0f;
     if(indexPath.section == 0){
         return CGSizeMake(CGRectGetWidth(collectionView.frame), 50);
     }
     else if(indexPath.section == 1){
-        return CGSizeMake(CGRectGetWidth(collectionView.frame)/2-1, 40);
+        return CGSizeMake((CGRectGetWidth(collectionView.frame)-1)/2, 40);
     }
     else if(indexPath.section == 2){
         if(indexPath.row == 0){
-            return CGSizeMake(35.0f*7, 40);
+            return CGSizeMake(cloumn*7+6, 40);
         }
         else if (indexPath.row == 1){
-            return CGSizeMake(35.0f*7, 40);
+            return CGSizeMake(cloumn*7+6, 40);
         }
         else if (indexPath.row == 2){
-            return CGSizeMake(35.0f*16, 40);
+            return CGSizeMake(cloumn*16+15, 40);
         }
         else{
-            return CGSizeMake(35.0f*1, 40);
+            return CGSizeMake(cloumn*1, 40);
         }
     }
     else if(indexPath.section == 3){
-        return CGSizeMake(35.0f, 35.0f);
+        return CGSizeMake(cloumn, 35.0f);
     }
     else if(indexPath.section == 4){
-        return CGSizeMake(35.0f, 70.0f);
+        return CGSizeMake(cloumn, 70.0f);
     }
     else if(indexPath.section == 5){
         return CGSizeMake(CGRectGetWidth(collectionView.frame),35.0f);
     }
     else if(indexPath.section == 6){
-        return CGSizeMake(35.0f, 35.0f);
+        return CGSizeMake(cloumn, 35.0f);
     }
     else if(indexPath.section == 7){
-        return CGSizeMake(35.0f, 70.0f);
+        return CGSizeMake(cloumn, 70.0f);
     }
     return CGSizeZero;
 }
 
-
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(0, 0, 1, 0);
+}
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     return 1.0f;

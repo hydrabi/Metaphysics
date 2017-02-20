@@ -31,6 +31,8 @@
 		803C3AB61E477E9700C926B5 /* DaYunSubTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C3AB51E477E9700C926B5 /* DaYunSubTableViewDataSource.m */; };
 		803C3ABA1E477EAE00C926B5 /* DaYunSubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C3AB81E477EAE00C926B5 /* DaYunSubTableViewCell.m */; };
 		803C3ABB1E477EAE00C926B5 /* DaYunSubTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803C3AB91E477EAE00C926B5 /* DaYunSubTableViewCell.xib */; };
+		803FBD0D1E5B3C84009D6CBC /* SolarTermsMonthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803FBD0B1E5B3C84009D6CBC /* SolarTermsMonthCell.m */; };
+		803FBD0E1E5B3C84009D6CBC /* SolarTermsMonthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 803FBD0C1E5B3C84009D6CBC /* SolarTermsMonthCell.xib */; };
 		804088111E3D963800380A15 /* BaseContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088101E3D963800380A15 /* BaseContentView.m */; };
 		804088141E3D977A00380A15 /* MiddleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088131E3D977A00380A15 /* MiddleContentView.m */; };
 		804088161E3D97BD00380A15 /* MiddleContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804088151E3D97BD00380A15 /* MiddleContentView.xib */; };
@@ -131,6 +133,9 @@
 		803C3AB71E477EAE00C926B5 /* DaYunSubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaYunSubTableViewCell.h; sourceTree = "<group>"; };
 		803C3AB81E477EAE00C926B5 /* DaYunSubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaYunSubTableViewCell.m; sourceTree = "<group>"; };
 		803C3AB91E477EAE00C926B5 /* DaYunSubTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DaYunSubTableViewCell.xib; sourceTree = "<group>"; };
+		803FBD0A1E5B3C84009D6CBC /* SolarTermsMonthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolarTermsMonthCell.h; sourceTree = "<group>"; };
+		803FBD0B1E5B3C84009D6CBC /* SolarTermsMonthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolarTermsMonthCell.m; sourceTree = "<group>"; };
+		803FBD0C1E5B3C84009D6CBC /* SolarTermsMonthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolarTermsMonthCell.xib; sourceTree = "<group>"; };
 		8040880F1E3D963800380A15 /* BaseContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseContentView.h; sourceTree = "<group>"; };
 		804088101E3D963800380A15 /* BaseContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseContentView.m; sourceTree = "<group>"; };
 		804088121E3D977A00380A15 /* MiddleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleContentView.h; sourceTree = "<group>"; };
@@ -280,6 +285,9 @@
 				803390981E597F7200A83AFE /* SolarTermsMulLineCell.xib */,
 				8033909B1E59807100A83AFE /* SolarTermsCollectionView.h */,
 				8033909C1E59807100A83AFE /* SolarTermsCollectionView.m */,
+				803FBD0A1E5B3C84009D6CBC /* SolarTermsMonthCell.h */,
+				803FBD0B1E5B3C84009D6CBC /* SolarTermsMonthCell.m */,
+				803FBD0C1E5B3C84009D6CBC /* SolarTermsMonthCell.xib */,
 			);
 			path = SolarTermsCollectionView;
 			sourceTree = "<group>";
@@ -729,6 +737,7 @@
 				80F8C2451E3C95E70036186A /* LeftTableViewCell.xib in Resources */,
 				80F8C2061E3C371F0036186A /* LaunchScreen.storyboard in Resources */,
 				80F8C24F1E3C98000036186A /* TopContentView.xib in Resources */,
+				803FBD0E1E5B3C84009D6CBC /* SolarTermsMonthCell.xib in Resources */,
 				80F8C2221E3C3C1B0036186A /* MainViewController.xib in Resources */,
 				8036382C1E5057E4006EA3E4 /* JiaZiCollectionViewController.xib in Resources */,
 				80F8C2031E3C371F0036186A /* Assets.xcassets in Resources */,
@@ -832,6 +841,7 @@
 				80160A7A1E54AEAF007DA35C /* DatePickViewModel.m in Sources */,
 				8040881D1E3E25F100380A15 /* MiddleSubView.m in Sources */,
 				804088221E3F083F00380A15 /* BottomContentView.m in Sources */,
+				803FBD0D1E5B3C84009D6CBC /* SolarTermsMonthCell.m in Sources */,
 				803C3AB61E477E9700C926B5 /* DaYunSubTableViewDataSource.m in Sources */,
 				80F8C2441E3C95E70036186A /* LeftTableViewCell.m in Sources */,
 				806012141E49A7DE006B121F /* NormalTextView.m in Sources */,

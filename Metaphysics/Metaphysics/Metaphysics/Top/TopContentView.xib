@@ -346,8 +346,8 @@
             <connections>
                 <outlet property="firstTextField" destination="Js4-1e-GC4" id="g6t-bZ-ega"/>
                 <outlet property="gregorianCalendarSelectedButton" destination="4lY-ds-0g3" id="ZoJ-xh-f8a"/>
-                <outlet property="gregorianDayTxt" destination="8c7-B4-uKT" id="qtp-NQ-5Bp"/>
-                <outlet property="gregorianHourTxt" destination="QDt-TG-aol" id="D32-aW-fRG"/>
+                <outlet property="gregorianDayTxt" destination="QDt-TG-aol" id="EXh-Zs-aK3"/>
+                <outlet property="gregorianHourTxt" destination="8c7-B4-uKT" id="Vtd-7l-fsA"/>
                 <outlet property="gregorianMonthTxt" destination="2Vf-4s-yjf" id="mhd-53-U0z"/>
                 <outlet property="gregorianYearTxt" destination="aE9-jt-5wP" id="1M9-2S-fdQ"/>
                 <outlet property="hideButton" destination="npl-zQ-azx" id="2KL-yJ-xzA"/>

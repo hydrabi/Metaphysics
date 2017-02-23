@@ -111,16 +111,26 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
     else if(indexPath.section == 1){
         SolarTermsSecondCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:secondCellIdentifier
                                                                               forIndexPath:indexPath];
+        if(indexPath.row == 0){
+            cell.titleLabel.textAlignment = NSTextAlignmentLeft;
+        }
+        else{
+            cell.titleLabel.textAlignment = NSTextAlignmentRight;
+        }
         return cell;
     }
     else if(indexPath.section == 2){
         SolarTermsThirdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:thirdCellIdentifier
                                                                                forIndexPath:indexPath];
+        if(indexPath.row == 3){
+            cell.titleLabel.text = @"";
+        }
         return cell;
     }
     else if(indexPath.section == 3){
         SolarTermsNumberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:numberCellIdentifier
                                                                               forIndexPath:indexPath];
+        
         return cell;
     }
     else if(indexPath.section == 4){
@@ -153,39 +163,39 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat cloumn = (CGRectGetWidth(collectionView.frame)-30)/31.0f;
     if(indexPath.section == 0){
-        return CGSizeMake(CGRectGetWidth(collectionView.frame), 50);
+        return CGSizeMake(CGRectGetWidth(collectionView.frame), 62.0f);
     }
     else if(indexPath.section == 1){
-        return CGSizeMake((CGRectGetWidth(collectionView.frame)-1)/2, 40);
+        return CGSizeMake((CGRectGetWidth(collectionView.frame)-1)/2, 55.0f);
     }
     else if(indexPath.section == 2){
         if(indexPath.row == 0){
-            return CGSizeMake(cloumn*7+6, 40);
+            return CGSizeMake(cloumn*7+6, 55.0f);
         }
         else if (indexPath.row == 1){
-            return CGSizeMake(cloumn*7+6, 40);
+            return CGSizeMake(cloumn*7+6, 55.0f);
         }
         else if (indexPath.row == 2){
-            return CGSizeMake(cloumn*16+15, 40);
+            return CGSizeMake(cloumn*16+15, 55.0f);
         }
         else{
-            return CGSizeMake(cloumn*1, 40);
+            return CGSizeMake(cloumn*1, 55.0f);
         }
     }
     else if(indexPath.section == 3){
-        return CGSizeMake(cloumn, 35.0f);
+        return CGSizeMake(cloumn, 50.0f);
     }
     else if(indexPath.section == 4){
-        return CGSizeMake(cloumn, 70.0f);
+        return CGSizeMake(cloumn, 100.0f);
     }
     else if(indexPath.section == 5){
-        return CGSizeMake(CGRectGetWidth(collectionView.frame),35.0f);
+        return CGSizeMake(CGRectGetWidth(collectionView.frame),50.0f);
     }
     else if(indexPath.section == 6){
-        return CGSizeMake(cloumn, 35.0f);
+        return CGSizeMake(cloumn, 50.0f);
     }
     else if(indexPath.section == 7){
-        return CGSizeMake(cloumn, 70.0f);
+        return CGSizeMake(cloumn, 100.0f);
     }
     return CGSizeZero;
 }

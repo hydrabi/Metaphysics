@@ -30,7 +30,8 @@ typedef NS_ENUM(NSInteger,LeftSideMenuType) {
     LeftSideMenuTypeJiBing,         /**<疾病-灾祸*/
     
     LeftSideMenuTypeYanSe,           /**<颜色区分*/
-    LeftSideMenuTypeShenSha         /**<神煞表*/
+    LeftSideMenuTypeShenSha,         /**<神煞表*/
+    LeftSideMenuTypeVersion         /**<版本*/
 };
 
 typedef NS_ENUM(NSInteger,MiddleSubViewType){

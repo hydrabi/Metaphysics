@@ -48,6 +48,7 @@
                                 
                                 @(LeftSideMenuTypeGuanSi),
                                 @(LeftSideMenuTypeJiBing),
+                                @(LeftSideMenuTypeVersion),
                                 ]
                          ];
     
@@ -156,6 +157,9 @@
             break;
         case LeftSideMenuTypeShenSha:
             result = @"神煞表";
+            break;
+        case LeftSideMenuTypeVersion:
+            result = @"02_21";
             break;
         
         default:

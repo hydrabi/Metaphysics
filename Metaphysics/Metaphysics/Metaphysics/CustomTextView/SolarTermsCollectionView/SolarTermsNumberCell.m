@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.titleLabel.font = [UIFont systemFontOfSize:titleFontSize_30];
     self.backgroundColor = [UIColor whiteColor];
 }
 

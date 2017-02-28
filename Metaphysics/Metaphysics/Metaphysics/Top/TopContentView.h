@@ -33,4 +33,5 @@
 //农历时
 @property (nonatomic,weak)IBOutlet UITextField *lunarHourTxt;
 +(instancetype)instanceTopContentView;
+-(void)bindViewModel;
 @end

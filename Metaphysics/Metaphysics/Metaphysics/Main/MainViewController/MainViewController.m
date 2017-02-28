@@ -73,6 +73,7 @@
     
     self.topContentView = [TopContentView instanceTopContentView];
     [self.view addSubview:self.topContentView];
+    [self.topContentView bindViewModel];
     
     self.middleContentView = [[MiddleContentView alloc] init];
     [self.view addSubview:self.middleContentView];

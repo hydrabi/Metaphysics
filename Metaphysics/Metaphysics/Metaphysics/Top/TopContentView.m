@@ -52,7 +52,6 @@
 
 -(id)awakeAfterUsingCoder:(NSCoder *)aDecoder{
     self.date = [MainViewModel sharedInstance].selectedDate;
-    [self bindViewModel];
     return [super awakeAfterUsingCoder:aDecoder];
 }
 
@@ -66,6 +65,10 @@
                                                                              NSNumber *month,
                                                                              NSNumber *day,
                                                                              NSNumber *hour){
+                                     //全都不为空且修改过
+                                     if(year && month && day && hour){
+                                         
+                                     }
                                      return nil;
                                  }]
       deliverOnMainThread]
@@ -74,15 +77,21 @@
          [self resetGregorianValue];
      }];
     
-    
+    [[self.gregorianYearTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.gregorianYear = @([text integerValue]);
+         }
+    }];
 }
 
 //重置公历
 -(void)resetGregorianValue{
-    self.gregorianYearTxt.text = [self.date.gregorianYear stringValue];
-    self.gregorianMonthTxt.text = [self.date.gregorianMonth stringValue];
-    self.gregorianDayTxt.text = [self.date.gregorianDay stringValue];
-    self.gregorianHourTxt.text = [self.date.gregorianHour stringValue];
+    self.gregorianYearTxt.text = [self.date.gregorianYear stringValue].length>0?[self.date.gregorianYear stringValue]:@"";
+    self.gregorianMonthTxt.text = [self.date.gregorianMonth stringValue].length>0?[self.date.gregorianMonth stringValue]:@"";
+    self.gregorianDayTxt.text = [self.date.gregorianDay stringValue].length>0?[self.date.gregorianDay stringValue]:@"";
+    self.gregorianHourTxt.text = [self.date.gregorianHour stringValue].length>0?[self.date.gregorianHour stringValue]:@"";
 }
 
 //重置农历

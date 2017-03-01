@@ -11,6 +11,8 @@
 #import "ShuangZaoData.h"
 #import "CurrentSelectDate.h"
 #import "UIConstantParameter.h"
+
+
 @class BottomLocation;
 @interface MainViewModel : BaseViewModel
 //左边的菜单页面
@@ -36,6 +38,7 @@
 @property (nonatomic,strong)NSString *branchesStr;
 //60甲子
 @property (nonatomic,strong)NSMutableArray *jiaZiArr;
+
 
 
 //是否正在隐藏底部的tableView
@@ -72,4 +75,9 @@
 -(void)selectTableViewHeaderWithTag:(NSInteger)tag;
 #pragma mark - 选择菜单的某一项
 -(void)selectMunuWithIndexPath:(NSIndexPath*)indexPath;
+
+/**
+ 公历转农历
+ */
+-(void)solarToLunar;
 @end

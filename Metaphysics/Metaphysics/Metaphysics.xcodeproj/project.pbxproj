@@ -74,7 +74,7 @@
 		80F8C2111E3C371F0036186A /* MetaphysicsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C2101E3C371F0036186A /* MetaphysicsUITests.m */; };
 		80F8C2211E3C3C1B0036186A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C21F1E3C3C1B0036186A /* MainViewController.m */; };
 		80F8C2221E3C3C1B0036186A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80F8C2201E3C3C1B0036186A /* MainViewController.xib */; };
-		80F8C2251E3C3C310036186A /* MainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C2241E3C3C310036186A /* MainViewModel.m */; };
+		80F8C2251E3C3C310036186A /* MainViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C2241E3C3C310036186A /* MainViewModel.mm */; };
 		80F8C22B1E3C3D390036186A /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C22A1E3C3D390036186A /* BaseViewModel.m */; };
 		80F8C22E1E3C3D4A0036186A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C22D1E3C3D4A0036186A /* BaseViewController.m */; };
 		80F8C2431E3C95E70036186A /* LeftSideMenuDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C23F1E3C95E70036186A /* LeftSideMenuDataSource.m */; };
@@ -211,7 +211,7 @@
 		80F8C21F1E3C3C1B0036186A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		80F8C2201E3C3C1B0036186A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		80F8C2231E3C3C310036186A /* MainViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewModel.h; sourceTree = "<group>"; };
-		80F8C2241E3C3C310036186A /* MainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewModel.m; sourceTree = "<group>"; };
+		80F8C2241E3C3C310036186A /* MainViewModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewModel.mm; sourceTree = "<group>"; };
 		80F8C2291E3C3D390036186A /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		80F8C22A1E3C3D390036186A /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		80F8C22C1E3C3D4A0036186A /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				80F8C2231E3C3C310036186A /* MainViewModel.h */,
-				80F8C2241E3C3C310036186A /* MainViewModel.m */,
+				80F8C2241E3C3C310036186A /* MainViewModel.mm */,
 				80B422661E435D770008E8E3 /* BottomLocation.h */,
 				80B422671E435D770008E8E3 /* BottomLocation.m */,
 			);
@@ -873,7 +873,7 @@
 				808763221E42E5C7005656BF /* DaYunTextView.m in Sources */,
 				804088111E3D963800380A15 /* BaseContentView.m in Sources */,
 				807196DD1E419717005E4A52 /* NSString+Addition.m in Sources */,
-				80F8C2251E3C3C310036186A /* MainViewModel.m in Sources */,
+				80F8C2251E3C3C310036186A /* MainViewModel.mm in Sources */,
 				803C3ABA1E477EAE00C926B5 /* DaYunSubTableViewCell.m in Sources */,
 				80160A761E54A0CC007DA35C /* DatePickViewController.m in Sources */,
 				8060120E1E499DDC006B121F /* LiuNianTextView.m in Sources */,
@@ -1009,7 +1009,9 @@
 			baseConfigurationReference = EB0359C62626B4AD5ED4802C /* Pods-Metaphysics.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				DEVELOPMENT_TEAM = 4ZFX22UBQA;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Metaphysics/PrefixHeader.pch";
 				INFOPLIST_FILE = Metaphysics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1024,7 +1026,9 @@
 			baseConfigurationReference = 0C4F8BD6755BC027A5C4C355 /* Pods-Metaphysics.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				DEVELOPMENT_TEAM = 4ZFX22UBQA;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Metaphysics/PrefixHeader.pch";
 				INFOPLIST_FILE = Metaphysics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

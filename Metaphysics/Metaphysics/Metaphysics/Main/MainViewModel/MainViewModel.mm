@@ -9,6 +9,11 @@
 #import "MainViewModel.h"
 #import <UIKit/UIKit.h>
 #import "BottomLocation.h"
+#import "TTLunarCalendar.h"
+@interface MainViewModel()
+@property (nonatomic, assign) Lunar*     lunar;
+@end
+
 @implementation MainViewModel
 
 +(instancetype)sharedInstance{
@@ -84,6 +89,7 @@
     self.currentSelectTopSectionMenuTypeArr = @[].mutableCopy;
     self.shuangZaoData = [[ShuangZaoData alloc] init];
     self.selectedDate = [[CurrentSelectDate alloc] init];
+    self.lunar = new Lunar();
     
     [self bindOperation];
 }
@@ -175,7 +181,7 @@
     if(self.leftMenuArr.count>indexPath.section){
         NSArray *temp = self.leftMenuArr[indexPath.section];
         if(temp.count>indexPath.row){
-            type = [temp[indexPath.row] integerValue];
+            type = (LeftSideMenuType)[temp[indexPath.row] integerValue];
         }
         
     }
@@ -287,6 +293,18 @@
     }
     [(RACSubject*)self.reloadLeftTableSig sendNext:nil];
     [(RACSubject*)self.reloadBottomTablesSig sendNext:nil];
+}
+
+#pragma mark - 日期转换
+-(void)solarToLunar{
+    struct LunarObj *obj = self.lunar->solar2lunar((int32_t)self.selectedDate.gregorianYear.integerValue,
+                                            (int32_t)self.selectedDate.gregorianMonth.integerValue,
+                                            (int32_t)self.selectedDate.gregorianDay.integerValue);
+    TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
+    self.selectedDate.lunarYear = @(date.lunarYear);
+    self.selectedDate.lunarMonth = @(date.lunarMonth);
+    self.selectedDate.lunarDay = @(date.lunarDay);
+    self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
 }
 
 @end

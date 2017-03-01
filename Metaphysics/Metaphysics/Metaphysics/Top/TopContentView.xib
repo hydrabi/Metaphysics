@@ -352,8 +352,8 @@
                 <outlet property="gregorianYearTxt" destination="aE9-jt-5wP" id="1M9-2S-fdQ"/>
                 <outlet property="hideButton" destination="npl-zQ-azx" id="2KL-yJ-xzA"/>
                 <outlet property="lunarCalendarSelectedButton" destination="bWT-FL-gEe" id="X6Z-LI-xlf"/>
-                <outlet property="lunarDayTxt" destination="baI-hu-bWN" id="h55-ip-tnA"/>
-                <outlet property="lunarHourTxt" destination="Veh-Zm-dVk" id="ctk-e1-DTf"/>
+                <outlet property="lunarDayTxt" destination="Veh-Zm-dVk" id="X7H-Wd-nq6"/>
+                <outlet property="lunarHourTxt" destination="baI-hu-bWN" id="Scr-DZ-1ef"/>
                 <outlet property="lunarMonthTxt" destination="Ydc-lk-c1b" id="3MR-tS-nTy"/>
                 <outlet property="lunarYearTxt" destination="Xur-HC-K9A" id="4ri-ze-G4f"/>
             </connections>

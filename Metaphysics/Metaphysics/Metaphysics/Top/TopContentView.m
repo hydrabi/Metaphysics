@@ -67,7 +67,7 @@
                                                                              NSNumber *hour){
                                      //全都不为空且修改过
                                      if(year && month && day && hour){
-                                         
+                                         [[MainViewModel sharedInstance] solarToLunar];
                                      }
                                      return nil;
                                  }]
@@ -77,6 +77,25 @@
          [self resetGregorianValue];
      }];
     
+    [[[RACSignal combineLatest:@[RACObserve(date, lunarYear),
+                                 RACObserve(date, lunarMonth),
+                                 RACObserve(date, lunarDay),
+                                 RACObserve(date, lunarHour)] reduce:^id(NSNumber *year,
+                                                                             NSNumber *month,
+                                                                             NSNumber *day,
+                                                                             NSNumber *hour){
+                                     //全都不为空且修改过
+                                     if(year && month && day && hour){
+                                        
+                                     }
+                                     return nil;
+                                 }]
+      deliverOnMainThread]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self resetLunarValue];
+     }];
+    
     [[self.gregorianYearTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
@@ -84,6 +103,30 @@
              date.gregorianYear = @([text integerValue]);
          }
     }];
+    
+    [[self.gregorianMonthTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.gregorianMonth = @([text integerValue]);
+         }
+     }];
+    
+    [[self.gregorianDayTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.gregorianDay = @([text integerValue]);
+         }
+     }];
+    
+    [[self.gregorianHourTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.gregorianHour = @([text integerValue]);
+         }
+     }];
 }
 
 //重置公历
@@ -96,10 +139,10 @@
 
 //重置农历
 -(void)resetLunarValue{
-    self.lunarYearTxt.text = [self.date.lunarYear stringValue];
-    self.lunarMonthTxt.text = [self.date.lunarMonth stringValue];
-    self.lunarDayTxt.text = [self.date.lunarDay stringValue];
-    self.lunarHourTxt.text = [self.date.lunarHour stringValue];
+    self.lunarYearTxt.text = [self.date.lunarYear stringValue].length>0?[self.date.lunarYear stringValue]:@"";
+    self.lunarMonthTxt.text = [self.date.lunarMonth stringValue].length>0?[self.date.lunarMonth stringValue]:@"";
+    self.lunarDayTxt.text = [self.date.lunarDay stringValue].length>0?[self.date.lunarDay stringValue]:@"";
+    self.lunarHourTxt.text = [self.date.lunarHour stringValue].length>0?[self.date.lunarHour stringValue]:@"";
 }
 #pragma mark - 点击操作
 -(IBAction)hideButtonClickAction{

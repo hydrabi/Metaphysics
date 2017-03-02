@@ -80,4 +80,9 @@
  公历转农历
  */
 -(void)solarToLunar;
+
+/**
+ 农历转公历
+ */
+-(void)lunarToSolar;
 @end

@@ -307,4 +307,18 @@
     self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
 }
 
+-(void)lunarToSolar{
+    bool isLeapMonth = false;
+    self.lunar->leapMonth((int32_t)self.selectedDate.lunarYear.integerValue) >0? isLeapMonth = true:isLeapMonth = false;
+    struct LunarObj *obj = self.lunar->lunar2solar((int32_t)self.selectedDate.lunarYear.integerValue,
+                                                   (int32_t)self.selectedDate.lunarMonth.integerValue,
+                                                   (int32_t)self.selectedDate.lunarDay.integerValue,
+                                                   isLeapMonth);
+    TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
+    self.selectedDate.gregorianYear = @(date.solarYear);
+    self.selectedDate.gregorianMonth = @(date.solarMonth);
+    self.selectedDate.gregorianDay = @(date.solarDay);
+    self.selectedDate.gregorianHour = self.selectedDate.lunarHour;
+}
+
 @end

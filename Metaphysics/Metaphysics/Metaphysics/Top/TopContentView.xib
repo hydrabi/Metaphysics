@@ -268,7 +268,7 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="lunarCalendarSelecteAction:" destination="ezC-E2-aVf" eventType="touchUpInside" id="nWt-18-xeh"/>
+                        <action selector="lunarCalendarSelecteAction:" destination="ezC-E2-aVf" eventType="touchUpInside" id="BcU-ku-lOx"/>
                     </connections>
                 </button>
             </subviews>
@@ -351,6 +351,7 @@
                 <outlet property="gregorianMonthTxt" destination="2Vf-4s-yjf" id="mhd-53-U0z"/>
                 <outlet property="gregorianYearTxt" destination="aE9-jt-5wP" id="1M9-2S-fdQ"/>
                 <outlet property="hideButton" destination="npl-zQ-azx" id="2KL-yJ-xzA"/>
+                <outlet property="leapMonthLabel" destination="JQI-DM-8ks" id="jbg-sK-qXO"/>
                 <outlet property="lunarCalendarSelectedButton" destination="bWT-FL-gEe" id="X6Z-LI-xlf"/>
                 <outlet property="lunarDayTxt" destination="Veh-Zm-dVk" id="X7H-Wd-nq6"/>
                 <outlet property="lunarHourTxt" destination="baI-hu-bWN" id="Scr-DZ-1ef"/>

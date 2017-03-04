@@ -85,4 +85,29 @@
  农历转公历
  */
 -(void)lunarToSolar;
+
+/**
+ 获取该年的闰月月份数
+
+ @param year 年份
+ @return 若该年存在闰月，返回闰月月份，否则返回0
+ */
+-(int32_t)getLeapMonthWithYear:(int32_t)year;
+
+/**
+ 获取该年闰月的日数
+
+ @param year 年份
+ @return 若该年存在闰月，返回闰月日数，否则返回0
+ */
+-(int32_t)getLeapDayWithYear:(int32_t)year;
+
+/**
+ 获取农历月份日数
+
+ @param year 年
+ @param month 农历月份
+ @return 农历月份日数
+ */
+-(int32_t)getLunarDayWithYear:(int32_t)year month:(int32_t)month;
 @end

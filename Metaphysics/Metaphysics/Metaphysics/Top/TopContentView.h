@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PlaceHolderView.h"
 
-@interface TopContentView : UIView
+@interface TopContentView : UIView<UIPopoverControllerDelegate>
 @property (nonatomic,weak)IBOutlet UIButton *hideButton;
 @property (nonatomic,weak)IBOutlet UITextField *firstTextField;
 //农历选择按钮
@@ -32,6 +32,9 @@
 @property (nonatomic,weak)IBOutlet UITextField *lunarDayTxt;
 //农历时
 @property (nonatomic,weak)IBOutlet UITextField *lunarHourTxt;
+//是否闰月
+@property (nonatomic,weak)IBOutlet UILabel *leapMonthLabel;
+
 +(instancetype)instanceTopContentView;
 -(void)bindViewModel;
 @end

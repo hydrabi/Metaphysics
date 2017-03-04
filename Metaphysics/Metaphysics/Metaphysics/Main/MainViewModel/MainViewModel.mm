@@ -297,28 +297,66 @@
 
 #pragma mark - 日期转换
 -(void)solarToLunar{
-    struct LunarObj *obj = self.lunar->solar2lunar((int32_t)self.selectedDate.gregorianYear.integerValue,
-                                            (int32_t)self.selectedDate.gregorianMonth.integerValue,
-                                            (int32_t)self.selectedDate.gregorianDay.integerValue);
-    TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
-    self.selectedDate.lunarYear = @(date.lunarYear);
-    self.selectedDate.lunarMonth = @(date.lunarMonth);
-    self.selectedDate.lunarDay = @(date.lunarDay);
-    self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
+    if(self.selectedDate.gregorianYear.integerValue>=1900 &&
+       self.selectedDate.gregorianYear.integerValue<=2100){
+        struct LunarObj *obj = self.lunar->solar2lunar((int32_t)self.selectedDate.gregorianYear.integerValue,
+                                                       (int32_t)self.selectedDate.gregorianMonth.integerValue,
+                                                       (int32_t)self.selectedDate.gregorianDay.integerValue);
+        if(obj != NULL){
+            TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
+            self.selectedDate.lunarYear = @(date.lunarYear);
+            self.selectedDate.lunarMonth = @(date.lunarMonth);
+            self.selectedDate.lunarDay = @(date.lunarDay);
+            self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
+            self.selectedDate.isLeapMonth = @(date.isLeap);
+        }
+        
+    }
+    
 }
 
 -(void)lunarToSolar{
-    bool isLeapMonth = false;
-    self.lunar->leapMonth((int32_t)self.selectedDate.lunarYear.integerValue) >0? isLeapMonth = true:isLeapMonth = false;
-    struct LunarObj *obj = self.lunar->lunar2solar((int32_t)self.selectedDate.lunarYear.integerValue,
-                                                   (int32_t)self.selectedDate.lunarMonth.integerValue,
-                                                   (int32_t)self.selectedDate.lunarDay.integerValue,
-                                                   isLeapMonth);
-    TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
-    self.selectedDate.gregorianYear = @(date.solarYear);
-    self.selectedDate.gregorianMonth = @(date.solarMonth);
-    self.selectedDate.gregorianDay = @(date.solarDay);
-    self.selectedDate.gregorianHour = self.selectedDate.lunarHour;
+    if(self.selectedDate.lunarYear.integerValue>=1900 &&
+       self.selectedDate.lunarYear.integerValue<=2100){
+        int leapMonth = self.lunar->leapMonth((int32_t)self.selectedDate.lunarYear.integerValue);
+        struct LunarObj *obj;
+        //当前选中的是闰月
+        if([self.selectedDate.isLeapMonth boolValue] &&
+           self.selectedDate.lunarMonth.integerValue == leapMonth){
+            obj = self.lunar->lunar2solar((int32_t)self.selectedDate.lunarYear.integerValue,
+                                          (int32_t)self.selectedDate.lunarMonth.integerValue,
+                                          (int32_t)self.selectedDate.lunarDay.integerValue,
+                                          true);
+        }
+        else{
+            obj = self.lunar->lunar2solar((int32_t)self.selectedDate.lunarYear.integerValue,
+                                          (int32_t)self.selectedDate.lunarMonth.integerValue,
+                                          (int32_t)self.selectedDate.lunarDay.integerValue,
+                                          false);
+        }
+        
+        if(obj != NULL){
+            TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
+            self.selectedDate.gregorianYear = @(date.solarYear);
+            self.selectedDate.gregorianMonth = @(date.solarMonth);
+            self.selectedDate.gregorianDay = @(date.solarDay);
+            self.selectedDate.gregorianHour = self.selectedDate.lunarHour;
+        }
+        
+    }
+    
+}
+
+-(int32_t)getLeapMonthWithYear:(int32_t)year{
+    return self.lunar->leapMonth(year);
+}
+
+-(int32_t)getLeapDayWithYear:(int32_t)year{
+    return self.lunar->leapDays(year);
+}
+
+-(int32_t)getLunarDayWithYear:(int32_t)year month:(int32_t)month{
+    return self.lunar->monthDays(year, month);
 }
 
 @end

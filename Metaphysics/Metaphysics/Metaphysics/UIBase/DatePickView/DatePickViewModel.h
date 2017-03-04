@@ -16,6 +16,8 @@
 @property (nonatomic,strong)NSMutableArray *daysArr;
 @property (nonatomic,strong)NSMutableArray *hoursArr;
 @property (nonatomic,weak)CurrentSelectDate *date;
+//选择了闰月
+@property (nonatomic,assign)NSInteger leapMonth;
 -(void)createYearsArr;
 -(void)createMonthsArr;
 -(void)createDaysArr;

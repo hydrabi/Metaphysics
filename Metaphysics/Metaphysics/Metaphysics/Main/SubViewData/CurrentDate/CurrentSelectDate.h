@@ -9,12 +9,13 @@
 #import "SubViewData.h"
 
 @interface CurrentSelectDate : SubViewData
-@property (nonatomic,assign)NSNumber *gregorianYear;
-@property (nonatomic,assign)NSNumber * gregorianMonth;
-@property (nonatomic,assign)NSNumber * gregorianDay;
-@property (nonatomic,assign)NSNumber * gregorianHour;
-@property (nonatomic,assign)NSNumber * lunarYear;
-@property (nonatomic,assign)NSNumber * lunarMonth;
-@property (nonatomic,assign)NSNumber * lunarDay;
-@property (nonatomic,assign)NSNumber * lunarHour;
+@property (nonatomic,strong)NSNumber *gregorianYear;
+@property (nonatomic,strong)NSNumber * gregorianMonth;
+@property (nonatomic,strong)NSNumber * gregorianDay;
+@property (nonatomic,strong)NSNumber * gregorianHour;
+@property (nonatomic,strong)NSNumber * lunarYear;
+@property (nonatomic,strong)NSNumber * lunarMonth;
+@property (nonatomic,strong)NSNumber * lunarDay;
+@property (nonatomic,strong)NSNumber * lunarHour;
+@property (nonatomic,strong)NSNumber * isLeapMonth;
 @end

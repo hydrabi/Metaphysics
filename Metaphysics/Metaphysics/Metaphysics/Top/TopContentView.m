@@ -10,10 +10,12 @@
 #import "UIConstantParameter.h"
 #import "DatePickViewController.h"
 #import "MainViewModel.h"
+#import "DatePickViewModel.h"
 //PlaceHolderView(TopContentView)
 
 @interface TopContentView()<UITextFieldDelegate>
 @property (nonatomic,weak)CurrentSelectDate *date;
+@property (nonatomic,strong)UIPopoverController *popover;
 @end
 
 @implementation TopContentView
@@ -65,10 +67,6 @@
                                                                              NSNumber *month,
                                                                              NSNumber *day,
                                                                              NSNumber *hour){
-                                     //全都不为空且修改过
-                                     if(year && month && day && hour){
-                                         [[MainViewModel sharedInstance] solarToLunar];
-                                     }
                                      return nil;
                                  }]
       deliverOnMainThread]
@@ -84,10 +82,7 @@
                                                                              NSNumber *month,
                                                                              NSNumber *day,
                                                                              NSNumber *hour){
-                                     //全都不为空且修改过
-                                     if(year && month && day && hour){
-                                        
-                                     }
+
                                      return nil;
                                  }]
       deliverOnMainThread]
@@ -96,11 +91,13 @@
          [self resetLunarValue];
      }];
     
+    //新历
     [[self.gregorianYearTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
          if(text.length>0){
              date.gregorianYear = @([text integerValue]);
+             [self shouldTransformTolunar];
          }
     }];
     
@@ -109,6 +106,7 @@
      subscribeNext:^(NSString *text){
          if(text.length>0){
              date.gregorianMonth = @([text integerValue]);
+             [self shouldTransformTolunar];
          }
      }];
     
@@ -117,6 +115,7 @@
      subscribeNext:^(NSString *text){
          if(text.length>0){
              date.gregorianDay = @([text integerValue]);
+             [self shouldTransformTolunar];
          }
      }];
     
@@ -125,8 +124,84 @@
      subscribeNext:^(NSString *text){
          if(text.length>0){
              date.gregorianHour = @([text integerValue]);
+             [self shouldTransformTolunar];
          }
      }];
+    
+    //农历
+    [[self.lunarYearTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.lunarYear = @([text integerValue]);
+             [self shouldTransformToSolur];
+         }
+     }];
+    
+    [[self.lunarMonthTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.lunarMonth = @([text integerValue]);
+             [self shouldTransformToSolur];
+         }
+     }];
+    
+    [[self.lunarDayTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.lunarDay = @([text integerValue]);
+             [self shouldTransformToSolur];
+         }
+     }];
+    
+    [[self.lunarHourTxt.rac_textSignal
+      deliverOnMainThread]
+     subscribeNext:^(NSString *text){
+         if(text.length>0){
+             date.lunarHour = @([text integerValue]);
+             [self shouldTransformToSolur];
+         }
+     }];
+    
+    [[[self rac_signalForSelector:@selector(popoverControllerDidDismissPopover:)
+                   fromProtocol:@protocol(UIPopoverControllerDelegate)]
+     deliverOnMainThread]
+     subscribeNext:^(RACTuple *tuple){
+         UIPopoverController *pop = (UIPopoverController*)tuple.first;
+         DatePickViewController *controller = (DatePickViewController*)(pop.contentViewController);
+         DatePickViewModel *model = (DatePickViewModel*)controller.viewModel;
+         //新历
+         if(model.calendarType == CalendarTypeGregorian){
+             [self shouldTransformTolunar];
+         }
+         else{
+             [self shouldTransformToSolur];
+         }
+     }];
+}
+
+//是否足够条件需要转换为农历
+-(void)shouldTransformTolunar{
+    CurrentSelectDate *date = [MainViewModel sharedInstance].selectedDate;
+    if(date.gregorianYear &&
+       date.gregorianMonth &&
+       date.gregorianDay &&
+       date.gregorianHour){
+        [[MainViewModel sharedInstance] solarToLunar];
+    }
+}
+
+//是否足够条件需要转换为新历
+-(void)shouldTransformToSolur{
+    CurrentSelectDate *date = [MainViewModel sharedInstance].selectedDate;
+    if(date.lunarYear &&
+       date.lunarMonth &&
+       date.lunarDay &&
+       date.lunarHour){
+        [[MainViewModel sharedInstance] lunarToSolar];
+    }
 }
 
 //重置公历
@@ -143,6 +218,14 @@
     self.lunarMonthTxt.text = [self.date.lunarMonth stringValue].length>0?[self.date.lunarMonth stringValue]:@"";
     self.lunarDayTxt.text = [self.date.lunarDay stringValue].length>0?[self.date.lunarDay stringValue]:@"";
     self.lunarHourTxt.text = [self.date.lunarHour stringValue].length>0?[self.date.lunarHour stringValue]:@"";
+    
+    //判断是否闰月
+    if([[MainViewModel sharedInstance] selectedDate].isLeapMonth){
+        self.leapMonthLabel.hidden = NO;
+    }
+    else{
+        self.leapMonthLabel.hidden = YES;
+    }
 }
 #pragma mark - 点击操作
 -(IBAction)hideButtonClickAction{
@@ -151,12 +234,14 @@
 
 //农历选择
 -(IBAction)lunarCalendarSelecteAction:(UIButton*)sender{
-    
+    self.popover = [DatePickViewController presentViewControllerWithRect:sender.frame
+                                                                    view:self
+                                                                    type:CalendarTypeLunar];
 }
 
 //公历选择
 -(IBAction)gregorianCalendarSelecteAction:(UIButton*)sender{
-    [DatePickViewController presentViewControllerWithRect:sender.frame
+    self.popover = [DatePickViewController presentViewControllerWithRect:sender.frame
                                                      view:self
                                                      type:CalendarTypeGregorian];
 }
@@ -195,7 +280,7 @@
         
         if(string.length>0){
             unichar single = [string characterAtIndex:0];
-            if(single >= '1' && single <= '9'){
+            if(single >= '0' && single <= '9'){
                 return YES;
             }
         }
@@ -239,7 +324,7 @@
         
         if(string.length>0){
             unichar single = [string characterAtIndex:0];
-            if(single >= '1' && single <= '9'){
+            if(single >= '0' && single <= '9'){
                 return YES;
             }
         }

@@ -170,7 +170,19 @@
         return [self.viewModel.yearsArr[row] stringValue];
     }
     else if (component == 1){
-        return [self.viewModel.monthsArr[row] stringValue];
+        if(self.viewModel.calendarType == CalendarTypeLunar){
+            if(self.viewModel.leapMonth == row &&
+               self.viewModel.leapMonth == [self.viewModel.monthsArr[row] integerValue]){
+                return [NSString stringWithFormat:@"闰%@",[self.viewModel.monthsArr[row] stringValue]];
+            }
+            else{
+                return [self.viewModel.monthsArr[row] stringValue];
+            }
+        }
+        else{
+            return [self.viewModel.monthsArr[row] stringValue];
+        }
+        
     }
     else if (component == 2){
         return [self.viewModel.daysArr[row] stringValue];

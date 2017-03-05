@@ -63,10 +63,12 @@
     [[[RACSignal combineLatest:@[RACObserve(date, gregorianYear),
                                  RACObserve(date, gregorianMonth),
                                  RACObserve(date, gregorianDay),
-                                 RACObserve(date, gregorianHour)] reduce:^id(NSNumber *year,
+                                 RACObserve(date, gregorianHour),
+                                 RACObserve(date, isLeapMonth)] reduce:^id(NSNumber *year,
                                                                              NSNumber *month,
                                                                              NSNumber *day,
-                                                                             NSNumber *hour){
+                                                                             NSNumber *hour,
+                                                                           NSNumber *isLeapMonth){
                                      return nil;
                                  }]
       deliverOnMainThread]
@@ -78,10 +80,12 @@
     [[[RACSignal combineLatest:@[RACObserve(date, lunarYear),
                                  RACObserve(date, lunarMonth),
                                  RACObserve(date, lunarDay),
-                                 RACObserve(date, lunarHour)] reduce:^id(NSNumber *year,
+                                 RACObserve(date, lunarHour),
+                                 RACObserve(date, isLeapMonth)] reduce:^id(NSNumber *year,
                                                                              NSNumber *month,
                                                                              NSNumber *day,
-                                                                             NSNumber *hour){
+                                                                             NSNumber *hour,
+                                                                           NSNumber *isLeapMonth){
 
                                      return nil;
                                  }]
@@ -90,6 +94,7 @@
          @strongify(self)
          [self resetLunarValue];
      }];
+    
     
     //新历
     [[self.gregorianYearTxt.rac_textSignal
@@ -210,6 +215,7 @@
     self.gregorianMonthTxt.text = [self.date.gregorianMonth stringValue].length>0?[self.date.gregorianMonth stringValue]:@"";
     self.gregorianDayTxt.text = [self.date.gregorianDay stringValue].length>0?[self.date.gregorianDay stringValue]:@"";
     self.gregorianHourTxt.text = [self.date.gregorianHour stringValue].length>0?[self.date.gregorianHour stringValue]:@"";
+    [self shouldShowLeapMonth];
 }
 
 //重置农历
@@ -218,15 +224,19 @@
     self.lunarMonthTxt.text = [self.date.lunarMonth stringValue].length>0?[self.date.lunarMonth stringValue]:@"";
     self.lunarDayTxt.text = [self.date.lunarDay stringValue].length>0?[self.date.lunarDay stringValue]:@"";
     self.lunarHourTxt.text = [self.date.lunarHour stringValue].length>0?[self.date.lunarHour stringValue]:@"";
-    
+    [self shouldShowLeapMonth];
+}
+
+-(void)shouldShowLeapMonth{
     //判断是否闰月
-    if([[MainViewModel sharedInstance] selectedDate].isLeapMonth){
+    if([[MainViewModel sharedInstance] selectedDate].isLeapMonth.boolValue){
         self.leapMonthLabel.hidden = NO;
     }
     else{
         self.leapMonthLabel.hidden = YES;
     }
 }
+
 #pragma mark - 点击操作
 -(IBAction)hideButtonClickAction{
     self.firstTextField.hidden = !self.firstTextField.hidden;

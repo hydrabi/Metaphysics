@@ -11,7 +11,7 @@
 #import "ShuangZaoData.h"
 #import "CurrentSelectDate.h"
 #import "UIConstantParameter.h"
-
+#import "RiZhuDate.h"
 
 @class BottomLocation;
 @interface MainViewModel : BaseViewModel
@@ -66,6 +66,8 @@
 @property (nonatomic,strong)ShuangZaoData *shuangZaoData;
 //日期数据
 @property (nonatomic,strong)CurrentSelectDate *selectedDate;
+//日柱数据
+@property (nonatomic,strong)RiZhuDate *riZhuDate;
 
 +(instancetype)sharedInstance;
 -(NSString*)getSpecificMenuTitleWithType:(LeftSideMenuType)type;
@@ -110,4 +112,12 @@
  @return 农历月份日数
  */
 -(int32_t)getLunarDayWithYear:(int32_t)year month:(int32_t)month;
+
+/**
+ 获取该年所有节气日期
+
+ @param year 选定的年
+ @return 所有节气日期
+ */
+-(NSMutableArray*)getTremWithYear:(int32_t)year;
 @end

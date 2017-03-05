@@ -89,6 +89,7 @@
     self.currentSelectTopSectionMenuTypeArr = @[].mutableCopy;
     self.shuangZaoData = [[ShuangZaoData alloc] init];
     self.selectedDate = [[CurrentSelectDate alloc] init];
+    self.riZhuDate = [[RiZhuDate alloc] init];
     self.lunar = new Lunar();
     
     [self bindOperation];
@@ -309,8 +310,8 @@
             self.selectedDate.lunarDay = @(date.lunarDay);
             self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
             self.selectedDate.isLeapMonth = @(date.isLeap);
+            [self.riZhuDate resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
         }
-        
     }
     
 }
@@ -341,10 +342,11 @@
             self.selectedDate.gregorianMonth = @(date.solarMonth);
             self.selectedDate.gregorianDay = @(date.solarDay);
             self.selectedDate.gregorianHour = self.selectedDate.lunarHour;
+            self.selectedDate.isLeapMonth = @(date.isLeap);
+            [self.riZhuDate resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
         }
         
     }
-    
 }
 
 -(int32_t)getLeapMonthWithYear:(int32_t)year{
@@ -357,6 +359,16 @@
 
 -(int32_t)getLunarDayWithYear:(int32_t)year month:(int32_t)month{
     return self.lunar->monthDays(year, month);
+}
+
+-(NSMutableArray*)getTremWithYear:(int32_t)year{
+    int32_t result;
+    NSMutableArray *allTerm = @[].mutableCopy;
+    for(int32_t i = 1;i<=24;i++){
+        result = self.lunar->getTerm(year, i);
+        [allTerm addObject:@(result)];
+    }
+    return  allTerm;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3190B25E97535932413C585F /* Pods_Metaphysics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */; };
+		800004151E6C571000044798 /* RiZhuDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 800004141E6C571000044798 /* RiZhuDate.m */; };
 		80160A761E54A0CC007DA35C /* DatePickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80160A741E54A0CC007DA35C /* DatePickViewController.m */; };
 		80160A771E54A0CC007DA35C /* DatePickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80160A751E54A0CC007DA35C /* DatePickViewController.xib */; };
 		80160A7A1E54AEAF007DA35C /* DatePickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80160A791E54AEAF007DA35C /* DatePickViewModel.m */; };
@@ -98,6 +99,8 @@
 
 /* Begin PBXFileReference section */
 		0C4F8BD6755BC027A5C4C355 /* Pods-Metaphysics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metaphysics.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metaphysics/Pods-Metaphysics.release.xcconfig"; sourceTree = "<group>"; };
+		800004131E6C571000044798 /* RiZhuDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiZhuDate.h; sourceTree = "<group>"; };
+		800004141E6C571000044798 /* RiZhuDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiZhuDate.m; sourceTree = "<group>"; };
 		80160A731E54A0CC007DA35C /* DatePickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickViewController.h; sourceTree = "<group>"; };
 		80160A741E54A0CC007DA35C /* DatePickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickViewController.m; sourceTree = "<group>"; };
 		80160A751E54A0CC007DA35C /* DatePickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickViewController.xib; sourceTree = "<group>"; };
@@ -257,6 +260,15 @@
 				824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		800004121E6C56FF00044798 /* RiZhuDate */ = {
+			isa = PBXGroup;
+			children = (
+				800004131E6C571000044798 /* RiZhuDate.h */,
+				800004141E6C571000044798 /* RiZhuDate.m */,
+			);
+			path = RiZhuDate;
 			sourceTree = "<group>";
 		};
 		80160A721E549D4C007DA35C /* DatePickView */ = {
@@ -620,6 +632,7 @@
 		80FFD0B01E514675002904AB /* SubViewData */ = {
 			isa = PBXGroup;
 			children = (
+				800004121E6C56FF00044798 /* RiZhuDate */,
 				8035DC521E55F3E50086C185 /* CurrentDate */,
 				80FFD0B21E5146F6002904AB /* SubViewData */,
 				80FFD0B11E514675002904AB /* shuangZaoData */,
@@ -852,6 +865,7 @@
 				8033908F1E597AD300A83AFE /* SolarTermsThirdCell.m in Sources */,
 				803C3AB31E477E7400C926B5 /* DaYunSubTextView.m in Sources */,
 				80FFD0B81E514843002904AB /* ShuangZaoData.m in Sources */,
+				800004151E6C571000044798 /* RiZhuDate.m in Sources */,
 				80F8C2211E3C3C1B0036186A /* MainViewController.m in Sources */,
 				80E8EAD31E48C81100F96129 /* DaYunSubTitleView.m in Sources */,
 				8033909D1E59807100A83AFE /* SolarTermsCollectionView.m in Sources */,

@@ -17,19 +17,27 @@
 
 -(void)resetTermWithYear:(NSInteger)year{
     self.currentSolarYear = year;
-    NSMutableArray *termsNums = [[MainViewModel alloc] getTremWithYear:(int32_t)year];
+    [self.allTermsDateArr removeAllObjects];
+    NSMutableArray *termsNums = [[MainViewModel sharedInstance] getTremWithYear:(int32_t)year];
     NSInteger month;
     NSInteger day;
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"]];
+    //取该年节气的时间集合
+    NSArray *solarTermTimeArr = [[MainViewModel sharedInstance].solarTermsTimeDic objectForKey:[NSString stringWithFormat:@"%ld",(long)year]];
+    
     for(NSInteger i = 0;i<termsNums.count;i++){
         month = (NSInteger)((i/2)+1);
         day = [termsNums[i] integerValue];
-        NSLog(@"%ld月%ld日",(long)month,(long)day);
+        NSString *time = solarTermTimeArr[i];
+        NSString *hour = [time substringWithRange:NSMakeRange(0, 2)];
+        NSString *minute = [time substringWithRange:NSMakeRange(3, 2)];
         [components setYear:self.currentSolarYear];
         [components setMonth:month];
         [components setDay:day];
+        [components setHour:hour.integerValue];
+        [components setMinute:minute.integerValue];
         NSDate *date = [calendar dateFromComponents:components];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -64,6 +72,23 @@
              @"小雪",
              @"大雪",
              @"冬至"];
+}
+
++(NSArray*)monthNameArr{
+    return @[
+             @"丑月",
+             @"寅月",
+             @"卯月",
+             @"辰月",
+             @"巳月",
+             @"午月",
+             @"未月",
+             @"申月",
+             @"酉月",
+             @"戌月",
+             @"亥月",
+             @"子月",
+             ];
 }
 
 @end

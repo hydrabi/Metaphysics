@@ -68,6 +68,8 @@
 @property (nonatomic,strong)CurrentSelectDate *selectedDate;
 //日柱数据
 @property (nonatomic,strong)RiZhuDate *riZhuDate;
+//1900~2100年节气精确到分的时间集合
+@property (nonatomic,strong)NSMutableDictionary *solarTermsTimeDic;
 
 +(instancetype)sharedInstance;
 -(NSString*)getSpecificMenuTitleWithType:(LeftSideMenuType)type;

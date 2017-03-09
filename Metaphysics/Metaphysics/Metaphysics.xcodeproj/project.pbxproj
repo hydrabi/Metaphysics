@@ -68,6 +68,8 @@
 		80B422681E435D770008E8E3 /* BottomLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B422671E435D770008E8E3 /* BottomLocation.m */; };
 		80E8EAD31E48C81100F96129 /* DaYunSubTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E8EAD21E48C81100F96129 /* DaYunSubTitleView.m */; };
 		80E8EAD51E48C83800F96129 /* DaYunSubTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80E8EAD41E48C83800F96129 /* DaYunSubTitleView.xib */; };
+		80EED8851E7048C800B58295 /* SolarTerm.csv in Resources */ = {isa = PBXBuildFile; fileRef = 80EED8841E7048C800B58295 /* SolarTerm.csv */; };
+		80EED8881E7049FF00B58295 /* AnalysisSolarTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EED8871E7049FF00B58295 /* AnalysisSolarTerm.m */; };
 		80F8C1F81E3C371E0036186A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C1F71E3C371E0036186A /* main.m */; };
 		80F8C1FB1E3C371E0036186A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C1FA1E3C371E0036186A /* AppDelegate.m */; };
 		80F8C2031E3C371F0036186A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F8C2021E3C371F0036186A /* Assets.xcassets */; };
@@ -200,6 +202,9 @@
 		80E8EAD11E48C81100F96129 /* DaYunSubTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaYunSubTitleView.h; sourceTree = "<group>"; };
 		80E8EAD21E48C81100F96129 /* DaYunSubTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaYunSubTitleView.m; sourceTree = "<group>"; };
 		80E8EAD41E48C83800F96129 /* DaYunSubTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DaYunSubTitleView.xib; sourceTree = "<group>"; };
+		80EED8841E7048C800B58295 /* SolarTerm.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SolarTerm.csv; sourceTree = "<group>"; };
+		80EED8861E7049FF00B58295 /* AnalysisSolarTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisSolarTerm.h; sourceTree = "<group>"; };
+		80EED8871E7049FF00B58295 /* AnalysisSolarTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisSolarTerm.m; sourceTree = "<group>"; };
 		80F8C1F31E3C371E0036186A /* Metaphysics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metaphysics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8C1F71E3C371E0036186A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		80F8C1F91E3C371E0036186A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -442,6 +447,16 @@
 			path = DaYunTextView;
 			sourceTree = "<group>";
 		};
+		80EED8831E70489C00B58295 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				80EED8841E7048C800B58295 /* SolarTerm.csv */,
+				80EED8861E7049FF00B58295 /* AnalysisSolarTerm.h */,
+				80EED8871E7049FF00B58295 /* AnalysisSolarTerm.m */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		80F8C1EA1E3C371E0036186A = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +480,7 @@
 		80F8C1F51E3C371E0036186A /* Metaphysics */ = {
 			isa = PBXGroup;
 			children = (
+				80EED8831E70489C00B58295 /* Resource */,
 				801F0AB81E65B89E00AF3718 /* Date */,
 				8087631E1E42E320005656BF /* CustomTextView */,
 				80F8C21B1E3C3B020036186A /* Main */,
@@ -763,6 +779,7 @@
 				803390861E593EE900A83AFE /* SolarTermsFirstCell.xib in Resources */,
 				80E8EAD51E48C83800F96129 /* DaYunSubTitleView.xib in Resources */,
 				8033909A1E597F7200A83AFE /* SolarTermsMulLineCell.xib in Resources */,
+				80EED8851E7048C800B58295 /* SolarTerm.csv in Resources */,
 				807196DA1E418E5A005E4A52 /* 17icon.ttf in Resources */,
 				80160A771E54A0CC007DA35C /* DatePickViewController.xib in Resources */,
 				80F8C2451E3C95E70036186A /* LeftTableViewCell.xib in Resources */,
@@ -882,6 +899,7 @@
 				803638231E505216006EA3E4 /* JiaZiCollectionViewCell.m in Sources */,
 				804088321E3F101E00380A15 /* BottomTableViewCell.m in Sources */,
 				803390941E597D5400A83AFE /* SolarTermsNumberCell.m in Sources */,
+				80EED8881E7049FF00B58295 /* AnalysisSolarTerm.m in Sources */,
 				8036382B1E5057E4006EA3E4 /* JiaZiCollectionViewController.m in Sources */,
 				80F8C1F81E3C371E0036186A /* main.m in Sources */,
 				808763221E42E5C7005656BF /* DaYunTextView.m in Sources */,

@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "BottomLocation.h"
 #import "TTLunarCalendar.h"
+#import "AnalysisSolarTerm.h"
+
 @interface MainViewModel()
 @property (nonatomic, assign) Lunar*     lunar;
 @end
@@ -91,6 +93,8 @@
     self.selectedDate = [[CurrentSelectDate alloc] init];
     self.riZhuDate = [[RiZhuDate alloc] init];
     self.lunar = new Lunar();
+    
+    self.solarTermsTimeDic = [AnalysisSolarTerm analysis];
     
     [self bindOperation];
 }

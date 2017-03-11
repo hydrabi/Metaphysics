@@ -157,7 +157,7 @@
 #pragma mark - 创建时
 -(void)createHoursArr{
     [self.hoursArr removeAllObjects];
-    for(NSInteger i = 1;i<=12;i++){
+    for(NSInteger i = 1;i<=24;i++){
         [self.hoursArr addObject:@(i)];
     }
 }

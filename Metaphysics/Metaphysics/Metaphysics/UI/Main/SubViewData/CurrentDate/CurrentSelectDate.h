@@ -18,4 +18,11 @@
 @property (nonatomic,strong)NSNumber * lunarDay;
 @property (nonatomic,strong)NSNumber * lunarHour;
 @property (nonatomic,strong)NSNumber * isLeapMonth;
+
+/**
+ 获取当前的日期
+
+ @return 当前的日期
+ */
+-(NSDate*)getGregorianDate;
 @end

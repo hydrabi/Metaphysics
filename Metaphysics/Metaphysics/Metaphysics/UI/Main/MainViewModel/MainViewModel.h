@@ -11,7 +11,7 @@
 #import "ShuangZaoData.h"
 #import "CurrentSelectDate.h"
 #import "UIConstantParameter.h"
-#import "RiZhuDate.h"
+#import "RiZhuData.h"
 
 @class BottomLocation;
 @interface MainViewModel : BaseViewModel
@@ -67,7 +67,7 @@
 //日期数据
 @property (nonatomic,strong)CurrentSelectDate *selectedDate;
 //日柱数据
-@property (nonatomic,strong)RiZhuDate *riZhuDate;
+@property (nonatomic,strong)RiZhuData *riZhuData;
 //1900~2100年节气精确到分的时间集合
 @property (nonatomic,strong)NSMutableDictionary *solarTermsTimeDic;
 

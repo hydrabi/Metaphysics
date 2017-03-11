@@ -25,4 +25,11 @@
     
 }
 
++(NSString*)stemsStr{
+    return @"甲乙丙丁戊己庚辛壬癸";
+}
+
++(NSString*)branchesStr{
+    return @"子丑寅卯辰巳午未申酉戌亥";
+}
 @end

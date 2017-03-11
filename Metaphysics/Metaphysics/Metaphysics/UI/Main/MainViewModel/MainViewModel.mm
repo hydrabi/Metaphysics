@@ -11,7 +11,7 @@
 #import "BottomLocation.h"
 #import "TTLunarCalendar.h"
 #import "AnalysisSolarTerm.h"
-
+#import "NSString+Addition.h"
 @interface MainViewModel()
 @property (nonatomic, assign) Lunar*     lunar;
 @end
@@ -59,8 +59,8 @@
                                 ]
                          ];
     
-    self.stemsStr = @"甲乙丙丁戊己庚辛壬癸";
-    self.branchesStr = @"子丑寅卯辰巳午未申酉戌亥";
+    self.stemsStr = [NSString stemsStr];
+    self.branchesStr = [NSString branchesStr];
     
     self.jiaZiArr = @[].mutableCopy;
     NSInteger i = 0;
@@ -91,7 +91,7 @@
     self.currentSelectTopSectionMenuTypeArr = @[].mutableCopy;
     self.shuangZaoData = [[ShuangZaoData alloc] init];
     self.selectedDate = [[CurrentSelectDate alloc] init];
-    self.riZhuDate = [[RiZhuDate alloc] init];
+    self.riZhuData = [[RiZhuData alloc] init];
     self.lunar = new Lunar();
     
     self.solarTermsTimeDic = [AnalysisSolarTerm analysis];
@@ -314,7 +314,7 @@
             self.selectedDate.lunarDay = @(date.lunarDay);
             self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
             self.selectedDate.isLeapMonth = @(date.isLeap);
-            [self.riZhuDate resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
+            [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
         }
     }
     
@@ -347,7 +347,7 @@
             self.selectedDate.gregorianDay = @(date.solarDay);
             self.selectedDate.gregorianHour = self.selectedDate.lunarHour;
             self.selectedDate.isLeapMonth = @(date.isLeap);
-            [self.riZhuDate resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
+            [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
         }
         
     }

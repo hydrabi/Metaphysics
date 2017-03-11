@@ -13,6 +13,8 @@
 #import "SolarTermsNumberCell.h"
 #import "SolarTermsMulLineCell.h"
 #import "SolarTermsMonthCell.h"
+#import "RiZhuData.h"
+#import "MainViewModel.h"
 
 static NSString *firstCellIdentifier = @"firstCellIdentifier";
 static NSString *secondCellIdentifier = @"secondCellIdentifier";
@@ -30,11 +32,11 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
         self.collectionView = collectionView;
         self.collectionView.delegate = self;
         self.collectionView.dataSource = self;
-//        self.collectionView.backgroundColor = [UIColor yellowColor];
         self.collectionView.backgroundView.backgroundColor = [UIColor blackColor];
         self.collectionView.layer.borderColor = [UIColor blackColor].CGColor;
         self.collectionView.layer.borderWidth = 1.0f;
         [self initialize];
+        [self bindViewModel];
     }
     return self;
 }
@@ -62,6 +64,17 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
     
     [self.collectionView registerClass:[UICollectionViewCell class]
             forCellWithReuseIdentifier:emptyellIdentifier];
+}
+
+-(void)bindViewModel{
+    @weakify(self)
+    RiZhuData *riZhuData = [[MainViewModel sharedInstance] riZhuData];
+    [[[riZhuData rac_signalForSelector:@selector(dealWithRiZhuData)]
+     deliverOnMainThread]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self.collectionView reloadData];
+     }];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -103,19 +116,38 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:emptyellIdentifier
                                                                            forIndexPath:indexPath];
+    RiZhuData *riZhuData = [[MainViewModel sharedInstance] riZhuData];
+    
     if(indexPath.section == 0){
         SolarTermsFirstCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:firstCellIdentifier
                                                          forIndexPath:indexPath];
+        cell.titleLabel.text = riZhuData.monthName;
         return cell;
     }
     else if(indexPath.section == 1){
         SolarTermsSecondCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:secondCellIdentifier
                                                                               forIndexPath:indexPath];
+        //有值才赋值，否则为空
+        cell.titleLabel.text = @"";
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy年MM月dd日HH时mm分"];
+        //左边
         if(indexPath.row == 0){
             cell.titleLabel.textAlignment = NSTextAlignmentLeft;
+            NSString *leftDate = [dateFormatter stringFromDate:riZhuData.leftTerm];
+            if(leftDate.length>0){
+                cell.titleLabel.text = [NSString stringWithFormat:@"%@:%@",riZhuData.leftTermName,leftDate];
+            }
+            
         }
+        //右边
         else{
             cell.titleLabel.textAlignment = NSTextAlignmentRight;
+            NSString *rightDate = [dateFormatter stringFromDate:riZhuData.rightTerm];
+            if(rightDate.length>0){
+                cell.titleLabel.text = [NSString stringWithFormat:@"%@:%@",riZhuData.rightTermName,rightDate];
+            }
+            
         }
         return cell;
     }
@@ -130,6 +162,7 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
     else if(indexPath.section == 3){
         SolarTermsNumberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:numberCellIdentifier
                                                                               forIndexPath:indexPath];
+        cell.titleLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1] ;
         
         return cell;
     }

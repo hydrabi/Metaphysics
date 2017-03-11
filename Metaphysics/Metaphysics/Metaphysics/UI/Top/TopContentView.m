@@ -328,7 +328,7 @@
             return NO;
         }
         
-        if([completeStr integerValue]>12){
+        if([completeStr integerValue]>24){
             return NO;
         }
         

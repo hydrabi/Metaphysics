@@ -47,7 +47,14 @@
  右边的节气名称
  */
 @property (nonatomic,strong)NSString *rightTermName;
-
+/**
+ 分隔日数的队列
+ */
+@property (nonatomic,strong)NSArray *separatorDayArr;
+/**
+ 分隔日数名称的队列
+ */
+@property (nonatomic,strong)NSArray *separatorDayNameArr;
 /**
  根据年份创建所有节气得时间
 

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SolarTermsMulLineCell : UICollectionViewCell
+#import "SeparatorTableViewCell.h"
+@interface SolarTermsMulLineCell : SeparatorTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

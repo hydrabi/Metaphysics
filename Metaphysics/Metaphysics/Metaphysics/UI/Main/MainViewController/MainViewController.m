@@ -220,9 +220,9 @@
     
     [self.solarTermsView makeConstraints:^(MASConstraintMaker *make){
         @strongify(self)
-        make.leading.equalTo(self.secondVerLine.trailing).offset(leftVerLineOffset);
+        make.leading.equalTo(self.secondVerLine.trailing).offset(leftVerLineOffset-1);
         make.top.equalTo(self.bottomContentView.top).offset(0);
-        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
+        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset+1));
         make.height.equalTo(bottomViewHeight);
     }];
 }

@@ -20,7 +20,9 @@ static NSString *firstCellIdentifier = @"firstCellIdentifier";
 static NSString *secondCellIdentifier = @"secondCellIdentifier";
 static NSString *thirdCellIdentifier = @"thirdCellIdentifier";
 static NSString *numberCellIdentifier = @"numberCellIdentifier";
+static NSString *numberCellIdentifier1 = @"numberCellIdentifier1";
 static NSString *mulLineCellIdentifier = @"mulLineCellIdentifier";
+static NSString *mulLineCellIdentifier1 = @"mulLineCellIdentifier1";
 static NSString *emptyellIdentifier = @"emptyellIdentifier";
 static NSString *monthCellIdentifier = @"monthCellIdentifier";
 
@@ -32,7 +34,7 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
         self.collectionView = collectionView;
         self.collectionView.delegate = self;
         self.collectionView.dataSource = self;
-        self.collectionView.backgroundView.backgroundColor = [UIColor blackColor];
+        self.collectionView.backgroundColor = [UIColor whiteColor];
         self.collectionView.layer.borderColor = [UIColor blackColor].CGColor;
         self.collectionView.layer.borderWidth = 1.0f;
         [self initialize];
@@ -45,15 +47,19 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsFirstCell class])
                                                     bundle:nil]
           forCellWithReuseIdentifier:firstCellIdentifier];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsSecondCell class])
                                                     bundle:nil]
           forCellWithReuseIdentifier:secondCellIdentifier];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsThirdCell class])
                                                     bundle:nil]
           forCellWithReuseIdentifier:thirdCellIdentifier];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsNumberCell class])
                                                     bundle:nil]
           forCellWithReuseIdentifier:numberCellIdentifier];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsMulLineCell class])
                                                     bundle:nil]
           forCellWithReuseIdentifier:mulLineCellIdentifier];
@@ -61,6 +67,15 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsMonthCell class])
                                                     bundle:nil]
           forCellWithReuseIdentifier:monthCellIdentifier];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsNumberCell class])
+                                                    bundle:nil]
+          forCellWithReuseIdentifier:numberCellIdentifier1];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SolarTermsMulLineCell class])
+                                                    bundle:nil]
+          forCellWithReuseIdentifier:mulLineCellIdentifier1];
+    
     
     [self.collectionView registerClass:[UICollectionViewCell class]
             forCellWithReuseIdentifier:emptyellIdentifier];
@@ -77,6 +92,40 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
      }];
 }
 
+-(CGFloat)getHeightWithSection:(NSInteger)section{
+    CGFloat height = 0.0f;
+    switch (section) {
+        case 0:
+            height = 63.0f;
+            break;
+        case 1:
+            height = 56.0f;
+            break;
+        case 2:
+            height = 56.0f;
+            break;
+        case 3:
+            height = 51.0f;
+            break;
+        case 4:
+            height = 101.0f;
+            break;
+        case 5:
+            height = 51.0f;
+            break;
+        case 6:
+            height = 51.0f;
+            break;
+        case 7:
+            height = 101.0f;
+            break;
+            
+        default:
+            break;
+    }
+    return height;
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -84,6 +133,7 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    RiZhuData *riZhuData = [[MainViewModel sharedInstance] riZhuData];
     if(section == 0){
         return 1;
     }
@@ -91,7 +141,20 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
         return 2;
     }
     else if (section == 2){
-        return 4;
+        NSInteger day = 0;
+        for(NSNumber *eachDay in riZhuData.separatorDayArr){
+            day += eachDay.integerValue;
+        }
+        NSInteger item = 0;
+        //一共有31个格子，如果分隔天数加起来小于31天，则有最后一个空格代表空余天数
+        if(day<31){
+            item = riZhuData.separatorDayArr.count+1;
+        }
+        //否则直接等于队列项数
+        else{
+            item = riZhuData.separatorDayArr.count;
+        }
+        return item;
     }
     else if (section == 3){
         return 31;
@@ -154,8 +217,12 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
     else if(indexPath.section == 2){
         SolarTermsThirdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:thirdCellIdentifier
                                                                                forIndexPath:indexPath];
-        if(indexPath.row == 3){
-            cell.titleLabel.text = @"";
+        NSArray *nameArr = riZhuData.separatorDayNameArr;
+        if(nameArr.count>indexPath.row){
+            cell.titleLabel.text = nameArr[indexPath.row];
+        }
+        else{
+             cell.titleLabel.text = @"";
         }
         return cell;
     }
@@ -179,12 +246,12 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
         return cell;
     }
     else if(indexPath.section == 6){
-        SolarTermsNumberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:numberCellIdentifier
+        SolarTermsNumberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:numberCellIdentifier1
                                                                               forIndexPath:indexPath];
         return cell;
     }
     else if(indexPath.section == 7){
-        SolarTermsMulLineCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:mulLineCellIdentifier
+        SolarTermsMulLineCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:mulLineCellIdentifier1
                                                                                forIndexPath:indexPath];
         return cell;
     }
@@ -194,55 +261,67 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
 
 #pragma mark - UICollectionViewDelegate
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat cloumn = (CGRectGetWidth(collectionView.frame)-30)/31.0f;
+    //每个格子的宽度（31列）
+    CGFloat cloumn = CGRectGetWidth(collectionView.frame)/31.0f;
+    CGFloat width = CGRectGetWidth(collectionView.frame);
+    //每行的高度
+    CGFloat height = [self getHeightWithSection:indexPath.section];
+    RiZhuData *riZhuData = [[MainViewModel sharedInstance] riZhuData];
+    //第三行分隔日数
+    NSArray *separatorDayArr = riZhuData.separatorDayArr;
+    
     if(indexPath.section == 0){
-        return CGSizeMake(CGRectGetWidth(collectionView.frame), 62.0f);
+        return CGSizeMake(CGRectGetWidth(collectionView.frame), height);
     }
     else if(indexPath.section == 1){
-        return CGSizeMake((CGRectGetWidth(collectionView.frame)-1)/2, 55.0f);
+        return CGSizeMake((CGRectGetWidth(collectionView.frame)-1)/2, height);
     }
     else if(indexPath.section == 2){
-        if(indexPath.row == 0){
-            return CGSizeMake(cloumn*7+6, 55.0f);
+        NSInteger totalDay = 0;
+        for(NSNumber *eachDay in riZhuData.separatorDayArr){
+            totalDay += eachDay.integerValue;
         }
-        else if (indexPath.row == 1){
-            return CGSizeMake(cloumn*7+6, 55.0f);
+        
+        if(separatorDayArr.count>indexPath.row){
+            NSInteger day = [separatorDayArr[indexPath.row] integerValue];
+            //加上间隔线1*格数的宽度
+            CGFloat width = cloumn*day;
+            return CGSizeMake(width, height);
         }
-        else if (indexPath.row == 2){
-            return CGSizeMake(cloumn*16+15, 55.0f);
-        }
+        //不足31天的剩余天数
         else{
-            return CGSizeMake(cloumn*1, 55.0f);
+            NSInteger leftDay = 31 - totalDay;
+            return CGSizeMake(cloumn*leftDay, height);
         }
     }
     else if(indexPath.section == 3){
-        return CGSizeMake(cloumn, 50.0f);
+        return CGSizeMake(cloumn, height);
     }
     else if(indexPath.section == 4){
-        return CGSizeMake(cloumn, 100.0f);
+        return CGSizeMake(cloumn, height);
     }
     else if(indexPath.section == 5){
-        return CGSizeMake(CGRectGetWidth(collectionView.frame),50.0f);
+        return CGSizeMake(CGRectGetWidth(collectionView.frame),height);
     }
     else if(indexPath.section == 6){
-        return CGSizeMake(cloumn, 50.0f);
+        return CGSizeMake(cloumn, height);
     }
     else if(indexPath.section == 7){
-        return CGSizeMake(cloumn, 100.0f);
+        return CGSizeMake(cloumn, height);
     }
     return CGSizeZero;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 0, 1, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 1.0f;
+    return 0.0f;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 1.0f;
+    return 0.0;
 }
 
 @end

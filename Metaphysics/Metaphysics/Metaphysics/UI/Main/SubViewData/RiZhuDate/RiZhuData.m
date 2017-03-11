@@ -113,6 +113,8 @@
                     self.rightTerm = self.allTermsDateArr[i];
                     self.leftTermName = [[NSArray termsNameArr] objectAtIndex:daXueIndex];
                     self.rightTermName = [[NSArray termsNameArr] objectAtIndex:i];
+                    self.separatorDayArr = [NSArray separatorDayWithMonth:monthNames.count-1];
+                    self.separatorDayNameArr = [NSArray separatorDayNameWithMonth:monthNames.count-1];
                     //子月
                     self.monthName = [monthNames objectAtIndex:monthNames.count-1];
                 }
@@ -123,6 +125,8 @@
                 self.leftTermName = [[NSArray termsNameArr] objectAtIndex:i-2];
                 self.rightTermName = [[NSArray termsNameArr] objectAtIndex:i];
                 self.monthName = [monthNames objectAtIndex:(NSInteger)(i/2)];
+                self.separatorDayArr = [NSArray separatorDayWithMonth:(NSInteger)(i/2)];
+                self.separatorDayNameArr = [NSArray separatorDayNameWithMonth:(NSInteger)(i/2)];
             }
             break;
         }

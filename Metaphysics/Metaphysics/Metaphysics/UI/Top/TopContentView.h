@@ -34,6 +34,8 @@
 @property (nonatomic,weak)IBOutlet UITextField *lunarHourTxt;
 //是否闰月
 @property (nonatomic,weak)IBOutlet UILabel *leapMonthLabel;
+//节气
+@property (nonatomic,weak)IBOutlet UILabel *solarTermsLabel;
 
 +(instancetype)instanceTopContentView;
 -(void)bindViewModel;

@@ -24,4 +24,12 @@
  @return 地支字符串
  */
 +(NSString*)branchesStr;
+
+/**
+ 对应的时间转换为时辰
+
+ @param time 对应的时
+ @return 对应的时辰
+ */
++(NSString*)shiChenWithTime:(NSInteger)time;
 @end

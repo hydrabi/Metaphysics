@@ -10,5 +10,5 @@
 #import "SeparatorTableViewCell.h"
 @interface SolarTermsMulLineCell : SeparatorTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
+-(void)isCurrentSelectedDay:(BOOL)isSelected;
 @end

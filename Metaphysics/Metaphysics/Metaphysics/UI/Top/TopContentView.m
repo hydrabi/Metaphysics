@@ -11,6 +11,7 @@
 #import "DatePickViewController.h"
 #import "MainViewModel.h"
 #import "DatePickViewModel.h"
+#import "NSString+Addition.h"
 //PlaceHolderView(TopContentView)
 
 @interface TopContentView()<UITextFieldDelegate>
@@ -95,6 +96,12 @@
          [self resetLunarValue];
      }];
     
+    [[RACObserve(date, currentTermName)
+      deliverOnMainThread]
+     subscribeNext:^(id _){
+         @strongify(self)
+         self.solarTermsLabel.text = self.date.currentTermName;
+     }];
     
     //新历
     [[self.gregorianYearTxt.rac_textSignal
@@ -223,7 +230,7 @@
     self.lunarYearTxt.text = [self.date.lunarYear stringValue].length>0?[self.date.lunarYear stringValue]:@"";
     self.lunarMonthTxt.text = [self.date.lunarMonth stringValue].length>0?[self.date.lunarMonth stringValue]:@"";
     self.lunarDayTxt.text = [self.date.lunarDay stringValue].length>0?[self.date.lunarDay stringValue]:@"";
-    self.lunarHourTxt.text = [self.date.lunarHour stringValue].length>0?[self.date.lunarHour stringValue]:@"";
+    self.lunarHourTxt.text = [self.date.lunarHour stringValue].length>0?[NSString shiChenWithTime:self.date.lunarHour.integerValue]:@"";
     [self shouldShowLeapMonth];
 }
 

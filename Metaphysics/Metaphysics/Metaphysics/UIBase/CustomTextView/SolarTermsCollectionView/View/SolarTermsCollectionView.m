@@ -37,6 +37,7 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
         self.collectionView.backgroundColor = [UIColor whiteColor];
         self.collectionView.layer.borderColor = [UIColor blackColor].CGColor;
         self.collectionView.layer.borderWidth = 1.0f;
+        self.collectionView.scrollEnabled = NO;
         [self initialize];
         [self bindViewModel];
     }
@@ -236,23 +237,60 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
     else if(indexPath.section == 4){
         SolarTermsMulLineCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:mulLineCellIdentifier
                                                                                forIndexPath:indexPath];
+        NSMutableArray *ganZhiArr = [MainViewModel sharedInstance].jiaZiArr;
+        NSInteger index = [MainViewModel sharedInstance].riZhuData.indexOfTermsBranchName;
+        index += indexPath.row;
+        if(index>=ganZhiArr.count){
+            index -= ganZhiArr.count;
+        }
+        cell.titleLabel.text = [ganZhiArr objectAtIndex:index];
+        
         return cell;
     }
     else if(indexPath.section == 5){
         SolarTermsMonthCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:monthCellIdentifier
                                                                               forIndexPath:indexPath];
-        CGFloat cloumn = (CGRectGetWidth(collectionView.frame)-30)/31.0f;
-        cell.leadingConstraint.constant = cloumn*25+24;
+        CGFloat cloumn = CGRectGetWidth(collectionView.frame)/31.0f;
+        cell.leadingConstraint.constant = cloumn*riZhuData.monthLeadingConstraint;
+        cell.titleLabel.text = [NSString stringWithFormat:@"%ld月",riZhuData.monthNumber];
         return cell;
     }
     else if(indexPath.section == 6){
         SolarTermsNumberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:numberCellIdentifier1
                                                                               forIndexPath:indexPath];
+        if(riZhuData.solarDate.count>indexPath.row){
+            cell.titleLabel.text = [[riZhuData.solarDate objectAtIndex:indexPath.row] stringValue];
+        }
+        else{
+            cell.titleLabel.text = @"";
+        }
+        
+        if(riZhuData.indexOfCurrentDay == indexPath.row){
+            [cell isCurrentSelectedDay:YES];
+        }
+        else{
+            [cell isCurrentSelectedDay:NO];
+        }
+        
         return cell;
     }
     else if(indexPath.section == 7){
         SolarTermsMulLineCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:mulLineCellIdentifier1
                                                                                forIndexPath:indexPath];
+        if(riZhuData.lunarDate.count>indexPath.row){
+            cell.titleLabel.text = [riZhuData.lunarDate objectAtIndex:indexPath.row];
+        }
+        else{
+            cell.titleLabel.text = @"";
+        }
+        
+        if(riZhuData.indexOfCurrentDay == indexPath.row){
+            [cell isCurrentSelectedDay:YES];
+        }
+        else{
+            [cell isCurrentSelectedDay:NO];
+        }
+        
         return cell;
     }
     

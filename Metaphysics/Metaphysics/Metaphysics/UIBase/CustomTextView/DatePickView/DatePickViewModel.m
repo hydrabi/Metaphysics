@@ -7,7 +7,7 @@
 //
 
 #import "DatePickViewModel.h"
-
+#import "NSNumber+Addition.h"
 @interface DatePickViewModel()
 
 @end
@@ -102,26 +102,8 @@
 }
 
 -(void)createGregorianDay{
-    NSInteger dayCount = 30;
-    if([self.date.gregorianMonth integerValue] == 2){
-        if(([self.date.gregorianYear integerValue] % 4 == 0 && [self.date.gregorianYear integerValue] % 100 != 0)
-           || [self.date.gregorianYear integerValue] % 400 == 0){
-            dayCount = 29;
-        }
-        else{
-            dayCount = 28;
-        }
-    }
-    else if (4 == [self.date.gregorianMonth integerValue]
-             || 6 == [self.date.gregorianMonth integerValue]
-             || 9 == [self.date.gregorianMonth integerValue]
-             || 11 == [self.date.gregorianMonth integerValue]){
-        dayCount = 30;
-    }
-    else{
-        dayCount = 31;
-    }
-    
+    NSInteger dayCount = [NSNumber getDayCountWithMonth:[self.date.gregorianYear integerValue]
+                                                   year:[self.date.gregorianYear integerValue]];
     [self.daysArr removeAllObjects];
     for(NSInteger i = 1;i<=dayCount;i++){
         [self.daysArr addObject:@(i)];
@@ -156,8 +138,24 @@
 
 #pragma mark - 创建时
 -(void)createHoursArr{
+    if(self.calendarType == CalendarTypeGregorian){
+        [self createGregorianHour];
+    }
+    else{
+        [self createLunarHour];
+    }
+}
+
+-(void)createGregorianHour{
     [self.hoursArr removeAllObjects];
-    for(NSInteger i = 1;i<=24;i++){
+    for(NSInteger i = 0;i<24;i++){
+        [self.hoursArr addObject:@(i)];
+    }
+}
+
+-(void)createLunarHour{
+    [self.hoursArr removeAllObjects];
+    for(NSInteger i = 1;i<24;i+=2){
         [self.hoursArr addObject:@(i)];
     }
 }

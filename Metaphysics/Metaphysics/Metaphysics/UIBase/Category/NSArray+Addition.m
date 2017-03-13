@@ -10,6 +10,29 @@
 
 @implementation NSArray (Addition)
 
++(NSMutableArray*)jiaZiArrWithStemsStr:(NSString*)stemsStr branchesStr:(NSString*)branchesStr{
+    NSMutableArray *arr = @[].mutableCopy;
+    NSInteger i = 0;
+    NSInteger j = 0;
+    for(NSInteger index = 0; index < 60; index++){
+        NSString *stem = [stemsStr substringWithRange:NSMakeRange(i, 1)];
+        NSString *branch = [branchesStr substringWithRange:NSMakeRange(j, 1)];
+        NSString *jiaZi = [NSString stringWithFormat:@"%@%@",stem,branch];
+        [arr addObject:jiaZi];
+        
+        i++;
+        j++;
+        if(i == stemsStr.length){
+            i = 0;
+        }
+        
+        if(j==branchesStr.length){
+            j = 0;
+        }
+    }
+    return arr;
+}
+
 +(NSArray*)termsNameArr{
     return @[@"小寒",
              @"大寒",
@@ -282,6 +305,33 @@
             break;
     }
     return separatorDayArr;
+}
+
++(NSMutableArray*)allTermsDateArrWithYear:(NSInteger)year solarTermTimeArr:(NSArray*)solarTermTimeArr termsDate:(NSMutableArray*)termsDate{
+    NSMutableArray *resultArr = @[].mutableCopy;
+    NSInteger month;
+    NSInteger day;
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"]];
+    for(NSInteger i = 0;i<termsDate.count;i++){
+        month = (NSInteger)((i/2)+1);
+        day = [termsDate[i] integerValue];
+        NSString *time = solarTermTimeArr[i];
+        NSString *hour = [time substringWithRange:NSMakeRange(0, 2)];
+        NSString *minute = [time substringWithRange:NSMakeRange(3, 2)];
+        [components setYear:year];
+        [components setMonth:month];
+        [components setDay:day];
+        [components setHour:hour.integerValue];
+        [components setMinute:minute.integerValue];
+        NSDate *date = [calendar dateFromComponents:components];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy年MM月dd日HH时mm分"];
+        NSLog(@"now:%@", [dateFormatter stringFromDate:date]);
+        [resultArr addObject:date];
+    }
+    return resultArr;
 }
 
 @end

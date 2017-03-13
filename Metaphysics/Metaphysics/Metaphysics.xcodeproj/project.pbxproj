@@ -10,6 +10,7 @@
 		3190B25E97535932413C585F /* Pods_Metaphysics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */; };
 		801F0AC11E65B91400AF3718 /* TTLunarCalendar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 801F0AC01E65B91400AF3718 /* TTLunarCalendar.mm */; };
 		801F0AC41E65B93400AF3718 /* lunar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 801F0AC21E65B93400AF3718 /* lunar.mm */; };
+		8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */; };
 		804088111E3D963800380A15 /* BaseContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088101E3D963800380A15 /* BaseContentView.m */; };
 		804088191E3E12BE00380A15 /* PlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088181E3E12BE00380A15 /* PlaceHolderView.m */; };
 		805D41151E73D5070000C6C7 /* BottomContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D40A21E73D5070000C6C7 /* BottomContentView.m */; };
@@ -28,7 +29,7 @@
 		805D41431E73D5070000C6C7 /* BottomLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D40F71E73D5070000C6C7 /* BottomLocation.m */; };
 		805D41441E73D5070000C6C7 /* MainViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 805D40F91E73D5070000C6C7 /* MainViewModel.mm */; };
 		805D41451E73D5070000C6C7 /* CurrentSelectDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D40FD1E73D5070000C6C7 /* CurrentSelectDate.m */; };
-		805D41461E73D5070000C6C7 /* RiZhuData.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D41001E73D5070000C6C7 /* RiZhuData.m */; };
+		805D41461E73D5070000C6C7 /* RiZhuData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 805D41001E73D5070000C6C7 /* RiZhuData.mm */; };
 		805D41471E73D5070000C6C7 /* ShuangZaoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D41031E73D5070000C6C7 /* ShuangZaoData.m */; };
 		805D41481E73D5070000C6C7 /* SubViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D41061E73D5070000C6C7 /* SubViewData.m */; };
 		805D41491E73D5070000C6C7 /* UIConstantParm.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D41091E73D5070000C6C7 /* UIConstantParm.m */; };
@@ -107,6 +108,8 @@
 		801F0AC01E65B91400AF3718 /* TTLunarCalendar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TTLunarCalendar.mm; sourceTree = "<group>"; };
 		801F0AC21E65B93400AF3718 /* lunar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = lunar.mm; sourceTree = "<group>"; };
 		801F0AC31E65B93400AF3718 /* lunar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lunar.h; sourceTree = "<group>"; };
+		8029F72A1E7503F50050EFDC /* NSNumber+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Addition.h"; sourceTree = "<group>"; };
+		8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Addition.m"; sourceTree = "<group>"; };
 		8040880F1E3D963800380A15 /* BaseContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseContentView.h; sourceTree = "<group>"; };
 		804088101E3D963800380A15 /* BaseContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseContentView.m; sourceTree = "<group>"; };
 		804088171E3E12BE00380A15 /* PlaceHolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceHolderView.h; sourceTree = "<group>"; };
@@ -140,7 +143,7 @@
 		805D40FC1E73D5070000C6C7 /* CurrentSelectDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSelectDate.h; sourceTree = "<group>"; };
 		805D40FD1E73D5070000C6C7 /* CurrentSelectDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSelectDate.m; sourceTree = "<group>"; };
 		805D40FF1E73D5070000C6C7 /* RiZhuData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiZhuData.h; sourceTree = "<group>"; };
-		805D41001E73D5070000C6C7 /* RiZhuData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiZhuData.m; sourceTree = "<group>"; };
+		805D41001E73D5070000C6C7 /* RiZhuData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RiZhuData.mm; sourceTree = "<group>"; };
 		805D41021E73D5070000C6C7 /* ShuangZaoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShuangZaoData.h; sourceTree = "<group>"; };
 		805D41031E73D5070000C6C7 /* ShuangZaoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuangZaoData.m; sourceTree = "<group>"; };
 		805D41051E73D5070000C6C7 /* SubViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewData.h; sourceTree = "<group>"; };
@@ -405,7 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				805D40FF1E73D5070000C6C7 /* RiZhuData.h */,
-				805D41001E73D5070000C6C7 /* RiZhuData.m */,
+				805D41001E73D5070000C6C7 /* RiZhuData.mm */,
 			);
 			path = RiZhuDate;
 			sourceTree = "<group>";
@@ -564,6 +567,8 @@
 				805D41BB1E73D5F10000C6C7 /* UILabel+Addition.m */,
 				805D41BF1E73D61E0000C6C7 /* NSArray+Addition.h */,
 				805D41C01E73D61E0000C6C7 /* NSArray+Addition.m */,
+				8029F72A1E7503F50050EFDC /* NSNumber+Addition.h */,
+				8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -933,6 +938,7 @@
 				801F0AC11E65B91400AF3718 /* TTLunarCalendar.mm in Sources */,
 				805D413F1E73D5070000C6C7 /* LeftTableViewCell.m in Sources */,
 				805D418F1E73D5320000C6C7 /* DaYunSubTitleView.m in Sources */,
+				8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */,
 				805D414C1E73D5070000C6C7 /* MiddleSubView.m in Sources */,
 				805D41E21E73DB1A0000C6C7 /* SolarTermsThirdCell.m in Sources */,
 				805D41471E73D5070000C6C7 /* ShuangZaoData.m in Sources */,
@@ -960,7 +966,7 @@
 				805D41431E73D5070000C6C7 /* BottomLocation.m in Sources */,
 				805D419D1E73D5320000C6C7 /* ShuangZaoTextView.m in Sources */,
 				804088111E3D963800380A15 /* BaseContentView.m in Sources */,
-				805D41461E73D5070000C6C7 /* RiZhuData.m in Sources */,
+				805D41461E73D5070000C6C7 /* RiZhuData.mm in Sources */,
 				805D414A1E73D5070000C6C7 /* MiddleContentView.m in Sources */,
 				805D41911E73D5320000C6C7 /* DaYunTableViewCell.m in Sources */,
 				80F8C22B1E3C3D390036186A /* BaseViewModel.m in Sources */,

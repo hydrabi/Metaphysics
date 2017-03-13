@@ -8,6 +8,7 @@
 
 #import "DatePickViewController.h"
 #import "DatePickViewModel.h"
+#import "NSString+Addition.h"
 @interface DatePickViewController ()<UIPickerViewDelegate,UIPickerViewDataSource>
 @property (nonatomic,weak)IBOutlet UIPickerView *pickView;
 @property (nonatomic,strong)DatePickViewModel *viewModel;
@@ -188,7 +189,13 @@
         return [self.viewModel.daysArr[row] stringValue];
     }
     else if (component == 3){
-        return [self.viewModel.hoursArr[row] stringValue];
+        if(self.viewModel.calendarType == CalendarTypeGregorian){
+            return [self.viewModel.hoursArr[row] stringValue];
+        }
+        else{
+            return [NSString shiChenWithTime:[self.viewModel.hoursArr[row] integerValue]];
+        }
+        
     }
     return title;
 }

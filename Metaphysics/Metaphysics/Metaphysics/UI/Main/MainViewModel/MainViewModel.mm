@@ -12,6 +12,7 @@
 #import "TTLunarCalendar.h"
 #import "AnalysisSolarTerm.h"
 #import "NSString+Addition.h"
+#import "NSArray+Addition.h"
 @interface MainViewModel()
 @property (nonatomic, assign) Lunar*     lunar;
 @end
@@ -61,26 +62,8 @@
     
     self.stemsStr = [NSString stemsStr];
     self.branchesStr = [NSString branchesStr];
-    
-    self.jiaZiArr = @[].mutableCopy;
-    NSInteger i = 0;
-    NSInteger j = 0;
-    for(NSInteger index = 0; index < 60; index++){
-        NSString *stem = [self.stemsStr substringWithRange:NSMakeRange(i, 1)];
-        NSString *branch = [self.branchesStr substringWithRange:NSMakeRange(j, 1)];
-        NSString *jiaZi = [NSString stringWithFormat:@"%@%@",stem,branch];
-        [self.jiaZiArr addObject:jiaZi];
-
-        i++;
-        j++;
-        if(i == self.stemsStr.length){
-            i = 0;
-        }
-        
-        if(j==self.branchesStr.length){
-            j = 0;
-        }
-    }
+    self.jiaZiArr = [NSArray jiaZiArrWithStemsStr:self.stemsStr
+                                      branchesStr:self.branchesStr];
     
     self.hadShowSolarTermsCollectionView = NO;
     self.hadHiddenBottomTableView = NO;
@@ -170,7 +153,7 @@
             result = @"神煞表";
             break;
         case LeftSideMenuTypeVersion:
-            result = @"02_21";
+            result = @"03_13";
             break;
         
         default:
@@ -304,9 +287,29 @@
 -(void)solarToLunar{
     if(self.selectedDate.gregorianYear.integerValue>=1900 &&
        self.selectedDate.gregorianYear.integerValue<=2100){
-        struct LunarObj *obj = self.lunar->solar2lunar((int32_t)self.selectedDate.gregorianYear.integerValue,
-                                                       (int32_t)self.selectedDate.gregorianMonth.integerValue,
-                                                       (int32_t)self.selectedDate.gregorianDay.integerValue);
+        int32_t year = (int32_t)self.selectedDate.gregorianYear.integerValue;
+        int32_t month = (int32_t)self.selectedDate.gregorianMonth.integerValue;
+        int32_t day = (int32_t)self.selectedDate.gregorianDay.integerValue;
+        int32_t hour = (int32_t)self.selectedDate.gregorianHour.integerValue;
+        
+        //如果为23时
+        if(hour == 23){
+            day += 1;
+            int32_t dayCount = self.lunar->solarDays(year, month);
+            if(day>dayCount){
+                day = 1;
+                month += 1;
+            }
+            
+            if(month>12){
+                month = 1;
+                year += 1;
+            }
+        }
+        
+        struct LunarObj *obj = self.lunar->solar2lunar(year,
+                                                       month,
+                                                       day);
         if(obj != NULL){
             TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
             self.selectedDate.lunarYear = @(date.lunarYear);
@@ -314,7 +317,9 @@
             self.selectedDate.lunarDay = @(date.lunarDay);
             self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
             self.selectedDate.isLeapMonth = @(date.isLeap);
+            self.selectedDate.ganZhiDay = date.ganzhiDay;
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
+            self.selectedDate.currentTermName = self.riZhuData.currentTermName;
         }
     }
     
@@ -347,9 +352,10 @@
             self.selectedDate.gregorianDay = @(date.solarDay);
             self.selectedDate.gregorianHour = self.selectedDate.lunarHour;
             self.selectedDate.isLeapMonth = @(date.isLeap);
+            self.selectedDate.ganZhiDay = date.ganzhiDay;
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
+            self.selectedDate.currentTermName = self.riZhuData.currentTermName;
         }
-        
     }
 }
 

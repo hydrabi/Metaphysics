@@ -11,6 +11,15 @@
 @interface NSArray (Addition)
 
 /**
+ 创建干支
+
+ @param stemsStr 天干字符串
+ @param branchesStr 地支字符串
+ @return 干支名称队列
+ */
++(NSMutableArray*)jiaZiArrWithStemsStr:(NSString*)stemsStr branchesStr:(NSString*)branchesStr;
+
+/**
  节气名称队列
 
  @return 节气名称队列
@@ -39,4 +48,14 @@
  @return 分隔月份名称的天数表
  */
 +(NSArray*)separatorDayNameWithMonth:(NSInteger)month;
+
+/**
+ 获取该年所有节气得准确时间
+
+ @param year 那一年
+ @param solarTermTimeArr 节气时间
+ @param termsDate 节气日期
+ @return 该年所有节气得准确时间
+ */
++(NSMutableArray*)allTermsDateArrWithYear:(NSInteger)year solarTermTimeArr:(NSArray*)solarTermTimeArr termsDate:(NSMutableArray*)termsDate;
 @end

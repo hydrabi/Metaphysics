@@ -16,4 +16,13 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
+-(void)isCurrentSelectedDay:(BOOL)isSelected{
+    if(isSelected){
+        self.backgroundColor = [UIColor lightGrayColor];
+    }
+    else{
+        self.backgroundColor = [UIColor whiteColor];
+    }
+}
+
 @end

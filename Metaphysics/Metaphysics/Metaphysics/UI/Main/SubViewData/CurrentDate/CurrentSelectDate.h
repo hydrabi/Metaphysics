@@ -18,7 +18,10 @@
 @property (nonatomic,strong)NSNumber * lunarDay;
 @property (nonatomic,strong)NSNumber * lunarHour;
 @property (nonatomic,strong)NSNumber * isLeapMonth;
+@property (nonatomic,strong)NSString * ganZhiYear;
+@property (nonatomic,strong)NSString * ganZhiMonth;
 @property (nonatomic,strong)NSString * ganZhiDay;
+@property (nonatomic,strong)NSString * ganZhiHour;
 /**
  当前节气
  */

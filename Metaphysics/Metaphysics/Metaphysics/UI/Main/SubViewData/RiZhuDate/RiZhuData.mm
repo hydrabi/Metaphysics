@@ -121,9 +121,9 @@
             break;
         }
         else{
-            //最后节气比
+            //最后判断超过大雪，取下一年的小寒作为右边的节气，为子月，大雪-小寒
             if(i == 22){
-                //超过大雪，取下一年的小寒作为右边的节气，为子月，大雪-小寒
+                
                 [self getTermWithNextYear:([MainViewModel sharedInstance].selectedDate.gregorianYear.integerValue+1)];
                 NSInteger xiaoHanIndex = [[NSArray termsNameArr] indexOfObject:@"小寒"];
                 if(self.nextYearAllTermsDateArr.count>(xiaoHanIndex+1)){

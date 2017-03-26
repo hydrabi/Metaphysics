@@ -75,6 +75,7 @@
     self.shuangZaoData = [[ShuangZaoData alloc] init];
     self.selectedDate = [[CurrentSelectDate alloc] init];
     self.riZhuData = [[RiZhuData alloc] init];
+    self.middleData = [[MiddleViewData alloc] init];
     self.lunar = new Lunar();
     
     self.solarTermsTimeDic = [AnalysisSolarTerm analysis];
@@ -312,14 +313,19 @@
                                                        day);
         if(obj != NULL){
             TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
-            self.selectedDate.lunarYear = @(date.lunarYear);
-            self.selectedDate.lunarMonth = @(date.lunarMonth);
-            self.selectedDate.lunarDay = @(date.lunarDay);
-            self.selectedDate.lunarHour = self.selectedDate.gregorianHour;
-            self.selectedDate.isLeapMonth = @(date.isLeap);
-            self.selectedDate.ganZhiDay = date.ganzhiDay;
+            self.selectedDate.lunarYear     = @(date.lunarYear);
+            self.selectedDate.lunarMonth    = @(date.lunarMonth);
+            self.selectedDate.lunarDay      = @(date.lunarDay);
+            self.selectedDate.lunarHour     = self.selectedDate.gregorianHour;
+            self.selectedDate.isLeapMonth   = @(date.isLeap);
+            self.selectedDate.ganZhiYear    = date.ganzhiYear;
+            self.selectedDate.ganZhiMonth   = date.ganzhiMonth;
+            self.selectedDate.ganZhiDay     = date.ganzhiDay;
+            self.selectedDate.ganZhiHour    = [NSString ganZhiHourWithHour:self.selectedDate.lunarHour.integerValue
+                                                                    day:self.selectedDate.ganZhiDay];
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
             self.selectedDate.currentTermName = self.riZhuData.currentTermName;
+            [self.middleData resetData];
         }
     }
     
@@ -347,14 +353,19 @@
         
         if(obj != NULL){
             TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
-            self.selectedDate.gregorianYear = @(date.solarYear);
-            self.selectedDate.gregorianMonth = @(date.solarMonth);
-            self.selectedDate.gregorianDay = @(date.solarDay);
-            self.selectedDate.gregorianHour = self.selectedDate.lunarHour;
-            self.selectedDate.isLeapMonth = @(date.isLeap);
-            self.selectedDate.ganZhiDay = date.ganzhiDay;
+            self.selectedDate.gregorianYear     = @(date.solarYear);
+            self.selectedDate.gregorianMonth    = @(date.solarMonth);
+            self.selectedDate.gregorianDay      = @(date.solarDay);
+            self.selectedDate.gregorianHour     = self.selectedDate.lunarHour;
+            self.selectedDate.isLeapMonth       = @(date.isLeap);
+            self.selectedDate.ganZhiYear        = date.ganzhiYear;
+            self.selectedDate.ganZhiMonth       = date.ganzhiMonth;
+            self.selectedDate.ganZhiDay         = date.ganzhiDay;
+            self.selectedDate.ganZhiHour        = [NSString ganZhiHourWithHour:self.selectedDate.lunarHour.integerValue
+                                                                    day:self.selectedDate.ganZhiDay];
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
             self.selectedDate.currentTermName = self.riZhuData.currentTermName;
+            [self.middleData resetData];
         }
     }
 }

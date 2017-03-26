@@ -19,6 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="40" height="31.5"/>
                     <accessibility key="accessibilityConfiguration" identifier="十神"/>
                     <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31.5" id="mQd-VN-rih"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="n6R-hJ-EjA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>

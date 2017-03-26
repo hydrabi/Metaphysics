@@ -58,4 +58,18 @@
  @return 该年所有节气得准确时间
  */
 +(NSMutableArray*)allTermsDateArrWithYear:(NSInteger)year solarTermTimeArr:(NSArray*)solarTermTimeArr termsDate:(NSMutableArray*)termsDate;
+
+/**
+ 藏干对应地支的名称队列
+
+ @return 藏干对应地支的名称队列
+ */
++(NSArray*)cangGanArray;
+
+/**
+ 纳音队列
+
+ @return 纳音队列
+ */
++(NSArray*)naYinArray;
 @end

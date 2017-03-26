@@ -12,6 +12,7 @@
 #import "CurrentSelectDate.h"
 #import "UIConstantParameter.h"
 #import "RiZhuData.h"
+#import "MiddleViewData.h"
 
 @class BottomLocation;
 @interface MainViewModel : BaseViewModel
@@ -62,6 +63,8 @@
 //隐藏或者显示15运的操作信号
 @property (nonatomic,strong)RACSignal *fifteenYunTextViewOperationSig;
 
+//中间视图的数据
+@property (nonatomic,strong)MiddleViewData *middleData;
 //双造数据
 @property (nonatomic,strong)ShuangZaoData *shuangZaoData;
 //日期数据

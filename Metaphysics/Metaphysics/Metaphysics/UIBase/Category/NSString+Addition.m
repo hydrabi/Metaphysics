@@ -105,7 +105,7 @@
         case 21:
         case 22:
         {
-            shiChen = @"戌";
+            shiChen = @"亥";
         }
             break;
             
@@ -113,5 +113,50 @@
             break;
     }
     return shiChen;
+}
+
+//        子    丑    寅    卯    辰    巳    午    未    申    酉    戌    亥
+//甲己    甲子、乙丑、丙寅、丁卯、戊辰、己巳、庚午、辛未、壬申、癸酉、甲戌、乙亥、
+//乙庚    丙子、丁丑、戊寅、己卯、庚辰、辛巳、壬午、癸未、甲申、乙酉、丙戌、丁亥、
+//丙辛    戊子、己丑、庚寅、辛卯、壬辰、癸巳、甲午、乙未、丙申、丁酉、戊戌、己亥、
+//丁壬    庚子、辛丑、壬寅、癸卯、甲辰、乙巳、丙午、丁未、戊申、己酉、庚戌、辛亥、
+//戊癸    壬子、癸丑、甲寅、乙卯、丙辰、丁巳、戊午、己未、庚申、辛酉、壬戌、癸亥、
++(NSString*)ganZhiHourWithHour:(NSInteger)hour day:(NSString*)day{
+    NSString *ganZhiHour = @"";
+    //地支
+    NSString *branchesStr = [self branchesStr];
+    //天干
+    NSString *stemsStr = [self stemsStr];
+    //时间对应的时辰
+    NSString *shiChen = [self shiChenWithTime:hour];
+    //时辰处于地支的索引
+    NSInteger shiChenIndex = [branchesStr rangeOfString:shiChen].location;
+    //日上起时发相应天干对应的延后匹配索引
+    NSUInteger startIndex = 0;
+    if([day containsString:@"甲"] ||
+       [day containsString:@"己"]){
+        startIndex = 0;
+    }
+    else if([day containsString:@"乙"] ||
+            [day containsString:@"庚"]){
+        startIndex = 2;
+    }
+    else if([day containsString:@"丙"] ||
+            [day containsString:@"辛"]){
+        startIndex = 4;
+    }
+    else if([day containsString:@"丁"] ||
+            [day containsString:@"壬"]){
+        startIndex = 6;
+    }
+    else if([day containsString:@"戊"] ||
+            [day containsString:@"癸"]){
+        startIndex = 8;
+    }
+    //求余后获得真正对应的匹配天干的位置
+    NSUInteger realIndex = (shiChenIndex + startIndex) % (stemsStr.length);
+    //组合两者，获得时的干支
+    ganZhiHour = [NSString stringWithFormat:@"%@%@",[stemsStr substringWithRange:NSMakeRange(realIndex, 1)],shiChen];
+    return ganZhiHour;
 }
 @end

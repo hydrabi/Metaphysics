@@ -21,4 +21,8 @@
 @property (nonatomic,weak)IBOutlet UIButton *showFormButton;
 +(instancetype)instanceMiddleSubViewWithType:(MiddleSubViewType)type;
 
+/**
+ 重新加载数据
+ */
+-(void)reloadData;
 @end

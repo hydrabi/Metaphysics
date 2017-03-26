@@ -31,6 +31,7 @@
     self = [super init];
     if(self){
         [self UIConfig];
+        [self bindViewModel];
     }
     return self;
 }
@@ -91,5 +92,20 @@
         
         lastView = subView;
     }
+}
+
+-(void)bindViewModel{
+    
+    RACSignal *lToSSignal = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(lunarToSolar)];
+    RACSignal *sToLSignal = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(solarToLunar)];
+    @weakify(self)
+    [[lToSSignal merge:sToLSignal]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self.yearSubView reloadData];
+         [self.monthSubView reloadData];
+         [self.daySubView reloadData];
+         [self.hourSubView reloadData];
+     }];
 }
 @end

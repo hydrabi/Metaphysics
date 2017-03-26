@@ -245,6 +245,12 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
         }
         cell.titleLabel.text = [ganZhiArr objectAtIndex:index];
         
+        if(riZhuData.indexOfCurrentDay == indexPath.row){
+            [cell isCurrentSelectedDay:YES];
+        }
+        else{
+            [cell isCurrentSelectedDay:NO];
+        }
         return cell;
     }
     else if(indexPath.section == 5){
@@ -301,7 +307,6 @@ static NSString *monthCellIdentifier = @"monthCellIdentifier";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     //每个格子的宽度（31列）
     CGFloat cloumn = CGRectGetWidth(collectionView.frame)/31.0f;
-    CGFloat width = CGRectGetWidth(collectionView.frame);
     //每行的高度
     CGFloat height = [self getHeightWithSection:indexPath.section];
     RiZhuData *riZhuData = [[MainViewModel sharedInstance] riZhuData];

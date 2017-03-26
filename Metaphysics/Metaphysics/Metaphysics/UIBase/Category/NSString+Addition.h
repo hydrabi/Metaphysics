@@ -32,4 +32,13 @@
  @return 对应的时辰
  */
 +(NSString*)shiChenWithTime:(NSInteger)time;
+
+/**
+ 获取干支时
+
+ @param hour 当前选中时间
+ @param day 当前已经得到的干支日
+ @return 时的干支
+ */
++(NSString*)ganZhiHourWithHour:(NSInteger)hour day:(NSString*)day;
 @end

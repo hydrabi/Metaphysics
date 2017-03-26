@@ -62,28 +62,51 @@
     switch (self.type) {
         case MiddleSubViewTypeYear:
         {
+            self.horLine1Label.text = @"";
+            self.horLine2Label.text = @"";
+            self.horLine3Label.text = @"";
+            self.verLineLabel.text = @"";
+            self.topLeftLabel.text = @"";
+            self.topRightLabel.text = @"";
             self.bottomLeftLabel.text = @"";
             self.bottomRightLabel.text = @"";
-            self.topRightLabel.text = @"";
         }
             break;
         case MiddleSubViewTypeMonth:
         {
+            self.horLine1Label.text = @"";
+            self.horLine2Label.text = @"";
+            self.horLine3Label.text = @"";
+            self.verLineLabel.text = @"";
+            self.topLeftLabel.text = @"";
             self.topRightLabel.text = @"";
             self.bottomLeftLabel.text = @"";
-            self.bottomRightLabel.text = @"滚浪桃花";
+            self.bottomRightLabel.text = @"";
         }
             break;
         case MiddleSubViewTypeDay:
         {
-            self.topLeftLabel.text = @"日元";
+            self.horLine1Label.text = @"";
+            self.horLine2Label.text = @"";
+            self.horLine3Label.text = @"";
+            self.verLineLabel.text = @"";
+            self.topLeftLabel.text = @"";
             self.topRightLabel.text = @"";
+            self.bottomLeftLabel.text = @"";
+            self.bottomRightLabel.text = @"";
             self.showFormButton.hidden = NO;
         }
             break;
         case MiddleSubViewTypeHour:
         {
-            
+            self.horLine1Label.text = @"";
+            self.horLine2Label.text = @"";
+            self.horLine3Label.text = @"";
+            self.verLineLabel.text = @"";
+            self.topLeftLabel.text = @"";
+            self.topRightLabel.text = @"";
+            self.bottomLeftLabel.text = @"";
+            self.bottomRightLabel.text = @"";
         }
             break;
             
@@ -94,6 +117,54 @@
 
 -(IBAction)showFormButtonAction:(id)sender{
     [MainViewModel sharedInstance].hadShowSolarTermsCollectionView = ![MainViewModel sharedInstance].hadShowSolarTermsCollectionView;
+}
+
+-(void)reloadData{
+    CurrentSelectDate *current = [MainViewModel sharedInstance].selectedDate;
+    LiuQinData *liuQinData = [MainViewModel sharedInstance].middleData.liuQinData;
+    CangGanData *cangGanData = [MainViewModel sharedInstance].middleData.cangGanData;
+    NaYinData *naYinData = [MainViewModel sharedInstance].middleData.naYinData;
+    switch (self.type) {
+        case MiddleSubViewTypeYear:
+        {
+            self.horLine1Label.text = current.ganZhiYear;
+            self.horLine2Label.text = cangGanData.yearCangGan;
+            self.horLine3Label.text = liuQinData.yearBottomLiuQin;
+            self.verLineLabel.text  = naYinData.yearNaYin;
+            self.topLeftLabel.text  = liuQinData.yearTopLiuQin;
+        }
+            break;
+        case MiddleSubViewTypeMonth:
+        {
+            self.horLine1Label.text = current.ganZhiMonth;
+            self.horLine2Label.text = cangGanData.monthCangGan;
+            self.horLine3Label.text = liuQinData.monthBottomLiuQin;
+            self.verLineLabel.text  = naYinData.monthNaYin;
+            self.topLeftLabel.text = liuQinData.monthTopLiuQin;
+        }
+            break;
+        case MiddleSubViewTypeDay:
+        {
+            self.horLine1Label.text = current.ganZhiDay;
+            self.horLine2Label.text = cangGanData.dayCangGan;
+            self.horLine3Label.text = liuQinData.dayBottomLiuQin;
+            self.verLineLabel.text  = naYinData.dayNaYin;
+            self.topLeftLabel.text = liuQinData.dayTopLiuQin;
+        }
+            break;
+        case MiddleSubViewTypeHour:
+        {
+            self.horLine1Label.text = current.ganZhiHour;
+            self.horLine2Label.text = cangGanData.hourCangGan;
+            self.horLine3Label.text = liuQinData.hourBottomLiuQin;
+            self.verLineLabel.text  = naYinData.hourNaYin;
+            self.topLeftLabel.text = liuQinData.hourTopLiuQin;
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

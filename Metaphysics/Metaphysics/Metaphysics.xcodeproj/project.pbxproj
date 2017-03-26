@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3190B25E97535932413C585F /* Pods_Metaphysics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */; };
+		80135E671E878EB900429C2B /* MiddleViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80135E661E878EB900429C2B /* MiddleViewData.m */; };
+		80135E6A1E878FD100429C2B /* LiuQinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80135E691E878FD100429C2B /* LiuQinData.m */; };
+		80135E6D1E879D1A00429C2B /* CangGanData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80135E6C1E879D1A00429C2B /* CangGanData.m */; };
+		80135E701E87ABDF00429C2B /* NaYinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80135E6F1E87ABDF00429C2B /* NaYinData.m */; };
 		801F0AC11E65B91400AF3718 /* TTLunarCalendar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 801F0AC01E65B91400AF3718 /* TTLunarCalendar.mm */; };
 		801F0AC41E65B93400AF3718 /* lunar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 801F0AC21E65B93400AF3718 /* lunar.mm */; };
 		8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */; };
@@ -104,6 +108,14 @@
 
 /* Begin PBXFileReference section */
 		0C4F8BD6755BC027A5C4C355 /* Pods-Metaphysics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metaphysics.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metaphysics/Pods-Metaphysics.release.xcconfig"; sourceTree = "<group>"; };
+		80135E651E878EB900429C2B /* MiddleViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleViewData.h; sourceTree = "<group>"; };
+		80135E661E878EB900429C2B /* MiddleViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleViewData.m; sourceTree = "<group>"; };
+		80135E681E878FD100429C2B /* LiuQinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiuQinData.h; sourceTree = "<group>"; };
+		80135E691E878FD100429C2B /* LiuQinData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiuQinData.m; sourceTree = "<group>"; };
+		80135E6B1E879D1A00429C2B /* CangGanData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CangGanData.h; sourceTree = "<group>"; };
+		80135E6C1E879D1A00429C2B /* CangGanData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CangGanData.m; sourceTree = "<group>"; };
+		80135E6E1E87ABDF00429C2B /* NaYinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaYinData.h; sourceTree = "<group>"; };
+		80135E6F1E87ABDF00429C2B /* NaYinData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaYinData.m; sourceTree = "<group>"; };
 		801F0ABF1E65B91400AF3718 /* TTLunarCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTLunarCalendar.h; sourceTree = "<group>"; };
 		801F0AC01E65B91400AF3718 /* TTLunarCalendar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TTLunarCalendar.mm; sourceTree = "<group>"; };
 		801F0AC21E65B93400AF3718 /* lunar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = lunar.mm; sourceTree = "<group>"; };
@@ -276,6 +288,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		80135E641E878E8C00429C2B /* MiddleViewData */ = {
+			isa = PBXGroup;
+			children = (
+				80135E681E878FD100429C2B /* LiuQinData.h */,
+				80135E691E878FD100429C2B /* LiuQinData.m */,
+				80135E651E878EB900429C2B /* MiddleViewData.h */,
+				80135E661E878EB900429C2B /* MiddleViewData.m */,
+				80135E6B1E879D1A00429C2B /* CangGanData.h */,
+				80135E6C1E879D1A00429C2B /* CangGanData.m */,
+				80135E6E1E87ABDF00429C2B /* NaYinData.h */,
+				80135E6F1E87ABDF00429C2B /* NaYinData.m */,
+			);
+			path = MiddleViewData;
+			sourceTree = "<group>";
+		};
 		801F0AB81E65B89E00AF3718 /* Date */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +414,7 @@
 		805D40FA1E73D5070000C6C7 /* SubViewData */ = {
 			isa = PBXGroup;
 			children = (
+				80135E641E878E8C00429C2B /* MiddleViewData */,
 				805D40FB1E73D5070000C6C7 /* CurrentDate */,
 				805D40FE1E73D5070000C6C7 /* RiZhuDate */,
 				805D41011E73D5070000C6C7 /* shuangZaoData */,
@@ -920,6 +948,7 @@
 				805D41991E73D5320000C6C7 /* JiaZiCollectionViewCell.m in Sources */,
 				805D41E01E73DB1A0000C6C7 /* SolarTermsSecondCell.m in Sources */,
 				805D41161E73D5070000C6C7 /* BottomFirstTableViewHeader.m in Sources */,
+				80135E6A1E878FD100429C2B /* LiuQinData.m in Sources */,
 				801F0AC41E65B93400AF3718 /* lunar.mm in Sources */,
 				805D41E41E73DB1A0000C6C7 /* SolarTermsCollectionView.m in Sources */,
 				805D41C11E73D61E0000C6C7 /* NSArray+Addition.m in Sources */,
@@ -940,6 +969,7 @@
 				805D418F1E73D5320000C6C7 /* DaYunSubTitleView.m in Sources */,
 				8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */,
 				805D414C1E73D5070000C6C7 /* MiddleSubView.m in Sources */,
+				80135E671E878EB900429C2B /* MiddleViewData.m in Sources */,
 				805D41E21E73DB1A0000C6C7 /* SolarTermsThirdCell.m in Sources */,
 				805D41471E73D5070000C6C7 /* ShuangZaoData.m in Sources */,
 				805D41491E73D5070000C6C7 /* UIConstantParm.m in Sources */,
@@ -956,7 +986,9 @@
 				80F8C1F81E3C371E0036186A /* main.m in Sources */,
 				805D41BC1E73D5F10000C6C7 /* NSLayoutConstraint+NUI.m in Sources */,
 				805D414E1E73D5070000C6C7 /* TopContentView.m in Sources */,
+				80135E701E87ABDF00429C2B /* NaYinData.m in Sources */,
 				805D413E1E73D5070000C6C7 /* LeftSideMenuDataSource.m in Sources */,
+				80135E6D1E879D1A00429C2B /* CangGanData.m in Sources */,
 				805D41411E73D5070000C6C7 /* MainViewController.m in Sources */,
 				805D41931E73D5320000C6C7 /* DaYunTableViewDataSource.m in Sources */,
 				805D418B1E73D5320000C6C7 /* DaYunSubTableViewCell.m in Sources */,

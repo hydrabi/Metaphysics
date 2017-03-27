@@ -85,6 +85,7 @@
 		805D41E41E73DB1A0000C6C7 /* SolarTermsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D41D71E73DB1A0000C6C7 /* SolarTermsCollectionView.m */; };
 		805D41E91E73FBDB0000C6C7 /* SeparatorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D41E81E73FBDB0000C6C7 /* SeparatorTableViewCell.m */; };
 		807196DA1E418E5A005E4A52 /* 17icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 807196D91E418E5A005E4A52 /* 17icon.ttf */; };
+		809CE2361E894CC5003AF1D6 /* ShenShaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 809CE2351E894CC5003AF1D6 /* ShenShaData.m */; };
 		80EED8851E7048C800B58295 /* SolarTerm.csv in Resources */ = {isa = PBXBuildFile; fileRef = 80EED8841E7048C800B58295 /* SolarTerm.csv */; };
 		80EED8881E7049FF00B58295 /* AnalysisSolarTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EED8871E7049FF00B58295 /* AnalysisSolarTerm.m */; };
 		80F8C1F81E3C371E0036186A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C1F71E3C371E0036186A /* main.m */; };
@@ -240,6 +241,8 @@
 		805D41E71E73FBDB0000C6C7 /* SeparatorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorTableViewCell.h; sourceTree = "<group>"; };
 		805D41E81E73FBDB0000C6C7 /* SeparatorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorTableViewCell.m; sourceTree = "<group>"; };
 		807196D91E418E5A005E4A52 /* 17icon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 17icon.ttf; sourceTree = "<group>"; };
+		809CE2341E894CC5003AF1D6 /* ShenShaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShenShaData.h; sourceTree = "<group>"; };
+		809CE2351E894CC5003AF1D6 /* ShenShaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShenShaData.m; sourceTree = "<group>"; };
 		80EED8841E7048C800B58295 /* SolarTerm.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SolarTerm.csv; sourceTree = "<group>"; };
 		80EED8861E7049FF00B58295 /* AnalysisSolarTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisSolarTerm.h; sourceTree = "<group>"; };
 		80EED8871E7049FF00B58295 /* AnalysisSolarTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisSolarTerm.m; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				80135E6C1E879D1A00429C2B /* CangGanData.m */,
 				80135E6E1E87ABDF00429C2B /* NaYinData.h */,
 				80135E6F1E87ABDF00429C2B /* NaYinData.m */,
+				809CE2341E894CC5003AF1D6 /* ShenShaData.h */,
+				809CE2351E894CC5003AF1D6 /* ShenShaData.m */,
 			);
 			path = MiddleViewData;
 			sourceTree = "<group>";
@@ -970,6 +975,7 @@
 				8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */,
 				805D414C1E73D5070000C6C7 /* MiddleSubView.m in Sources */,
 				80135E671E878EB900429C2B /* MiddleViewData.m in Sources */,
+				809CE2361E894CC5003AF1D6 /* ShenShaData.m in Sources */,
 				805D41E21E73DB1A0000C6C7 /* SolarTermsThirdCell.m in Sources */,
 				805D41471E73D5070000C6C7 /* ShuangZaoData.m in Sources */,
 				805D41491E73D5070000C6C7 /* UIConstantParm.m in Sources */,

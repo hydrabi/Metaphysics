@@ -46,6 +46,11 @@ typedef NS_ENUM(NSInteger,CalendarType){
     CalendarTypeLunar,              /**<农历*/
 };
 
+typedef NS_ENUM(NSInteger,SBType){
+    SBTypeStems,                    /**<天干*/
+    SBTypeBranches,                 /**<地支*/
+};
+
 //1366 1024
 static const CGFloat screenWidth = 1366.0f;
 static const CGFloat screenHeight = 1024.0f;

@@ -159,4 +159,14 @@
     ganZhiHour = [NSString stringWithFormat:@"%@%@",[stemsStr substringWithRange:NSMakeRange(realIndex, 1)],shiChen];
     return ganZhiHour;
 }
+
+-(NSString*)getStems{
+    NSAssert(self.length == 2, @"干支长度不为2");
+    return [self substringWithRange:NSMakeRange(0, 1)];
+}
+
+-(NSString*)getBranches{
+    NSAssert(self.length == 2, @"干支长度不为2");
+    return [self substringWithRange:NSMakeRange(1, 1)];
+}
 @end

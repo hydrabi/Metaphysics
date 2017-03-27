@@ -41,4 +41,18 @@
  @return 时的干支
  */
 +(NSString*)ganZhiHourWithHour:(NSInteger)hour day:(NSString*)day;
+
+/**
+ 获取干支中的天干
+
+ @return 返回天干
+ */
+-(NSString*)getStems;
+
+/**
+ 获取干支中的地支
+ 
+ @return 返回地支
+ */
+-(NSString*)getBranches;
 @end

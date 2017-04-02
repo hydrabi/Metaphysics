@@ -10,6 +10,7 @@
 #import "LiuQinData.h"
 #import "CangGanData.h"
 #import "NaYinData.h"
+#import "ShenShaData.h"
 @interface MiddleViewData : SubViewData
 
 /**
@@ -26,4 +27,9 @@
  纳音数据
  */
 @property (nonatomic,strong)NaYinData *naYinData;
+
+/**
+ 神煞数据
+ */
+@property (nonatomic,strong)ShenShaData *shenShaData;
 @end

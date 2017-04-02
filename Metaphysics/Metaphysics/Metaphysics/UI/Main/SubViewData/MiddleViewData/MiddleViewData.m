@@ -13,11 +13,13 @@
     self.liuQinData = [[LiuQinData alloc] init];
     self.cangGanData = [[CangGanData alloc] init];
     self.naYinData = [[NaYinData alloc] init];
+    self.shenShaData = [[ShenShaData alloc] init];
 }
 
 -(void)resetData{
     [self.cangGanData resetData];
     [self.liuQinData resetData];
     [self.naYinData resetData];
+    [self.shenShaData resetData];
 }
 @end

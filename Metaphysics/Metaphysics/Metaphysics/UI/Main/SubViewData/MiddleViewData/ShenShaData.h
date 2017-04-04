@@ -33,7 +33,7 @@
 /**
  所有神煞队列组成的队列
  */
-@property (nonatomic,strong)NSMutableArray *totalShenShaArr;
+@property (nonatomic,strong)NSMutableArray<NSMutableArray*> *totalShenShaArr;
 
 /**
  干支年
@@ -56,4 +56,25 @@
  */
 @property (nonatomic,strong)NSMutableArray *totalGanZhiArr;
 
+#pragma mark - 最上边
+/**
+ 最上边时柱神煞队列
+ */
+@property (nonatomic,strong)NSMutableArray *topHourShenShaArr;
+
+#pragma mark - 最下边
+/**
+ 最下边月柱神煞队列
+ */
+@property (nonatomic,strong)NSMutableArray *bottomMonthShenShaArr;
+
+/**
+ 最下边日柱神煞队列
+ */
+@property (nonatomic,strong)NSMutableArray *bottomDayShenShaArr;
+
+/**
+ 最下边时柱神煞队列
+ */
+@property (nonatomic,strong)NSMutableArray *bottomHourShenShaArr;
 @end

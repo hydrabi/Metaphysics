@@ -11,7 +11,13 @@
 #import "CangGanData.h"
 #import "NaYinData.h"
 #import "ShenShaData.h"
+#import "UIConstantParameter.h"
 @interface MiddleViewData : SubViewData
+
+/**
+ 乾坤
+ */
+@property (nonatomic,assign)UniverseType universeType;
 
 /**
  六亲数据

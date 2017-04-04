@@ -17,6 +17,9 @@
 		8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */; };
 		804088111E3D963800380A15 /* BaseContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088101E3D963800380A15 /* BaseContentView.m */; };
 		804088191E3E12BE00380A15 /* PlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088181E3E12BE00380A15 /* PlaceHolderView.m */; };
+		804583CD1E92543C0098790C /* MiddleTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 804583CC1E92543C0098790C /* MiddleTableViewDataSource.m */; };
+		804583D11E9255980098790C /* MiddleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 804583CF1E9255980098790C /* MiddleTableViewCell.m */; };
+		804583D21E9255980098790C /* MiddleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804583D01E9255980098790C /* MiddleTableViewCell.xib */; };
 		805D41151E73D5070000C6C7 /* BottomContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D40A21E73D5070000C6C7 /* BottomContentView.m */; };
 		805D41161E73D5070000C6C7 /* BottomFirstTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 805D40A41E73D5070000C6C7 /* BottomFirstTableViewHeader.m */; };
 		805D41171E73D5070000C6C7 /* BottomFirstTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 805D40A51E73D5070000C6C7 /* BottomFirstTableViewHeader.xib */; };
@@ -128,6 +131,11 @@
 		804088171E3E12BE00380A15 /* PlaceHolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceHolderView.h; sourceTree = "<group>"; };
 		804088181E3E12BE00380A15 /* PlaceHolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceHolderView.m; sourceTree = "<group>"; };
 		8040881A1E3E19B400380A15 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		804583CB1E92543C0098790C /* MiddleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleTableViewDataSource.h; sourceTree = "<group>"; };
+		804583CC1E92543C0098790C /* MiddleTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleTableViewDataSource.m; sourceTree = "<group>"; };
+		804583CE1E9255980098790C /* MiddleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleTableViewCell.h; sourceTree = "<group>"; };
+		804583CF1E9255980098790C /* MiddleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleTableViewCell.m; sourceTree = "<group>"; };
+		804583D01E9255980098790C /* MiddleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiddleTableViewCell.xib; sourceTree = "<group>"; };
 		805D40A11E73D5070000C6C7 /* BottomContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomContentView.h; sourceTree = "<group>"; };
 		805D40A21E73D5070000C6C7 /* BottomContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomContentView.m; sourceTree = "<group>"; };
 		805D40A31E73D5070000C6C7 /* BottomFirstTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomFirstTableViewHeader.h; sourceTree = "<group>"; };
@@ -473,6 +481,11 @@
 				805D410E1E73D5070000C6C7 /* MiddleSubView.h */,
 				805D410F1E73D5070000C6C7 /* MiddleSubView.m */,
 				805D41101E73D5070000C6C7 /* MiddleSubView.xib */,
+				804583CB1E92543C0098790C /* MiddleTableViewDataSource.h */,
+				804583CC1E92543C0098790C /* MiddleTableViewDataSource.m */,
+				804583CE1E9255980098790C /* MiddleTableViewCell.h */,
+				804583CF1E9255980098790C /* MiddleTableViewCell.m */,
+				804583D01E9255980098790C /* MiddleTableViewCell.xib */,
 			);
 			path = Middle;
 			sourceTree = "<group>";
@@ -860,6 +873,7 @@
 			files = (
 				805D41D91E73DB1A0000C6C7 /* SolarTermsFirstCell.xib in Resources */,
 				805D41981E73D5320000C6C7 /* NormalTextView.xib in Resources */,
+				804583D21E9255980098790C /* MiddleTableViewCell.xib in Resources */,
 				805D411B1E73D5070000C6C7 /* BottomTableViewCell.xib in Resources */,
 				805D419A1E73D5320000C6C7 /* JiaZiCollectionViewCell.xib in Resources */,
 				805D41191E73D5070000C6C7 /* BottomNormalTableViewHeader.xib in Resources */,
@@ -961,6 +975,7 @@
 				804088191E3E12BE00380A15 /* PlaceHolderView.m in Sources */,
 				805D41971E73D5320000C6C7 /* NormalTextView.m in Sources */,
 				805D41951E73D5320000C6C7 /* LiuNianTextView.m in Sources */,
+				804583CD1E92543C0098790C /* MiddleTableViewDataSource.m in Sources */,
 				80F8C1FB1E3C371E0036186A /* AppDelegate.m in Sources */,
 				805D41BD1E73D5F10000C6C7 /* NSString+Addition.m in Sources */,
 				805D41E91E73FBDB0000C6C7 /* SeparatorTableViewCell.m in Sources */,
@@ -995,6 +1010,7 @@
 				80135E701E87ABDF00429C2B /* NaYinData.m in Sources */,
 				805D413E1E73D5070000C6C7 /* LeftSideMenuDataSource.m in Sources */,
 				80135E6D1E879D1A00429C2B /* CangGanData.m in Sources */,
+				804583D11E9255980098790C /* MiddleTableViewCell.m in Sources */,
 				805D41411E73D5070000C6C7 /* MainViewController.m in Sources */,
 				805D41931E73D5320000C6C7 /* DaYunTableViewDataSource.m in Sources */,
 				805D418B1E73D5320000C6C7 /* DaYunSubTableViewCell.m in Sources */,

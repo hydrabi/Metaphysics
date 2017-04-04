@@ -19,6 +19,7 @@
 @property (nonatomic,weak)IBOutlet UILabel *horLine3Label;
 @property (nonatomic,weak)IBOutlet UILabel *verLineLabel;
 @property (nonatomic,weak)IBOutlet UIButton *showFormButton;
+@property (nonatomic,weak)IBOutlet UITableView *tableView;
 +(instancetype)instanceMiddleSubViewWithType:(MiddleSubViewType)type;
 
 /**

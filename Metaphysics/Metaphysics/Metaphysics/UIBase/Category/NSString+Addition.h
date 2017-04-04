@@ -55,4 +55,11 @@
  @return 返回地支
  */
 -(NSString*)getBranches;
+
+/**
+ 判断是阴还是阳
+
+ @return yes为阳，no为阴
+ */
+-(BOOL)isYang;
 @end

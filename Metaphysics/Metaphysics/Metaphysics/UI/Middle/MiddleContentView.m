@@ -96,16 +96,37 @@
 
 -(void)bindViewModel{
     
-    RACSignal *lToSSignal = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(lunarToSolar)];
-    RACSignal *sToLSignal = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(solarToLunar)];
+    RACSignal *lToSSignal       = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(lunarToSolar)];
+    RACSignal *sToLSignal       = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(solarToLunar)];
+    //乾坤变化信号
+    RACSignal *quankunSignal    = [RACObserve([MainViewModel sharedInstance].middleData, universeType) distinctUntilChanged];
     @weakify(self)
-    [[lToSSignal merge:sToLSignal]
+    [[[lToSSignal
+       merge:sToLSignal]
+      merge:quankunSignal]
      subscribeNext:^(id _){
          @strongify(self)
          [self.yearSubView reloadData];
          [self.monthSubView reloadData];
          [self.daySubView reloadData];
          [self.hourSubView reloadData];
+     }];
+    
+    MiddleViewData *middleData = [[MainViewModel sharedInstance] middleData];
+    [[self.genderButton
+      rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(id _){
+         @strongify(self)
+         if(middleData.universeType == UniverseTypeQian){
+             middleData.universeType = UniverseTypeKun;
+             [self.genderButton setTitle:@"坤"
+                                forState:UIControlStateNormal];
+         }
+         else{
+             middleData.universeType = UniverseTypeQian;
+             [self.genderButton setTitle:@"乾"
+                                forState:UIControlStateNormal];
+         }
      }];
 }
 @end

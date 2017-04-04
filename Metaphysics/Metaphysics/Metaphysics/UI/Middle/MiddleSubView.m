@@ -10,9 +10,10 @@
 #import "UIConstantParameter.h"
 #import "NSString+Addition.h"
 #import "MainViewModel.h"
+#import "MiddleTableViewDataSource.h"
 @interface MiddleSubView()
-    
 @property (nonatomic,weak)IBOutlet UIView *innerView;
+@property (nonatomic,strong)MiddleTableViewDataSource *tableViewDataSource;
 @end
 
 @implementation MiddleSubView
@@ -30,9 +31,12 @@
     return nibView[0];
 }
 
--(void)awakeFromNib{
-    [super awakeFromNib];
-    
+-(MiddleTableViewDataSource*)tableViewDataSource{
+    if(_tableViewDataSource == nil){
+        _tableViewDataSource = [[MiddleTableViewDataSource alloc] initWithTableView:self.tableView
+                                                                        subViewType:self.type];
+    }
+    return _tableViewDataSource;
 }
 
 -(void)UIConfig{
@@ -59,6 +63,17 @@
                          forState:UIControlStateNormal];
     self.showFormButton.hidden = YES;
     
+    self.tableView.delegate = self.tableViewDataSource;
+    self.tableView.dataSource = self.tableViewDataSource;
+    
+    [self clearData];
+}
+
+-(IBAction)showFormButtonAction:(id)sender{
+    [MainViewModel sharedInstance].hadShowSolarTermsCollectionView = ![MainViewModel sharedInstance].hadShowSolarTermsCollectionView;
+}
+
+-(void)clearData{
     switch (self.type) {
         case MiddleSubViewTypeYear:
         {
@@ -115,15 +130,14 @@
     }
 }
 
--(IBAction)showFormButtonAction:(id)sender{
-    [MainViewModel sharedInstance].hadShowSolarTermsCollectionView = ![MainViewModel sharedInstance].hadShowSolarTermsCollectionView;
-}
-
 -(void)reloadData{
+    [self clearData];
+    
     CurrentSelectDate *current = [MainViewModel sharedInstance].selectedDate;
     LiuQinData *liuQinData = [MainViewModel sharedInstance].middleData.liuQinData;
     CangGanData *cangGanData = [MainViewModel sharedInstance].middleData.cangGanData;
     NaYinData *naYinData = [MainViewModel sharedInstance].middleData.naYinData;
+    ShenShaData *shenShaData = [MainViewModel sharedInstance].middleData.shenShaData;
     switch (self.type) {
         case MiddleSubViewTypeYear:
         {
@@ -141,6 +155,14 @@
             self.horLine3Label.text = liuQinData.monthBottomLiuQin;
             self.verLineLabel.text  = naYinData.monthNaYin;
             self.topLeftLabel.text = liuQinData.monthTopLiuQin;
+            
+            if(shenShaData.bottomMonthShenShaArr.count>0){
+                self.bottomRightLabel.text = shenShaData.bottomMonthShenShaArr[0];
+            }
+            
+            if(shenShaData.bottomMonthShenShaArr.count>1){
+                self.bottomLeftLabel.text = shenShaData.bottomMonthShenShaArr[1];
+            }
         }
             break;
         case MiddleSubViewTypeDay:
@@ -150,6 +172,14 @@
             self.horLine3Label.text = liuQinData.dayBottomLiuQin;
             self.verLineLabel.text  = naYinData.dayNaYin;
             self.topLeftLabel.text = liuQinData.dayTopLiuQin;
+            
+            if(shenShaData.bottomDayShenShaArr.count>0){
+                self.bottomRightLabel.text = shenShaData.bottomDayShenShaArr[0];
+            }
+            
+            if(shenShaData.bottomDayShenShaArr.count>1){
+                self.bottomLeftLabel.text = shenShaData.bottomDayShenShaArr[1];
+            }
         }
             break;
         case MiddleSubViewTypeHour:
@@ -159,12 +189,25 @@
             self.horLine3Label.text = liuQinData.hourBottomLiuQin;
             self.verLineLabel.text  = naYinData.hourNaYin;
             self.topLeftLabel.text = liuQinData.hourTopLiuQin;
+            if(shenShaData.topHourShenShaArr.count>0){
+                self.topRightLabel.text = shenShaData.topHourShenShaArr[0];
+            }
+            
+            if(shenShaData.bottomHourShenShaArr.count>0){
+                self.bottomRightLabel.text = shenShaData.bottomHourShenShaArr[0];
+            }
+            
+            if(shenShaData.bottomHourShenShaArr.count>1){
+                self.bottomLeftLabel.text = shenShaData.bottomHourShenShaArr[1];
+            }
         }
             break;
             
         default:
             break;
     }
+    
+    [self.tableView reloadData];
 }
 
 @end

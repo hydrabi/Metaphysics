@@ -51,6 +51,11 @@ typedef NS_ENUM(NSInteger,SBType){
     SBTypeBranches,                 /**<地支*/
 };
 
+typedef NS_ENUM(NSInteger,UniverseType) {
+    UniverseTypeQian,               /**<乾*/
+    UniverseTypeKun,                /**<坤*/
+};
+
 //1366 1024
 static const CGFloat screenWidth = 1366.0f;
 static const CGFloat screenHeight = 1024.0f;

@@ -104,12 +104,6 @@
                             <rect key="frame" x="157" y="0.0" width="53" height="160"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试试" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St7-M2-At9">
-                            <rect key="frame" x="156" y="0.0" width="54" height="24"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -119,7 +113,6 @@
                         <constraint firstItem="n5n-Xd-ZPQ" firstAttribute="top" secondItem="plm-EM-Upv" secondAttribute="top" id="8Wq-Dd-opA"/>
                         <constraint firstItem="s0n-ny-Osj" firstAttribute="trailing" secondItem="bgd-Sq-ktu" secondAttribute="trailing" id="9eP-PY-ji2"/>
                         <constraint firstItem="PJD-KC-f4p" firstAttribute="leading" secondItem="tNN-PT-hAE" secondAttribute="trailing" id="BWB-2q-uvd"/>
-                        <constraint firstAttribute="trailing" secondItem="St7-M2-At9" secondAttribute="trailing" id="F7u-ST-VRA"/>
                         <constraint firstItem="tNN-PT-hAE" firstAttribute="leading" secondItem="n5n-Xd-ZPQ" secondAttribute="trailing" id="GrV-as-QfW"/>
                         <constraint firstItem="IxX-8c-jk0" firstAttribute="leading" secondItem="aRz-NV-5Ax" secondAttribute="trailing" id="IKT-WW-0nY"/>
                         <constraint firstItem="bgd-Sq-ktu" firstAttribute="top" secondItem="n5n-Xd-ZPQ" secondAttribute="bottom" id="Jxf-He-T5c"/>
@@ -133,13 +126,11 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="nuiDefinition" value="middleSubViewHeight_key"/>
                             </userDefinedRuntimeAttributes>
                         </constraint>
-                        <constraint firstItem="St7-M2-At9" firstAttribute="top" secondItem="plm-EM-Upv" secondAttribute="top" id="Qe0-nH-BZQ"/>
                         <constraint firstItem="s0n-ny-Osj" firstAttribute="leading" secondItem="aRz-NV-5Ax" secondAttribute="trailing" id="SyR-y1-sEN"/>
                         <constraint firstAttribute="trailing" secondItem="PJD-KC-f4p" secondAttribute="trailing" id="T7r-fA-f0A"/>
                         <constraint firstAttribute="bottom" secondItem="PJD-KC-f4p" secondAttribute="bottom" id="Tbq-Fh-gJS"/>
                         <constraint firstItem="n5n-Xd-ZPQ" firstAttribute="leading" secondItem="plm-EM-Upv" secondAttribute="leading" id="YbO-AR-bRU"/>
                         <constraint firstItem="s0n-ny-Osj" firstAttribute="top" secondItem="IxX-8c-jk0" secondAttribute="bottom" id="aDQ-mT-fiP"/>
-                        <constraint firstItem="St7-M2-At9" firstAttribute="leading" secondItem="tNN-PT-hAE" secondAttribute="leading" id="c6Z-zW-k46"/>
                         <constraint firstItem="tNN-PT-hAE" firstAttribute="leading" secondItem="IxX-8c-jk0" secondAttribute="trailing" id="f2Q-T4-WFg"/>
                         <constraint firstItem="tNN-PT-hAE" firstAttribute="leading" secondItem="jhD-Ky-esq" secondAttribute="trailing" id="gJZ-ep-ydx"/>
                         <constraint firstAttribute="bottom" secondItem="KQ8-Fz-mv0" secondAttribute="bottom" id="jQX-CS-rRn"/>
@@ -193,6 +184,7 @@
                 <outlet property="horLine3Label" destination="jhD-Ky-esq" id="SkZ-ZD-Rmn"/>
                 <outlet property="innerView" destination="plm-EM-Upv" id="0Tc-nK-1uU"/>
                 <outlet property="showFormButton" destination="z4B-ak-m7k" id="pp0-p1-ruY"/>
+                <outlet property="tableView" destination="PJD-KC-f4p" id="9qu-JX-j2l"/>
                 <outlet property="topLeftLabel" destination="AuR-Jo-Ynu" id="9a8-hr-Rd0"/>
                 <outlet property="topRightLabel" destination="37M-Cc-1cP" id="shK-J3-yQ5"/>
                 <outlet property="verLineLabel" destination="KQ8-Fz-mv0" id="NHO-Cq-26J"/>

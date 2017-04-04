@@ -154,7 +154,7 @@
             result = @"神煞表";
             break;
         case LeftSideMenuTypeVersion:
-            result = @"03_13";
+            result = @"04_04";
             break;
         
         default:

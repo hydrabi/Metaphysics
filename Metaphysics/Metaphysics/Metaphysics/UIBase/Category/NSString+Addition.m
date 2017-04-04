@@ -169,4 +169,17 @@
     NSAssert(self.length == 2, @"干支长度不为2");
     return [self substringWithRange:NSMakeRange(1, 1)];
 }
+
+-(BOOL)isYang{
+    NSAssert(self.length == 1, @"天干长度不为1");
+    NSAssert([[NSString stemsStr] containsString:self], @"不属于天干");
+    NSInteger index = [[NSString stemsStr] rangeOfString:self].location;
+    //甲乙丙丁戊己庚辛壬癸 相对应为阳阴阳阴阳阴阳阴
+    if(index % 2 == 0){
+        return YES;
+    }
+    else{
+        return NO;
+    }
+}
 @end

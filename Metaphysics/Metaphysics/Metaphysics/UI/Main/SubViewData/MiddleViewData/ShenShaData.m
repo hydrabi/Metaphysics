@@ -26,6 +26,12 @@
                              self.monthShenShaArr,
                              self.dayShenShaArr,
                              self.hourShenShaArr].mutableCopy;
+    
+    self.topHourShenShaArr = @[].mutableCopy;
+    
+    self.bottomMonthShenShaArr = @[].mutableCopy;
+    self.bottomDayShenShaArr = @[].mutableCopy;
+    self.bottomHourShenShaArr = @[].mutableCopy;
 }
 
 -(void)resetData{
@@ -35,6 +41,39 @@
     [self isIncludeTianDe];
     [self isIncludeYueDe];
     [self isIncludeTaiJi];
+    [self isIncludeHuaGai];
+    [self isIncludeWenChang];
+    [self isIncludeDeXiu];
+    [self isIncludeJiangXing];
+    [self isIncludeYiMa];
+    [self isIncludeLuShen];
+    [self isIncludeYangRen];
+    [self isIncludeTaoHua];
+    [self isIncludeHongYan];
+    [self isIncludeWangShen];
+    [self isIncludeJieSha];
+    [self isIncludeZaiSha];
+    [self isIncludeYuanChen];
+    [self isIncludeSiFei];
+    [self isIncludeBaZhuan];
+    [self isIncludeJiuChou];
+    [self isIncludeLiuXia];
+    [self isIncludeXueRen];
+    [self isIncludeXueZhi];
+    [self isIncludeKongWang];
+    [self isIncludeXiangPo];
+    [self isIncludeXiangChuan];
+    [self isIncludeSanQiGuiRen];
+    [self isIncludeGuChen];
+    [self isIncludeGuaSu];
+    [self isIncludeGuLuanSha];
+    [self isIncludeJinShenGe];
+    [self isIncludeKuiGang];
+    [self isIncludeTianLuo];
+    [self isIncludeDiWang];
+    [self isIncludeYinYangCuoCha];
+    [self isIncludeGunLangTaoHua];
+    [self isIncludeLuoXingTaoHua];
 }
 
 -(void)removeAll{
@@ -42,6 +81,12 @@
     [self.monthShenShaArr removeAllObjects];
     [self.dayShenShaArr removeAllObjects];
     [self.hourShenShaArr removeAllObjects];
+    
+    [self.topHourShenShaArr removeAllObjects];
+    
+    [self.bottomMonthShenShaArr removeAllObjects];
+    [self.bottomDayShenShaArr removeAllObjects];
+    [self.bottomDayShenShaArr removeAllObjects];
 }
 
 -(void)resetGanZhiProperty{
@@ -57,9 +102,17 @@
                             self.ganZhiHour].mutableCopy;
     
 }
+
+#pragma mark - 添加神煞
 //遍历所有干支，符合条件该柱添加上该神煞
--(void)traverseWithResult:(NSString *(^)(NSString *stems,NSString *branches))judgeBlock{
+-(void)traverseWithCheckType:(MiddleSubViewType)checkType
+                      result:(NSString *(^)(NSString *stems,NSString *branches))judgeBlock{
     for(NSInteger i = 0;i<self.totalGanZhiArr.count;i++){
+        //前置条件若如遍历的subviewtype相同，跳过；比如华盖的丑见丑，年丑不能再比较年
+        if(checkType == i){
+            continue;
+        }
+        
         NSString *ganZhi = self.totalGanZhiArr[i];
         NSString *shenSha = judgeBlock(ganZhi.getStems,ganZhi.getBranches);
         if(shenSha.length>0){
@@ -68,6 +121,35 @@
             if(![shenShaArray containsObject:shenSha]){
                 [shenShaArray addObject:shenSha];
             }
+        }
+    }
+}
+
+//指定特定某柱，如（八专、九丑）指定日柱查找干支
+-(void)specifiedWithMiddleSubViewType:(MiddleSubViewType)subViewType judgeBlock:(NSString *(^)(NSString *stems,NSString *branches))judgeBlock{
+    
+    NSString *ganZhi = self.totalGanZhiArr[subViewType];
+    NSString *shenSha = judgeBlock(ganZhi.getStems,ganZhi.getBranches);
+    if(shenSha.length>0){
+        NSMutableArray *shenShaArray = self.totalShenShaArr[subViewType];
+        //如果该队列不包含该神煞，则添加上去
+        if(![shenShaArray containsObject:shenSha]){
+            [shenShaArray addObject:shenSha];
+        }
+    }
+}
+
+//指定特定某柱，如（孤辰）并指定特定添加神煞的队列 指定日柱查找干支
+-(void)specifiedWithMiddleSubViewType:(MiddleSubViewType)subViewType
+                           shenShaArr:(NSMutableArray*)shenShaArr
+                           judgeBlock:(NSString *(^)(NSString *stems,NSString *branches))judgeBlock{
+    
+    NSString *ganZhi = self.totalGanZhiArr[subViewType];
+    NSString *shenSha = judgeBlock(ganZhi.getStems,ganZhi.getBranches);
+    if(shenSha.length>0){
+        //如果该队列不包含该神煞，则添加上去
+        if(![shenShaArr containsObject:shenSha]){
+            [shenShaArr addObject:shenSha];
         }
     }
 }
@@ -359,7 +441,7 @@
                                        @"亥",
                                        @"子",
                                        ]
-                                name:@"文昌"];
+                                name:@"禄神"];
 }
 
 //羊刃
@@ -422,6 +504,7 @@
     [self shenShaSearchWithCheckType:SBTypeStems
                         traverseType:SBTypeBranches
                         checkTypeArr:@[
+                                       @(MiddleSubViewTypeYear),
                                        @(MiddleSubViewTypeDay),
                                        ]
                 checkPrecnoditionArr:@[@"甲",
@@ -458,9 +541,9 @@
                                        @(MiddleSubViewTypeDay),
                                        ]
                 checkPrecnoditionArr:@[@"寅午戌",
-                                       @"申子辰",
                                        @"亥卯未",
                                        @"巳酉丑",
+                                       @"申子辰",
                                        ]
                   traverseConformArr:@[@"巳",
                                        @"寅",
@@ -497,7 +580,6 @@
     [self shenShaSearchWithCheckType:SBTypeBranches
                         traverseType:SBTypeBranches
                         checkTypeArr:@[@(MiddleSubViewTypeYear),
-                                       @(MiddleSubViewTypeDay),
                                        ]
                 checkPrecnoditionArr:@[@"申子辰",
                                        @"亥卯未",
@@ -513,7 +595,616 @@
 }
 
 //元辰
-//
+//(阳男阴女查）子年未、丑年申、寅年酉、卯年戌、辰年亥、巳年子、午年丑、未年寅、申年卯、酉年辰、戌年巳、亥年午。
+//（阴男阳女查）子年巳、丑年午、寅年未、卯年申、辰年酉、巳年戌、午年亥、未年子、申年丑、酉年寅、戌年卯、亥年辰。
+-(void)isIncludeYuanChen{
+    MiddleViewData *middleDada = [MainViewModel sharedInstance].middleData;
+    NSArray *traverseConformArr = nil;
+    //阳男或者阴女
+    if(([[self.ganZhiYear getStems] isYang] && middleDada.universeType == UniverseTypeQian) ||
+       (![[self.ganZhiYear getStems] isYang] && middleDada.universeType == UniverseTypeKun)){
+        traverseConformArr = @[
+                               @"未",
+                               @"申",
+                               @"酉",
+                               @"戌",
+                               @"亥",
+                               @"子",
+                               @"丑",
+                               @"寅",
+                               @"卯",
+                               @"辰",
+                               @"巳",
+                               @"午",
+                               ];
+    }
+    //阴男阳女
+    else{
+        traverseConformArr = @[
+                               @"巳",
+                               @"午",
+                               @"未",
+                               @"申",
+                               @"酉",
+                               @"戌",
+                               @"亥",
+                               @"子",
+                               @"丑",
+                               @"寅",
+                               @"卯",
+                               @"辰",
+                               ];
+    }
+    
+    [self shenShaSearchWithCheckType:SBTypeBranches
+                        traverseType:SBTypeBranches
+                        checkTypeArr:@[@(MiddleSubViewTypeYear),
+                                       ]
+                checkPrecnoditionArr:@[@"子",
+                                       @"丑",
+                                       @"寅",
+                                       @"卯",
+                                       @"辰",
+                                       @"巳",
+                                       @"午",
+                                       @"未",
+                                       @"申",
+                                       @"酉",
+                                       @"戌",
+                                       @"亥",]
+                  traverseConformArr:traverseConformArr
+                                name:@"元辰"];
+}
+
+
+//四废
+//寅卯辰月，遇庚申、辛酉；    巳午未月，遇壬子、癸亥；
+//申酉戌月，遇甲寅、乙卯；    亥子丑月，遇丙午、丁巳；（月支查）
+-(void)isIncludeSiFei{
+    [self shenShaSearchWithCheckType:SBTypeBranches
+                        checkTypeArr:@[@(MiddleSubViewTypeMonth),
+                                       ]
+                checkPrecnoditionArr:@[@"寅卯辰",
+                                       @"巳午未",
+                                       @"申酉戌",
+                                       @"亥子丑",
+                                       ]
+                  traverseConformArr:@[@"庚申、辛酉",
+                                       @"壬子、癸亥",
+                                       @"甲寅、乙卯",
+                                       @"丙午、丁巳",
+                                       ]
+                                name:@"四废"];
+}
+
+//甲寅、乙卯、丁未、戊戌、己未、庚申、辛酉、癸丑。（八专日柱查）
+-(void)isIncludeBaZhuan{
+    NSArray *traverseConformArr = @[
+                                    @"甲寅",
+                                    @"乙卯",
+                                    @"丁未",
+                                    @"戊戌",
+                                    @"己未",
+                                    @"庚申",
+                                    @"辛酉",
+                                    @"癸丑",
+                                    ];
+    
+    for(NSString* traverseConform in traverseConformArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeDay
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"八专";
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
+//丁酉、戊子、戊午、己卯、己酉、辛卯、辛酉、壬子、壬午。（九丑日柱查）
+-(void)isIncludeJiuChou{
+    NSArray *traverseConformArr = @[
+                                    @"丁酉",
+                                    @"戊子",
+                                    @"戊午",
+                                    @"己卯",
+                                    @"己酉",
+                                    @"辛卯",
+                                    @"辛酉",
+                                    @"壬子",
+                                    @"壬午",
+                                    ];
+    
+    for(NSString* traverseConform in traverseConformArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeDay
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"九丑";
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
+//流霞
+//甲日酉、乙日戌、丙日未、丁日申、戊日巳、己日午、庚日辰、辛日卯、壬日亥、癸日寅。（流霞日干查）
+-(void)isIncludeLiuXia{
+    [self shenShaSearchWithCheckType:SBTypeStems
+                        traverseType:SBTypeBranches
+                        checkTypeArr:@[
+                                       @(MiddleSubViewTypeDay),
+                                       ]
+                checkPrecnoditionArr:@[@"甲",
+                                       @"乙",
+                                       @"丙",
+                                       @"丁",
+                                       @"戊",
+                                       @"己",
+                                       @"庚",
+                                       @"辛",
+                                       @"壬",
+                                       @"癸",
+                                       ]
+                  traverseConformArr:@[@"酉",
+                                       @"戌",
+                                       @"未",
+                                       @"申",
+                                       @"巳",
+                                       @"午",
+                                       @"辰",
+                                       @"卯",
+                                       @"亥",
+                                       @"寅",
+                                       ]
+                                name:@"流霞"];
+}
+
+//血刃
+//寅月丑、卯月未、辰月寅、巳月申、午月卯、未月酉、申月辰、酉月戌、戌月巳、亥月亥、子月午、丑月子。（血刃月支查）
+-(void)isIncludeXueRen{
+    [self shenShaSearchWithCheckType:SBTypeBranches
+                        traverseType:SBTypeBranches
+                        checkTypeArr:@[
+                                       @(MiddleSubViewTypeMonth),
+                                       ]
+                checkPrecnoditionArr:@[@"寅",
+                                       @"卯",
+                                       @"辰",
+                                       @"巳",
+                                       @"午",
+                                       @"未",
+                                       @"申",
+                                       @"酉",
+                                       @"戌",
+                                       @"亥",
+                                       @"子",
+                                       @"丑",
+                                       ]
+                  traverseConformArr:@[@"丑",
+                                       @"未",
+                                       @"寅",
+                                       @"申",
+                                       @"卯",
+                                       @"酉",
+                                       @"辰",
+                                       @"戌",
+                                       @"巳",
+                                       @"亥",
+                                       @"午",
+                                       @"子",
+                                       ]
+                                name:@"血刃"];
+}
+
+//血支
+//子年戌、丑年酉、寅年申、卯年未、辰年午、巳年巳、午年辰、未年卯、申年寅、酉年丑、戌年子、亥年亥。（血支年支查）
+-(void)isIncludeXueZhi{
+    [self shenShaSearchWithCheckType:SBTypeBranches
+                        traverseType:SBTypeBranches
+                        checkTypeArr:@[
+                                       @(MiddleSubViewTypeMonth),
+                                       ]
+                checkPrecnoditionArr:@[@"子",
+                                       @"丑",
+                                       @"寅",
+                                       @"卯",
+                                       @"辰",
+                                       @"巳",
+                                       @"午",
+                                       @"未",
+                                       @"申",
+                                       @"酉",
+                                       @"戌",
+                                       @"亥",
+                                       ]
+                  traverseConformArr:@[@"戌",
+                                       @"酉",
+                                       @"申",
+                                       @"未",
+                                       @"午",
+                                       @"巳",
+                                       @"辰",
+                                       @"卯",
+                                       @"寅",
+                                       @"丑",
+                                       @"子",
+                                       @"亥",
+                                       ]
+                                name:@"血支"];
+}
+
+//空亡
+//甲子旬中戌亥空，甲戌旬中申酉空，甲申旬中午未空，甲午旬中辰巳空，甲辰旬中寅卯空，甲寅旬中子丑空。（年日柱查）
+-(void)isIncludeKongWang{
+    [self shenShaSearchWithCheckTypeArr:@[
+                                          @(MiddleSubViewTypeYear),
+                                          @(MiddleSubViewTypeDay),
+                                          ]
+                   checkPrecnoditionArr:@[
+                                          @"甲子",
+                                          @"甲戌",
+                                          @"甲申",
+                                          @"甲午",
+                                          @"甲辰",
+                                          @"甲寅",
+                                          ]
+                     traverseConformArr:@[@"戌亥",
+                                          @"申酉",
+                                          @"午未",
+                                          @"辰巳",
+                                          @"寅卯",
+                                          @"子丑",]
+                                   name:@"空亡"];
+}
+
+//相破
+//(子卯破）（午酉破）（子酉破）（寅亥破）（卯午破）（辰丑破）（巳申破）（未戌破） 日和年月时相比 破卯
+-(void)isIncludeXiangPo{
+    [self shenShaSearchWithCheckType:SBTypeBranches
+                        traverseType:SBTypeBranches
+                        checkTypeArr:@[
+                                       @(MiddleSubViewTypeDay),
+                                       ]
+                checkPrecnoditionArr:@[@"子",
+                                       @"午",
+                                       @"子",
+                                       @"寅",
+                                       @"卯",
+                                       @"辰",
+                                       @"巳",
+                                       @"未",
+                                       ]
+                  traverseConformArr:@[@"卯",
+                                       @"酉",
+                                       @"酉",
+                                       @"亥",
+                                       @"午",
+                                       @"丑",
+                                       @"申",
+                                       @"戌",
+                                       ]
+                                name:@"破日"];
+}
+
+//相穿
+//（戌酉穿）（亥申穿）（子未穿）（丑午穿）（寅巳穿）（卯辰穿） 日和年月时相比
+-(void)isIncludeXiangChuan{
+    [self shenShaSearchWithCheckType:SBTypeBranches
+                        traverseType:SBTypeBranches
+                        checkTypeArr:@[
+                                       @(MiddleSubViewTypeDay),
+                                       ]
+                checkPrecnoditionArr:@[@"戌",
+                                       @"亥",
+                                       @"子",
+                                       @"丑",
+                                       @"寅",
+                                       @"卯",
+                                       ]
+                  traverseConformArr:@[@"酉",
+                                       @"申",
+                                       @"未",
+                                       @"午",
+                                       @"巳",
+                                       @"辰",
+                                       ]
+                                name:@"穿日"];
+}
+
+//三奇贵人
+//甲戊庚、乙丙丁、壬癸辛。（年月日的干、月日时的干顺排）
+-(void)isIncludeSanQiGuiRen{
+    NSArray *ordersArr = @[@"甲戊庚",
+                             @"乙丙丁",
+                             @"壬癸辛"];
+    //年月日是否符合
+    [self conformOrderArr:ordersArr
+               startIndex:0
+                   length:3];
+    [self conformOrderArr:ordersArr
+               startIndex:1
+                   length:3];
+}
+
+//孤辰
+//亥子丑年、见寅为 孤辰、见戌为 寡宿；）    （寅卯辰年、见巳为孤辰、见丑为 寡宿；）
+//巳午未年、见申为 孤辰、见辰为 寡宿；）    （申酉戌年、见亥为孤辰、见未为 寡宿。）
+-(void)isIncludeGuChen{
+    [self bottomDayHourShenShaSearchWithCheckType:SBTypeBranches
+                              traverseType:SBTypeBranches
+                              checkTypeArr:@[
+                                             @(MiddleSubViewTypeYear),
+                                             ]
+                      checkPrecnoditionArr:@[@"亥子丑",
+                                             @"寅卯辰",
+                                             @"巳午未",
+                                             @"申酉戌",
+                                             ]
+                        traverseConformArr:@[
+                                             @"寅",
+                                             @"巳",
+                                             @"申",
+                                             @"亥",
+                                             ]
+                                      name:@"孤辰"];
+}
+
+//寡宿
+//亥子丑年、见寅为 孤辰、见戌为 寡宿；）    （寅卯辰年、见巳为孤辰、见丑为 寡宿；）
+//巳午未年、见申为 孤辰、见辰为 寡宿；）    （申酉戌年、见亥为孤辰、见未为 寡宿。）
+-(void)isIncludeGuaSu{
+    [self bottomDayHourShenShaSearchWithCheckType:SBTypeBranches
+                              traverseType:SBTypeBranches
+                              checkTypeArr:@[
+                                             @(MiddleSubViewTypeYear),
+                                             ]
+                      checkPrecnoditionArr:@[@"亥子丑",
+                                             @"寅卯辰",
+                                             @"巳午未",
+                                             @"申酉戌",
+                                             ]
+                        traverseConformArr:@[
+                                             @"戌",
+                                             @"丑",
+                                             @"辰",
+                                             @"未",
+                                             ]
+                                      name:@"寡宿"];
+}
+
+//孤鸾煞
+//乙巳、丙午、丁巳、戊申、戊午、辛亥、壬寅、壬子。（日时柱查）  8个
+-(void)isIncludeGuLuanSha{
+    NSArray *traverseConformArr = @[
+                                    @"乙巳",
+                                    @"丙午",
+                                    @"丁巳",
+                                    @"戊申",
+                                    @"戊午",
+                                    @"辛亥",
+                                    @"壬寅",
+                                    @"壬子",
+                                    ];
+    
+    for(NSString* traverseConform in traverseConformArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeDay
+                                  shenShaArr:self.bottomDayShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"孤鸾煞";
+                                      }
+                                      return nil;
+                                  }];
+        
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeHour
+                                  shenShaArr:self.bottomHourShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"孤鸾煞";
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
+//金神格
+//乙丑、己巳、癸酉。（日时柱）  3日
+-(void)isIncludeJinShenGe{
+    NSArray *traverseConformArr = @[
+                                    @"乙丑",
+                                    @"己巳",
+                                    @"癸酉",
+                                    ];
+    
+    for(NSString* traverseConform in traverseConformArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeDay
+                                  shenShaArr:self.bottomDayShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"金神格";
+                                      }
+                                      return nil;
+                                  }];
+        
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeHour
+                                  shenShaArr:self.bottomHourShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"金神格";
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
+//魁罡
+//壬辰、庚戌、庚辰、戊戌。（日柱查）  4日
+-(void)isIncludeKuiGang{
+    NSArray *traverseConformArr = @[
+                                    @"壬辰",
+                                    @"庚戌",
+                                    @"庚辰",
+                                    @"戊戌",
+                                    ];
+    
+    for(NSString* traverseConform in traverseConformArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeDay
+                                  shenShaArr:self.bottomDayShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"魁罡";
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
+//天罗（男 天罗）
+//（戌见亥，亥见戌为天罗）（年日支查）
+-(void)isIncludeTianLuo{
+    MiddleViewData *middleData = [MainViewModel sharedInstance].middleData;
+    if(middleData.universeType == UniverseTypeQian){
+        [self bottomDayHourShenShaSearchWithCheckType:SBTypeBranches
+                                  traverseType:SBTypeBranches
+                                  checkTypeArr:@[
+                                                 @(MiddleSubViewTypeYear),
+                                                 @(MiddleSubViewTypeDay),
+                                                 ]
+                          checkPrecnoditionArr:@[@"戌",
+                                                 @"亥",
+                                                 ]
+                            traverseConformArr:@[
+                                                 @"亥",
+                                                 @"戌",
+                                                 ]
+                                          name:@"天罗"];
+    }
+}
+
+//地网（女 地网）
+//辰见巳，巳见辰为地网）（年日支查）
+-(void)isIncludeDiWang{
+    MiddleViewData *middleData = [MainViewModel sharedInstance].middleData;
+    if(middleData.universeType == UniverseTypeKun){
+        [self bottomDayHourShenShaSearchWithCheckType:SBTypeBranches
+                                  traverseType:SBTypeBranches
+                                  checkTypeArr:@[
+                                                 @(MiddleSubViewTypeYear),
+                                                 @(MiddleSubViewTypeDay),
+                                                 ]
+                          checkPrecnoditionArr:@[@"辰",
+                                                 @"巳",
+                                                 ]
+                            traverseConformArr:@[
+                                                 @"巳",
+                                                 @"辰",
+                                                 ]
+                                          name:@"地网"];
+    }
+    
+}
+
+//阴阳错差
+//丙子、丙午、丁丑、丁未、戊寅、戊申、辛卯、辛酉、壬辰、壬戌、癸巳、癸亥。（日时柱查）  12日
+-(void)isIncludeYinYangCuoCha{
+    NSArray *traverseConformArr = @[
+                                    @"丙子",
+                                    @"丙午",
+                                    @"丁丑",
+                                    @"丁未",
+                                    @"戊寅",
+                                    @"戊申",
+                                    @"辛卯",
+                                    @"辛酉",
+                                    @"壬辰",
+                                    @"壬戌",
+                                    @"癸巳",
+                                    @"癸亥",
+                                    ];
+    
+    for(NSString* traverseConform in traverseConformArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeDay
+                                  shenShaArr:self.bottomDayShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"阴阳错差";
+                                      }
+                                      return nil;
+                                  }];
+        
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeHour
+                                  shenShaArr:self.bottomHourShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConform isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return @"阴阳错差";
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
+//滚浪桃花
+//【丙子日、见辛卯月或辛卯时】【辛卯日，见丙子月】滚浪桃花。
+-(void)isIncludeGunLangTaoHua{
+    [self bottomMonthAndHourShenShaSearchWithCheckTypeArr:@[
+                                                     @(MiddleSubViewTypeDay),
+                                                     ]
+                              checkPrecnoditionArr:@[@"丙子",
+                                                     ]
+                                traverseConformArr:@[@"辛卯",
+                                                     ]
+                                              name:@"滚浪桃花"];
+    
+    [self bottomMonthShenShaSearchWithCheckTypeArr:@[
+                                                     @(MiddleSubViewTypeDay),
+                                                     ]
+                              checkPrecnoditionArr:@[@"辛卯",
+                                                     ]
+                                traverseConformArr:@[@"丙子",
+                                                     ]
+                                              name:@"滚浪桃花"];
+}
+
+//裸形桃花
+//【甲子日、见庚午月或庚午时】【庚午日，见甲子月】裸形桃花。
+-(void)isIncludeLuoXingTaoHua{
+    [self bottomMonthAndHourShenShaSearchWithCheckTypeArr:@[
+                                                     @(MiddleSubViewTypeDay),
+                                                     ]
+                              checkPrecnoditionArr:@[@"甲子",
+                                                     ]
+                                traverseConformArr:@[@"庚午",
+                                                     ]
+                                              name:@"裸形桃花"];
+    
+    [self bottomMonthShenShaSearchWithCheckTypeArr:@[
+                                                     @(MiddleSubViewTypeDay),
+                                                     ]
+                              checkPrecnoditionArr:@[@"庚午",
+                                                     ]
+                                traverseConformArr:@[@"甲子",
+                                                     ]
+                                              name:@"裸形桃花"];
+}
+
+#pragma mark - 年月日，日月时顺排序符合某个顺序
+-(void)conformOrderArr:(NSArray*)ordersArr
+            startIndex:(NSInteger)startIndex
+                length:(NSInteger)length{
+    //日月时是否符合
+    for(NSString *condition in ordersArr){
+        NSString *combine = @"";
+        for(NSInteger i = startIndex;i<length;i++){
+            combine = [combine stringByAppendingString:[self.totalGanZhiArr[i] getStems]];
+        }
+        if([combine isEqualToString:condition]){
+            if(![self.topHourShenShaArr containsObject:@"三奇贵人"]){
+                [self.topHourShenShaArr addObject:@"三奇贵人"];
+            }
+            return;
+        }
+    }
+}
 
 #pragma mark - 统一的算法
 /**
@@ -537,72 +1228,444 @@
         NSString *preconditions = checkPrecnoditionArr[i];
         //前置条件可能包含多个干支，比如寅午戌马在申，有寅午戌三个，分离它，遍历
         for(NSInteger j = 0;j<preconditions.length;j++){
-            //前置条件符合
-            BOOL preconform = NO;
-            //分离后的每个干或者支
-            NSString *precondition = [preconditions substringWithRange:NSMakeRange(j, 1)];
-            
-            //前置条件的判断，只要其中一种条件符合就可进入遍历阶段
-            //柱的类型
-            for(NSNumber *checkTypeNumber in checkTypeArr){
-                if(self.totalGanZhiArr.count>checkTypeNumber.integerValue){
-                    //获取柱的类型，比如年天乙的年日干查，取年和日判断条件是否符合
-                    NSString *ganZhi = self.totalGanZhiArr[checkTypeNumber.integerValue];
-                    //天干
-                    if(checkType == SBTypeStems){
-                        //只要其中一种条件符合，就可遍历
-                        if([ganZhi.getStems containsString:precondition]){
-                            preconform = YES;
-                            break;
-                        }
-                    }
-                    //地支
-                    else{
-                        //只要其中一种条件符合，就可遍历
-                        if([ganZhi.getBranches containsString:precondition]){
-                            preconform = YES;
-                            break;
-                        }
-                    }
-                }
-            }
-            
-            
-            
-            
+            //前置条件是否符合
+            RACTuple *tuple = nil;
+            //前置条件
+            tuple = [self preconformWithPreconditions:preconditions
+                                                         j:j
+                                              checkTypeArr:checkTypeArr
+                                                 checkType:checkType];
+            RACTupleUnpack(NSNumber* preconform,NSNumber* conformCheckType) = tuple;
+
             //符合前置条件
-            if(preconform){
-                //多个遍历条件中的一个
-                NSString *traverseConformStrs = traverseConformArr[i];
-                //遍历条件可能包含多个干支，比如天乙的甲-(丑未)
-                for(NSInteger k = 0;k<traverseConformStrs.length;k++){
-                    NSString* traverseConformStr = [traverseConformStrs substringWithRange:NSMakeRange(k, 1)];
-                    [self traverseWithResult:^NSString*(NSString *stems,NSString *branches){
-                        //如果遍历查找类型为天干
-                        if(traverseType == SBTypeStems){
-                            //如果遍历条件符合，添加
-                            if([stems containsString:traverseConformStr]
-                               ){
-                                return name;
-                            }
-                        }
-                        //地支
-                        else{
-                            //如果遍历条件符合，添加
-                            if([branches containsString:traverseConformStr]
-                               ){
-                                return name;
-                            }
-                        }
-                        return nil;
-                    }];
-                }
+            if(preconform.boolValue){
+                [self traverseConformStemsOrBranchesWithTraverseConformArr:traverseConformArr
+                                                                         i:i
+                                                              traverseType:traverseType
+                                                                      name:name
+                                                            conformCheckType:(MiddleSubViewType)conformCheckType.integerValue];
             }
-            
-            
-            
         }
     }
     
 }
+
+/**
+ 获取年月日时柱右边的神煞，与上面不同的是遍历的是整体的天干地支，而不是单独某个天干或者地支，所以不需要traverseType
+ 
+ @param checkType 前置查找类型是天干还是地支,如天乙的年日干查,为SBTypeStems 干
+ @param checkTypeArr 要查找的是年月日时那个柱,如天乙的年日干查,为年和日
+ @param checkPrecnoditionArr 查找的干支前置条件,如天乙年日符合甲乙丙丁午己庚辛壬癸
+ @param traverseConformArr （四废）寅卯辰月，遇庚申、辛酉；要天干地支两者皆符合
+ @param name 神煞的名字，如天乙
+ */
+-(void)shenShaSearchWithCheckType:(SBType)checkType
+                     checkTypeArr:(NSArray*)checkTypeArr
+             checkPrecnoditionArr:(NSArray*)checkPrecnoditionArr
+               traverseConformArr:(NSArray*)traverseConformArr
+                             name:(NSString*)name{
+    for(NSInteger i = 0;i<checkPrecnoditionArr.count;i++){
+        //多个前置条件中的一个
+        NSString *preconditions = checkPrecnoditionArr[i];
+        //前置条件可能包含多个干支，比如寅午戌马在申，有寅午戌三个，分离它，遍历
+        for(NSInteger j = 0;j<preconditions.length;j++){
+            //前置条件是否符合
+            RACTuple *tuple = nil;
+            tuple = [self preconformWithPreconditions:preconditions
+                                                         j:j
+                                              checkTypeArr:checkTypeArr
+                                                 checkType:checkType];
+            
+            RACTupleUnpack(NSNumber* preconform,NSNumber* conformCheckType) = tuple;
+            //符合前置条件
+            if(preconform.boolValue){
+                [self traverseConformBothWithTraverseConformArr:traverseConformArr
+                                                                         i:i
+                                                                      name:name
+                                               conformCheckType:(MiddleSubViewType)conformCheckType.integerValue];
+            }
+        }
+    }
+    
+}
+
+/**
+ 获取年月日时柱右边的神煞，与上面不同的是遍历的是整体的天干地支，而不是单独某个天干或者地支，所以不需要traverseType
+ 
+ @param checkTypeArr 要查找的是年月日时那个柱,如天乙的年日干查,为年和日
+ @param checkPrecnoditionArr 查找的干支前置条件,如空亡 甲子旬中戌亥空，甲戌旬中申酉空，甲申旬中午未空，甲午旬中辰巳空，甲辰旬中寅卯空，甲寅旬中子丑空。（年日柱查）
+ @param traverseConformArr （四废）寅卯辰月，遇庚申、辛酉；要天干地支两者皆符合
+ @param name 神煞的名字，如天乙
+ */
+-(void)shenShaSearchWithCheckTypeArr:(NSArray*)checkTypeArr
+             checkPrecnoditionArr:(NSArray*)checkPrecnoditionArr
+               traverseConformArr:(NSArray*)traverseConformArr
+                             name:(NSString*)name{
+    for(NSInteger i = 0;i<checkPrecnoditionArr.count;i++){
+        //多个前置条件中的一个
+        NSString *preconditions = checkPrecnoditionArr[i];
+        //有可能用、分隔
+        NSArray *preconditionArr = [preconditions componentsSeparatedByString:@"、"];
+        //前置条件可能包含多个干支用、分开
+        for(NSInteger j = 0;j<preconditionArr.count;j++){
+            //前置条件是否符合
+            RACTuple *tuple = nil;
+            //前置条件
+            tuple = [self preconformWithPreconditions:preconditions
+                                                         j:j
+                                              checkTypeArr:checkTypeArr];
+            RACTupleUnpack(NSNumber* preconform,NSNumber* conformCheckType) = tuple;
+            //符合前置条件
+            if(preconform.boolValue){
+                [self traverseConformBothWithTraverseConformArr:traverseConformArr
+                                                              i:i
+                                                           name:name
+                                               conformCheckType:(MiddleSubViewType)conformCheckType.integerValue];
+            }
+        }
+    }
+    
+}
+
+/**
+ 获取底部日，时柱的神煞
+ 
+ @param checkType 前置查找类型是天干还是地支,如天乙的年日干查,为SBTypeStems 干
+ @param traverseType 遍历的是天干还是地支,如天乙的年日干查,为SBTypeBranches 支
+ @param checkTypeArr 要查找的是年月日时那个柱,如天乙的年日干查,为年和日
+ @param checkPrecnoditionArr 查找的干支前置条件,如天乙年日符合甲乙丙丁午己庚辛壬癸
+ @param traverseConformArr 遍历的条件如天乙的丑未，申子，酉亥，丑未等
+ @param name 神煞的名字，如天乙
+ */
+-(void)bottomDayHourShenShaSearchWithCheckType:(SBType)checkType
+                           traverseType:(SBType)traverseType
+                           checkTypeArr:(NSArray*)checkTypeArr
+                   checkPrecnoditionArr:(NSArray*)checkPrecnoditionArr
+                     traverseConformArr:(NSArray*)traverseConformArr
+                                   name:(NSString*)name{
+    for(NSInteger i = 0;i<checkPrecnoditionArr.count;i++){
+        //多个前置条件中的一个
+        NSString *preconditions = checkPrecnoditionArr[i];
+        //前置条件可能包含多个干支，比如寅午戌马在申，有寅午戌三个，分离它，遍历
+        for(NSInteger j = 0;j<preconditions.length;j++){
+            //前置条件是否符合
+            RACTuple *tuple = nil;
+            //前置条件
+            tuple = [self preconformWithPreconditions:preconditions
+                                                         j:j
+                                              checkTypeArr:checkTypeArr
+                                                 checkType:checkType];
+            RACTupleUnpack(NSNumber* preconform,NSNumber* conformCheckType) = tuple;
+            //符合前置条件
+            if(preconform.boolValue){
+                [self bottomDayHourTraverseConformStemsOrBranchesWithTraverseConformArr:traverseConformArr
+                                                                               i:i
+                                                                    traverseType:traverseType
+                                                                            name:name
+                                                                       conformCheckType:(MiddleSubViewType)conformCheckType.integerValue];
+            }
+        }
+    }
+    
+}
+
+/**
+ 获取底部月时柱的神煞
+ 
+ @param checkTypeArr 要查找的是年月日时那个柱,如天乙的年日干查,为年和日
+ @param checkPrecnoditionArr 查找的干支前置条件,如空亡 甲子旬中戌亥空，甲戌旬中申酉空，甲申旬中午未空，甲午旬中辰巳空，甲辰旬中寅卯空，甲寅旬中子丑空。（年日柱查）
+ @param traverseConformArr （四废）寅卯辰月，遇庚申、辛酉；要天干地支两者皆符合
+ @param name 神煞的名字，如天乙
+ */
+-(void)bottomMonthAndHourShenShaSearchWithCheckTypeArr:(NSArray*)checkTypeArr
+                checkPrecnoditionArr:(NSArray*)checkPrecnoditionArr
+                  traverseConformArr:(NSArray*)traverseConformArr
+                                name:(NSString*)name{
+    for(NSInteger i = 0;i<checkPrecnoditionArr.count;i++){
+        //多个前置条件中的一个
+        NSString *preconditions = checkPrecnoditionArr[i];
+        //有可能用、分隔
+        NSArray *preconditionArr = [preconditions componentsSeparatedByString:@"、"];
+        //前置条件可能包含多个干支用、分开
+        for(NSInteger j = 0;j<preconditionArr.count;j++){
+            //前置条件是否符合
+            RACTuple *tuple = nil;
+            //前置条件
+            tuple = [self preconformWithPreconditions:preconditions
+                                                         j:j
+                                              checkTypeArr:checkTypeArr];
+            RACTupleUnpack(NSNumber* preconform,NSNumber* conformCheckType) = tuple;
+            //符合前置条件
+            if(preconform.boolValue){
+                [self bottomMonthAndHourTraverseConformBothWithTraverseConformArr:traverseConformArr
+                                                              i:i
+                                                           name:name];
+            }
+        }
+    }
+    
+}
+
+/**
+ 获取底部月柱的神煞
+ 
+ @param checkTypeArr 要查找的是年月日时那个柱,如天乙的年日干查,为年和日
+ @param checkPrecnoditionArr 查找的干支前置条件,如空亡 甲子旬中戌亥空，甲戌旬中申酉空，甲申旬中午未空，甲午旬中辰巳空，甲辰旬中寅卯空，甲寅旬中子丑空。（年日柱查）
+ @param traverseConformArr （四废）寅卯辰月，遇庚申、辛酉；要天干地支两者皆符合
+ @param name 神煞的名字，如天乙
+ */
+-(void)bottomMonthShenShaSearchWithCheckTypeArr:(NSArray*)checkTypeArr
+                                  checkPrecnoditionArr:(NSArray*)checkPrecnoditionArr
+                                    traverseConformArr:(NSArray*)traverseConformArr
+                                                  name:(NSString*)name{
+    for(NSInteger i = 0;i<checkPrecnoditionArr.count;i++){
+        //多个前置条件中的一个
+        NSString *preconditions = checkPrecnoditionArr[i];
+        //有可能用、分隔
+        NSArray *preconditionArr = [preconditions componentsSeparatedByString:@"、"];
+        //前置条件可能包含多个干支用、分开
+        for(NSInteger j = 0;j<preconditionArr.count;j++){
+            //前置条件是否符合
+            BOOL preconform = NO;
+            //前置条件
+            preconform = [self preconformWithPreconditions:preconditions
+                                                         j:j
+                                              checkTypeArr:checkTypeArr];
+            
+            //符合前置条件
+            if(preconform){
+                [self bottomMonthTraverseConformBothWithTraverseConformArr:traverseConformArr
+                                                                                i:i
+                                                                             name:name];
+            }
+        }
+    }
+    
+}
+
+#pragma mark - 前置条件
+
+//前置条件必须符合其中一项才可遍历
+-(RACTuple*)preconformWithPreconditions:(NSString*)preconditions
+                                 j:(NSInteger)j
+                      checkTypeArr:(NSArray*)checkTypeArr
+                         checkType:(SBType)checkType
+{
+    //分离后的每个干或者支
+    NSString *precondition = [preconditions substringWithRange:NSMakeRange(j, 1)];
+    
+    //前置条件的判断，只要其中一种条件符合就可进入遍历阶段
+    //柱的类型
+    for(NSNumber *checkTypeNumber in checkTypeArr){
+        if(self.totalGanZhiArr.count>checkTypeNumber.integerValue){
+            //获取柱的类型，比如年天乙的年日干查，取年和日判断条件是否符合
+            NSString *ganZhi = self.totalGanZhiArr[checkTypeNumber.integerValue];
+            //天干
+            if(checkType == SBTypeStems){
+                //只要其中一种条件符合，就可遍历
+                if([ganZhi.getStems containsString:precondition]){
+                    return RACTuplePack(@(YES),checkTypeNumber);
+                    
+                }
+            }
+            //地支
+            else{
+                //只要其中一种条件符合，就可遍历
+                if([ganZhi.getBranches containsString:precondition]){
+                    return RACTuplePack(@(YES),checkTypeNumber);
+                }
+            }
+        }
+    }
+    return RACTuplePack(@(NO),nil);
+}
+
+//前置条件必须符合其中一项才可遍历
+//空亡 甲子旬中戌亥空（年日柱查） 前置条件符合天干地支都相符
+-(RACTuple*)preconformWithPreconditions:(NSString*)precondition
+                                 j:(NSInteger)j
+                      checkTypeArr:(NSArray*)checkTypeArr
+{
+    
+    //前置条件的判断，只要其中一种条件符合就可进入遍历阶段
+    //柱的类型
+    for(NSNumber *checkTypeNumber in checkTypeArr){
+        if(self.totalGanZhiArr.count>checkTypeNumber.integerValue){
+            //获取柱的类型，比如年天乙的年日干查，取年和日判断条件是否符合
+            NSString *ganZhi = self.totalGanZhiArr[checkTypeNumber.integerValue];
+            //干支都相同，比如空亡 年的干支等于甲子
+            if([ganZhi isEqualToString:precondition]){
+                return RACTuplePack(@(YES),checkTypeNumber);
+            }
+        }
+    }
+    return RACTuplePack(@(NO),nil);
+}
+
+#pragma mark - 遍历
+//遍历只查找天干或者地支其中一个
+//conformCheckType 前置条件符合的subviewtype，遍历的时候跳过
+-(void)traverseConformStemsOrBranchesWithTraverseConformArr:(NSArray*)traverseConformArr
+                                                               i:(NSInteger)i
+                                                    traverseType:(SBType)traverseType
+                                                            name:(NSString*)name
+                                           conformCheckType:(MiddleSubViewType)conformCheckType{
+    //多个遍历条件中的一个
+    NSString *traverseConformStrs = traverseConformArr[i];
+    //遍历条件可能包含多个干支，比如天乙的甲-(丑未)
+    for(NSInteger k = 0;k<traverseConformStrs.length;k++){
+        NSString* traverseConformStr = [traverseConformStrs substringWithRange:NSMakeRange(k, 1)];
+        [self traverseWithCheckType:conformCheckType
+                              result:^NSString*(NSString *stems,NSString *branches){
+            //如果遍历查找类型为天干
+            if(traverseType == SBTypeStems){
+                //如果遍历条件符合，添加
+                if([stems containsString:traverseConformStr]
+                   ){
+                    return name;
+                }
+            }
+            //地支
+            else{
+                //如果遍历条件符合，添加
+                if([branches containsString:traverseConformStr]
+                   ){
+                    return name;
+                }
+            }
+            return nil;
+        }];
+    }
+}
+
+//遍历查找符合天干地支两者结合，如（四废）寅卯辰月，遇庚申、辛酉；要天干地支两者皆符合
+-(void)traverseConformBothWithTraverseConformArr:(NSArray*)traverseConformArr
+                                                          i:(NSInteger)i
+                                                       name:(NSString*)name
+                                conformCheckType:(MiddleSubViewType)conformCheckType{
+    //多个遍历条件中的一个
+    NSString *traverseConformStrs = traverseConformArr[i];
+    NSArray *traverseConformSubArr = [traverseConformStrs componentsSeparatedByString:@"、"];
+    
+    for(NSString* traverseConformStr in traverseConformSubArr){
+        [self traverseWithCheckType:conformCheckType
+                             result:^NSString*(NSString *stems,NSString *branches){
+            if([traverseConformStr isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                return name;
+            }
+            return nil;
+        }];
+    }
+}
+
+//遍历只查找天干或者地支其中一个,只遍历查找底部日，时柱神煞
+-(void)bottomDayHourTraverseConformStemsOrBranchesWithTraverseConformArr:(NSArray*)traverseConformArr
+                                                          i:(NSInteger)i
+                                               traverseType:(SBType)traverseType
+                                                       name:(NSString*)name
+                                                        conformCheckType:(MiddleSubViewType)conformCheckType{
+    //多个遍历条件中的一个
+    NSString *traverseConformStrs = traverseConformArr[i];
+    //遍历条件可能包含多个干支，比如天乙的甲-(丑未)
+    for(NSInteger k = 0;k<traverseConformStrs.length;k++){
+        NSString* traverseConformStr = [traverseConformStrs substringWithRange:NSMakeRange(k, 1)];
+
+        if(conformCheckType!=MiddleSubViewTypeDay){
+            [self specifiedWithMiddleSubViewType:MiddleSubViewTypeDay
+                                      shenShaArr:self.bottomDayShenShaArr
+                                      judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                          if(traverseType == SBTypeStems){
+                                              //如果遍历条件符合，添加
+                                              if([stems containsString:traverseConformStr]
+                                                 ){
+                                                  return name;
+                                              }
+                                          }
+                                          //地支
+                                          else{
+                                              //如果遍历条件符合，添加
+                                              if([branches containsString:traverseConformStr]
+                                                 ){
+                                                  return name;
+                                              }
+                                          }
+                                          return nil;
+                                      }];
+        }
+        
+        if(conformCheckType!=MiddleSubViewTypeHour){
+            [self specifiedWithMiddleSubViewType:MiddleSubViewTypeHour
+                                      shenShaArr:self.bottomHourShenShaArr
+                                      judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                          if(traverseType == SBTypeStems){
+                                              //如果遍历条件符合，添加
+                                              if([stems containsString:traverseConformStr]
+                                                 ){
+                                                  return name;
+                                              }
+                                          }
+                                          //地支
+                                          else{
+                                              //如果遍历条件符合，添加
+                                              if([branches containsString:traverseConformStr]
+                                                 ){
+                                                  return name;
+                                              }
+                                          }
+                                          return nil;
+                                      }];
+        }
+        
+    }
+}
+
+//遍历查找底部月和时符合天干地支两者结合，如（滚浪桃花）丙子日、见辛卯月或辛卯时】【辛卯日，见丙子月】滚浪桃花。
+-(void)bottomMonthAndHourTraverseConformBothWithTraverseConformArr:(NSArray*)traverseConformArr
+                                               i:(NSInteger)i
+                                            name:(NSString*)name{
+    //多个遍历条件中的一个
+    NSString *traverseConformStrs = traverseConformArr[i];
+    NSArray *traverseConformSubArr = [traverseConformStrs componentsSeparatedByString:@"、"];
+    
+    for(NSString* traverseConformStr in traverseConformSubArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeMonth
+                                  shenShaArr:self.bottomMonthShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConformStr isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return name;
+                                      }
+                                      return nil;
+                                  }];
+        
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeHour
+                                  shenShaArr:self.bottomHourShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConformStr isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return name;
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
+//遍历查找底部月符合天干地支两者结合，如（滚浪桃花）丙子日、见辛卯月或辛卯时】【辛卯日，见丙子月】滚浪桃花。
+-(void)bottomMonthTraverseConformBothWithTraverseConformArr:(NSArray*)traverseConformArr
+                                                                 i:(NSInteger)i
+                                                              name:(NSString*)name{
+    //多个遍历条件中的一个
+    NSString *traverseConformStrs = traverseConformArr[i];
+    NSArray *traverseConformSubArr = [traverseConformStrs componentsSeparatedByString:@"、"];
+    
+    for(NSString* traverseConformStr in traverseConformSubArr){
+        [self specifiedWithMiddleSubViewType:MiddleSubViewTypeMonth
+                                  shenShaArr:self.bottomMonthShenShaArr
+                                  judgeBlock:^NSString*(NSString *stems,NSString *branches){
+                                      if([traverseConformStr isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
+                                          return name;
+                                      }
+                                      return nil;
+                                  }];
+    }
+}
+
 @end

@@ -8,18 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "SubViewData.h"
-typedef NS_ENUM(NSInteger,liuQinType) {
-    liuQinType_Bi,      /**<比*/
-    liuQinType_Jie,     /**<劫*/
-    liuQinType_Xiao,    /**<枭*/
-    liuQinType_Yin,     /**<印*/
-    liuQinType_CaiFu,   /**<财*/
-    liuQinType_CaiHua,  /**<才*/
-    liuQinType_Sha,     /**<杀*/
-    liuQinType_Guan,    /**<官*/
-    liuQinType_Shi,     /**<食*/
-    liuQinType_Shang,   /**<伤*/
-};
 
 /**
  六亲表（十神表）
@@ -70,14 +58,6 @@ typedef NS_ENUM(NSInteger,liuQinType) {
  时里面的六亲
  */
 @property (nonatomic,strong)NSString *hourBottomLiuQin;
-
-/**
- 获取对应的文字
-
- @param type 六亲枚举
- @return 对应的文字
- */
--(NSString*)getValueWithType:(liuQinType)type;
 
 /**
  获取对应天干的六亲值

@@ -170,7 +170,7 @@
     return [self substringWithRange:NSMakeRange(1, 1)];
 }
 
--(BOOL)isYang{
+-(BOOL)isStemsYang{
     NSAssert(self.length == 1, @"天干长度不为1");
     NSAssert([[NSString stemsStr] containsString:self], @"不属于天干");
     NSInteger index = [[NSString stemsStr] rangeOfString:self].location;
@@ -182,4 +182,57 @@
         return NO;
     }
 }
+
+-(BOOL)isBranchesYang{
+    NSAssert(self.length == 1, @"地支长度不为1");
+    NSAssert([[NSString branchesStr] containsString:self], @"不属于地支");
+    NSInteger index = [[NSString branchesStr] rangeOfString:self].location;
+    //子丑寅卯辰巳午未申酉戌亥 相对应为阳阴阳阴阳阴阳阴阳阴
+    if(index % 2 == 0){
+        return YES;
+    }
+    else{
+        return NO;
+    }
+}
+
++(NSString*)getValueWithType:(liuQinType)type{
+    NSString *result = @"";
+    switch (type) {
+        case liuQinType_Bi:
+            result = @"比";
+            break;
+        case liuQinType_Jie:
+            result = @"劫";
+            break;
+        case liuQinType_Xiao:
+            result = @"枭";
+            break;
+        case liuQinType_Yin:
+            result = @"印";
+            break;
+        case liuQinType_CaiFu:
+            result = @"财";
+            break;
+        case liuQinType_CaiHua:
+            result = @"才";
+            break;
+        case liuQinType_Sha:
+            result = @"杀";
+            break;
+        case liuQinType_Guan:
+            result = @"官";
+            break;
+        case liuQinType_Shi:
+            result = @"食";
+            break;
+        case liuQinType_Shang:
+            result = @"伤";
+            break;
+        default:
+            break;
+    }
+    return result;
+}
+
 @end

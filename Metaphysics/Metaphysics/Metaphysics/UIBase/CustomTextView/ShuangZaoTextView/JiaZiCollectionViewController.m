@@ -9,6 +9,7 @@
 #import "JiaZiCollectionViewController.h"
 #import "JiaZiCollectionViewCell.h"
 #import "UIConstantParameter.h"
+#import "NSArray+Addition.h"
 @interface JiaZiCollectionViewController ()
 
 @end

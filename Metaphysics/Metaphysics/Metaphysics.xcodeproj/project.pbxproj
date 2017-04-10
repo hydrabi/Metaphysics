@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3190B25E97535932413C585F /* Pods_Metaphysics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */; };
+		8002249B1E9A0D31002CD485 /* BottomViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8002249A1E9A0D31002CD485 /* BottomViewData.m */; };
 		80135E671E878EB900429C2B /* MiddleViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80135E661E878EB900429C2B /* MiddleViewData.m */; };
 		80135E6A1E878FD100429C2B /* LiuQinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80135E691E878FD100429C2B /* LiuQinData.m */; };
 		80135E6D1E879D1A00429C2B /* CangGanData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80135E6C1E879D1A00429C2B /* CangGanData.m */; };
@@ -91,6 +92,7 @@
 		809CE2361E894CC5003AF1D6 /* ShenShaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 809CE2351E894CC5003AF1D6 /* ShenShaData.m */; };
 		80EED8851E7048C800B58295 /* SolarTerm.csv in Resources */ = {isa = PBXBuildFile; fileRef = 80EED8841E7048C800B58295 /* SolarTerm.csv */; };
 		80EED8881E7049FF00B58295 /* AnalysisSolarTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EED8871E7049FF00B58295 /* AnalysisSolarTerm.m */; };
+		80F7F48F1E99DD1000826E1E /* NSDictionary+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F7F48E1E99DD1000826E1E /* NSDictionary+Addition.m */; };
 		80F8C1F81E3C371E0036186A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C1F71E3C371E0036186A /* main.m */; };
 		80F8C1FB1E3C371E0036186A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F8C1FA1E3C371E0036186A /* AppDelegate.m */; };
 		80F8C2031E3C371F0036186A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F8C2021E3C371F0036186A /* Assets.xcassets */; };
@@ -112,6 +114,8 @@
 
 /* Begin PBXFileReference section */
 		0C4F8BD6755BC027A5C4C355 /* Pods-Metaphysics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metaphysics.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metaphysics/Pods-Metaphysics.release.xcconfig"; sourceTree = "<group>"; };
+		800224991E9A0D31002CD485 /* BottomViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomViewData.h; sourceTree = "<group>"; };
+		8002249A1E9A0D31002CD485 /* BottomViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomViewData.m; sourceTree = "<group>"; };
 		80135E651E878EB900429C2B /* MiddleViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleViewData.h; sourceTree = "<group>"; };
 		80135E661E878EB900429C2B /* MiddleViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleViewData.m; sourceTree = "<group>"; };
 		80135E681E878FD100429C2B /* LiuQinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiuQinData.h; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 		80EED8841E7048C800B58295 /* SolarTerm.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SolarTerm.csv; sourceTree = "<group>"; };
 		80EED8861E7049FF00B58295 /* AnalysisSolarTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisSolarTerm.h; sourceTree = "<group>"; };
 		80EED8871E7049FF00B58295 /* AnalysisSolarTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisSolarTerm.m; sourceTree = "<group>"; };
+		80F7F48D1E99DD1000826E1E /* NSDictionary+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Addition.h"; sourceTree = "<group>"; };
+		80F7F48E1E99DD1000826E1E /* NSDictionary+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Addition.m"; sourceTree = "<group>"; };
 		80F8C1F31E3C371E0036186A /* Metaphysics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metaphysics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F8C1F71E3C371E0036186A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		80F8C1F91E3C371E0036186A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -297,6 +303,15 @@
 				824BE83F2A6993F98A464315 /* Pods_Metaphysics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		800224981E9A0D1D002CD485 /* BottomViewData */ = {
+			isa = PBXGroup;
+			children = (
+				800224991E9A0D31002CD485 /* BottomViewData.h */,
+				8002249A1E9A0D31002CD485 /* BottomViewData.m */,
+			);
+			path = BottomViewData;
 			sourceTree = "<group>";
 		};
 		80135E641E878E8C00429C2B /* MiddleViewData */ = {
@@ -427,6 +442,7 @@
 		805D40FA1E73D5070000C6C7 /* SubViewData */ = {
 			isa = PBXGroup;
 			children = (
+				800224981E9A0D1D002CD485 /* BottomViewData */,
 				80135E641E878E8C00429C2B /* MiddleViewData */,
 				805D40FB1E73D5070000C6C7 /* CurrentDate */,
 				805D40FE1E73D5070000C6C7 /* RiZhuDate */,
@@ -615,6 +631,8 @@
 				805D41C01E73D61E0000C6C7 /* NSArray+Addition.m */,
 				8029F72A1E7503F50050EFDC /* NSNumber+Addition.h */,
 				8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */,
+				80F7F48D1E99DD1000826E1E /* NSDictionary+Addition.h */,
+				80F7F48E1E99DD1000826E1E /* NSDictionary+Addition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -980,6 +998,7 @@
 				805D41BD1E73D5F10000C6C7 /* NSString+Addition.m in Sources */,
 				805D41E91E73FBDB0000C6C7 /* SeparatorTableViewCell.m in Sources */,
 				805D419B1E73D5320000C6C7 /* JiaZiCollectionViewController.m in Sources */,
+				8002249B1E9A0D31002CD485 /* BottomViewData.m in Sources */,
 				805D41481E73D5070000C6C7 /* SubViewData.m in Sources */,
 				805D41B21E73D5570000C6C7 /* DatePickViewController.m in Sources */,
 				80F8C22E1E3C3D4A0036186A /* BaseViewController.m in Sources */,
@@ -1020,6 +1039,7 @@
 				805D41431E73D5070000C6C7 /* BottomLocation.m in Sources */,
 				805D419D1E73D5320000C6C7 /* ShuangZaoTextView.m in Sources */,
 				804088111E3D963800380A15 /* BaseContentView.m in Sources */,
+				80F7F48F1E99DD1000826E1E /* NSDictionary+Addition.m in Sources */,
 				805D41461E73D5070000C6C7 /* RiZhuData.mm in Sources */,
 				805D414A1E73D5070000C6C7 /* MiddleContentView.m in Sources */,
 				805D41911E73D5320000C6C7 /* DaYunTableViewCell.m in Sources */,

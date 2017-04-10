@@ -7,10 +7,12 @@
 //
 
 #import "NSArray+Addition.h"
-
+#import "NSString+Addition.h"
 @implementation NSArray (Addition)
 
-+(NSMutableArray*)jiaZiArrWithStemsStr:(NSString*)stemsStr branchesStr:(NSString*)branchesStr{
++(NSMutableArray*)jiaZiArr{
+    NSString *stemsStr = [NSString stemsStr];
+    NSString *branchesStr = [NSString branchesStr];
     NSMutableArray *arr = @[].mutableCopy;
     NSInteger i = 0;
     NSInteger j = 0;
@@ -380,6 +382,156 @@
              @"天上火",
              @"石榴木",
              @"大海水",];
+}
+
++(NSArray*)getLiuQinArrWithIndex:(NSInteger)index{
+    NSArray *result = nil;
+    switch (index) {
+        case 0:
+        {
+            result = @[@(liuQinType_Bi),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Shi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Yin),];
+        }
+            break;
+        case 1:
+        {
+            result = @[@(liuQinType_Jie),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_Shi),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Xiao),];
+        }
+            break;
+        case 2:
+        {
+            result = @[@(liuQinType_Xiao),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Shi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Guan),];
+        }
+            break;
+        case 3:
+        {
+            result = @[@(liuQinType_Yin),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_Shi),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Sha),];
+        }
+            break;
+        case 4:
+        {
+            result = @[@(liuQinType_Sha),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Shi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_CaiHua),];
+        }
+            break;
+        case 5:
+        {
+            result = @[@(liuQinType_Guan),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_Shi),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_CaiFu),];
+        }
+            break;
+        case 6:
+        {
+            result = @[@(liuQinType_CaiFu),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Shi),
+                       @(liuQinType_Shang),];
+        }
+            break;
+        case 7:
+        {
+            result = @[@(liuQinType_CaiHua),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_Shi),];
+        }
+            break;
+        case 8:
+        {
+            result = @[@(liuQinType_Shi),
+                       @(liuQinType_Shang),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Bi),
+                       @(liuQinType_Jie),];
+        }
+            break;
+        case 9:
+        {
+            result = @[@(liuQinType_Shang),
+                       @(liuQinType_Shi),
+                       @(liuQinType_CaiHua),
+                       @(liuQinType_CaiFu),
+                       @(liuQinType_Guan),
+                       @(liuQinType_Sha),
+                       @(liuQinType_Yin),
+                       @(liuQinType_Xiao),
+                       @(liuQinType_Jie),
+                       @(liuQinType_Bi),];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return result;
 }
 
 @end

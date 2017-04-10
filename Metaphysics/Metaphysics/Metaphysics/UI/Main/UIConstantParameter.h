@@ -56,6 +56,19 @@ typedef NS_ENUM(NSInteger,UniverseType) {
     UniverseTypeKun,                /**<坤*/
 };
 
+typedef NS_ENUM(NSInteger,liuQinType) {
+    liuQinType_Bi,      /**<比*/
+    liuQinType_Jie,     /**<劫*/
+    liuQinType_Xiao,    /**<枭*/
+    liuQinType_Yin,     /**<印*/
+    liuQinType_CaiFu,   /**<财*/
+    liuQinType_CaiHua,  /**<才*/
+    liuQinType_Sha,     /**<杀*/
+    liuQinType_Guan,    /**<官*/
+    liuQinType_Shi,     /**<食*/
+    liuQinType_Shang,   /**<伤*/
+};
+
 //1366 1024
 static const CGFloat screenWidth = 1366.0f;
 static const CGFloat screenHeight = 1024.0f;

@@ -104,12 +104,13 @@
 }
 
 #pragma mark - 添加神煞
-//遍历所有干支，符合条件该柱添加上该神煞
+//遍历所有干支，符合条件该柱添加上该神煞 branchToBranch 前置条件查支，遍历条件也查支，则要遍历时需要省略前置类型
 -(void)traverseWithCheckType:(MiddleSubViewType)checkType
+              branchToBranch:(BOOL)branchToBranch
                       result:(NSString *(^)(NSString *stems,NSString *branches))judgeBlock{
     for(NSInteger i = 0;i<self.totalGanZhiArr.count;i++){
         //前置条件若如遍历的subviewtype相同，跳过；比如华盖的丑见丑，年丑不能再比较年
-        if(checkType == i){
+        if(checkType == i && branchToBranch){
             continue;
         }
         
@@ -601,8 +602,8 @@
     MiddleViewData *middleDada = [MainViewModel sharedInstance].middleData;
     NSArray *traverseConformArr = nil;
     //阳男或者阴女
-    if(([[self.ganZhiYear getStems] isYang] && middleDada.universeType == UniverseTypeQian) ||
-       (![[self.ganZhiYear getStems] isYang] && middleDada.universeType == UniverseTypeKun)){
+    if(([[self.ganZhiYear getStems] isStemsYang] && middleDada.universeType == UniverseTypeQian) ||
+       (![[self.ganZhiYear getStems] isStemsYang] && middleDada.universeType == UniverseTypeKun)){
         traverseConformArr = @[
                                @"未",
                                @"申",
@@ -923,7 +924,7 @@
                    length:3];
     [self conformOrderArr:ordersArr
                startIndex:1
-                   length:3];
+                   length:4];
 }
 
 //孤辰
@@ -1243,7 +1244,8 @@
                                                                          i:i
                                                               traverseType:traverseType
                                                                       name:name
-                                                            conformCheckType:(MiddleSubViewType)conformCheckType.integerValue];
+                                                            conformCheckType:(MiddleSubViewType)conformCheckType.integerValue
+                                                            branchToBranch:(checkType == traverseType)];
             }
         }
     }
@@ -1282,7 +1284,8 @@
                 [self traverseConformBothWithTraverseConformArr:traverseConformArr
                                                                          i:i
                                                                       name:name
-                                               conformCheckType:(MiddleSubViewType)conformCheckType.integerValue];
+                                               conformCheckType:(MiddleSubViewType)conformCheckType.integerValue
+                                                 branchToBranch:NO];
             }
         }
     }
@@ -1320,7 +1323,8 @@
                 [self traverseConformBothWithTraverseConformArr:traverseConformArr
                                                               i:i
                                                            name:name
-                                               conformCheckType:(MiddleSubViewType)conformCheckType.integerValue];
+                                               conformCheckType:(MiddleSubViewType)conformCheckType.integerValue
+                                                 branchToBranch:NO];
             }
         }
     }
@@ -1509,13 +1513,15 @@
                                                                i:(NSInteger)i
                                                     traverseType:(SBType)traverseType
                                                             name:(NSString*)name
-                                           conformCheckType:(MiddleSubViewType)conformCheckType{
+                                           conformCheckType:(MiddleSubViewType)conformCheckType
+                                             branchToBranch:(BOOL)branchToBranch{
     //多个遍历条件中的一个
     NSString *traverseConformStrs = traverseConformArr[i];
     //遍历条件可能包含多个干支，比如天乙的甲-(丑未)
     for(NSInteger k = 0;k<traverseConformStrs.length;k++){
         NSString* traverseConformStr = [traverseConformStrs substringWithRange:NSMakeRange(k, 1)];
         [self traverseWithCheckType:conformCheckType
+                     branchToBranch:branchToBranch
                               result:^NSString*(NSString *stems,NSString *branches){
             //如果遍历查找类型为天干
             if(traverseType == SBTypeStems){
@@ -1542,13 +1548,15 @@
 -(void)traverseConformBothWithTraverseConformArr:(NSArray*)traverseConformArr
                                                           i:(NSInteger)i
                                                        name:(NSString*)name
-                                conformCheckType:(MiddleSubViewType)conformCheckType{
+                                conformCheckType:(MiddleSubViewType)conformCheckType
+                                  branchToBranch:(BOOL)branchToBranch{
     //多个遍历条件中的一个
     NSString *traverseConformStrs = traverseConformArr[i];
     NSArray *traverseConformSubArr = [traverseConformStrs componentsSeparatedByString:@"、"];
     
     for(NSString* traverseConformStr in traverseConformSubArr){
         [self traverseWithCheckType:conformCheckType
+                     branchToBranch:branchToBranch
                              result:^NSString*(NSString *stems,NSString *branches){
             if([traverseConformStr isEqualToString:[NSString stringWithFormat:@"%@%@",stems,branches]]){
                 return name;

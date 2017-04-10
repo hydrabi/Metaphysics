@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metaphysics/UI/Main/MainViewModel/MainViewModel.mm"
-            timestampString = "512203323.562312"
+            timestampString = "513436532.631913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "297"
             endingLineNumber = "297"
             landmarkName = "-solarToLunar"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Metaphysics/UI/Main/SubViewData/MiddleViewData/ShenShaData.m"
-            timestampString = "512968028.876324"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-traverseWithCheckType:result:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

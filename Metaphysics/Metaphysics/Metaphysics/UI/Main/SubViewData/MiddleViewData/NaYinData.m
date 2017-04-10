@@ -14,8 +14,7 @@
 -(NSMutableDictionary*)naYinDic{
     if(_naYinDic == nil){
         _naYinDic = @{}.mutableCopy;
-        NSArray *jiaZiArr = [NSArray jiaZiArrWithStemsStr:[NSString stemsStr]
-                                              branchesStr:[NSString branchesStr]];
+        NSArray *jiaZiArr = [NSArray jiaZiArr];
         NSArray *naYinArr = [NSArray naYinArray];
         NSAssert(naYinArr.count == jiaZiArr.count/2, @"甲子数目不为纳音数目的两倍");
         

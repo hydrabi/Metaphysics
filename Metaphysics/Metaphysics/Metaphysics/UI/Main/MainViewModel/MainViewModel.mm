@@ -62,8 +62,7 @@
     
     self.stemsStr = [NSString stemsStr];
     self.branchesStr = [NSString branchesStr];
-    self.jiaZiArr = [NSArray jiaZiArrWithStemsStr:self.stemsStr
-                                      branchesStr:self.branchesStr];
+    self.jiaZiArr = [NSArray jiaZiArr];
     
     self.hadShowSolarTermsCollectionView = NO;
     self.hadHiddenBottomTableView = NO;
@@ -76,6 +75,7 @@
     self.selectedDate = [[CurrentSelectDate alloc] init];
     self.riZhuData = [[RiZhuData alloc] init];
     self.middleData = [[MiddleViewData alloc] init];
+    self.bottomData = [[BottomViewData alloc] init];
     self.lunar = new Lunar();
     
     self.solarTermsTimeDic = [AnalysisSolarTerm analysis];
@@ -154,7 +154,7 @@
             result = @"神煞表";
             break;
         case LeftSideMenuTypeVersion:
-            result = @"04_04";
+            result = @"04_09";
             break;
         
         default:
@@ -326,6 +326,7 @@
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
             self.selectedDate.currentTermName = self.riZhuData.currentTermName;
             [self.middleData resetData];
+            [self.bottomData resetData];
         }
     }
     
@@ -366,6 +367,7 @@
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
             self.selectedDate.currentTermName = self.riZhuData.currentTermName;
             [self.middleData resetData];
+            [self.bottomData resetData];
         }
     }
 }

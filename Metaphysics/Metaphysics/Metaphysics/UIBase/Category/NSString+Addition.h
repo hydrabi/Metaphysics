@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "UIConstantParameter.h"
 @interface NSString (Addition)
 + (NSString *)convertToIconTextWithHexString:(NSString *)hexStr;
 
@@ -57,9 +57,26 @@
 -(NSString*)getBranches;
 
 /**
- 判断是阴还是阳
+ 判断天干是阴还是阳
 
  @return yes为阳，no为阴
  */
--(BOOL)isYang;
+-(BOOL)isStemsYang;
+
+/**
+ 判断地支是阴还是阳
+ 
+ @return yes为阳，no为阴
+ */
+-(BOOL)isBranchesYang;
+
+/**
+ 获取六亲指定枚举类型的文字
+
+ @param type 六亲指定枚举类型
+ @return 六亲指定枚举类型的文字
+ */
++(NSString*)getValueWithType:(liuQinType)type;
+
+
 @end

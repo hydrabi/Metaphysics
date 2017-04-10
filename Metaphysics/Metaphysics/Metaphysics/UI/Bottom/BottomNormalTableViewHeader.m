@@ -50,6 +50,85 @@
     else{
         [self.mainTitleButton.titleLabel setOriginalFont];
     }
+    
+    [self resetDaYun];
+    [self resetLiuQin];
+}
+
+-(void)resetLiuQin{
+    if(self.mainTitleButton.titleLabel.text.length>0){
+        MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+        MiddleViewData *middleData = mainViewModel.middleData;
+        LiuQinData *liuQinData = middleData.liuQinData;
+        CurrentSelectDate *selectData = mainViewModel.selectedDate;
+        self.topTitleLabel.text = [liuQinData getLiuQinValueWithRiGanZhi:selectData.ganZhiDay
+                                                             otherGanZhi:self.mainTitleButton.titleLabel.text];
+    }
+    
+}
+
+//重置大运
+-(void)resetDaYun{
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    MiddleViewData *middleData = mainViewModel.middleData;
+    CurrentSelectDate *selectData = mainViewModel.selectedDate;
+    BottomViewData *bottomData = mainViewModel.bottomData;
+    NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
+    if(jiaZiArr.count>0){
+        NSString *ganZhiMonth = selectData.ganZhiMonth;
+        NSString *ganZhiYear = selectData.ganZhiYear;
+        UniverseType type = middleData.universeType;
+        if(ganZhiMonth.length>0){
+            //月柱在60甲子中的位置
+            NSInteger index = [jiaZiArr indexOfObject:ganZhiMonth];
+            
+            if(type == UniverseTypeQian){
+                //男 阳顺阴逆
+                if([[ganZhiYear getBranches] isBranchesYang]){
+                    [self positiveOrderWithCurrentIndex:index];
+                }
+                else{
+                    [self reversedOrderWithCurrentIndex:index];
+                }
+            }
+            else{
+                //女 阳逆阴顺
+                if([[ganZhiYear getBranches] isBranchesYang]){
+                    [self reversedOrderWithCurrentIndex:index];
+                }
+                else{
+                    [self positiveOrderWithCurrentIndex:index];
+                }
+            }
+        }
+    }
+    
+    if(bottomData.qiYunShu >= 0){
+        self.bottomNumberTitleLabel.text = [NSString stringWithFormat:@"%ld",(self.tableViewTag - 1) * 10 + bottomData.qiYunShu] ;
+    }
+    
+}
+
+//逆序
+-(void)reversedOrderWithCurrentIndex:(NSInteger)index{
+    NSInteger realIndex = index - self.tableViewTag;
+    NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
+    if(realIndex < 0){
+        realIndex = jiaZiArr.count + realIndex;
+    }
+    [self.mainTitleButton setTitle:[jiaZiArr objectAtIndex:realIndex]
+                          forState:UIControlStateNormal];
+}
+
+//顺序
+-(void)positiveOrderWithCurrentIndex:(NSInteger)index{
+    NSInteger realIndex = self.tableViewTag + index;
+    NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
+    if(realIndex >= jiaZiArr.count){
+        realIndex = realIndex - jiaZiArr.count;
+    }
+    [self.mainTitleButton setTitle:[jiaZiArr objectAtIndex:realIndex]
+                          forState:UIControlStateNormal];
 }
 
 @end

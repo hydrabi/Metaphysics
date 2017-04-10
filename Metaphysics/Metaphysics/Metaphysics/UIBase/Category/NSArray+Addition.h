@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIConstantParameter.h"
+
 
 @interface NSArray (Addition)
 
 /**
  创建干支
 
- @param stemsStr 天干字符串
- @param branchesStr 地支字符串
  @return 干支名称队列
  */
-+(NSMutableArray*)jiaZiArrWithStemsStr:(NSString*)stemsStr branchesStr:(NSString*)branchesStr;
++(NSMutableArray*)jiaZiArr;
 
 /**
  节气名称队列
@@ -72,4 +72,12 @@
  @return 纳音队列
  */
 +(NSArray*)naYinArray;
+
+/**
+ 六亲队列
+
+ @param index 顺序
+ @return 六亲队列
+ */
++(NSArray*)getLiuQinArrWithIndex:(NSInteger)index;
 @end

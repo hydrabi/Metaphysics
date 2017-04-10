@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "::-[MainViewModel solarToLunar]():MainViewModel.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "_selectedDate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[JiaZiCollectionViewController collectionView:didSelectItemAtIndexPath:]:JiaZiCollectionViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[MainViewModel sharedInstance]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[RiZhuDate dealWithRiZhuData]:RiZhuDate.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[RiZhuData dealWithRiZhuData]:RiZhuData.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[MainViewModel sharedInstance]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[RiZhuDate resetTermWithYear:]:RiZhuDate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[MainViewModel sharedInstance]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

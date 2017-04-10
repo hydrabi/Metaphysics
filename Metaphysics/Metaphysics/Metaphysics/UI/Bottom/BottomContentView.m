@@ -73,11 +73,32 @@
       deliverOnMainThread]
      subscribeNext:^(id _){
          @strongify(self)
-         for(NSInteger i = 0;i<self.tableViewsArr.count;i++){
-             UITableView *tableView = self.tableViewsArr[i];
-             [tableView reloadData];
-         }
+         [self reloadAllTableView];
      }];
+    
+    RACSignal *lToSSignal       = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(lunarToSolar)];
+    RACSignal *sToLSignal       = [[MainViewModel sharedInstance] rac_signalForSelector:@selector(solarToLunar)];
+    //乾坤变化信号
+    RACSignal *quankunSignal    = [RACObserve([MainViewModel sharedInstance].middleData, universeType) distinctUntilChanged];
+
+    [[lToSSignal
+       merge:sToLSignal]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self reloadAllTableView];
+     }];
+    
+    [quankunSignal subscribeNext:^(id _){
+        [[MainViewModel sharedInstance].bottomData resetData];
+        [self reloadAllTableView];
+    }];
+}
+
+-(void)reloadAllTableView{
+    for(NSInteger i = 0;i<self.tableViewsArr.count;i++){
+        UITableView *tableView = self.tableViewsArr[i];
+        [tableView reloadData];
+    }
 }
 
 @end

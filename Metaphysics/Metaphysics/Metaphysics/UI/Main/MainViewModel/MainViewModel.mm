@@ -156,7 +156,7 @@
             result = @"神煞表";
             break;
         case LeftSideMenuTypeVersion:
-            result = @"04_11";
+            result = @"04_16";
             break;
         
         default:
@@ -267,6 +267,61 @@
 }
 
 #pragma mark - 日期转换
+-(NSString*)getGanZhiWithYear:(int32_t)year
+                              month:(int32_t)month
+                                day:(int32_t)day
+                  middleViewType:(MiddleSubViewType)type{
+    if(year>=1900 &&
+       year<=2100){
+        
+        if(month>12){
+            month = 1;
+            year += 1;
+        }
+        
+        int leapMonth = self.lunar->leapMonth(year);
+        struct LunarObj *obj;
+        //当前选中的是闰月
+        if([self.selectedDate.isLeapMonth boolValue] &&
+           self.selectedDate.lunarMonth.integerValue == leapMonth){
+            obj = self.lunar->lunar2solar(year,
+                                          month,
+                                          day,
+                                          true);
+        }
+        else{
+            obj = self.lunar->lunar2solar(year,
+                                          month,
+                                          day,
+                                          false);
+        }
+        
+        if(obj != NULL){
+            TTLunarDate *date = [[TTLunarDate alloc] initWithLunarObj:obj];
+            switch (type) {
+                case MiddleSubViewTypeYear:
+                {
+                    return date.ganzhiYear;
+                }
+                    break;
+                case MiddleSubViewTypeMonth:
+                {
+                    return date.ganzhiMonth;
+                }
+                    break;
+                case MiddleSubViewTypeDay:
+                {
+                    return date.ganzhiDay;
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    return nil;
+}
+
 -(void)solarToLunar{
     if(self.selectedDate.gregorianYear.integerValue>=1900 &&
        self.selectedDate.gregorianYear.integerValue<=2100){
@@ -307,6 +362,9 @@
                                                                     day:self.selectedDate.ganZhiDay];
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
             self.selectedDate.currentTermName = self.riZhuData.currentTermName;
+            
+            [self.selectedDate countTaiYuan];
+            [self.selectedDate countMingGong];
             [self.middleData resetData];
             [self.bottomData resetData];
         }
@@ -348,6 +406,9 @@
                                                                     day:self.selectedDate.ganZhiDay];
             [self.riZhuData resetTermWithYear:self.selectedDate.gregorianYear.integerValue];
             self.selectedDate.currentTermName = self.riZhuData.currentTermName;
+            
+            [self.selectedDate countTaiYuan];
+            [self.selectedDate countMingGong];
             [self.middleData resetData];
             [self.bottomData resetData];
         }

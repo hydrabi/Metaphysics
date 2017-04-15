@@ -36,6 +36,10 @@
 @property (nonatomic,weak)IBOutlet UILabel *leapMonthLabel;
 //节气
 @property (nonatomic,weak)IBOutlet UILabel *solarTermsLabel;
+//胎元
+@property (nonatomic,weak)IBOutlet UILabel *taiYuanLabel;
+//命宫
+@property (nonatomic,weak)IBOutlet UILabel *mingGongLabel;
 
 +(instancetype)instanceTopContentView;
 -(void)bindViewModel;

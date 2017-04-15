@@ -28,9 +28,23 @@
 @property (nonatomic,strong)NSString *currentTermName;
 
 /**
+ 命宫
+ */
+@property (nonatomic,strong)NSString *mingGong;
+
+/**
+ 胎元
+ */
+@property (nonatomic,strong)NSString *taiYuan;
+
+/**
  获取当前的日期
 
  @return 当前的日期
  */
 -(NSDate*)getGregorianDate;
+//计算胎元
+-(void)countTaiYuan;
+//计算命宫
+-(void)countMingGong;
 @end

@@ -88,4 +88,11 @@
  @return <#return value description#>
  */
 +(NSArray*)getMonthGanZhiArrWithStems:(NSString*)stems;
+
+/**
+ 所有中气
+
+ @return <#return value description#>
+ */
++(NSArray*)zhongQiArr;
 @end

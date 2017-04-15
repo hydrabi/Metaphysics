@@ -107,6 +107,7 @@
     [[self.gregorianYearTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.gregorianYear = @([text integerValue]);
              [self shouldTransformTolunar];
@@ -116,6 +117,7 @@
     [[self.gregorianMonthTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.gregorianMonth = @([text integerValue]);
              [self shouldTransformTolunar];
@@ -125,6 +127,7 @@
     [[self.gregorianDayTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.gregorianDay = @([text integerValue]);
              [self shouldTransformTolunar];
@@ -134,6 +137,7 @@
     [[self.gregorianHourTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.gregorianHour = @([text integerValue]);
              [self shouldTransformTolunar];
@@ -144,6 +148,7 @@
     [[self.lunarYearTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.lunarYear = @([text integerValue]);
              [self shouldTransformToSolur];
@@ -153,6 +158,7 @@
     [[self.lunarMonthTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.lunarMonth = @([text integerValue]);
              [self shouldTransformToSolur];
@@ -162,6 +168,7 @@
     [[self.lunarDayTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.lunarDay = @([text integerValue]);
              [self shouldTransformToSolur];
@@ -171,6 +178,7 @@
     [[self.lunarHourTxt.rac_textSignal
       deliverOnMainThread]
      subscribeNext:^(NSString *text){
+         @strongify(self)
          if(text.length>0){
              date.lunarHour = @([text integerValue]);
              [self shouldTransformToSolur];
@@ -181,6 +189,7 @@
                    fromProtocol:@protocol(UIPopoverControllerDelegate)]
      deliverOnMainThread]
      subscribeNext:^(RACTuple *tuple){
+         @strongify(self)
          UIPopoverController *pop = (UIPopoverController*)tuple.first;
          DatePickViewController *controller = (DatePickViewController*)(pop.contentViewController);
          DatePickViewModel *model = (DatePickViewModel*)controller.viewModel;
@@ -191,6 +200,13 @@
          else{
              [self shouldTransformToSolur];
          }
+     }];
+    
+    [[[date rac_signalForSelector:@selector(countTaiYuan)]
+     merge:[date rac_signalForSelector:@selector(countMingGong)]]
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self resetTaiYuanMingGong];
      }];
 }
 
@@ -242,6 +258,12 @@
     else{
         self.leapMonthLabel.hidden = YES;
     }
+}
+
+//更新胎元命宫
+-(void)resetTaiYuanMingGong{
+    self.taiYuanLabel.text = self.date.taiYuan;
+    self.mingGongLabel.text = self.date.mingGong;
 }
 
 #pragma mark - 点击操作

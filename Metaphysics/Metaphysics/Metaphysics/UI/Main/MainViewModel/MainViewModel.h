@@ -82,6 +82,10 @@
 -(void)hiddenTableViewWithTag:(NSInteger)tag;
 -(void)selectTableViewTag:(NSInteger)tag indexPath:(NSIndexPath*)indexPath;
 -(void)selectTableViewHeaderWithTag:(NSInteger)tag;
+-(NSString*)getGanZhiWithYear:(int32_t)year
+                        month:(int32_t)month
+                          day:(int32_t)day
+               middleViewType:(MiddleSubViewType)type;
 #pragma mark - 选择菜单的某一项
 -(void)selectMunuWithIndexPath:(NSIndexPath*)indexPath;
 

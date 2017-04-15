@@ -1,30 +1,31 @@
 //
-//  DaYunSubTextView.m
+//  FifteenYunTextView.m
 //  Metaphysics
 //
 //  Created by Hydra on 2017/2/5.
 //  Copyright © 2017年 毕志锋. All rights reserved.
 //
 
-#import "DaYunSubTextView.h"
+#import "FifteenYunTextView.h"
 #import "UIConstantParameter.h"
-#import "DaYunSubTableViewDataSource.h"
-#import "DaYunSubTitleView.h"
-
-@interface DaYunSubTextView()
+#import "FifteenYunTableViewDataSource.h"
+#import "FifteenYunTitleView.h"
+#import "MainViewModel.h"
+@interface FifteenYunTextView()
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)NSMutableArray *textFieldsArr;
-@property (nonatomic,strong)DaYunSubTableViewDataSource *dataSource;
-@property (nonatomic,strong)DaYunSubTitleView *titleView;
+@property (nonatomic,strong)FifteenYunTableViewDataSource *dataSource;
+@property (nonatomic,strong)FifteenYunTitleView *titleView;
 @end
 
-@implementation DaYunSubTextView
+@implementation FifteenYunTextView
 
 -(instancetype)init{
     self = [super init];
     if(self){
         [self UIConfig];
         [self makeConstraints];
+        [self bindViewModel];
     }
     return self;
 }
@@ -34,7 +35,7 @@
     self.layer.borderColor = [UIColor blackColor].CGColor;
     self.layer.borderWidth = 1.0f;
     
-    self.titleView = [DaYunSubTitleView instanceDaYunSubTitleView];
+    self.titleView = [FifteenYunTitleView instanceFifteenYunTitleView];
     [self addSubview:self.titleView];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero
@@ -44,7 +45,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:self.tableView];
     
-    self.dataSource = [[DaYunSubTableViewDataSource alloc] initWithTableView:self.tableView];
+    self.dataSource = [[FifteenYunTableViewDataSource alloc] initWithTableView:self.tableView];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
     
@@ -90,7 +91,6 @@
                 else{
                     make.top.equalTo(lastTextField.bottom).offset(0);
                 }
-                
             }
             else{
                 make.top.equalTo(self.top).offset(daYunSubTitleViewHeight);
@@ -103,7 +103,18 @@
     }
 }
 
+-(void)bindViewModel{
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    @weakify(self)
+    [RACObserve(mainViewModel.fifteenYunData, fifteenYunSelectedNumber)
+     subscribeNext:^(id _){
+         @strongify(self)
+         [self reloadData];
+     }];
+}
+
 -(void)reloadData{
+    [self.titleView reloadData];
     [self.tableView reloadData];
 }
 

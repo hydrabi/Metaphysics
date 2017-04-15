@@ -10,6 +10,7 @@
 #import "JiaZiCollectionViewCell.h"
 #import "UIConstantParameter.h"
 #import "NSArray+Addition.h"
+#import "NSString+Addition.h"
 @interface JiaZiCollectionViewController ()
 
 @end
@@ -22,8 +23,18 @@ static NSString * const reuseIdentifier = @"Cell";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     JiaZiCollectionViewController *jiaZi = [[JiaZiCollectionViewController alloc] initWithCollectionViewLayout:layout];
     jiaZi.type = type;
-    jiaZi.preferredContentSize = CGSizeMake(jiaZiCellWidth*jiaZiCollectionColumn+jiaZiCellOffset*(jiaZiCollectionColumn+1),
-                                            jiaZiCellHeight*jiaZiCollectionRow+jiaZiCellOffset*(jiaZiCollectionRow+1));
+    if(type == MiddleSubViewTypeYear ||
+       type == MiddleSubViewTypeDay){
+        jiaZi.preferredContentSize = CGSizeMake(jiaZiCellWidth*jiaZiCollectionColumn+jiaZiCellOffset*(jiaZiCollectionColumn+1),
+                                                jiaZiCellHeight*jiaZiCollectionRow+jiaZiCellOffset*(jiaZiCollectionRow+1));
+    }
+    else{
+        jiaZi.preferredContentSize = CGSizeMake(jiaZiCellWidth*6 + jiaZiCellOffset*(6+1),
+                                                jiaZiCellHeight*2 + jiaZiCellOffset*(2+1));
+    }
+    
+    
+    
     UIPopoverController *pop = [[UIPopoverController alloc] initWithContentViewController:jiaZi];
     [pop presentPopoverFromRect:rect
                          inView:view
@@ -45,12 +56,15 @@ static NSString * const reuseIdentifier = @"Cell";
                                            jiaZiCellOffset,
                                            jiaZiCellOffset,
                                            jiaZiCellOffset);
-    
-    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([JiaZiCollectionViewCell class])
                                                     bundle:nil]
           forCellWithReuseIdentifier:reuseIdentifier];
     
+}
+
+-(void)setType:(MiddleSubViewType)type{
+    _type = type;
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,18 +90,35 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [MainViewModel sharedInstance].jiaZiArr.count;
+    if(self.type == MiddleSubViewTypeYear ||
+       self.type == MiddleSubViewTypeDay){
+        return [MainViewModel sharedInstance].jiaZiArr.count;
+    }
+    else{
+        return 12;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     JiaZiCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    MainViewModel *main = [MainViewModel sharedInstance];
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    ShuangZaoData *shuangZao = mainViewModel.shuangZaoData;
     
-    if(main.jiaZiArr.count>indexPath.row){
-        cell.titleLabel.text = main.jiaZiArr[indexPath.row];
+    if(self.type == MiddleSubViewTypeYear ||
+       self.type == MiddleSubViewTypeDay){
+        if(mainViewModel.jiaZiArr.count>indexPath.row){
+            cell.titleLabel.text = mainViewModel.jiaZiArr[indexPath.row];
+        }
     }
-    
+    else if(self.type == MiddleSubViewTypeMonth){
+        cell.titleLabel.text = [NSArray getMonthGanZhiArrWithStems:[shuangZao.year getStems]][indexPath.row];
+    }
+    else{
+        NSInteger hour = indexPath.row * 2;
+        cell.titleLabel.text = [NSString ganZhiHourWithHour:hour
+                                             day:shuangZao.day];
+    }
     
     return cell;
 }
@@ -108,13 +139,20 @@ static NSString * const reuseIdentifier = @"Cell";
             data.year = result;
             break;
         case MiddleSubViewTypeMonth:
-            data.month = result;
+        {
+            data.month = [NSArray getMonthGanZhiArrWithStems:[data.year getStems]][indexPath.row];
+        }
             break;
         case MiddleSubViewTypeDay:
             data.day = result;
             break;
         case MiddleSubViewTypeHour:
-            data.hour = result;
+        {
+            NSInteger hour = indexPath.row * 2;
+            data.hour = [NSString ganZhiHourWithHour:hour
+                                                 day:data.day];
+        }
+            
             break;
         default:
             break;
@@ -122,33 +160,6 @@ static NSString * const reuseIdentifier = @"Cell";
     NSLog(@"%@",result);
 }
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

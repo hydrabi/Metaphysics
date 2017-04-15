@@ -17,7 +17,9 @@
     NSArray* nibView =  [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
                                                       owner:nil
                                                     options:nil];
-    return [nibView objectAtIndex:0];
+    ShuangZaoTextView *view = [nibView objectAtIndex:0];
+    [view bindViewModel];
+    return view;
 }
 
 - (void)awakeFromNib {
@@ -60,14 +62,11 @@
     self.layer.borderWidth = 1.0f;
 }
 
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder{
-    [self bindViewModel];
-    return [super awakeAfterUsingCoder:aDecoder];
-}
 
 -(IBAction)selectButtonAction:(UIButton*)sender{
     [JiaZiCollectionViewController presentViewControllerWithRect:sender.frame
-                                                            view:self type:sender.tag];
+                                                            view:self
+                                                            type:sender.tag];
 }
 
 -(void)bindViewModel{
@@ -91,15 +90,50 @@
          [self resetValue];
      }];
     
-    
+    ShuangZaoData *shuangZaoData = [[MainViewModel sharedInstance] shuangZaoData];
+    [[self.mainButton
+      rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(id _){
+         @strongify(self)
+         if(shuangZaoData.universeType == UniverseTypeQian){
+             shuangZaoData.universeType = UniverseTypeKun;
+             [self.mainButton setTitle:@"坤"
+                                forState:UIControlStateNormal];
+         }
+         else{
+             shuangZaoData.universeType = UniverseTypeQian;
+             [self.mainButton setTitle:@"乾"
+                                forState:UIControlStateNormal];
+         }
+     }];
 }
 
 -(void)resetValue{
     ShuangZaoData *data = [MainViewModel sharedInstance].shuangZaoData;
+    BottomViewData *bottomData = [MainViewModel sharedInstance].bottomData;
     self.yearLabel.text = data.year;
     self.monthLabel.text = data.month;
     self.dayLabel.text = data.day;
     self.hourLabel.text = data.hour;
+    
+    NSArray *daYunLabelArr = @[self.daYunLabel1,
+                               self.daYunLabel2,
+                               self.daYunLabel3,
+                               self.daYunLabel4,
+                               self.daYunLabel5,
+                               self.daYunLabel6,
+                               self.daYunLabel7,];
+    
+    NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
+    NSInteger yueZhuIndex = [jiaZiArr indexOfObject:data.month];
+    for(NSInteger i = 0;i<daYunLabelArr.count;i++){
+        UILabel *label = daYunLabelArr[i];
+        label.text = [bottomData getDaYunWithTableIndex:i+1
+                                                      universeType:data.universeType
+                                                            ganZhi:data.year
+                                            yueZhuIndex:yueZhuIndex];
+    }
+    
 }
 
 @end

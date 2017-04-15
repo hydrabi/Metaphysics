@@ -1,5 +1,5 @@
 //
-//  DaYunSubTextView.h
+//  FifteenYunTextView.h
 //  Metaphysics
 //
 //  Created by Hydra on 2017/2/5.
@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DaYunSubTextView : UIView
+/**
+ 点击大运出现的十五运窗口
+ */
+@interface FifteenYunTextView : UIView
 -(void)reloadData;
 @end

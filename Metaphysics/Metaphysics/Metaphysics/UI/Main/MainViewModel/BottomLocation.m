@@ -7,7 +7,7 @@
 //
 
 #import "BottomLocation.h"
-
+#import "BottomViewData.h"
 @implementation BottomLocation
 
 -(instancetype)initWithTag:(NSInteger)tag indexPath:(NSIndexPath*)indexPath{
@@ -16,13 +16,15 @@
         self.tag = tag;
         self.section = indexPath.section;
         self.row = indexPath.row;
-        self.key = [BottomLocation createKeyWithTag:tag indexPath:indexPath];
-        NSLog(@"%@",self.key);
+        self.keyNumber = [BottomLocation createKeyNumberWithTag:tag indexPath:indexPath];
+        NSLog(@"%ld",(long)self.keyNumber.integerValue);
     }
     return self;
 }
 
-+(NSString*)createKeyWithTag:(NSInteger)tag indexPath:(NSIndexPath*)indexPath{
-    return [NSString stringWithFormat:@"%ld%ld%ld",(long)tag,(long)indexPath.section,(long)indexPath.row];
+
++(NSNumber*)createKeyNumberWithTag:(NSInteger)tag indexPath:(NSIndexPath*)indexPath{
+    NSInteger key = tag * rowPerVerticalLine + indexPath.section * rowPerSection + indexPath.row;
+    return @(key);
 }
 @end

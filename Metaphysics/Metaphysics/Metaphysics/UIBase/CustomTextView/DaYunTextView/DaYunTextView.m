@@ -9,6 +9,7 @@
 #import "DaYunTextView.h"
 #import "UIConstantParameter.h"
 #import "DaYunTableViewDataSource.h"
+#import "MainViewModel.h"
 @interface DaYunTextView()
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)NSMutableArray *textFieldsArr;
@@ -94,4 +95,11 @@
         lastTextField = textField;
     }
 }
+
+#pragma mark - 重置数据
+-(void)reloadData{
+    [self.tableView reloadData];
+   
+}
+
 @end

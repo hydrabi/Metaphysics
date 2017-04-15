@@ -9,6 +9,7 @@
 #import "DaYunTableViewDataSource.h"
 #import "DaYunTableViewCell.h"
 #import "UIConstantParameter.h"
+#import "MainViewModel.h"
 static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 @interface DaYunTableViewDataSource()
 @property (nonatomic,weak)UITableView *tableView;
@@ -49,6 +50,13 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
     DaYunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier
                                                                 forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    BottomViewData *bottomData = mainViewModel.bottomData;
+    if(bottomData.canStart){
+        cell.daYunLabel.text = [bottomData getDaYunWithTableIndex:indexPath.row+1];
+        cell.qiYunLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row * 10 + bottomData.qiYunShu] ;
+    }
     
     return cell;
 }

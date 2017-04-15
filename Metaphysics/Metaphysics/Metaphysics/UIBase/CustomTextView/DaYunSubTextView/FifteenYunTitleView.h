@@ -1,5 +1,5 @@
 //
-//  DaYunSubTitleView.h
+//  FifteenYunTitleView.h
 //  Metaphysics
 //
 //  Created by Hydra on 2017/2/6.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DaYunSubTitleView : UIView
+@interface FifteenYunTitleView : UIView
 @property (nonatomic,weak)IBOutlet UILabel *titleLabel;
 @property (nonatomic,weak)IBOutlet UITextField *textField;
 
-+(instancetype)instanceDaYunSubTitleView;
++(instancetype)instanceFifteenYunTitleView;
+-(void)reloadData;
 @end

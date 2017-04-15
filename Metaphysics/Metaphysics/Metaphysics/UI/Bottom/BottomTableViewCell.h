@@ -10,7 +10,7 @@
 
 @interface BottomTableViewCell : UITableViewCell
 @property (nonatomic,weak)IBOutlet UILabel *yearLabel;
-@property (nonatomic,weak)IBOutlet UILabel *daYunLabel;
+@property (nonatomic,weak)IBOutlet UILabel *liuNianLabel;
 
 -(void)hideContent;
 -(void)showContent;

@@ -9,13 +9,16 @@
 #import "BottomTableViewCell.h"
 #import "UILabel+Addition.h"
 #import "UIConstantParameter.h"
+
+static CGFloat alphaNumber = 0.3;
+
 @implementation BottomTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     self.yearLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
-    self.daYunLabel.font = [UIFont systemFontOfSize:titleFontSize_26];
+    self.liuNianLabel.font = [UIFont systemFontOfSize:titleFontSize_26];
     // Initialization code
 }
 
@@ -26,22 +29,22 @@
 }
 
 -(void)hideContent{
-    self.yearLabel.hidden = YES;
-    self.daYunLabel.hidden = YES;
+    self.yearLabel.alpha = alphaNumber;
+    self.liuNianLabel.alpha = alphaNumber;
 }
 
 -(void)showContent{
-    self.yearLabel.hidden = NO;
-    self.daYunLabel.hidden = NO;
+    self.yearLabel.alpha = 1;
+    self.liuNianLabel.alpha = 1;
 }
 
 -(void)selectCell:(BOOL)select{
     if(select){
-        [self.daYunLabel setBoldFont];
+        [self.liuNianLabel setBoldFont];
         [self.yearLabel setBoldFont];
     }
     else{
-        [self.daYunLabel setOriginalFont];
+        [self.liuNianLabel setOriginalFont];
         [self.yearLabel setOriginalFont];
     }
 }

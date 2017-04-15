@@ -14,7 +14,7 @@
 #import "BottomContentView.h"
 #import "UIConstantParameter.h"
 #import "DaYunTextView.h"
-#import "DaYunSubTextView.h"
+#import "FifteenYunTextView.h"
 #import "LiuNianTextView.h"
 #import "NormalTextView.h"
 #import "ShuangZaoTextView.h"
@@ -32,7 +32,7 @@
 @property (nonatomic,strong)NSTimer *timer;
 @property (nonatomic,strong)DaYunTextView *daYunTextView;
 @property (nonatomic,strong)NormalTextView *normalTextView;
-@property (nonatomic,strong)DaYunSubTextView *fifteenYunTextView;
+@property (nonatomic,strong)FifteenYunTextView *fifteenYunTextView;
 @property (nonatomic,strong)ShuangZaoTextView *shuangZaoTextView;
 @property (nonatomic,strong)SolarTermsCollectionView *solarTermsView;
 @property (nonatomic,weak)UIView *currentTextView;
@@ -104,7 +104,7 @@
     self.daYunTextView.hidden = YES;
     [self.view addSubview:self.daYunTextView];
     
-    self.fifteenYunTextView = [[DaYunSubTextView alloc] init];
+    self.fifteenYunTextView = [[FifteenYunTextView alloc] init];
     self.fifteenYunTextView.hidden = YES;
     [self.view addSubview:self.fifteenYunTextView];
     
@@ -115,6 +115,7 @@
     self.shuangZaoTextView = [ShuangZaoTextView instanceShuangZaoTextView];
     self.shuangZaoTextView.hidden = YES;
     [self.view addSubview:self.shuangZaoTextView];
+    [self.shuangZaoTextView resetValue];
     
     self.solarTermsView  = [SolarTermsCollectionView createSolarTermsCollectionView];
     self.solarTermsView.hidden = YES;
@@ -276,6 +277,7 @@
                  case LeftSideMenuTypeDaYun:
                  {
                      [self resetCurrentTextView:self.daYunTextView];
+                     [self.daYunTextView reloadData];
                  }
                      break;
                      
@@ -307,7 +309,7 @@
       deliverOnMainThread]
      subscribeNext:^(id _){
         @strongify(self)
-         if(mainViewModel.fifteenYunSelectedNumber != NSNotFound){
+         if(mainViewModel.fifteenYunData.fifteenYunSelectedNumber != -1){
              [self resetCurrentTextView:self.fifteenYunTextView];
          }
          else{

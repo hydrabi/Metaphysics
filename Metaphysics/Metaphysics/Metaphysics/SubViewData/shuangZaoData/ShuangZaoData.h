@@ -7,8 +7,12 @@
 //
 
 #import "SubViewData.h"
-
+#import "UIConstantParameter.h"
 @interface ShuangZaoData : SubViewData
+/**
+ 乾坤
+ */
+@property (nonatomic,assign)UniverseType universeType;
 @property (nonatomic,strong)NSString *mainTitle;
 @property (nonatomic,strong)NSString *year;
 @property (nonatomic,strong)NSString *month;

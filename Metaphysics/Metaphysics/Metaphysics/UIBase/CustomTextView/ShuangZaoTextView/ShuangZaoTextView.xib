@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,8 +38,8 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="甲子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuO-xr-iep">
-                    <rect key="frame" x="74" y="54" width="81" height="48"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuO-xr-iep">
+                    <rect key="frame" x="74" y="78" width="80" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="ao6-Uo-quG"/>
                     </constraints>
@@ -48,7 +48,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEL-L0-DvS">
-                    <rect key="frame" x="155" y="58" width="40" height="40"/>
+                    <rect key="frame" x="154" y="58" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="sgm-b5-IwP"/>
                         <constraint firstAttribute="width" constant="40" id="vWN-MC-PhT"/>
@@ -61,8 +61,8 @@
                         <action selector="selectButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="c4B-74-Ryi"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="乙丑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAL-ih-goS">
-                    <rect key="frame" x="195" y="54" width="81" height="48"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAL-ih-goS">
+                    <rect key="frame" x="194" y="78" width="80" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="vRe-tD-bEQ"/>
                     </constraints>
@@ -71,7 +71,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64y-RK-DnU">
-                    <rect key="frame" x="276" y="58" width="40" height="40"/>
+                    <rect key="frame" x="274" y="58" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="ESd-UC-fFZ"/>
                         <constraint firstAttribute="height" constant="40" id="dBz-5V-V9G"/>
@@ -84,8 +84,8 @@
                         <action selector="selectButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="zXY-ks-dNP"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丙寅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFh-f5-TfF">
-                    <rect key="frame" x="316" y="54" width="81" height="48"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFh-f5-TfF">
+                    <rect key="frame" x="314" y="78" width="80" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Llx-2M-OhN"/>
                     </constraints>
@@ -94,7 +94,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFR-n4-feM">
-                    <rect key="frame" x="397" y="58" width="40" height="40"/>
+                    <rect key="frame" x="394" y="58" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Ns2-AN-6Eh"/>
                         <constraint firstAttribute="width" constant="40" id="rkH-E3-pB5"/>
@@ -107,8 +107,8 @@
                         <action selector="selectButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Zyt-r8-il4"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丁卯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi0-5y-sWR">
-                    <rect key="frame" x="437" y="54" width="81" height="48"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi0-5y-sWR">
+                    <rect key="frame" x="434" y="78" width="80" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="b8n-kC-uBx"/>
                     </constraints>
@@ -117,7 +117,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRW-dQ-VNk">
-                    <rect key="frame" x="518" y="58" width="40" height="40"/>
+                    <rect key="frame" x="514" y="58" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="e0E-mI-vZB"/>
                         <constraint firstAttribute="width" constant="40" id="gsO-7b-grr"/>

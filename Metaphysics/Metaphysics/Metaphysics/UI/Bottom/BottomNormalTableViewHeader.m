@@ -44,7 +44,7 @@
 
 -(void)reloadData{
     MainViewModel *main = [MainViewModel sharedInstance];
-    if(main.fifteenYunSelectedNumber == self.tableViewTag){
+    if(main.fifteenYunData.fifteenYunSelectedNumber == self.tableViewTag){
         [self.mainTitleButton.titleLabel setBoldFont];
     }
     else{
@@ -53,12 +53,16 @@
     
     [self resetDaYun];
     [self resetLiuQin];
+    [self resetQinYunNumber];
 }
 
+//重置六亲
 -(void)resetLiuQin{
-    if(self.mainTitleButton.titleLabel.text.length>0){
-        MainViewModel *mainViewModel = [MainViewModel sharedInstance];
-        MiddleViewData *middleData = mainViewModel.middleData;
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    MiddleViewData *middleData = mainViewModel.middleData;
+    BottomViewData *bottomData = mainViewModel.bottomData;
+    if(self.mainTitleButton.titleLabel.text.length>0 &&
+       bottomData.canStart){
         LiuQinData *liuQinData = middleData.liuQinData;
         CurrentSelectDate *selectData = mainViewModel.selectedDate;
         self.topTitleLabel.text = [liuQinData getLiuQinValueWithRiGanZhi:selectData.ganZhiDay
@@ -70,65 +74,20 @@
 //重置大运
 -(void)resetDaYun{
     MainViewModel *mainViewModel = [MainViewModel sharedInstance];
-    MiddleViewData *middleData = mainViewModel.middleData;
-    CurrentSelectDate *selectData = mainViewModel.selectedDate;
     BottomViewData *bottomData = mainViewModel.bottomData;
-    NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
-    if(jiaZiArr.count>0){
-        NSString *ganZhiMonth = selectData.ganZhiMonth;
-        NSString *ganZhiYear = selectData.ganZhiYear;
-        UniverseType type = middleData.universeType;
-        if(ganZhiMonth.length>0){
-            //月柱在60甲子中的位置
-            NSInteger index = [jiaZiArr indexOfObject:ganZhiMonth];
-            
-            if(type == UniverseTypeQian){
-                //男 阳顺阴逆
-                if([[ganZhiYear getBranches] isBranchesYang]){
-                    [self positiveOrderWithCurrentIndex:index];
-                }
-                else{
-                    [self reversedOrderWithCurrentIndex:index];
-                }
-            }
-            else{
-                //女 阳逆阴顺
-                if([[ganZhiYear getBranches] isBranchesYang]){
-                    [self reversedOrderWithCurrentIndex:index];
-                }
-                else{
-                    [self positiveOrderWithCurrentIndex:index];
-                }
-            }
-        }
+    if(bottomData.canStart){
+        [self.mainTitleButton setTitle:[bottomData getDaYunWithTableIndex:self.tableViewTag]
+                              forState:UIControlStateNormal];
     }
-    
-    if(bottomData.qiYunShu >= 0){
+}
+
+//重置起运数目
+-(void)resetQinYunNumber{
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    BottomViewData *bottomData = mainViewModel.bottomData;
+    if(bottomData.canStart){
         self.bottomNumberTitleLabel.text = [NSString stringWithFormat:@"%ld",(self.tableViewTag - 1) * 10 + bottomData.qiYunShu] ;
     }
-    
-}
-
-//逆序
--(void)reversedOrderWithCurrentIndex:(NSInteger)index{
-    NSInteger realIndex = index - self.tableViewTag;
-    NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
-    if(realIndex < 0){
-        realIndex = jiaZiArr.count + realIndex;
-    }
-    [self.mainTitleButton setTitle:[jiaZiArr objectAtIndex:realIndex]
-                          forState:UIControlStateNormal];
-}
-
-//顺序
--(void)positiveOrderWithCurrentIndex:(NSInteger)index{
-    NSInteger realIndex = self.tableViewTag + index;
-    NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
-    if(realIndex >= jiaZiArr.count){
-        realIndex = realIndex - jiaZiArr.count;
-    }
-    [self.mainTitleButton setTitle:[jiaZiArr objectAtIndex:realIndex]
-                          forState:UIControlStateNormal];
 }
 
 @end

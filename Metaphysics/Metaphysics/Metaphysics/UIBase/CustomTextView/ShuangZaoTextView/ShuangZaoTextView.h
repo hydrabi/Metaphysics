@@ -31,4 +31,5 @@ typedef void (^callBack)();
 @property (nonatomic,weak)IBOutlet UITextField *textField2;
 
 +(instancetype)instanceShuangZaoTextView;
+-(void)resetValue;
 @end

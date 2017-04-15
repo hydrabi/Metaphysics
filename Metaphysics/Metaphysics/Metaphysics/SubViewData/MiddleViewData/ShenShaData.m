@@ -254,7 +254,7 @@
 }
 
 //太极
-//甲日子、乙日午、丙日卯、丁日酉、戊己日（晨戊丑未）、庚日亥、辛日寅、壬日申、癸日巳。（年日干查）
+//甲日子、乙日午、丙日卯、丁日酉、戊己日（辰戊丑未）、庚日亥、辛日寅、壬日申、癸日巳。（年日干查）
 -(void)isIncludeTaiJi{
     [self shenShaSearchWithCheckType:SBTypeStems
                         traverseType:SBTypeBranches
@@ -274,7 +274,7 @@
                                        @"午",
                                        @"卯",
                                        @"酉",
-                                       @"晨戊丑未",
+                                       @"辰戊丑未",
                                        @"亥",
                                        @"寅",
                                        @"申",

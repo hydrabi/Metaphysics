@@ -80,4 +80,12 @@
  @return 六亲队列
  */
 +(NSArray*)getLiuQinArrWithIndex:(NSInteger)index;
+
+/**
+ 根据年干返回月的干支（年上起月 双造用）
+
+ @param stems <#stems description#>
+ @return <#return value description#>
+ */
++(NSArray*)getMonthGanZhiArrWithStems:(NSString*)stems;
 @end

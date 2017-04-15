@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.daYunLabel.font  = [UIFont systemFontOfSize:titleFontSize_24];
-    self.yearLabel.font = [UIFont systemFontOfSize:titleFontSize_18];
+    self.qiYunLabel.font = [UIFont systemFontOfSize:titleFontSize_18];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

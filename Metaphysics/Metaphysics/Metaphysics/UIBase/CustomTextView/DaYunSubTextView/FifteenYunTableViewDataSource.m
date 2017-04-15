@@ -1,22 +1,22 @@
 //
-//  DaYunSubTableViewDataSource.m
+//  FifteenYunTableViewDataSource.m
 //  Metaphysics
 //
 //  Created by Hydra on 2017/2/5.
 //  Copyright © 2017年 毕志锋. All rights reserved.
 //
 
-#import "DaYunSubTableViewDataSource.h"
-#import "DaYunSubTableViewCell.h"
+#import "FifteenYunTableViewDataSource.h"
+#import "FifteenYunTableViewCell.h"
 #import "UIConstantParameter.h"
+#import "MainViewModel.h"
 static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 
-@interface DaYunSubTableViewDataSource()
+@interface FifteenYunTableViewDataSource()
 @property (nonatomic,weak)UITableView *tableView;
 @end
 
-@implementation DaYunSubTableViewDataSource
-
+@implementation FifteenYunTableViewDataSource
 
 -(instancetype)initWithTableView:(UITableView*)tableView{
     self = [super init];
@@ -29,7 +29,7 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 
 -(void)UIConfig{
     
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DaYunSubTableViewCell class])
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([FifteenYunTableViewCell class])
                                                bundle:nil]
          forCellReuseIdentifier:cellReuseIdentifier];
     
@@ -48,11 +48,11 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DaYunSubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier
+    FifteenYunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier
                                                                forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell resetValueWithIndexPath:indexPath];
-    
+    [self fillContentWithCell:cell
+                    indexPath:indexPath];
     return cell;
 }
 
@@ -74,5 +74,21 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
     else{
         return nil;
     }
+}
+
+-(void)fillContentWithCell:(FifteenYunTableViewCell*)cell
+                 indexPath:(NSIndexPath *)indexPath{
+    
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    BottomViewData *bottomData = mainViewModel.bottomData;
+    
+    [bottomData fillContentWithTableIndex:mainViewModel.fifteenYunData.fifteenYunSelectedNumber
+                             tableSection:indexPath.section
+                                 tableRow:indexPath.row
+                                    block:^(NSString *liuNian,NSString *xiaoYun,NSString *year){
+                                        cell.yearLabel.text = year;
+                                        cell.liuNianLabel.text = liuNian;
+                                        cell.xiaoYunLabel.text = xiaoYun;
+                                    }];
 }
 @end

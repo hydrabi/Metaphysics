@@ -13,6 +13,7 @@
 #import "AnalysisSolarTerm.h"
 #import "NSString+Addition.h"
 #import "NSArray+Addition.h"
+
 @interface MainViewModel()
 @property (nonatomic, assign) Lunar*     lunar;
 @end
@@ -67,8 +68,7 @@
     self.hadShowSolarTermsCollectionView = NO;
     self.hadHiddenBottomTableView = NO;
     self.hiddenBottomTableViewTag = 0;
-    self.bottomLocation = @{}.mutableCopy;
-    self.fifteenYunSelectedNumber = NSNotFound;
+    
     self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
     self.currentSelectTopSectionMenuTypeArr = @[].mutableCopy;
     self.shuangZaoData = [[ShuangZaoData alloc] init];
@@ -76,6 +76,8 @@
     self.riZhuData = [[RiZhuData alloc] init];
     self.middleData = [[MiddleViewData alloc] init];
     self.bottomData = [[BottomViewData alloc] init];
+    self.fifteenYunData = [[FifteenYunData alloc] init];
+    self.liuNianData = [[LiuNianData alloc] init];
     self.lunar = new Lunar();
     
     self.solarTermsTimeDic = [AnalysisSolarTerm analysis];
@@ -154,7 +156,7 @@
             result = @"神煞表";
             break;
         case LeftSideMenuTypeVersion:
-            result = @"04_09";
+            result = @"04_11";
             break;
         
         default:
@@ -192,28 +194,8 @@
 #pragma mark - 选择tableView的某一行
 -(void)selectTableViewTag:(NSInteger)tag indexPath:(NSIndexPath*)indexPath{
     
-    BottomLocation *location = [[BottomLocation alloc] initWithTag:tag indexPath:indexPath];
-    if([self.bottomLocation objectForKey:location.key] == nil){
-        if(self.firstLocation == nil){
-            self.firstLocation = [[BottomLocation alloc] initWithTag:tag indexPath:indexPath];
-        }
-        self.hadShowLiuNianTextView = YES;
-        [self.bottomLocation setObject:location
-                                forKey:location.key];
-    }
-    else{
-        if([self.firstLocation.key isEqualToString:location.key]){
-            self.firstLocation = nil;
-            [self.bottomLocation removeAllObjects];
-        }
-        else{
-            [self.bottomLocation removeObjectForKey:location.key];
-        }
-        
-        if(self.bottomLocation.count == 0){
-            self.hadShowLiuNianTextView = NO;
-        }
-    }
+    [self.liuNianData selectTableViewTag:tag
+                               indexPath:indexPath];
     
     [(RACSubject*)self.LiuNianTextViewOperationSig sendNext:nil];
     [(RACSubject*)self.reloadBottomTablesSig sendNext:nil];
@@ -221,12 +203,12 @@
 
 #pragma mark - 选择底部大运的某一个，显示15运
 -(void)selectTableViewHeaderWithTag:(NSInteger)tag{
-    if(self.fifteenYunSelectedNumber != tag){
-        self.fifteenYunSelectedNumber = tag;
+    if(self.fifteenYunData.fifteenYunSelectedNumber != tag){
+        self.fifteenYunData.fifteenYunSelectedNumber = tag;
         self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;
     }
     else{
-        self.fifteenYunSelectedNumber = NSNotFound;
+        self.fifteenYunData.fifteenYunSelectedNumber = -1;
     }
     [(RACSubject*)self.fifteenYunTextViewOperationSig sendNext:nil];
     [(RACSubject*)self.reloadBottomTablesSig sendNext:nil];
@@ -256,7 +238,7 @@
             if(self.currentBottomSectionMenuType != type){
                 self.currentBottomSectionMenuType = type;
                 //将15运的选择tag置为notfound，并隐藏
-                self.fifteenYunSelectedNumber = NSNotFound;
+                self.fifteenYunData.fifteenYunSelectedNumber = -1;
             }
             else{
                 self.currentBottomSectionMenuType = LeftSideMenuTypeEmpty;

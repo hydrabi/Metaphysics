@@ -1,5 +1,5 @@
 //
-//  DaYunSubTableViewDataSource.h
+//  FifteenYunTableViewDataSource.h
 //  Metaphysics
 //
 //  Created by Hydra on 2017/2/5.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DaYunSubTableViewDataSource : NSObject<UITableViewDelegate,UITableViewDataSource>
+@interface FifteenYunTableViewDataSource : NSObject<UITableViewDelegate,UITableViewDataSource>
 -(instancetype)initWithTableView:(UITableView*)tableView;
 @end

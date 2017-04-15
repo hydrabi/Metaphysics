@@ -14,7 +14,8 @@
 #import "RiZhuData.h"
 #import "MiddleViewData.h"
 #import "BottomViewData.h"
-
+#import "FifteenYunData.h"
+#import "LiuNianData.h"
 @class BottomLocation;
 @interface MainViewModel : BaseViewModel
 //左边的菜单页面
@@ -54,13 +55,7 @@
 @property (nonatomic,assign)BOOL hadShowLiuNianTextView;
 //隐藏或者显示最底部textView的操作信号
 @property (nonatomic,strong)RACSignal *LiuNianTextViewOperationSig;
-//选择的位置
-@property (nonatomic,strong)NSMutableDictionary *bottomLocation;
-//第一个location
-@property (nonatomic,strong)BottomLocation *firstLocation;
 
-//正在点击的15运
-@property (nonatomic,assign)NSInteger fifteenYunSelectedNumber;
 //隐藏或者显示15运的操作信号
 @property (nonatomic,strong)RACSignal *fifteenYunTextViewOperationSig;
 
@@ -74,6 +69,10 @@
 @property (nonatomic,strong)RiZhuData *riZhuData;
 //底部数据
 @property (nonatomic,strong)BottomViewData *bottomData;
+//十五运数据
+@property (nonatomic,strong)FifteenYunData *fifteenYunData;
+//流年数据
+@property (nonatomic,strong)LiuNianData *liuNianData;
 //1900~2100年节气精确到分的时间集合
 @property (nonatomic,strong)NSMutableDictionary *solarTermsTimeDic;
 

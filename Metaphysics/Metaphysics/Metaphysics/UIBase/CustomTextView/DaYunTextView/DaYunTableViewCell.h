@@ -10,5 +10,5 @@
 
 @interface DaYunTableViewCell : UITableViewCell
 @property (nonatomic,weak)IBOutlet UILabel *daYunLabel;
-@property (nonatomic,weak)IBOutlet UILabel *yearLabel;
+@property (nonatomic,weak)IBOutlet UILabel *qiYunLabel;
 @end

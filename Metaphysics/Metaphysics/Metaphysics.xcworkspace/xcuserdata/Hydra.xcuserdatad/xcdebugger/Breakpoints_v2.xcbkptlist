@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metaphysics/UI/Main/MainViewModel/MainViewModel.mm"
-            timestampString = "513436532.631913"
+            timestampString = "513950711.900952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-solarToLunar"
             landmarkType = "7">
          </BreakpointContent>

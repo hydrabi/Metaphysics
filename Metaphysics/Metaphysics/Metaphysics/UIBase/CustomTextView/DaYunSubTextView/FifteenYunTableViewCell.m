@@ -1,19 +1,19 @@
 //
-//  DaYunSubTableViewCell.m
+//  FifteenYunTableViewCell.m
 //  Metaphysics
 //
 //  Created by Hydra on 2017/2/5.
 //  Copyright © 2017年 毕志锋. All rights reserved.
 //
 
-#import "DaYunSubTableViewCell.h"
+#import "FifteenYunTableViewCell.h"
 #import "UIConstantParameter.h"
-@implementation DaYunSubTableViewCell
+@implementation FifteenYunTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.yearLabel.font  = [UIFont systemFontOfSize:titleFontSize_18];
-    self.daYunLabel.font  = [UIFont systemFontOfSize:titleFontSize_24];
+    self.liuNianLabel.font  = [UIFont systemFontOfSize:titleFontSize_24];
     self.xiaoYunLabel.font = [UIFont systemFontOfSize:titleFontSize_18];
 }
 

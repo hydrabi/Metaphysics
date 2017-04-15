@@ -44,11 +44,11 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return tableViewSection;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return rowPerSection;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -70,14 +70,16 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
         [cell showContent];
     }
     
-    NSString *key = [BottomLocation createKeyWithTag:tableView.tag
+    NSNumber *key = [BottomLocation createKeyNumberWithTag:tableView.tag
                                            indexPath:indexPath];
-    if([main.bottomLocation objectForKey:key]){
+    if([main.liuNianData.bottomLocationDic objectForKey:key]){
         [cell selectCell:YES];
     }
     else{
         [cell selectCell:NO];
     }
+    
+    
     
     [self fillContentWithCell:cell
                     tableView:tableView
@@ -127,106 +129,17 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 -(void)fillContentWithCell:(BottomTableViewCell*)cell
                  tableView:(UITableView*)tableView
                  indexPath:(NSIndexPath *)indexPath{
+
     MainViewModel *mainViewModle = [MainViewModel sharedInstance];
     BottomViewData *bottomData = mainViewModle.bottomData;
-    CurrentSelectDate *selectData = mainViewModle.selectedDate;
-    MiddleViewData *middleData = mainViewModle.middleData;
-    NSString *ganZhiYear = selectData.ganZhiYear;
-    NSArray *jiaZiArr = mainViewModle.jiaZiArr;
-    if(jiaZiArr.count>0 && bottomData.qiYunShu>=0){
-        NSInteger firstLineTableViewShow = 10 - (bottomData.qiYunShu - 1);
-        NSInteger realIndex = 10 * tableView.tag + indexPath.section * 5 + indexPath.row;
-        NSInteger ganZhiYearIndex = [jiaZiArr indexOfObject:ganZhiYear];
-        NSInteger indexOffset = realIndex - firstLineTableViewShow;
-        
-        if(realIndex >= firstLineTableViewShow){
-            
-            if(middleData.universeType == UniverseTypeQian){
-                //男 阳顺阴逆
-                if([[ganZhiYear getBranches] isBranchesYang]){
-                    [self positiveOrderWithWithCell:cell
-                                        indexOffset:indexOffset
-                                    ganZhiYearIndex:ganZhiYearIndex
-                                           jiaZiArr:jiaZiArr];
-                }
-                else{
-                    [self reversedOrderWithCell:cell
-                                    indexOffset:indexOffset
-                                ganZhiYearIndex:ganZhiYearIndex
-                                       jiaZiArr:jiaZiArr];
-                }
-            }
-            else{
-                //女 阳逆阴顺
-                if([[ganZhiYear getBranches] isBranchesYang]){
-                    [self reversedOrderWithCell:cell
-                                    indexOffset:indexOffset
-                                ganZhiYearIndex:ganZhiYearIndex
-                                       jiaZiArr:jiaZiArr];
-                }
-                else{
-                    [self positiveOrderWithWithCell:cell
-                                        indexOffset:indexOffset
-                                    ganZhiYearIndex:ganZhiYearIndex
-                                           jiaZiArr:jiaZiArr];
-                }
-            }
-            
-        }
-        else{
-            cell.daYunLabel.text = @"";
-            cell.yearLabel.text = @"";
-        }
-        
-    }
-    else{
-        cell.daYunLabel.text = @"";
-        cell.yearLabel.text = @"";
-    }
-}
-
-
-//逆序
--(void)reversedOrderWithCell:(BottomTableViewCell*)cell
-                 indexOffset:(NSInteger)indexOffset
-             ganZhiYearIndex:(NSInteger)ganZhiYearIndex
-                    jiaZiArr:(NSArray*)jiaZiArr{
-    NSInteger locationIndex = ganZhiYearIndex - indexOffset ;
-    //少于0，补正locationIndex
-    if(locationIndex<0){
-        NSInteger divisor = (NSInteger)((-locationIndex) / jiaZiArr.count) + 1;
-        locationIndex = jiaZiArr.count * divisor + locationIndex;
-    }
-    if(jiaZiArr.count>locationIndex){
-        cell.daYunLabel.text = jiaZiArr[locationIndex];
-    }
     
-    MainViewModel *mainViewModle = [MainViewModel sharedInstance];
-    CurrentSelectDate *selectData = mainViewModle.selectedDate;
-    if(selectData.gregorianYear.integerValue >0){
-        cell.yearLabel.text = [NSString stringWithFormat:@"%ld",selectData.gregorianYear.integerValue + indexOffset] ;
-    }
+    [bottomData fillContentWithTableIndex:tableView.tag
+                             tableSection:indexPath.section
+                                 tableRow:indexPath.row
+                                    block:^(NSString *liuNian,NSString *xiaoYun,NSString *year){
+                                        cell.liuNianLabel.text = liuNian;
+                                        cell.yearLabel.text = year;
+                                    }];
 }
-
-//顺序
--(void)positiveOrderWithWithCell:(BottomTableViewCell*)cell
-                     indexOffset:(NSInteger)indexOffset
-                 ganZhiYearIndex:(NSInteger)ganZhiYearIndex
-                        jiaZiArr:(NSArray*)jiaZiArr{
-    
-    NSInteger locationIndex = indexOffset + ganZhiYearIndex;
-    //超出60，引用余数
-    locationIndex = locationIndex % (jiaZiArr.count - 1);
-    if(jiaZiArr.count>locationIndex){
-        cell.daYunLabel.text = jiaZiArr[locationIndex];
-    }
-    
-    MainViewModel *mainViewModle = [MainViewModel sharedInstance];
-    CurrentSelectDate *selectData = mainViewModle.selectedDate;
-    if(selectData.gregorianYear.integerValue >0){
-        cell.yearLabel.text = [NSString stringWithFormat:@"%ld",selectData.gregorianYear.integerValue + indexOffset] ;
-    }
-}
-
 
 @end

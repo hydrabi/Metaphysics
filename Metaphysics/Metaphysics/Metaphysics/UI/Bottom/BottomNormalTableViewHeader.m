@@ -11,6 +11,9 @@
 #import "NSString+Addition.h"
 #import "MainViewModel.h"
 #import "UILabel+Addition.h"
+
+static CGFloat alphaNumber = 0.3;
+
 @implementation BottomNormalTableViewHeader
 
 +(instancetype)instanceBottomNormalTableViewHeader{
@@ -51,6 +54,20 @@
         [self.mainTitleButton.titleLabel setOriginalFont];
     }
     
+    if(main.hadHiddenBottomTableView){
+        if(self.tableViewTag >= main.hiddenBottomTableViewTag){
+            [self hideContent];
+        }
+        else{
+            [self showContent];
+        }
+    }
+    //展示
+    else{
+        [self showContent];
+    }
+    
+    
     [self resetDaYun];
     [self resetLiuQin];
     [self resetQinYunNumber];
@@ -88,6 +105,15 @@
     if(bottomData.canStart){
         self.bottomNumberTitleLabel.text = [NSString stringWithFormat:@"%ld",(self.tableViewTag - 1) * 10 + bottomData.qiYunShu] ;
     }
+}
+
+#pragma mark - 隐藏
+-(void)hideContent{
+    self.alpha = alphaNumber;
+}
+
+-(void)showContent{
+    self.alpha = 1;
 }
 
 @end

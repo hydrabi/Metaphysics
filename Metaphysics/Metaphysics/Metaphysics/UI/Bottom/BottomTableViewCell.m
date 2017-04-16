@@ -31,21 +31,21 @@ static CGFloat alphaNumber = 0.3;
 -(void)hideContent{
     self.yearLabel.alpha = alphaNumber;
     self.liuNianLabel.alpha = alphaNumber;
+    
 }
 
 -(void)showContent{
     self.yearLabel.alpha = 1;
     self.liuNianLabel.alpha = 1;
+    
 }
 
 -(void)selectCell:(BOOL)select{
     if(select){
-        [self.liuNianLabel setBoldFont];
-        [self.yearLabel setBoldFont];
+        self.backgroundColor = [UIColor grayColor];
     }
     else{
-        [self.liuNianLabel setOriginalFont];
-        [self.yearLabel setOriginalFont];
+        self.backgroundColor = [UIColor clearColor];
     }
 }
 

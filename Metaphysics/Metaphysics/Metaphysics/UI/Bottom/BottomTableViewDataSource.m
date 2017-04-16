@@ -122,8 +122,23 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[MainViewModel sharedInstance] selectTableViewTag:tableView.tag
-                                             indexPath:indexPath];
+    
+    BottomTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if(cell.liuNianLabel.text.length>0){
+        MainViewModel *main = [MainViewModel sharedInstance];
+        if(main.hadHiddenBottomTableView){
+            if(tableView.tag < main.hiddenBottomTableViewTag){
+                [[MainViewModel sharedInstance] selectTableViewTag:tableView.tag
+                                                         indexPath:indexPath];
+            }
+        }
+        //展示
+        else{
+            [[MainViewModel sharedInstance] selectTableViewTag:tableView.tag
+                                                     indexPath:indexPath];
+        }
+    }
 }
 
 -(void)fillContentWithCell:(BottomTableViewCell*)cell

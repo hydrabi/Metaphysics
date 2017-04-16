@@ -88,6 +88,7 @@
      subscribeNext:^(id _){
          @strongify(self)
          [self resetValue];
+         [self resetDaYun];
      }];
     
     ShuangZaoData *shuangZaoData = [[MainViewModel sharedInstance] shuangZaoData];
@@ -105,17 +106,21 @@
              [self.mainButton setTitle:@"乾"
                                 forState:UIControlStateNormal];
          }
+         [self resetDaYun];
      }];
 }
 
 -(void)resetValue{
     ShuangZaoData *data = [MainViewModel sharedInstance].shuangZaoData;
-    BottomViewData *bottomData = [MainViewModel sharedInstance].bottomData;
     self.yearLabel.text = data.year;
     self.monthLabel.text = data.month;
     self.dayLabel.text = data.day;
     self.hourLabel.text = data.hour;
-    
+}
+
+-(void)resetDaYun{
+    ShuangZaoData *data = [MainViewModel sharedInstance].shuangZaoData;
+    BottomViewData *bottomData = [MainViewModel sharedInstance].bottomData;
     NSArray *daYunLabelArr = @[self.daYunLabel1,
                                self.daYunLabel2,
                                self.daYunLabel3,
@@ -129,11 +134,10 @@
     for(NSInteger i = 0;i<daYunLabelArr.count;i++){
         UILabel *label = daYunLabelArr[i];
         label.text = [bottomData getDaYunWithTableIndex:i+1
-                                                      universeType:data.universeType
-                                                            ganZhi:data.year
+                                           universeType:data.universeType
+                                                 ganZhi:data.year
                                             yueZhuIndex:yueZhuIndex];
     }
-    
 }
 
 @end

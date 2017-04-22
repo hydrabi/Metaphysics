@@ -17,7 +17,14 @@
 }
 
 -(void)resetData{
-    [self countTimeOffset];
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    if(mainViewModel.useHourCountQiYun){
+        [self countTimeOffset];
+    }
+    else{
+        [self anotherCountTimeOffset];
+    }
+    
     [self countFirstIndexOfMonthInJiziArr];
 }
 
@@ -37,19 +44,19 @@
         if(middleData.universeType == UniverseTypeQian){
             
             if([[selectDate.ganZhiYear getBranches] isBranchesYang]){
-                timeOffset = [currentDate timeIntervalSinceDate:leftTerm];
+                timeOffset = [rightTerm timeIntervalSinceDate:currentDate];
             }
             else{
-                timeOffset = [rightTerm timeIntervalSinceDate:currentDate];
+                timeOffset = [currentDate timeIntervalSinceDate:leftTerm];
             }
         }
         //女 阳逆阴顺
         else{
             if([[selectDate.ganZhiYear getBranches] isBranchesYang]){
-                timeOffset = [rightTerm timeIntervalSinceDate:currentDate];
+                timeOffset = [currentDate timeIntervalSinceDate:leftTerm];
             }
             else{
-                timeOffset =  [currentDate timeIntervalSinceDate:leftTerm];
+                timeOffset = [rightTerm timeIntervalSinceDate:currentDate];
             }
         }
         [self countAgeWithTiemOffset:timeOffset];
@@ -95,6 +102,89 @@
         [components setMonth:month];
         [components setDay:day];
         [components setHour:hour];
+        
+        return [calendar dateFromComponents:components];
+    }
+    return nil;
+}
+
+#pragma mark - 另一种算起运数目的方法
+-(void)anotherCountTimeOffset{
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    CurrentSelectDate *selectDate = mainViewModel.selectedDate;
+    MiddleViewData *middleData = mainViewModel.middleData;
+    RiZhuData *rizhu = mainViewModel.riZhuData;
+    NSDate *leftTerm =  [self filterHourWithData:rizhu.leftTerm];
+    NSDate *rightTerm = [self filterHourWithData:rizhu.rightTerm];
+    NSDate *currentDate = [self filterHourWithData:selectDate.getGregorianDate];
+    NSTimeInterval timeOffset = 0.0f;
+    
+    if(leftTerm && rightTerm){
+        //男 阳顺阴逆
+        if(middleData.universeType == UniverseTypeQian){
+            
+            if([[selectDate.ganZhiYear getBranches] isBranchesYang]){
+                rightTerm = [rightTerm dateByAddingTimeInterval:24 * 60 * 60];
+                timeOffset = [rightTerm timeIntervalSinceDate:currentDate];
+            }
+            else{
+                currentDate = [currentDate dateByAddingTimeInterval:24 * 60 * 60];
+                timeOffset = [currentDate timeIntervalSinceDate:leftTerm];
+            }
+        }
+        //女 阳逆阴顺
+        else{
+            if([[selectDate.ganZhiYear getBranches] isBranchesYang]){
+                currentDate = [currentDate dateByAddingTimeInterval:24 * 60 * 60];
+                timeOffset = [currentDate timeIntervalSinceDate:leftTerm];
+            }
+            else{
+                rightTerm = [rightTerm dateByAddingTimeInterval:24 * 60 * 60];
+                timeOffset = [rightTerm timeIntervalSinceDate:currentDate];
+            }
+        }
+        [self anotherCountAgeWithTiemOffset:timeOffset];
+    }
+}
+
+//计算起运数
+-(void)anotherCountAgeWithTiemOffset:(NSTimeInterval)timeOffset{
+    NSInteger hour = 60 * 60;
+    NSInteger day = 24 * hour;
+    NSInteger twoDay = 2 * day;
+    NSInteger threeDay = day * 3;
+    NSInteger age = (NSInteger)(timeOffset / threeDay);
+    //余数
+    NSInteger ageRemainder = (NSInteger)((NSInteger)timeOffset % threeDay);
+    if(ageRemainder >= twoDay){
+        age += 1;
+    }
+    else{
+        if(age == 0){
+            age = 1;
+        }
+    }
+    self.qiYunShu = age;
+}
+
+-(NSDate*)filterHourWithData:(NSDate*)currentDate{
+    if(currentDate){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy"];
+        NSInteger year = [[dateFormatter stringFromDate:currentDate] integerValue];
+        [dateFormatter setDateFormat:@"MM"];
+        NSInteger month = [[dateFormatter stringFromDate:currentDate] integerValue];
+        [dateFormatter setDateFormat:@"dd"];
+        NSInteger day = [[dateFormatter stringFromDate:currentDate] integerValue];
+//        [dateFormatter setDateFormat:@"HH"];
+//        NSInteger hour = [[dateFormatter stringFromDate:currentDate] integerValue];
+        
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT+0800"]];
+        [components setYear:year];
+        [components setMonth:month];
+        [components setDay:day];
         
         return [calendar dateFromComponents:components];
     }
@@ -214,14 +304,14 @@
                     xiaoYun = [self getXiaoYunPositiveOrderWithIndexOffset:indexOffset];
                 }
                 else{
-                    liuNian = [self getLiuNianReversedOrderWithIndexOffset:indexOffset];
+                    liuNian = [self getLiuNianPositiveOrderWithIndexOffset:indexOffset];
                     xiaoYun = [self getXiaoYunReversedOrderWithIndexOffset:indexOffset];
                 }
             }
             else{
                 //女 阳逆阴顺
                 if([[ganZhiYear getBranches] isBranchesYang]){
-                    liuNian = [self getLiuNianReversedOrderWithIndexOffset:indexOffset];
+                    liuNian = [self getLiuNianPositiveOrderWithIndexOffset:indexOffset];
                     xiaoYun = [self getXiaoYunReversedOrderWithIndexOffset:indexOffset];
                 }
                 else{
@@ -278,8 +368,11 @@
     
     NSInteger locationIndex = indexOffset + ganZhiYearIndex;
     //超出60，引用余数
-    locationIndex = locationIndex % (jiaZiArr.count - 1);
-    
+    if(locationIndex >= jiaZiArr.count){
+        NSInteger yushu = locationIndex / jiaZiArr.count;
+        locationIndex = locationIndex - jiaZiArr.count * yushu;
+    }
+
     if(jiaZiArr.count>locationIndex){
         return jiaZiArr[locationIndex];
     }
@@ -322,7 +415,10 @@
     
     NSInteger locationIndex = indexOffset + ganZhiHourIndex;
     //超出60，引用余数
-    locationIndex = locationIndex % (jiaZiArr.count - 1);
+    if(locationIndex >= jiaZiArr.count){
+        NSInteger yushu = locationIndex / jiaZiArr.count;
+        locationIndex = locationIndex - jiaZiArr.count * yushu;
+    }
     
     if(jiaZiArr.count>locationIndex){
         return jiaZiArr[locationIndex];

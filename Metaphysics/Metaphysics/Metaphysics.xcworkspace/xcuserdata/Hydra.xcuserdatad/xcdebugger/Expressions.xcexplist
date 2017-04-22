@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[UILabel(Addition) layoutSubviews]:UILabel+Addition.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[MainViewModel sharedInstance]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "::-[MainViewModel solarToLunar]():MainViewModel.mm">
          <PersistentStrings>
             <PersistentString

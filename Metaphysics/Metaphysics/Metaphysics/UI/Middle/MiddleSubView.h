@@ -10,14 +10,14 @@
 #import "MainViewModel.h"
 @interface MiddleSubView : UIView
 @property (nonatomic,assign)MiddleSubViewType type;
-@property (nonatomic,weak)IBOutlet UILabel *topLeftLabel;
-@property (nonatomic,weak)IBOutlet UILabel *topRightLabel;
-@property (nonatomic,weak)IBOutlet UILabel *bottomLeftLabel;
-@property (nonatomic,weak)IBOutlet UILabel *bottomRightLabel;
-@property (nonatomic,weak)IBOutlet UILabel *horLine1Label;
-@property (nonatomic,weak)IBOutlet UILabel *horLine2Label;
-@property (nonatomic,weak)IBOutlet UILabel *horLine3Label;
-@property (nonatomic,weak)IBOutlet UILabel *verLineLabel;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *topLeftLabel;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *topRightLabel;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *bottomLeftLabel;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *bottomRightLabel;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *horLine1Label;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *horLine2Label;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *horLine3Label;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *verLineLabel;
 @property (nonatomic,weak)IBOutlet UIButton *showFormButton;
 @property (nonatomic,weak)IBOutlet UITableView *tableView;
 +(instancetype)instanceMiddleSubViewWithType:(MiddleSubViewType)type;

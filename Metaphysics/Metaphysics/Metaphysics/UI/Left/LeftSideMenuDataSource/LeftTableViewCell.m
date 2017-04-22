@@ -34,6 +34,15 @@
     else{
         [self.menuLabel setOriginalFont];
     }
+    
+    if(type == LeftSideMenuTypeCountQiYunUseHour){
+        if(main.useHourCountQiYun){
+            [self.menuLabel setBoldFont];
+        }
+        else{
+            [self.menuLabel setOriginalFont];
+        }
+    }
 }
 
 @end

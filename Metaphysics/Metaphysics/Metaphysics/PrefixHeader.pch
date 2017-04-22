@@ -9,6 +9,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import "CustomColorLabel.h"
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #define MAS_SHORTHAND
 #define MAS_SHORTHAND_GLOBALS

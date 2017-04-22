@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomColorButton.h"
 
 @interface BottomNormalTableViewHeader : UIView
 
 @property (nonatomic,weak)IBOutlet UILabel *topTitleLabel;
-@property (nonatomic,weak)IBOutlet UIButton *mainTitleButton;
+@property (nonatomic,weak)IBOutlet CustomColorButton *mainTitleButton;
 @property (nonatomic,weak)IBOutlet UILabel *bottomNumberTitleLabel;
 @property (nonatomic,weak)IBOutlet UIButton *hideTableViewButton;
 @property (nonatomic,assign)NSInteger tableViewTag;

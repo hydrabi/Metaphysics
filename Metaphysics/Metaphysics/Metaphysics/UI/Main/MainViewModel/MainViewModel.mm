@@ -13,6 +13,7 @@
 #import "AnalysisSolarTerm.h"
 #import "NSString+Addition.h"
 #import "NSArray+Addition.h"
+#import "BaseViewController.h"
 
 @interface MainViewModel()
 @property (nonatomic, assign) Lunar*     lunar;
@@ -57,6 +58,7 @@
                                 
                                 @(LeftSideMenuTypeGuanSi),
                                 @(LeftSideMenuTypeJiBing),
+                                @(LeftSideMenuTypeCountQiYunUseHour),
                                 @(LeftSideMenuTypeVersion),
                                 ]
                          ];
@@ -155,8 +157,11 @@
         case LeftSideMenuTypeShenSha:
             result = @"神煞表";
             break;
+        case LeftSideMenuTypeCountQiYunUseHour:
+            result = @"起运-小时";
+            break;
         case LeftSideMenuTypeVersion:
-            result = @"04_16_2";
+            result = @"04_22";
             break;
         
         default:
@@ -257,6 +262,16 @@
                 [self.currentSelectTopSectionMenuTypeArr addObject:@(type)];
             }
             [(RACSubject*)self.leftMenuTopSelectedOperationSig sendNext:nil];
+            
+            if(type == LeftSideMenuTypeYanSe){
+                [[NSNotificationCenter defaultCenter] postNotificationName:notificationKey_changeColor
+                                                                    object:nil];
+            }
+        }
+            break;
+        case LeftSideMenuTypeCountQiYunUseHour:
+        {
+            self.useHourCountQiYun = !self.useHourCountQiYun;
         }
             break;
         default:

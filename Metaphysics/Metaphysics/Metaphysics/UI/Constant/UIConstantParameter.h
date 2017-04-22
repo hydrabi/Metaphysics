@@ -31,7 +31,8 @@ typedef NS_ENUM(NSInteger,LeftSideMenuType) {
     
     LeftSideMenuTypeYanSe,           /**<颜色区分*/
     LeftSideMenuTypeShenSha,         /**<神煞表*/
-    LeftSideMenuTypeVersion         /**<版本*/
+    LeftSideMenuTypeVersion,         /**<版本*/
+    LeftSideMenuTypeCountQiYunUseHour,  /**使用小时算起运*/
 };
 
 typedef NS_ENUM(NSInteger,MiddleSubViewType){
@@ -158,3 +159,6 @@ static const CGFloat titleFontSize_20 =  20.0f;
 static const CGFloat titleFontSize_18 =  18.0f;
 static const CGFloat titleFontSize_16 =  16.0f;
 #endif /* UIConstantParameter_h */
+
+//改变颜色key
+static NSString *notificationKey_changeColor = @"notificationKey_changeColor";

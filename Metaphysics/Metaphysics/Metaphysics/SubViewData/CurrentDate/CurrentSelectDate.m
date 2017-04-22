@@ -80,33 +80,37 @@
                                                    day:(int32_t)self.lunarDay.integerValue
                                         middleViewType:MiddleSubViewTypeMonth];
     }
-    NSString *monthBranches = [ganZhiMonth getBranches];
-    NSInteger monthBranchesIndex = [[NSString branchesStr] rangeOfString:monthBranches].location;
-    NSInteger monthMingGongNumber = [mingGongShuArr[monthBranchesIndex] integerValue];
     
-    NSString *hourBranches = [ganZhiHour getBranches];
-    NSInteger hourBranchesIndex = [[NSString branchesStr] rangeOfString:hourBranches].location;
-    NSInteger hourMingGongNumber = [mingGongShuArr[hourBranchesIndex] integerValue];
-    
-    NSInteger total = monthMingGongNumber + hourMingGongNumber;
-    NSInteger left = 0;
-    if(total < 14){
-        left = 14 - total;
-    }
-    else{
-        left = 26 - total;
-    }
-    
-    //命宫的支
-    NSString *resultBranches = [[NSString branchesStr] substringWithRange:NSMakeRange([mingGongShuArr indexOfObject:@(left)],
-                                                                                      1)];
-    NSArray *monthGanZhiArr= [NSArray getMonthGanZhiArrWithStems:[ganZhiYear getStems]];
-    for (NSString *ganZhi in monthGanZhiArr){
-        if([[ganZhi getBranches] isEqualToString:resultBranches]){
-            self.mingGong = ganZhi;
-            break;
+    if(ganZhiMonth){
+        NSString *monthBranches = [ganZhiMonth getBranches];
+        NSInteger monthBranchesIndex = [[NSString branchesStr] rangeOfString:monthBranches].location;
+        NSInteger monthMingGongNumber = [mingGongShuArr[monthBranchesIndex] integerValue];
+        
+        NSString *hourBranches = [ganZhiHour getBranches];
+        NSInteger hourBranchesIndex = [[NSString branchesStr] rangeOfString:hourBranches].location;
+        NSInteger hourMingGongNumber = [mingGongShuArr[hourBranchesIndex] integerValue];
+        
+        NSInteger total = monthMingGongNumber + hourMingGongNumber;
+        NSInteger left = 0;
+        if(total < 14){
+            left = 14 - total;
+        }
+        else{
+            left = 26 - total;
+        }
+        
+        //命宫的支
+        NSString *resultBranches = [[NSString branchesStr] substringWithRange:NSMakeRange([mingGongShuArr indexOfObject:@(left)],
+                                                                                          1)];
+        NSArray *monthGanZhiArr= [NSArray getMonthGanZhiArrWithStems:[ganZhiYear getStems]];
+        for (NSString *ganZhi in monthGanZhiArr){
+            if([[ganZhi getBranches] isEqualToString:resultBranches]){
+                self.mingGong = ganZhi;
+                break;
+            }
         }
     }
+    
 }
 
 -(void)solarToLunar{

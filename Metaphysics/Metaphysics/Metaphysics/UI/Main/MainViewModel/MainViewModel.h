@@ -16,6 +16,7 @@
 #import "BottomViewData.h"
 #import "FifteenYunData.h"
 #import "LiuNianData.h"
+
 @class BottomLocation;
 @interface MainViewModel : BaseViewModel
 //左边的菜单页面
@@ -88,8 +89,7 @@
                         month:(int32_t)month
                           day:(int32_t)day
                middleViewType:(MiddleSubViewType)type;
-#pragma mark - 选择菜单的某一项
--(void)selectMunuWithIndexPath:(NSIndexPath*)indexPath;
+
 
 /**
  公历转农历

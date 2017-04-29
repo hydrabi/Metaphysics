@@ -127,6 +127,7 @@ static NSString *cellReuseIdentifier = @"cellReuseIdentifier";
     
     if(cell.liuNianLabel.text.length>0){
         MainViewModel *main = [MainViewModel sharedInstance];
+        //隐藏的时候不能点击
         if(main.hadHiddenBottomTableView){
             if(tableView.tag < main.hiddenBottomTableViewTag){
                 [[MainViewModel sharedInstance] selectTableViewTag:tableView.tag

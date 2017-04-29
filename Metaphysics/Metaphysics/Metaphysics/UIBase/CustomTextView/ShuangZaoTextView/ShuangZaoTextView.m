@@ -45,8 +45,8 @@
     self.daYunLabel5.font = [UIFont systemFontOfSize:titleFontSize_24];
     self.daYunLabel6.font = [UIFont systemFontOfSize:titleFontSize_24];
     self.daYunLabel7.font = [UIFont systemFontOfSize:titleFontSize_24];
-    self.textField1.font = [UIFont systemFontOfSize:titleFontSize_20];
-    self.textField2.font = [UIFont systemFontOfSize:titleFontSize_20];
+    self.textField1.font = [UIFont systemFontOfSize:titleFontSize_24];
+    self.textField2.font = [UIFont systemFontOfSize:titleFontSize_24];
     
     self.yearLabel.layer.borderWidth = 1.0f;
     self.yearLabel.layer.borderColor = [UIColor blackColor].CGColor;
@@ -130,14 +130,17 @@
                                self.daYunLabel7,];
     
     NSArray *jiaZiArr = [MainViewModel sharedInstance].jiaZiArr;
-    NSInteger yueZhuIndex = [jiaZiArr indexOfObject:data.month];
-    for(NSInteger i = 0;i<daYunLabelArr.count;i++){
-        UILabel *label = daYunLabelArr[i];
-        label.text = [bottomData getDaYunWithTableIndex:i+1
-                                           universeType:data.universeType
-                                                 ganZhi:data.year
-                                            yueZhuIndex:yueZhuIndex];
+    if(data.month.length>0){
+        NSInteger yueZhuIndex = [jiaZiArr indexOfObject:data.month];
+        for(NSInteger i = 0;i<daYunLabelArr.count;i++){
+            UILabel *label = daYunLabelArr[i];
+            label.text = [bottomData getDaYunWithTableIndex:i+1
+                                               universeType:data.universeType
+                                                     ganZhi:data.year
+                                                yueZhuIndex:yueZhuIndex];
+        }
     }
+   
 }
 
 @end

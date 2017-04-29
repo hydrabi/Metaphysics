@@ -12,5 +12,5 @@
 
 -(void)initialize;
 -(void)resetData;
-
+-(void)clearData;
 @end

@@ -27,22 +27,29 @@
                                                            object:nil]
      subscribeNext:^(id _){
          @strongify(self)
-         if([[MainViewModel sharedInstance].currentSelectTopSectionMenuTypeArr containsObject:@(LeftSideMenuTypeYanSe)]){
-             [self setTitleColor:[UIColor getColorWithString:self.titleLabel.text]
-                        forState:UIControlStateNormal];
-         }
-         else{
-             [self setTitleColor:[UIColor blackColor]
-                        forState:UIControlStateNormal];
-         }
+         [self drawColorWithText:self.titleLabel.text];
      }];
 }
 
 -(void)setTitle:(NSString *)title forState:(UIControlState)state{
     [super setTitle:title forState:state];
-    if([[MainViewModel sharedInstance].currentSelectTopSectionMenuTypeArr containsObject:@(LeftSideMenuTypeYanSe)]){
-        [self setTitleColor:[UIColor getColorWithString:self.titleLabel.text]
-                   forState:UIControlStateNormal];
+    [self drawColorWithText:title];
+}
+
+-(void)drawColorWithText:(NSString*)text{
+    if([[MainViewModel sharedInstance].currentSelectTopSectionMenuTypeArr containsObject:@(LeftSideMenuTypeYanSe)]
+       && text.length>0){
+
+        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:text];
+        for(NSInteger i = 0;i<text.length;i++){
+            NSString *subString = [text substringWithRange:NSMakeRange(i, 1)];
+            [attributeString addAttribute:NSForegroundColorAttributeName
+                                    value:[UIColor getColorWithString:subString]
+                                    range:NSMakeRange(i, 1)];
+        }
+        [self setAttributedTitle:attributeString
+                        forState:UIControlStateNormal];
+
     }
     else{
         [self setTitleColor:[UIColor blackColor]

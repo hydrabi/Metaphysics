@@ -15,17 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="210" height="220"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="财" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuR-Jo-Ynu" customClass="CustomColorLabel">
-                    <rect key="frame" x="0.0" y="0.0" width="40" height="31.5"/>
-                    <accessibility key="accessibilityConfiguration" identifier="十神"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31.5" id="mQd-VN-rih"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="n6R-hJ-EjA"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="三奇贵人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37M-Cc-1cP" customClass="CustomColorLabel">
                     <rect key="frame" x="128" y="7.5" width="82" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -87,7 +76,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="壬庚戊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxX-8c-jk0" customClass="CustomColorLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="壬庚戊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxX-8c-jk0">
                             <rect key="frame" x="54" y="71" width="102" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
@@ -157,22 +146,43 @@
                         <action selector="showFormButtonAction:" destination="c13-5W-LY5" eventType="touchUpInside" id="2Pj-5W-L5Y"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxL-j6-owb" customClass="DrawLayerView">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="31.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEQ-ST-Wwl" customClass="CustomColorLabel">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="31.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31.5" id="3QF-yj-oZS"/>
+                        <constraint firstItem="hEQ-ST-Wwl" firstAttribute="leading" secondItem="IxL-j6-owb" secondAttribute="leading" id="B3p-qI-wRC"/>
+                        <constraint firstAttribute="trailing" secondItem="hEQ-ST-Wwl" secondAttribute="trailing" id="NSo-bU-SiN"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="gug-w8-xS9"/>
+                        <constraint firstItem="hEQ-ST-Wwl" firstAttribute="top" secondItem="IxL-j6-owb" secondAttribute="top" id="nu8-fk-L9D"/>
+                        <constraint firstAttribute="bottom" secondItem="hEQ-ST-Wwl" secondAttribute="bottom" id="pf4-cV-P1j"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="z4B-ak-m7k" firstAttribute="leading" secondItem="IxL-j6-owb" secondAttribute="trailing" constant="20" id="FGy-c9-Pb7"/>
                 <constraint firstAttribute="trailing" secondItem="37M-Cc-1cP" secondAttribute="trailing" id="OEM-wm-31h"/>
                 <constraint firstItem="plm-EM-Upv" firstAttribute="leading" secondItem="c13-5W-LY5" secondAttribute="leading" id="PRj-uh-tXl"/>
-                <constraint firstItem="z4B-ak-m7k" firstAttribute="leading" secondItem="AuR-Jo-Ynu" secondAttribute="trailing" constant="20" id="RQZ-vp-6LE"/>
-                <constraint firstItem="AuR-Jo-Ynu" firstAttribute="leading" secondItem="c13-5W-LY5" secondAttribute="leading" id="Uh0-1R-Yta"/>
-                <constraint firstItem="plm-EM-Upv" firstAttribute="top" secondItem="AuR-Jo-Ynu" secondAttribute="bottom" id="YWL-q1-ggy"/>
+                <constraint firstItem="plm-EM-Upv" firstAttribute="top" secondItem="IxL-j6-owb" secondAttribute="bottom" id="UKT-9e-O8U"/>
                 <constraint firstAttribute="trailing" secondItem="Cep-hK-ryb" secondAttribute="trailing" id="Yhd-mA-YB7"/>
                 <constraint firstItem="sIG-ak-TpT" firstAttribute="leading" secondItem="c13-5W-LY5" secondAttribute="leading" id="c06-cK-FSM"/>
                 <constraint firstItem="sIG-ak-TpT" firstAttribute="top" secondItem="plm-EM-Upv" secondAttribute="bottom" constant="1" id="cfl-hc-rkr"/>
-                <constraint firstItem="37M-Cc-1cP" firstAttribute="bottom" secondItem="AuR-Jo-Ynu" secondAttribute="bottom" id="ciX-tU-gf5"/>
+                <constraint firstItem="37M-Cc-1cP" firstAttribute="top" secondItem="c13-5W-LY5" secondAttribute="top" constant="7.5" id="e3y-qs-GZD"/>
                 <constraint firstItem="z4B-ak-m7k" firstAttribute="top" secondItem="c13-5W-LY5" secondAttribute="top" id="gKU-02-7Ht"/>
-                <constraint firstItem="AuR-Jo-Ynu" firstAttribute="top" secondItem="c13-5W-LY5" secondAttribute="top" id="nQI-kH-3Vb"/>
+                <constraint firstItem="IxL-j6-owb" firstAttribute="top" secondItem="c13-5W-LY5" secondAttribute="top" id="iUz-Da-v6a"/>
                 <constraint firstItem="Cep-hK-ryb" firstAttribute="top" secondItem="plm-EM-Upv" secondAttribute="bottom" constant="1" id="rXU-cq-ILi"/>
                 <constraint firstAttribute="trailing" secondItem="plm-EM-Upv" secondAttribute="trailing" id="u6W-zo-rB4"/>
+                <constraint firstItem="plm-EM-Upv" firstAttribute="top" secondItem="37M-Cc-1cP" secondAttribute="bottom" id="uUX-rc-X6A"/>
+                <constraint firstItem="IxL-j6-owb" firstAttribute="leading" secondItem="c13-5W-LY5" secondAttribute="leading" id="vC9-bq-Uvm"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -185,7 +195,7 @@
                 <outlet property="innerView" destination="plm-EM-Upv" id="0Tc-nK-1uU"/>
                 <outlet property="showFormButton" destination="z4B-ak-m7k" id="pp0-p1-ruY"/>
                 <outlet property="tableView" destination="PJD-KC-f4p" id="9qu-JX-j2l"/>
-                <outlet property="topLeftLabel" destination="AuR-Jo-Ynu" id="9a8-hr-Rd0"/>
+                <outlet property="topLeftLabel" destination="hEQ-ST-Wwl" id="9qC-l3-Opd"/>
                 <outlet property="topRightLabel" destination="37M-Cc-1cP" id="shK-J3-yQ5"/>
                 <outlet property="verLineLabel" destination="KQ8-Fz-mv0" id="NHO-Cq-26J"/>
             </connections>

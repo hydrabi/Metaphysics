@@ -27,19 +27,33 @@
                                                           object:nil]
      subscribeNext:^(id _){
          @strongify(self)
-         if([[MainViewModel sharedInstance].currentSelectTopSectionMenuTypeArr containsObject:@(LeftSideMenuTypeYanSe)]){
-             self.textColor = [UIColor getColorWithString:self.text];
-         }
-         else{
-             self.textColor = [UIColor blackColor];
-         }
+         [self drawColorWithText:self.text];
      }];
 }
 
 -(void)setText:(NSString *)text{
     [super setText:text];
-    if([[MainViewModel sharedInstance].currentSelectTopSectionMenuTypeArr containsObject:@(LeftSideMenuTypeYanSe)]){
-        self.textColor = [UIColor getColorWithString:self.text];
+    [self drawColorWithText:text];
+    
+}
+
+-(void)drawColorWithText:(NSString*)text{
+    if([[MainViewModel sharedInstance].currentSelectTopSectionMenuTypeArr containsObject:@(LeftSideMenuTypeYanSe)]
+       && text.length>0){
+        if(self.useTheSameColor){
+            self.textColor = [UIColor getColorWithString:self.text];
+        }
+        else{
+            NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:text];
+            for(NSInteger i = 0;i<text.length;i++){
+                NSString *subString = [text substringWithRange:NSMakeRange(i, 1)];
+                [attributeString addAttribute:NSForegroundColorAttributeName
+                                        value:[UIColor getColorWithString:subString]
+                                        range:NSMakeRange(i, 1)];
+                
+            }
+            self.attributedText = attributeString;
+        }
     }
     else{
         self.textColor = [UIColor blackColor];

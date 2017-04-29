@@ -51,8 +51,9 @@
     self.bottomLeftLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
     self.bottomRightLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
     
-    self.topLeftLabel.layer.borderWidth = 1.0f;
-    self.topLeftLabel.layer.borderColor = [UIColor blackColor].CGColor;
+    self.topLeftLabel.textAlignment = NSTextAlignmentCenter;
+//    self.topLeftLabel.layer.borderWidth = 1.0f;
+//    self.topLeftLabel.layer.borderColor = [UIColor blackColor].CGColor;
     
     self.innerView.layer.borderWidth = 1.0f;
     self.innerView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -65,6 +66,8 @@
     
     self.tableView.delegate = self.tableViewDataSource;
     self.tableView.dataSource = self.tableViewDataSource;
+    
+    self.verLineLabel.useTheSameColor = YES;
     
     [self clearData];
 }

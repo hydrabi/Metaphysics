@@ -17,7 +17,7 @@ static CGFloat alphaNumber = 0.3;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.yearLabel.font = [UIFont systemFontOfSize:titleFontSize_20];
+    self.yearLabel.font = [UIFont systemFontOfSize:titleFontSize_18];
     self.liuNianLabel.font = [UIFont systemFontOfSize:titleFontSize_26];
     // Initialization code
 }
@@ -42,10 +42,10 @@ static CGFloat alphaNumber = 0.3;
 
 -(void)selectCell:(BOOL)select{
     if(select){
-        self.backgroundColor = [UIColor grayColor];
+        self.liuNianLabel.backgroundColor = [UIColor grayColor];
     }
     else{
-        self.backgroundColor = [UIColor clearColor];
+        self.liuNianLabel.backgroundColor = [UIColor clearColor];
     }
 }
 

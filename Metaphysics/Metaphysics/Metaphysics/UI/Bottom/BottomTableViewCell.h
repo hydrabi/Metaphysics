@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomColorLabel.h"
 
 @interface BottomTableViewCell : UITableViewCell
 @property (nonatomic,weak)IBOutlet UILabel *yearLabel;
-@property (nonatomic,weak)IBOutlet UILabel *liuNianLabel;
+@property (nonatomic,weak)IBOutlet CustomColorLabel *liuNianLabel;
 
 -(void)hideContent;
 -(void)showContent;

@@ -13,19 +13,23 @@
 @implementation ShuangZaoData
 
 -(void)initialize{
-    self.year = [NSArray jiaZiArr][0];
-    self.day = [NSArray jiaZiArr][0];
+    self.year = @"";
+    self.day = @"";
 }
 
 -(void)setYear:(NSString *)year{
     _year = year;
-    self.month = [NSArray getMonthGanZhiArrWithStems:[self.year getStems]][0];
+    if(year.length>0){
+        self.month = [NSArray getMonthGanZhiArrWithStems:[self.year getStems]][0];
+    }
 }
 
 -(void)setDay:(NSString *)day{
     _day = day;
-    self.hour = [NSString ganZhiHourWithHour:0
-                                         day:self.day];
+    if(day.length>0){
+        self.hour = [NSString ganZhiHourWithHour:0
+                                             day:self.day];
+    }
 }
 
 -(void)resetData{

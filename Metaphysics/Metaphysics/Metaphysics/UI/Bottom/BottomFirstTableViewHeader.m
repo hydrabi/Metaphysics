@@ -8,6 +8,7 @@
 
 #import "BottomFirstTableViewHeader.h"
 #import "UIConstantParameter.h"
+#import "MainViewModel.h"
 @implementation BottomFirstTableViewHeader
 
 +(instancetype)instanceBottomFirstTableViewHeader{
@@ -22,6 +23,25 @@
     
     self.mainTitleLabel.font = [UIFont systemFontOfSize:titleFontSize_50];
     self.mainTitleLabel.text = @"";
+}
+
+//恢复操作
+-(IBAction)recoverAction{
+    MainViewModel *mainViewModel = [MainViewModel sharedInstance];
+    //隐藏流年窗口
+    LiuNianData *liuNianData = mainViewModel.liuNianData;
+    [liuNianData.bottomLocationDic removeAllObjects];
+    liuNianData.firstLocation = nil;
+    liuNianData.secondLocation = nil;
+    mainViewModel.hadShowLiuNianTextView = NO;
+    //隐藏底部大运窗口
+    [mainViewModel selectTableViewHeaderWithTag:mainViewModel.fifteenYunData.fifteenYunSelectedNumber];
+    //清空15运
+    FifteenYunData *fifteenData = mainViewModel.fifteenYunData;
+    [fifteenData clearData];
+    
+    [(RACSubject*)mainViewModel.LiuNianTextViewOperationSig sendNext:nil];
+    [(RACSubject*)mainViewModel.reloadBottomTablesSig sendNext:nil];
 }
 
 @end

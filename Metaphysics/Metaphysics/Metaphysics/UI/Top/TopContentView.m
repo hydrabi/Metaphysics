@@ -374,4 +374,12 @@
     return NO;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [textField performSelector:@selector(selectAll:)
+                    withObject:textField
+                    afterDelay:0];
+    [textField selectAll:self];
+}
+
 @end

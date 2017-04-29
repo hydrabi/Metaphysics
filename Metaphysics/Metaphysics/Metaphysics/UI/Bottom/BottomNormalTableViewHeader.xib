@@ -36,41 +36,72 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57W-kw-vQe" customClass="CustomColorButton">
-                    <rect key="frame" x="0.0" y="13" width="105" height="60"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <state key="normal">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPr-M5-sXJ" customClass="CustomColorLabel">
+                    <rect key="frame" x="0.0" y="15" width="105" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Pbh-q9-l84"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsD-pK-jIa">
+                    <rect key="frame" x="0.0" y="25" width="52.5" height="50"/>
                     <connections>
-                        <action selector="selectHeader" destination="iN0-l3-epB" eventType="touchUpInside" id="Yws-T8-YBN"/>
+                        <action selector="ganButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="YQ7-UK-4dn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utQ-jx-9kK">
+                    <rect key="frame" x="52.5" y="25" width="52.5" height="50"/>
+                    <connections>
+                        <action selector="zhiButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="VCX-gN-WHH"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOP-ry-Gx1">
-                    <rect key="frame" x="52.5" y="63" width="0.0" height="0.0"/>
+                    <rect key="frame" x="52" y="65" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4N-SM-Ox0">
+                    <rect key="frame" x="0.0" y="85" width="105" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="UZZ-r3-q4u"/>
+                    </constraints>
+                    <connections>
+                        <action selector="selectHeader" destination="iN0-l3-epB" eventType="touchUpInside" id="zb0-0g-ldW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="rsD-pK-jIa" firstAttribute="width" secondItem="utQ-jx-9kK" secondAttribute="width" id="3j6-Dk-9VJ"/>
                 <constraint firstItem="fOP-ry-Gx1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5Mi-1Z-8oM"/>
+                <constraint firstItem="O4N-SM-Ox0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="60q-cG-Ckl"/>
+                <constraint firstItem="fOP-ry-Gx1" firstAttribute="top" secondItem="XPr-M5-sXJ" secondAttribute="bottom" constant="-10" id="CmM-bE-DOX"/>
+                <constraint firstItem="rsD-pK-jIa" firstAttribute="bottom" secondItem="XPr-M5-sXJ" secondAttribute="bottom" id="E6W-K7-hro"/>
+                <constraint firstItem="rsD-pK-jIa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Gj8-zm-8vy"/>
+                <constraint firstItem="XPr-M5-sXJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HJu-Ch-dcM"/>
                 <constraint firstItem="SNM-MG-JX1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LKw-lE-jkC"/>
-                <constraint firstItem="57W-kw-vQe" firstAttribute="top" secondItem="JTk-RR-NRm" secondAttribute="bottom" constant="-12" id="Prk-Ja-FiA"/>
-                <constraint firstItem="fOP-ry-Gx1" firstAttribute="top" secondItem="57W-kw-vQe" secondAttribute="bottom" constant="-10" id="UiE-i3-KzB"/>
+                <constraint firstAttribute="trailing" secondItem="XPr-M5-sXJ" secondAttribute="trailing" id="POC-7f-z76"/>
+                <constraint firstItem="utQ-jx-9kK" firstAttribute="top" secondItem="SNM-MG-JX1" secondAttribute="bottom" id="VGM-rl-CHq"/>
+                <constraint firstAttribute="trailing" secondItem="utQ-jx-9kK" secondAttribute="trailing" id="ZBT-ir-mG2"/>
                 <constraint firstItem="JTk-RR-NRm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ava-a2-fU0"/>
                 <constraint firstItem="JTk-RR-NRm" firstAttribute="top" secondItem="SNM-MG-JX1" secondAttribute="bottom" id="b9l-tt-R3e"/>
+                <constraint firstAttribute="trailing" secondItem="O4N-SM-Ox0" secondAttribute="trailing" id="bkZ-kJ-esj"/>
+                <constraint firstItem="utQ-jx-9kK" firstAttribute="leading" secondItem="rsD-pK-jIa" secondAttribute="trailing" id="k3N-6b-ueD"/>
                 <constraint firstItem="SNM-MG-JX1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kwf-xp-Ddy"/>
-                <constraint firstAttribute="trailing" secondItem="57W-kw-vQe" secondAttribute="trailing" id="loi-RI-oyw"/>
-                <constraint firstItem="57W-kw-vQe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="unR-TO-ldu"/>
+                <constraint firstItem="XPr-M5-sXJ" firstAttribute="top" secondItem="JTk-RR-NRm" secondAttribute="bottom" constant="-10" id="m6z-qs-wVA"/>
+                <constraint firstItem="rsD-pK-jIa" firstAttribute="top" secondItem="JTk-RR-NRm" secondAttribute="bottom" id="oPK-cI-kY2"/>
+                <constraint firstItem="utQ-jx-9kK" firstAttribute="bottom" secondItem="XPr-M5-sXJ" secondAttribute="bottom" id="sbq-lO-vNc"/>
+                <constraint firstAttribute="bottom" secondItem="O4N-SM-Ox0" secondAttribute="bottom" id="z1w-wJ-3A9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomNumberTitleLabel" destination="fOP-ry-Gx1" id="B1D-Ha-dOM"/>
                 <outlet property="hideTableViewButton" destination="SNM-MG-JX1" id="44O-hd-oZo"/>
-                <outlet property="mainTitleButton" destination="57W-kw-vQe" id="rtB-YS-hV7"/>
+                <outlet property="mainTitleLabel" destination="XPr-M5-sXJ" id="MTx-r5-PRC"/>
                 <outlet property="topTitleLabel" destination="JTk-RR-NRm" id="3tH-YW-cPT"/>
             </connections>
             <point key="canvasLocation" x="41" y="111.5"/>

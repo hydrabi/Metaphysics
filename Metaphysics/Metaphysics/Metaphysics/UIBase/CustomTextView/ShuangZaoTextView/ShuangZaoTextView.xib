@@ -16,8 +16,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6D-AR-1OA">
-                    <rect key="frame" x="78" y="10" width="300" height="40"/>
+                    <rect key="frame" x="74" y="10" width="300" height="40"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="40" id="KQH-x3-fLB"/>
                         <constraint firstAttribute="width" constant="300" id="m7U-uF-Nih"/>
                     </constraints>
                     <nil key="textColor"/>
@@ -25,7 +26,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2C-rt-Rqx">
-                    <rect key="frame" x="388" y="10" width="831" height="40"/>
+                    <rect key="frame" x="384" y="10" width="835" height="40"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <textInputTraits key="textInputTraits"/>
@@ -131,49 +132,49 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(大运)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAH-ar-dnV">
-                    <rect key="frame" x="752" y="66" width="54" height="24"/>
+                    <rect key="frame" x="1095" y="66" width="54" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丙寅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACk-Zp-osf">
-                    <rect key="frame" x="816" y="63" width="49" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACk-Zp-osf">
+                    <rect key="frame" x="1159" y="77.5" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丁卯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3t-3w-jxB">
-                    <rect key="frame" x="875" y="63" width="49" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3t-3w-jxB">
+                    <rect key="frame" x="1169" y="77.5" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="戊辰" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wia-fX-i92">
-                    <rect key="frame" x="934" y="63" width="49" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wia-fX-i92">
+                    <rect key="frame" x="1179" y="77.5" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="己巳" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCd-B5-3lN">
-                    <rect key="frame" x="993" y="63" width="49" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCd-B5-3lN">
+                    <rect key="frame" x="1189" y="77.5" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="庚午" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvh-sY-iFx">
-                    <rect key="frame" x="1052" y="63" width="49" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvh-sY-iFx">
+                    <rect key="frame" x="1199" y="77.5" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="辛未" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-su-CvI">
-                    <rect key="frame" x="1111" y="63" width="49" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-su-CvI">
+                    <rect key="frame" x="1209" y="77.5" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丙寅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUU-KK-kBH">
-                    <rect key="frame" x="1170" y="63" width="49" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUU-KK-kBH">
+                    <rect key="frame" x="1219" y="77.5" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -181,6 +182,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="WuO-xr-iep" firstAttribute="leading" secondItem="k6D-AR-1OA" secondAttribute="leading" id="1fc-Yj-q2L"/>
                 <constraint firstItem="CFh-f5-TfF" firstAttribute="centerY" secondItem="64y-RK-DnU" secondAttribute="centerY" id="5ML-Bi-aer"/>
                 <constraint firstItem="lvh-sY-iFx" firstAttribute="centerY" secondItem="WCd-B5-3lN" secondAttribute="centerY" id="6J3-SY-XWB"/>
                 <constraint firstItem="dEL-L0-DvS" firstAttribute="leading" secondItem="WuO-xr-iep" secondAttribute="trailing" id="8fv-3n-f1J"/>
@@ -188,7 +190,7 @@
                 <constraint firstItem="ZFR-n4-feM" firstAttribute="leading" secondItem="CFh-f5-TfF" secondAttribute="trailing" id="D38-T9-kDm"/>
                 <constraint firstItem="lvh-sY-iFx" firstAttribute="leading" secondItem="WCd-B5-3lN" secondAttribute="trailing" constant="10" id="DK2-WB-E5k"/>
                 <constraint firstItem="wia-fX-i92" firstAttribute="leading" secondItem="O3t-3w-jxB" secondAttribute="trailing" constant="10" id="Dhb-Uc-OJs"/>
-                <constraint firstItem="k6D-AR-1OA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="78" id="Dna-2m-v6b"/>
+                <constraint firstItem="k6D-AR-1OA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="74" id="Dna-2m-v6b"/>
                 <constraint firstItem="dEL-L0-DvS" firstAttribute="centerY" secondItem="WuO-xr-iep" secondAttribute="centerY" id="JyA-h8-Y1b"/>
                 <constraint firstAttribute="bottom" secondItem="lAv-1n-q1D" secondAttribute="bottom" constant="3" id="Mho-m9-rSi"/>
                 <constraint firstItem="WuO-xr-iep" firstAttribute="centerY" secondItem="lAv-1n-q1D" secondAttribute="centerY" id="OQq-l4-1d4"/>
@@ -206,8 +208,8 @@
                 <constraint firstItem="OUU-KK-kBH" firstAttribute="centerY" secondItem="ryU-su-CvI" secondAttribute="centerY" id="e0s-qX-mYx"/>
                 <constraint firstItem="B2C-rt-Rqx" firstAttribute="leading" secondItem="k6D-AR-1OA" secondAttribute="trailing" constant="10" id="fAa-eA-oSE"/>
                 <constraint firstItem="Bi0-5y-sWR" firstAttribute="leading" secondItem="ZFR-n4-feM" secondAttribute="trailing" id="gp7-bX-GKb"/>
+                <constraint firstItem="k6D-AR-1OA" firstAttribute="height" secondItem="B2C-rt-Rqx" secondAttribute="height" id="h5K-5w-a23"/>
                 <constraint firstItem="WCd-B5-3lN" firstAttribute="centerY" secondItem="wia-fX-i92" secondAttribute="centerY" id="kCG-wA-SRG"/>
-                <constraint firstItem="WuO-xr-iep" firstAttribute="leading" secondItem="lAv-1n-q1D" secondAttribute="trailing" constant="10" id="kPd-fv-6TW"/>
                 <constraint firstItem="wia-fX-i92" firstAttribute="centerY" secondItem="O3t-3w-jxB" secondAttribute="centerY" id="mot-E5-MJJ"/>
                 <constraint firstItem="uRW-dQ-VNk" firstAttribute="leading" secondItem="Bi0-5y-sWR" secondAttribute="trailing" id="oz1-Fm-Njf"/>
                 <constraint firstItem="CFh-f5-TfF" firstAttribute="leading" secondItem="64y-RK-DnU" secondAttribute="trailing" id="p4a-Qi-Nif"/>

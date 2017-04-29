@@ -274,13 +274,13 @@
          else{
              
              switch (mainViewModel.currentBottomSectionMenuType) {
-                 case LeftSideMenuTypeDaYun:
-                 {
-                     [self resetCurrentTextView:self.daYunTextView];
-                     [self.daYunTextView reloadData];
-                 }
-                     break;
-                     
+//                 case LeftSideMenuTypeDaYun:
+//                 {
+//                     [self resetCurrentTextView:self.daYunTextView];
+//                     [self.daYunTextView reloadData];
+//                 }
+//                     break;
+//                     
                  default:
                  {
                      [self resetCurrentTextView:self.normalTextView];

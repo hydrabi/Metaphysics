@@ -11,5 +11,9 @@
 @interface BottomFirstTableViewHeader : UIView
 @property (nonatomic,weak)IBOutlet UILabel *mainTitleLabel;
 
+/**
+ 恢复按钮，使流年选择清空，流年窗口隐藏，大运选择恢复
+ */
+@property (nonatomic,weak)IBOutlet UIButton *recoverButton;
 +(instancetype)instanceBottomFirstTableViewHeader;
 @end

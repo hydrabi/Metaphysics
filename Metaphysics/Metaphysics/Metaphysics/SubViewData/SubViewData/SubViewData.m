@@ -26,4 +26,8 @@
     
 }
 
+-(void)clearData{
+    
+}
+
 @end

@@ -60,9 +60,9 @@
             break;
         case 3:
         {
-            color = [UIColor colorWithRed:218/255.0
-                                    green:178/255.0
-                                     blue:115/255.0
+            color = [UIColor colorWithRed:252/255.0
+                                    green:202/255.0
+                                     blue:0/255.0
                                     alpha:1];
         }
             break;

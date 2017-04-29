@@ -26,6 +26,8 @@
 		80221E331EA1FFBA00F608AF /* SubViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80221E291EA1FFBA00F608AF /* SubViewData.m */; };
 		80221E371EA2001D00F608AF /* FifteenYunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80221E361EA2001D00F608AF /* FifteenYunData.m */; };
 		80221E3B1EA22E6900F608AF /* LiuNianData.m in Sources */ = {isa = PBXBuildFile; fileRef = 80221E3A1EA22E6900F608AF /* LiuNianData.m */; };
+		80252C9C1EB49C43008C2CD3 /* MainViewModel+LeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 80252C9B1EB49C43008C2CD3 /* MainViewModel+LeftMenu.m */; };
+		80252C9F1EB4D3FF008C2CD3 /* DrawLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80252C9E1EB4D3FF008C2CD3 /* DrawLayerView.m */; };
 		8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */; };
 		804088111E3D963800380A15 /* BaseContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088101E3D963800380A15 /* BaseContentView.m */; };
 		804088191E3E12BE00380A15 /* PlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 804088181E3E12BE00380A15 /* PlaceHolderView.m */; };
@@ -156,6 +158,10 @@
 		80221E361EA2001D00F608AF /* FifteenYunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifteenYunData.m; sourceTree = "<group>"; };
 		80221E391EA22E6900F608AF /* LiuNianData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiuNianData.h; sourceTree = "<group>"; };
 		80221E3A1EA22E6900F608AF /* LiuNianData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiuNianData.m; sourceTree = "<group>"; };
+		80252C9A1EB49C43008C2CD3 /* MainViewModel+LeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MainViewModel+LeftMenu.h"; sourceTree = "<group>"; };
+		80252C9B1EB49C43008C2CD3 /* MainViewModel+LeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MainViewModel+LeftMenu.m"; sourceTree = "<group>"; };
+		80252C9D1EB4D3FF008C2CD3 /* DrawLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawLayerView.h; sourceTree = "<group>"; };
+		80252C9E1EB4D3FF008C2CD3 /* DrawLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawLayerView.m; sourceTree = "<group>"; };
 		8029F72A1E7503F50050EFDC /* NSNumber+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Addition.h"; sourceTree = "<group>"; };
 		8029F72B1E7503F50050EFDC /* NSNumber+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Addition.m"; sourceTree = "<group>"; };
 		8040880F1E3D963800380A15 /* BaseContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseContentView.h; sourceTree = "<group>"; };
@@ -325,6 +331,8 @@
 			children = (
 				800A28FA1EAAF8FA0094C5BB /* CustomColorLabel.h */,
 				800A28FB1EAAF8FA0094C5BB /* CustomColorLabel.m */,
+				80252C9D1EB4D3FF008C2CD3 /* DrawLayerView.h */,
+				80252C9E1EB4D3FF008C2CD3 /* DrawLayerView.m */,
 			);
 			path = CustomLabel;
 			sourceTree = "<group>";
@@ -544,6 +552,8 @@
 				805D40F71E73D5070000C6C7 /* BottomLocation.m */,
 				805D40F81E73D5070000C6C7 /* MainViewModel.h */,
 				805D40F91E73D5070000C6C7 /* MainViewModel.mm */,
+				80252C9A1EB49C43008C2CD3 /* MainViewModel+LeftMenu.h */,
+				80252C9B1EB49C43008C2CD3 /* MainViewModel+LeftMenu.m */,
 			);
 			path = MainViewModel;
 			sourceTree = "<group>";
@@ -1047,6 +1057,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80252C9F1EB4D3FF008C2CD3 /* DrawLayerView.m in Sources */,
 				805D41991E73D5320000C6C7 /* JiaZiCollectionViewCell.m in Sources */,
 				805D41E01E73DB1A0000C6C7 /* SolarTermsSecondCell.m in Sources */,
 				805D41161E73D5070000C6C7 /* BottomFirstTableViewHeader.m in Sources */,
@@ -1075,6 +1086,7 @@
 				805D41DE1E73DB1A0000C6C7 /* SolarTermsNumberCell.m in Sources */,
 				801F0AC11E65B91400AF3718 /* TTLunarCalendar.mm in Sources */,
 				805D413F1E73D5070000C6C7 /* LeftTableViewCell.m in Sources */,
+				80252C9C1EB49C43008C2CD3 /* MainViewModel+LeftMenu.m in Sources */,
 				80221E311EA1FFBA00F608AF /* RiZhuData.mm in Sources */,
 				805D418F1E73D5320000C6C7 /* FifteenYunTitleView.m in Sources */,
 				8029F72C1E7503F50050EFDC /* NSNumber+Addition.m in Sources */,

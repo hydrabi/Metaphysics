@@ -100,6 +100,8 @@
     self.reloadLeftTableSig = [[RACSubject subject]
                                setNameWithFormat:@"reloadLeftTableSig"];
     self.leftMenuTopSelectedOperationSig = [[RACSubject subject] setNameWithFormat:@"leftMenuTopSelectedOperationSig"];
+    
+    self.bottomNoteTextViewOperationSig = [[RACSubject subject] setNameWithFormat:@"bottomTextViewOperationSig"];
 }
 
 -(NSString*)getSpecificMenuTitleWithType:(LeftSideMenuType)type{
@@ -161,7 +163,7 @@
             result = @"起运-小时";
             break;
         case LeftSideMenuTypeVersion:
-            result = @"04_22";
+            result = @"04_29";
             break;
         
         default:

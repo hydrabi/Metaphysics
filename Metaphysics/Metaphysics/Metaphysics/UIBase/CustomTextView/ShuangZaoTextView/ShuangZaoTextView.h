@@ -30,6 +30,11 @@ typedef void (^callBack)();
 @property (nonatomic,weak)IBOutlet UITextField *textField1;
 @property (nonatomic,weak)IBOutlet UITextField *textField2;
 
+/**
+ 展示或者隐藏底部textView的按钮
+ */
+@property (nonatomic,weak)IBOutlet UIButton *bottomNoteTextViewButton;
+
 +(instancetype)instanceShuangZaoTextView;
 -(void)resetValue;
 @end

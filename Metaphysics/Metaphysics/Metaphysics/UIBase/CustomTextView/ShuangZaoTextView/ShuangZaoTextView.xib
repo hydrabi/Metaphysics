@@ -131,6 +131,17 @@
                         <action selector="selectButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="MLw-9s-BY0"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d10-V8-4q3">
+                    <rect key="frame" x="574" y="58" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="JcB-3k-qPE"/>
+                        <constraint firstAttribute="height" constant="40" id="SS2-i2-jx6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="▼">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(大运)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAH-ar-dnV">
                     <rect key="frame" x="1095" y="66" width="54" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -186,6 +197,7 @@
                 <constraint firstItem="CFh-f5-TfF" firstAttribute="centerY" secondItem="64y-RK-DnU" secondAttribute="centerY" id="5ML-Bi-aer"/>
                 <constraint firstItem="lvh-sY-iFx" firstAttribute="centerY" secondItem="WCd-B5-3lN" secondAttribute="centerY" id="6J3-SY-XWB"/>
                 <constraint firstItem="dEL-L0-DvS" firstAttribute="leading" secondItem="WuO-xr-iep" secondAttribute="trailing" id="8fv-3n-f1J"/>
+                <constraint firstItem="d10-V8-4q3" firstAttribute="leading" secondItem="uRW-dQ-VNk" secondAttribute="trailing" constant="20" id="BZy-B7-715"/>
                 <constraint firstItem="k6D-AR-1OA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Bbg-nw-tCH"/>
                 <constraint firstItem="ZFR-n4-feM" firstAttribute="leading" secondItem="CFh-f5-TfF" secondAttribute="trailing" id="D38-T9-kDm"/>
                 <constraint firstItem="lvh-sY-iFx" firstAttribute="leading" secondItem="WCd-B5-3lN" secondAttribute="trailing" constant="10" id="DK2-WB-E5k"/>
@@ -210,6 +222,7 @@
                 <constraint firstItem="Bi0-5y-sWR" firstAttribute="leading" secondItem="ZFR-n4-feM" secondAttribute="trailing" id="gp7-bX-GKb"/>
                 <constraint firstItem="k6D-AR-1OA" firstAttribute="height" secondItem="B2C-rt-Rqx" secondAttribute="height" id="h5K-5w-a23"/>
                 <constraint firstItem="WCd-B5-3lN" firstAttribute="centerY" secondItem="wia-fX-i92" secondAttribute="centerY" id="kCG-wA-SRG"/>
+                <constraint firstItem="d10-V8-4q3" firstAttribute="centerY" secondItem="uRW-dQ-VNk" secondAttribute="centerY" id="mEd-ra-i1E"/>
                 <constraint firstItem="wia-fX-i92" firstAttribute="centerY" secondItem="O3t-3w-jxB" secondAttribute="centerY" id="mot-E5-MJJ"/>
                 <constraint firstItem="uRW-dQ-VNk" firstAttribute="leading" secondItem="Bi0-5y-sWR" secondAttribute="trailing" id="oz1-Fm-Njf"/>
                 <constraint firstItem="CFh-f5-TfF" firstAttribute="leading" secondItem="64y-RK-DnU" secondAttribute="trailing" id="p4a-Qi-Nif"/>
@@ -226,6 +239,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bottomNoteTextViewButton" destination="d10-V8-4q3" id="leC-oM-LMG"/>
                 <outlet property="daYunLabel1" destination="ACk-Zp-osf" id="Vqw-uS-JHb"/>
                 <outlet property="daYunLabel2" destination="O3t-3w-jxB" id="BmH-h5-Si6"/>
                 <outlet property="daYunLabel3" destination="wia-fX-i92" id="dH8-Lu-p6K"/>

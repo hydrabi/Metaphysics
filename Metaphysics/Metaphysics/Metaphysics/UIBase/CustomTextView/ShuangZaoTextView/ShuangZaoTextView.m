@@ -108,6 +108,12 @@
          }
          [self resetDaYun];
      }];
+    
+    [[self.bottomNoteTextViewButton rac_signalForControlEvents:
+      UIControlEventTouchUpInside]
+     subscribeNext:^(id _){
+         [main.bottomNoteTextViewOperationSig sendNext:nil];
+     }];
 }
 
 -(void)resetValue{

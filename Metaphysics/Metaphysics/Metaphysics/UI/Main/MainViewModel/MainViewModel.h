@@ -62,6 +62,9 @@
 //隐藏或者显示15运的操作信号
 @property (nonatomic,strong)RACSignal *fifteenYunTextViewOperationSig;
 
+//在双造中出现的底部空白textView
+@property (nonatomic,strong)RACSubject *bottomNoteTextViewOperationSig;
+
 //中间视图的数据
 @property (nonatomic,strong)MiddleViewData *middleData;
 //双造数据

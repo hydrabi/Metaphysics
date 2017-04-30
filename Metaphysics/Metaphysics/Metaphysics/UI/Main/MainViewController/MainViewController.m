@@ -35,6 +35,10 @@
 @property (nonatomic,strong)FifteenYunTextView *fifteenYunTextView;
 @property (nonatomic,strong)ShuangZaoTextView *shuangZaoTextView;
 @property (nonatomic,strong)SolarTermsCollectionView *solarTermsView;
+/**
+ 在双造中出现的底部空白textView,笔记的作用
+ */
+@property (nonatomic,strong)LiuNianTextView *bottomNoteTextView;
 @property (nonatomic,weak)UIView *currentTextView;
 @property (nonatomic,strong)UIView *firstVerLine;
 @property (nonatomic,strong)UIView *secondVerLine;
@@ -120,6 +124,12 @@
     self.solarTermsView  = [SolarTermsCollectionView createSolarTermsCollectionView];
     self.solarTermsView.hidden = YES;
     [self.view addSubview:self.solarTermsView];
+    
+    self.bottomNoteTextView = [LiuNianTextView instanceLiuNianTextView];
+    self.bottomNoteTextView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.bottomNoteTextView.layer.borderWidth = 1.0f;
+    self.bottomNoteTextView.hidden = YES;
+    [self.view addSubview:self.bottomNoteTextView];
     
 }
 
@@ -225,6 +235,14 @@
         make.top.equalTo(self.bottomContentView.top).offset(0);
         make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset+1));
         make.height.equalTo(bottomViewHeight);
+    }];
+    
+    [self.bottomNoteTextView makeConstraints:^(MASConstraintMaker *make){
+        @strongify(self)
+        make.leading.equalTo(self.secondVerLine.trailing).offset(@(leftVerLineOffset));
+        make.top.equalTo(self.bottomContentView.bottom).offset(leftVerLineOffset);
+        make.trailing.equalTo(self.view.trailing).offset(@(-leftVerLineOffset));
+        make.height.equalTo(bottomTextViewHeight);
     }];
 }
 
@@ -336,6 +354,12 @@
          @strongify(self)
          [self.leftSideMenuTabelView reloadData];
      }];
+    
+    //在双造中出现的底部空白textView
+    [mainViewModel.bottomNoteTextViewOperationSig subscribeNext:^(id _){
+        @strongify(self)
+        self.bottomNoteTextView.hidden = !self.bottomNoteTextView.hidden;
+    }];
 }
 
 
